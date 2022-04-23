@@ -1,4 +1,3 @@
-
 function Li(props) {
     return <div className='col-sm-4 p-4 skill'>
         <h3>{props.title}</h3>

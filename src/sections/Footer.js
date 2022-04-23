@@ -5,8 +5,8 @@ function Footer() {
                 <div className='col-sm-6'>
                     <p>Quick links</p>
                     <ul>
-                        <li><a href="#">Search</a></li>
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="/search">Search</a></li>
+                        <li><a href="/about">About Us</a></li>
                         <li><a href="#">Refund Policy</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Service</a></li>

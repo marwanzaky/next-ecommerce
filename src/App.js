@@ -1,20 +1,23 @@
-import Navigation from './sections/Navigation';
-import Header from './sections/Header';
-import Products from './sections/Products';
-import Testimonials from './sections/Testimonials';
-import About from './sections/About';
-import Footer from './sections/Footer';
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './pages/Home';
+import Shop from "./pages/Shop";
+import ContactPage from './pages/ContactPage';
+import AboutPage from "./pages/AboutPage";
 
 function App() {
   return (
-    <div className="App">
-      <Navigation />
-      <Header />
-      <Products />
-      <Testimonials />
-      <About />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* <Route path="/" element=''> */}
+        <Route index element={<Home />} />
+        <Route path="shop" element={<Shop />} />
+        <Route path="contact" element={<ContactPage />} />
+        <Route path="about" element={<AboutPage />} />
+
+        {/* </Route> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 

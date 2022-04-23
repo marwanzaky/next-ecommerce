@@ -6,19 +6,19 @@ import { heartOutline } from 'ionicons/icons'
 
 function Nav(props) {
     return <li>
-        <button>{props.name}</button>
+        <a href={props.href}>{props.name}</a>
     </li>
 }
 
 function Navigation() {
     return <nav className='container'>
         <div className="main-nav-box">
-            <button className="logo">Mamolio</button>
+            <a href='/' className="logo">Mamolio</a>
 
             <ul className="main-nav">
-                <Nav name='Home' />
-                <Nav name='Shop' />
-                <Nav name='Contact' />
+                <Nav href='/' name='Home' />
+                <Nav href='/shop' name='Shop' />
+                <Nav href='/contact' name='Contact' />
             </ul>
 
             <div>

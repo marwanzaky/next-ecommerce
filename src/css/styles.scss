@@ -168,15 +168,15 @@ nav {
     display: inline-block;
     margin-left: 40px;
 
-    button {
+    a {
       padding: 5px 0px;
-      color: var(--color-dark);
+      // color: var(--color-dark);
 
       border-bottom: 2px solid transparent;
-    }
 
-    button:hover {
-      border-bottom: 2px solid var(--color-secondary);
+      &:hover {
+        border-bottom: 2px solid var(--color-secondary);
+      }
     }
   }
 
@@ -225,11 +225,6 @@ header {
 
 /*------- PRODUCTS -------*/
 .product-box {
-  // display: grid;
-  // grid-template-columns: 25% 25% 25% 25%;
-  // column-gap: 25px;
-  // row-gap: 25px;
-
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 20px;
@@ -389,4 +384,71 @@ footer {
     text-align: center;
     margin-top: 50px;
   }
+}
+
+/*------- CONTACT US -------*/
+.section-contact-me {
+  background-color: var(--color-primary);
+
+  .contact-me-box {
+    display: flex;
+
+    .contact-me-box-child {
+      width: 50%;
+      padding: 20px;
+    }
+
+    .contact-me-container {
+      border-radius: var(--border-radius);
+
+      .contact-me-box-feild {
+        position: relative;
+
+        .contact-me-box-feild-icon {
+          display: inline-block;
+          position: absolute;
+          width: 50px;
+          height: 100%;
+          padding-bottom: 15px;
+          top: 0;
+          right: 10px;
+          color: var(--color-black);
+
+          i {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 63px;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*------- FORM -------*/
+input[type=text],
+textarea {
+  width: 100%;
+  padding: 20px 25px;
+  margin-bottom: 15px;
+
+  outline: none;
+  border: none;
+  box-shadow: 0 0 0 1pt #ecf0f1;
+  border-radius: var(--border-radius);
+
+  background-color: var(--color-primary-dark);
+  resize: vertical;
+}
+
+input[type=text]:focus,
+textarea:focus {
+  box-shadow: 0 0 0 2pt cornflowerblue;
+}
+
+textarea {
+  padding: 20px 25px;
+  min-height: 150px;
 }

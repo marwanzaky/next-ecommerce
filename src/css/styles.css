@@ -166,13 +166,12 @@ nav {
   margin-left: 40px;
 }
 
-.main-nav-box .main-nav li button {
+.main-nav-box .main-nav li a {
   padding: 5px 0px;
-  color: var(--color-dark);
   border-bottom: 2px solid transparent;
 }
 
-.main-nav-box .main-nav li button:hover {
+.main-nav-box .main-nav li a:hover {
   border-bottom: 2px solid var(--color-secondary);
 }
 
@@ -397,5 +396,80 @@ footer {
 .footer-box .copyright {
   text-align: center;
   margin-top: 50px;
+}
+
+/*------- CONTACT US -------*/
+.section-contact-me {
+  background-color: var(--color-primary);
+}
+
+.section-contact-me .contact-me-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.section-contact-me .contact-me-box .contact-me-box-child {
+  width: 50%;
+  padding: 20px;
+}
+
+.section-contact-me .contact-me-box .contact-me-container {
+  border-radius: var(--border-radius);
+}
+
+.section-contact-me .contact-me-box .contact-me-container .contact-me-box-feild {
+  position: relative;
+}
+
+.section-contact-me .contact-me-box .contact-me-container .contact-me-box-feild .contact-me-box-feild-icon {
+  display: inline-block;
+  position: absolute;
+  width: 50px;
+  height: 100%;
+  padding-bottom: 15px;
+  top: 0;
+  right: 10px;
+  color: var(--color-black);
+}
+
+.section-contact-me .contact-me-box .contact-me-container .contact-me-box-feild .contact-me-box-feild-icon i {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 63px;
+  opacity: 1;
+}
+
+/*------- FORM -------*/
+input[type=text],
+textarea {
+  width: 100%;
+  padding: 20px 25px;
+  margin-bottom: 15px;
+  outline: none;
+  border: none;
+  -webkit-box-shadow: 0 0 0 1pt #ecf0f1;
+          box-shadow: 0 0 0 1pt #ecf0f1;
+  border-radius: var(--border-radius);
+  background-color: var(--color-primary-dark);
+  resize: vertical;
+}
+
+input[type=text]:focus,
+textarea:focus {
+  -webkit-box-shadow: 0 0 0 2pt cornflowerblue;
+          box-shadow: 0 0 0 2pt cornflowerblue;
+}
+
+textarea {
+  padding: 20px 25px;
+  min-height: 150px;
 }
 /*# sourceMappingURL=styles.css.map */
