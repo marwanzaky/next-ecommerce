@@ -1,6 +1,9 @@
+import React from 'react';
+
 function Testimonial(props) {
     return <div className='col-sm-4 p-4 testimonial'>
-        <i class="fa-solid fa-quote-left"></i>
+        <i className="fa fa-quote-left"></i>
+
         <blockquote>
             {props.blockquote}
             <cite>{props.cite}</cite>
