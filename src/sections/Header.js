@@ -5,7 +5,6 @@ function Header() {
             <p className="header-parag">Atypical leather goods. </p>
 
             <button className="btn-base btn-full">Shop now</button>
-            <button className="btn-base btn-ghost" >About us</button>
         </div>
     </header>
 }

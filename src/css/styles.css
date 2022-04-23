@@ -20,16 +20,16 @@ button {
   --color-secondary-2: #a7ffee;
   --color-primary: #ffffff;
   --color-primary-dark: #f6f8f8;
-  --color-grey-0: #f6f6f6;
-  --color-grey-1: #eee;
-  --color-grey-2: #bbb;
-  --color-black: #141c24;
-  --color-black-light: #89a4be;
+  --color-grey-0: #dfe6e9;
+  --color-grey-1: #b2bec3;
+  --color-grey-2: #636e72;
+  --color-black: #2d3436;
   --font-light: 300;
   --font-regular: 400;
   --font-bold: 700;
   --border-radius: 12px;
   --color-shadow: rgba(0, 0, 0, 0.2);
+  --line-width: 1px;
 }
 
 /*------- REUSEABLE COMPONENTS -------*/
@@ -109,21 +109,26 @@ h4 {
 
 .btn-full {
   background-color: var(--color-secondary);
-  border: var(--line-width) solid var(--color-secondary);
   color: var(--color-primary);
   margin-right: 15px;
 }
 
-.btn-full:hover {
-  border: var(--line-width) solid var(--color-secondary-dark);
-}
-
 .btn-ghost {
-  border: var(--line-width) solid var(--color-red);
+  border: var(--line-width) solid var(--color-secondary);
   color: var(--color-secondary);
 }
 
 .btn-ghost:hover {
+  border: var(--line-width) solid var(--color-secondary-dark);
+  color: #fff;
+}
+
+.btn-ghost-grey {
+  border: var(--line-width) solid var(--color-grey-0);
+  color: var(--color-black);
+}
+
+.btn-ghost-grey:hover {
   border: var(--line-width) solid var(--color-secondary-dark);
   color: #fff;
 }
@@ -171,6 +176,27 @@ nav {
   border-bottom: 2px solid var(--color-secondary);
 }
 
+.main-nav-box .button-icon {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 24px;
+  margin-left: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+.main-nav-box .button-icon:hover {
+  background-color: var(--color-grey-0);
+}
+
 /*------- HEADER -------*/
 header {
   padding: 50px;
@@ -183,27 +209,29 @@ header {
 }
 
 .header-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -150%);
-          transform: translate(-50%, -150%);
+  padding-top: 100px;
 }
 
 .header-box .header-text,
 .header-box .header-parag {
+  text-align: center;
   color: var(--color-primary);
 }
 
-/*------- BUTTONS -------*/
+.header-box button {
+  margin: 0 auto;
+  display: block;
+}
+
+/*------- PRODUCTS -------*/
 .product-box {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 25% 25% 25% 25%;
-      grid-template-columns: 25% 25% 25% 25%;
-  -webkit-column-gap: 25px;
-          column-gap: 25px;
-  row-gap: 25px;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  -webkit-column-gap: 20px;
+          column-gap: 20px;
+  row-gap: 20px;
 }
 
 .product-box .product {
@@ -221,8 +249,8 @@ header {
 }
 
 .product-box .product:hover {
-  -webkit-box-shadow: 0 0 20px var(--color-grey-2);
-          box-shadow: 0 0 20px var(--color-grey-2);
+  -webkit-box-shadow: 0 0 20px var(--color-grey-1);
+          box-shadow: 0 0 20px var(--color-grey-1);
 }
 
 .product-box .product .save {
@@ -266,8 +294,13 @@ header {
 .product-box .product .product-name {
   padding: 0 20px;
   font-size: 120%;
+  margin-bottom: 5px;
   text-transform: capitalize;
-  margin-bottom: 10px;
+}
+
+.product-box .product .product-stars {
+  padding: 0 20px;
+  margin-bottom: 5px;
 }
 
 .product-box .product .product-tag {
@@ -285,7 +318,6 @@ header {
 
 .product-box .product .product-tag .product-price {
   margin: auto 0;
-  width: 50%;
   font-size: 150%;
 }
 
@@ -323,9 +355,9 @@ header {
   content: '\2014 \0020';
 }
 
-/*------- FOOTER -------*/
+/*------- ABOUT -------*/
 .section-about {
-  background-color: var(--color-secondary-1);
+  background-color: var(--color-grey-1);
 }
 
 .about-box .contact h4 {
@@ -340,7 +372,7 @@ header {
 /*------- FOOTER -------*/
 footer {
   padding: 25px;
-  background-color: var(--color-secondary-dark);
+  background-color: var(--color-black);
 }
 
 .footer-box p {

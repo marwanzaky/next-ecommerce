@@ -21,12 +21,11 @@ button {
   --color-primary: #ffffff;
   --color-primary-dark: #f6f8f8;
 
-  --color-grey-0: #f6f6f6;
-  --color-grey-1: #eee;
-  --color-grey-2: #bbb;
+  --color-grey-0: #dfe6e9;
+  --color-grey-1: #b2bec3;
+  --color-grey-2: #636e72;
 
-  --color-black: #141c24;
-  --color-black-light: #89a4be;
+  --color-black: #2d3436;
 
   --font-light: 300;
   --font-regular: 400;
@@ -35,6 +34,8 @@ button {
   --border-radius: 12px;
 
   --color-shadow: rgba(0, 0, 0, 0.2);
+
+  --line-width: 1px;
 }
 
 /*------- REUSEABLE COMPONENTS -------*/
@@ -117,18 +118,23 @@ h4 {
 
 .btn-full {
   background-color: var(--color-secondary);
-  border: var(--line-width) solid var(--color-secondary);
   color: var(--color-primary);
   margin-right: 15px;
-
-  &:hover {
-    border: var(--line-width) solid var(--color-secondary-dark);
-  }
 }
 
 .btn-ghost {
-  border: var(--line-width) solid var(--color-red);
+  border: var(--line-width) solid var(--color-secondary);
   color: var(--color-secondary);
+
+  &:hover {
+    border: var(--line-width) solid var(--color-secondary-dark);
+    color: #fff;
+  }
+}
+
+.btn-ghost-grey {
+  border: var(--line-width) solid var(--color-grey-0);
+  color: var(--color-black);
 
   &:hover {
     border: var(--line-width) solid var(--color-secondary-dark);
@@ -173,6 +179,23 @@ nav {
       border-bottom: 2px solid var(--color-secondary);
     }
   }
+
+  .button-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 24px;
+    margin-left: 10px;
+
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: var(--color-grey-0);
+    }
+  }
 }
 
 /*------- HEADER -------*/
@@ -186,23 +209,31 @@ header {
 }
 
 .header-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -150%);
+  padding-top: 100px;
 
   .header-text,
   .header-parag {
+    text-align: center;
     color: var(--color-primary);
+  }
+
+  button {
+    margin: 0 auto;
+    display: block;
   }
 }
 
-/*------- BUTTONS -------*/
+/*------- PRODUCTS -------*/
 .product-box {
+  // display: grid;
+  // grid-template-columns: 25% 25% 25% 25%;
+  // column-gap: 25px;
+  // row-gap: 25px;
+
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  column-gap: 25px;
-  row-gap: 25px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
 
   .product {
     display: flex;
@@ -215,7 +246,7 @@ header {
     border-radius: var(--border-radius);
 
     &:hover {
-      box-shadow: 0 0 20px var(--color-grey-2);
+      box-shadow: 0 0 20px var(--color-grey-1);
     }
 
     .save {
@@ -253,8 +284,13 @@ header {
     .product-name {
       padding: 0 20px;
       font-size: 120%;
+      margin-bottom: 5px;
       text-transform: capitalize;
-      margin-bottom: 10px;
+    }
+
+    .product-stars {
+      padding: 0 20px;
+      margin-bottom: 5px;
     }
 
     .product-tag {
@@ -266,7 +302,7 @@ header {
 
       .product-price {
         margin: auto 0;
-        width: 50%;
+        // width: 50%;
         font-size: 150%;
       }
     }
@@ -307,9 +343,9 @@ header {
   }
 }
 
-/*------- FOOTER -------*/
+/*------- ABOUT -------*/
 .section-about {
-  background-color: var(--color-secondary-1);
+  background-color: var(--color-grey-1);
 }
 
 .about-box .contact {
@@ -326,7 +362,7 @@ header {
 /*------- FOOTER -------*/
 footer {
   padding: 25px;
-  background-color: var(--color-secondary-dark);
+  background-color: var(--color-black);
 }
 
 .footer-box {

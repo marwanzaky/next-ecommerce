@@ -19,7 +19,7 @@ function About() {
 
             <div className="contact">
                 <h4>Have a question? contact us here.</h4>
-                <button className="btn-base btn-ghost">Contact</button>
+                <button className="btn-base btn-ghost-grey">Contact</button>
             </div>
         </div>
     </section>

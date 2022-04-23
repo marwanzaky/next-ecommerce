@@ -15,9 +15,10 @@ function Product(props) {
         </div>
         <img src={props.src}></img>
         <span className='product-name'>{props.name}</span>
+        <span className='product-stars'>★★★★★ ({props.reviews})</span>
         <div className='product-tag'>
             <p className='product-price' >${props.price}</p>
-            <button className='btn-base btn-ghost'>Add to card</button>
+            <button className='btn-base btn-ghost-grey produce-button'>Add to card</button>
         </div>
     </div>
 }
@@ -27,14 +28,14 @@ function Products() {
         <h2>Featured collection</h2>
 
         <div className="product-box">
-            <Product src={Product1} name='Personalised Notebook' price='9.99' />
-            <Product src={Product2} name='Anniversary Gift for Him' price='14.99' />
-            <Product src={Product3} name='Spiral Notebook' price='12.99' />
-            <Product src={Product4} name='Soft Cover Journal' price='19.99' />
-            <Product src={Product1} name='Personalised Notebook' price='9.99' />
-            <Product src={Product2} name='Anniversary Gift for Him' price='14.99' />
-            <Product src={Product3} name='Spiral Notebook' price='12.99' />
-            <Product src={Product4} name='Soft Cover Journal' price='19.99' />
+            <Product src={Product1} name='Personalised Notebook' reviews='34' price='9.99' />
+            <Product src={Product2} name='Anniversary Gift for Him' reviews='17' price='4.99' />
+            <Product src={Product3} name='Spiral Notebook' reviews='72' price='12.99' />
+            <Product src={Product4} name='Soft Cover Journal' reviews='9' price='19.99' />
+            <Product src={Product1} name='Personalised Notebook' reviews='34' price='9.99' />
+            <Product src={Product2} name='Anniversary Gift for Him' reviews='17' price='4.99' />
+            <Product src={Product3} name='Spiral Notebook' reviews='72' price='12.99' />
+            <Product src={Product4} name='Soft Cover Journal' reviews='9' price='19.99' />
         </div>
     </section>
 }
