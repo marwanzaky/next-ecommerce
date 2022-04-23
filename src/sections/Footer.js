@@ -7,10 +7,10 @@ function Footer() {
                     <ul>
                         <li><a href="/search">Search</a></li>
                         <li><a href="/about">About Us</a></li>
-                        <li><a href="#">Refund Policy</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="/refund-policy">Refund Policy</a></li>
+                        <li><a href="/privacy-policy">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service">Terms of Service</a></li>
+                        <li><a href="/shipping-policy">Shipping Policy</a></li>
                     </ul>
                 </div>
 

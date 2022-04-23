@@ -18,12 +18,13 @@ function Navigation() {
             <ul className="main-nav">
                 <Nav href='/' name='Home' />
                 <Nav href='/shop' name='Shop' />
+                <Nav href='/about' name='About' />
                 <Nav href='/contact' name='Contact' />
             </ul>
 
             <div>
-                <button className='button-icon' ><IonIcon src={heartOutline} /></button>
-                <button className='button-icon' ><IonIcon src={cartOutline} /></button>
+                <a href='/favourite' className='button-icon' ><IonIcon src={heartOutline} /></a>
+                <a href='/cart' className='button-icon' ><IonIcon src={cartOutline} /></a>
             </div>
         </div>
     </nav >
