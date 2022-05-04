@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Navigation from '../sections/Navigation';
+import YouMayAlsoLike from '../sections/YouMayAlsoLike';
 import About from '../sections/About';
 import Footer from '../sections/Footer';
 
@@ -33,7 +34,7 @@ class Product extends React.Component {
             <h1>Loading...</h1>
         </section>;
 
-        return (
+        return <>
             <section className='container product-details-box'>
                 <div className='row'>
                     <div className='col-sm-6 p-4 product-details-img'>
@@ -50,7 +51,9 @@ class Product extends React.Component {
                     </div>
                 </div>
             </section>
-        );
+
+            <YouMayAlsoLike />
+        </>;
     }
 }
 
