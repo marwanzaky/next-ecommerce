@@ -1,5 +1,4 @@
 import React from 'react';
-import * as ReactDOM from 'react-dom';
 
 import Navigation from '../sections/Navigation';
 import About from '../sections/About';
@@ -47,7 +46,6 @@ class Product extends React.Component {
                         <p className='product-details-price'>${data[id].price}</p>
                         <button className='btn-base btn-ghost-grey'>Add to cart</button>
                         <button className='btn-base btn-full'>Buy it now</button>
-                        {/* <p className='product-details-description'>{data[id].description}</p> */}
                         <NewlineText text={data[id].description} />
                     </div>
                 </div>
