@@ -11,8 +11,8 @@ function Nav(props) {
 }
 
 function Navigation() {
-    return <nav className='container'>
-        <div className="main-nav-box">
+    return <nav>
+        <div className="container main-nav-box">
             <a href='/' className="logo">Mamolio</a>
 
             <ul className="main-nav">
