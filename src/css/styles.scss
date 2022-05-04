@@ -122,6 +122,12 @@ h4 {
   margin-right: 15px;
 }
 
+.btn-full-grey {
+  background-color: var(--color-grey-0);
+  color: var(--color-black);
+  margin-right: 15px;
+}
+
 .btn-ghost {
   border: var(--line-width) solid var(--color-secondary);
   color: var(--color-secondary);
@@ -451,4 +457,44 @@ textarea:focus {
 textarea {
   padding: 20px 25px;
   min-height: 150px;
+}
+
+/*------- PRODUCT -------*/
+.product-details-box {
+  .product-details-img {
+    img {
+      width: 100%;
+    }
+  }
+
+  .product-details-info {
+    .product-details-name {
+      margin: 0 0 10px 0;
+    }
+
+    .product-details-reviews {
+      margin: 0 0 5px 0;
+    }
+
+    .product-details-price {
+      font-size: 150%;
+      margin: 0 0 30px 0;
+    }
+
+    .product-details-description {
+    white-space: pre-wrap;
+    }
+
+    .btn-ghost-grey {
+      display: block;
+      width: 400px;
+      margin-bottom: 10px;
+    }
+
+    .btn-full {
+      display: block;
+      width: 400px;
+      margin-bottom: 50px;
+    }
+  }
 }
