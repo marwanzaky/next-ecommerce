@@ -37,25 +37,36 @@ class Product extends React.Component {
         return <>
             <section className='container product-details-box'>
                 <div className='row'>
-                    <div className='col-sm-6 p-4 product-details-img'>
-                        <img className='product-details-preview' src={"http://127.0.0.1:8000/" + data[id].pictures[0]} />
-
-                        <div className='product-details-pictures'>
-                            {
-                                data[id].pictures.map(el => <div className='product-details-picture'>
+                    <div className='col-sm-6 p-4'>
+                        <div className='product-details-img'>
+                            <img className='product-details-preview' src={"http://127.0.0.1:8000/" + data[id].pictures[0]} />
+                            <div className='product-details-pictures'>
+                                {data[id].pictures.map(el => <div className='product-details-picture'>
                                     <img src={"http://127.0.0.1:8000/" + el}></img>
-                                </div>)
-                            }
+                                </div>)}
+                            </div>
                         </div>
                     </div>
 
-                    <div className='col-sm-6 p-4 product-details-info'>
-                        <h1 className='product-details-name' >{data[id].name}</h1>
-                        <p className='product-details-reviews'>★★★★★ ({data[id].reviews})</p>
-                        <p className='product-details-price'>${data[id].price}</p>
-                        <button className='btn-base btn-ghost-grey'>Add to cart</button>
-                        <button className='btn-base btn-full'>Buy it now</button>
-                        <NewlineText text={data[id].description} />
+                    <div className='col-sm-6 p-4'>
+                        <div className='product-details-info'>
+                            <h1 className='product-details-name' >{data[id].name}</h1>
+                            <p className='product-details-reviews'>★★★★★ ({data[id].reviews.length})</p>
+                            <p className='product-details-price'>${data[id].price}</p>
+                            <button className='btn-base btn-ghost-grey'>Add to cart</button>
+                            <button className='btn-base btn-full'>Buy it now</button>
+                            <NewlineText text={data[id].description} />
+                        </div>
+
+                        <div className='product-details-reviews'>
+                            <h2>Customer Reviews</h2>
+
+                            {data[id].reviews.map(el => <div className='product-details-review'>
+                                <p className='product-details-review-fullname'>{el.fullname} - <span>{el.date}</span></p>
+                                <p className='product-details-review-stars'>{el.stars}</p>
+                                <p className='product-details-review-review'>{el.review}</p>
+                            </div>)}
+                        </div>
                     </div>
                 </div>
             </section>

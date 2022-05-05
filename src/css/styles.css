@@ -556,6 +556,10 @@ textarea {
   opacity: .5;
 }
 
+.product-details-box .product-details-info {
+  margin-bottom: 30px;
+}
+
 .product-details-box .product-details-info .product-details-name {
   margin: 0 0 10px 0;
 }
@@ -583,5 +587,19 @@ textarea {
   display: block;
   width: 400px;
   margin-bottom: 50px;
+}
+
+.product-details-box .product-details-reviews .product-details-review .product-details-review-fullname {
+  margin: 0;
+  color: var(--color-grey-2);
+}
+
+.product-details-box .product-details-reviews .product-details-review .product-details-review-stars {
+  margin: 0;
+  color: var(--color-secondary-dark);
+}
+
+.product-details-box .product-details-reviews .product-details-review .product-details-review-review {
+  margin: 0 0 20px 0;
 }
 /*# sourceMappingURL=styles.css.map */
