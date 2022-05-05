@@ -294,10 +294,13 @@ header {
   font-size: 18px;
 }
 
-.product-box .product img {
+.product-box .product .product-img {
+  margin-bottom: 20px;
+}
+
+.product-box .product .product-img img {
   width: 100%;
   height: 100%;
-  margin-bottom: 20px;
 }
 
 .product-box .product .product-name {

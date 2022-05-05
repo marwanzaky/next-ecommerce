@@ -284,10 +284,13 @@ header {
       }
     }
 
-    img {
-      width: 100%;
-      height: 100%;
+    .product-img {
       margin-bottom: 20px;
+      
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
 
     .product-name {
