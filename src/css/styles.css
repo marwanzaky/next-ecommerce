@@ -4,8 +4,10 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
+  -webkit-transition: opacity var(--transition-delay), background-color var(--transition-delay), color var(--transition-delay), border var(--transition-delay), -webkit-transform var(--transition-delay), -webkit-box-shadow var(--transition-delay);
+  transition: opacity var(--transition-delay), background-color var(--transition-delay), color var(--transition-delay), border var(--transition-delay), -webkit-transform var(--transition-delay), -webkit-box-shadow var(--transition-delay);
+  transition: transform var(--transition-delay), opacity var(--transition-delay), background-color var(--transition-delay), color var(--transition-delay), border var(--transition-delay), box-shadow var(--transition-delay);
+  transition: transform var(--transition-delay), opacity var(--transition-delay), background-color var(--transition-delay), color var(--transition-delay), border var(--transition-delay), box-shadow var(--transition-delay), -webkit-transform var(--transition-delay), -webkit-box-shadow var(--transition-delay);
 }
 
 body,
@@ -30,6 +32,7 @@ button {
   --border-radius: 12px;
   --color-shadow: rgba(0, 0, 0, 0.2);
   --line-width: 1px;
+  --transition-delay: 0.2s;
 }
 
 /*------- REUSEABLE COMPONENTS -------*/
@@ -373,6 +376,50 @@ header {
 .about-box .contact button {
   margin: 0 auto;
   display: block;
+}
+
+/*------- INSTAGRAM -------*/
+.section-instagram {
+  padding: 0;
+}
+
+.section-instagram .instagram-box {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.section-instagram .instagram-box .instagram-photo {
+  position: relative;
+  background-color: black;
+  overflow: hidden;
+}
+
+.section-instagram .instagram-box .instagram-photo .instagram-icon {
+  font-size: 80px;
+  color: var(--color-primary);
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.section-instagram .instagram-box .instagram-photo img {
+  width: 100%;
+  opacity: 1;
+}
+
+.section-instagram .instagram-box .instagram-photo:hover img {
+  opacity: 0.5;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.section-instagram .instagram-box .instagram-photo:hover .instagram-icon {
+  opacity: 1;
 }
 
 /*------- FOOTER -------*/
