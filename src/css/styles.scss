@@ -511,9 +511,30 @@ textarea {
 /*------- PRODUCT -------*/
 .product-details-box {
   .product-details-img {
-    img {
-      width: 100%;
-    }
+      .product-details-preview {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      
+      .product-details-pictures {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        column-gap: 20px;
+        row-gap: 20px;
+
+        .product-details-picture {
+          background-color: black;
+
+          img {
+            width: 100%;
+            opacity: 1;
+          }
+
+          &:hover img {
+            opacity: .5;
+          }
+        }
+      }
   }
 
   .product-details-info {
