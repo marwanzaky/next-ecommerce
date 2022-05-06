@@ -39,10 +39,10 @@ class Product extends React.Component {
                 <div className='row'>
                     <div className='col-sm-6 p-4'>
                         <div className='product-details-img'>
-                            <img className='product-details-preview' src={"http://127.0.0.1:8000/" + data[id].pictures[0]} />
+                            <img className='product-details-preview' src={"http://127.0.0.1:8000/" + data[id].pictures[0]} alt={data[id].name} />
                             <div className='product-details-pictures'>
                                 {data[id].pictures.map(el => <div className='product-details-picture'>
-                                    <img src={"http://127.0.0.1:8000/" + el}></img>
+                                    <img src={"http://127.0.0.1:8000/" + el} alt={data[id].name}></img>
                                 </div>)}
                             </div>
                         </div>

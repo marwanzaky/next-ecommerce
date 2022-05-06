@@ -6,7 +6,7 @@ import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 function Photo(props) {
     return (
         <div className='instagram-photo'>
-            <a href={props.url}><img src={'http://127.0.0.1:8000/' + props.src}></img></a>
+            <a href={props.url}><img src={'http://127.0.0.1:8000/' + props.src} alt={props.alt}></img></a>
             <FontAwesomeIcon className='instagram-icon' icon={faInstagram} />
         </div>
     )
@@ -43,7 +43,7 @@ class Instagram extends React.Component {
         return (
             <section className="section-instagram">
                 <div className="instagram-box">
-                    {data.map(el => <Photo src={el.src} url={el.url} />)}
+                    {data.map(el => <Photo src={el.src} url={el.url} alt={el.name} />)}
                 </div>
             </section>
         );
