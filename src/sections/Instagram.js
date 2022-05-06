@@ -1,17 +1,13 @@
 import React from 'react';
 
-import { IonIcon } from '@ionic/react';
-import { heartOutline } from 'ionicons/icons'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 function Photo(props) {
     return (
         <div className='instagram-photo'>
             <a href={props.url}><img src={'http://127.0.0.1:8000/' + props.src}></img></a>
-            <IonIcon className='instagram-icon' src={heartOutline} />
-            {/* <FontAwesomeIcon className='instagram-icon' icon={faCoffee} /> */}
+            <FontAwesomeIcon className='instagram-icon' icon={faInstagram} />
         </div>
     )
 }
