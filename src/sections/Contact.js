@@ -19,11 +19,10 @@ function Contact() {
         <div className="container contact-me-box">
             <div className="contact-me-box-child">
                 <h2>Contact us</h2>
-                <h3>Let’s Work Together.</h3>
+                <h3>Have a question?</h3>
                 <p>
-                    I’d love to meet up with you to discuss your venture, and potential collaborations. <br /> <br />
-                    I’m interested in freelance opportunities – especially ambitious or large projects. however, if you have other request
-                    or question, don’t hesitate to use the form.
+                    Email us and we'll get back to you within 24 hours. Monday-Saturday <br /> <br />
+                    Please fill the form below to contact us and we will get back to you as soon as possible! We're happy to answer questions or help.
                 </p>
             </div>
 
