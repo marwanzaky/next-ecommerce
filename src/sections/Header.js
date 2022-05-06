@@ -1,5 +1,4 @@
 const shopNow = () => {
-    // window.open("http://localhost:3001/product?id=1");
     window.location.href = "http://localhost:3001/product?id=1";
 }
 
