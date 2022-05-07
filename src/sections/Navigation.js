@@ -13,7 +13,7 @@ function Nav(props) {
 function Navigation() {
     return <nav>
         <div className="container main-nav-box">
-            <a href='/' className="logo">Mamolio</a>
+            <a href='/' className="logo">Storio</a>
 
             <ul className="main-nav">
                 <Nav href='/' name='Home' />

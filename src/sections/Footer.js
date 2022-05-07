@@ -20,7 +20,7 @@ function Footer() {
             </div>
 
             <div className='copyright'>
-                <div> <p>Copyright &copy; 2022 Mamolio all rights reserved.</p> </div>
+                <div> <p>Copyright &copy; 2022 Storio all rights reserved.</p> </div>
             </div>
         </div>
     </footer>
