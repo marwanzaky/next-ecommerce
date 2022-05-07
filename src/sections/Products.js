@@ -3,11 +3,13 @@ import React from 'react';
 import { IonIcon } from '@ionic/react';
 import { heartOutline } from 'ionicons/icons'
 
+const server = 'https://storio-server.herokuapp.com';
+
 function Product(props) {
     return <div className='product'>
         <div className='save'><IonIcon className='save-icon' src={heartOutline} font-size="48px" /></div>
 
-        <a className='product-img' href={'/product?id=' + props.id}><img src={'http://127.0.0.1:8000/' + props.src} alt={props.name}></img></a>
+        <a className='product-img' href={'/product?id=' + props.id}><img src={`${server}/${props.src}`} alt={props.name}></img></a>
 
         <span className='product-name'>{props.name}</span>
         <span className='product-stars'>★★★★★ ({props.reviews})</span>
@@ -30,7 +32,7 @@ class Products extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://127.0.0.1:8000/products')
+        fetch(server + '/products')
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
