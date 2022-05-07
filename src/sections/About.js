@@ -1,5 +1,5 @@
 const contactUs = () => {
-    window.location.href = "http://localhost:3001/contact";
+    window.location.href = "https://storio.netlify.app/contact";
 }
 
 function Paragraph(props) {

@@ -1,5 +1,5 @@
 const shopNow = () => {
-    window.location.href = "http://localhost:3001/product?id=1";
+    window.location.href = "https://storio.netlify.app/product?id=1";
 }
 
 function Header() {
