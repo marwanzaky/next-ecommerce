@@ -4,11 +4,11 @@
   padding: 0;
   box-sizing: border-box;
   transition: transform var(--transition-delay),
-              opacity var(--transition-delay),
-              background-color var(--transition-delay),
-              color var(--transition-delay),
-              border var(--transition-delay),
-              box-shadow var(--transition-delay);
+    opacity var(--transition-delay),
+    background-color var(--transition-delay),
+    color var(--transition-delay),
+    border var(--transition-delay),
+    box-shadow var(--transition-delay);
 }
 
 body,
@@ -254,6 +254,8 @@ header {
     border: 2px solid rgb(240, 240, 240);
     border-radius: var(--border-radius);
 
+    padding: 15px;
+
     &:hover {
       box-shadow: 0 0 20px var(--color-grey-1);
     }
@@ -286,23 +288,24 @@ header {
 
     .product-img {
       margin-bottom: 20px;
-      
+
       img {
         width: 100%;
         height: 100%;
+
+        border-radius: var(--border-radius);
       }
     }
 
     .product-name {
-      padding: 0 20px;
       font-size: 120%;
       margin-bottom: 5px;
       text-transform: capitalize;
     }
 
     .product-stars {
-      padding: 0 20px;
       margin-bottom: 5px;
+      color: #d35400;
     }
 
     .product-tag {
@@ -310,12 +313,10 @@ header {
       justify-content: space-between;
       align-items: center;
 
-      padding: 0 20px 20px 20px;
-
       .product-price {
         margin: auto 0;
-        // width: 50%;
         font-size: 150%;
+        // color: var(--color-secondary-dark);
       }
     }
   }
@@ -376,39 +377,39 @@ header {
   padding: 0;
 
   .instagram-box {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
-      .instagram-photo {
-        position: relative;
-        background-color: black;
-        overflow: hidden;
+    .instagram-photo {
+      position: relative;
+      background-color: black;
+      overflow: hidden;
 
-        .instagram-icon {
-          font-size: 80px;
-          color: var(--color-primary);
-          opacity: 0;
+      .instagram-icon {
+        font-size: 80px;
+        color: var(--color-primary);
+        opacity: 0;
 
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-        
-        img {
-          width: 100%;
-          opacity: 1;
-        }
-
-        &:hover img {
-          opacity: 0.5;
-          transform: scale(1.1);
-        }
-
-        &:hover .instagram-icon {
-          opacity: 1;
-        }
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
+
+      img {
+        width: 100%;
+        opacity: 1;
+      }
+
+      &:hover img {
+        opacity: 0.5;
+        transform: scale(1.1);
+      }
+
+      &:hover .instagram-icon {
+        opacity: 1;
+      }
+    }
   }
 }
 
@@ -514,30 +515,30 @@ textarea {
 /*------- PRODUCT -------*/
 .product-details-box {
   .product-details-img {
-      .product-details-preview {
-        width: 100%;
-        margin-bottom: 20px;
-      }
-      
-      .product-details-pictures {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        column-gap: 20px;
-        row-gap: 20px;
+    .product-details-preview {
+      width: 100%;
+      margin-bottom: 20px;
+    }
 
-        .product-details-picture {
-          background-color: black;
+    .product-details-pictures {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      column-gap: 20px;
+      row-gap: 20px;
 
-          img {
-            width: 100%;
-            opacity: 1;
-          }
+      .product-details-picture {
+        background-color: black;
 
-          &:hover img {
-            opacity: .5;
-          }
+        img {
+          width: 100%;
+          opacity: 1;
+        }
+
+        &:hover img {
+          opacity: .5;
         }
       }
+    }
   }
 
   .product-details-info {
@@ -573,7 +574,7 @@ textarea {
     }
   }
 
-  .product-details-reviews{
+  .product-details-reviews {
     .product-details-review {
       .product-details-review-fullname {
         margin: 0;
@@ -585,7 +586,7 @@ textarea {
         color: var(--color-secondary-dark);
       }
 
-      .product-details-review-review{
+      .product-details-review-review {
         margin: 0 0 20px 0;
       }
     }
