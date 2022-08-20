@@ -1,15 +1,17 @@
 import Navigation from '../sections/Navigation';
+import Cart from "../sections/Cart";
 import About from '../sections/About';
 import Footer from '../sections/Footer';
 
-function AboutPage() {
+function CartPage() {
     return (
         <div className="App">
             <Navigation />
-            <About />xw
+            <Cart />
+            <About />
             <Footer />
         </div>
     );
 }
 
-export default AboutPage;
+export default CartPage;

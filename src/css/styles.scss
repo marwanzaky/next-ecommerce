@@ -592,3 +592,45 @@ textarea {
     }
   }
 }
+
+/*------- CART -------*/
+.section-cart {
+  .cart-container {
+
+
+    .cart-items {
+      margin-bottom: 30px;
+
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        height: 100px;
+
+        .cart-item-image {
+          height: 100%;
+          width: 100px;
+
+          padding: 10px;
+
+          img {
+            height: 100%;
+            width: 100%;
+          }
+        }
+
+        .cart-item-quantity {
+          padding: 5px;
+          // outline: none;
+          border: solid 1px;
+        }
+      }
+    }
+
+    .cart-item-checkout {
+      margin: 0 0 30px 0;
+      // float: right;
+    }
+  }
+}

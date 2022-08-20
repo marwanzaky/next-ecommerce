@@ -490,4 +490,31 @@ textarea {
 }
 .product-details-box .product-details-reviews .product-details-review .product-details-review-review {
   margin: 0 0 20px 0;
+}
+
+/*------- CART -------*/
+.section-cart .cart-container .cart-items {
+  margin-bottom: 30px;
+}
+.section-cart .cart-container .cart-items .cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+.section-cart .cart-container .cart-items .cart-item .cart-item-image {
+  height: 100%;
+  width: 100px;
+  padding: 10px;
+}
+.section-cart .cart-container .cart-items .cart-item .cart-item-image img {
+  height: 100%;
+  width: 100%;
+}
+.section-cart .cart-container .cart-items .cart-item .cart-item-quantity {
+  padding: 5px;
+  border: solid 1px;
+}
+.section-cart .cart-container .cart-item-checkout {
+  margin: 0 0 30px 0;
 }/*# sourceMappingURL=styles.css.map */
