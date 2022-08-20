@@ -6,7 +6,7 @@ function Cart() {
             <div className="cart-items">
                 <div className="cart-item">
                     <div className="cart-item-image">
-                        <img src="https://storio-server.herokuapp.com/img/products/spiral-notebooks/0" />
+                        <img src="https://storio-server.herokuapp.com/img/products/spiral-notebooks/0" alt="spiral-notebooks" />
                     </div>
 
                     <div className="cart-item-title">Product name</div>
@@ -18,7 +18,7 @@ function Cart() {
 
                 <div className="cart-item">
                     <div className="cart-item-image">
-                        <img src="https://storio-server.herokuapp.com/img/products/spiral-notebooks/0" />
+                        <img src="https://storio-server.herokuapp.com/img/products/spiral-notebooks/0" alt="spiral-notebooks" />
                     </div>
 
                     <div className="cart-item-title">Product name</div>
