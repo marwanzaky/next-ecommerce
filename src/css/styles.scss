@@ -594,13 +594,6 @@ textarea {
 }
 
 /*------- CART -------*/
-// table,
-// th,
-// td {
-//   border: 1px solid black;
-//   border-collapse: collapse;
-// }
-
 .section-cart {
   .cart-container {
     width: 80%;
@@ -634,6 +627,8 @@ textarea {
             .cart-table-item-product-img img {
               height: 100%;
               width: 100%;
+
+              border-radius: var(--border-radius);
             }
           }
         }
