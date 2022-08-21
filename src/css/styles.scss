@@ -594,39 +594,66 @@ textarea {
 }
 
 /*------- CART -------*/
+// table,
+// th,
+// td {
+//   border: 1px solid black;
+//   border-collapse: collapse;
+// }
+
 .section-cart {
   .cart-container {
-    .cart-items {
+    width: 80%;
+    margin-left: 10%;
+
+    .cart-table {
       margin-bottom: 30px;
 
-      .cart-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+      th {
+        padding: 25px 0 25px 0;
+      }
 
-        height: 100px;
+      .cart-table-item {
+        th {
+          font-weight: var(--font-regular);
+          vertical-align: middle;
+        }
 
-        .cart-item-image {
-          height: 100%;
-          width: 100px;
+        .cart-table-item-product {
+          width: 50%;
 
-          padding: 10px;
+          .cart-table-item-product-div {
+            display: flex;
+            align-items: center;
 
-          img {
-            height: 100%;
-            width: 100%;
+            .cart-table-item-product-img {
+              margin-right: 30px;
+              width: 50px;
+            }
+
+            .cart-table-item-product-img img {
+              height: 100%;
+              width: 100%;
+            }
           }
         }
 
-        .cart-item-name {
-          width: 200px;
+        .cart-table-item-price {
+          width: 10%;
         }
 
-        .cart-item-quantity {
-          padding: 10px 30px;
-          // outline: none;
-          border: solid 2px var(--color-grey-0);
-          border-radius: var(--border-radius);
+        .cart-table-item-quantity {
+          width: 15%;
+
+          .cart-table-item-quantity-field {
+            padding: 10px 30px;
+            border: solid 2px var(--color-grey-0);
+            border-radius: var(--border-radius);
+          }
+        }
+
+        .cart-table-item-remove {
+          width: 10%;
         }
       }
     }
@@ -634,8 +661,15 @@ textarea {
     .cart-subtotal {
       margin-bottom: 30px;
 
-      .cart-subtotal-title {
-        margin-right: 30px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      flex-direction: column;
+
+      .cart-subtotal-div {
+        .cart-subtotal-div-title {
+          margin-right: 30px;
+        }
       }
 
       .cart-subtotal-note {
@@ -645,8 +679,13 @@ textarea {
     }
 
     .cart-item-checkout {
-      margin: 0 0 30px 0;
-      // float: right;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+
+      .cart-item-checkout-btn {
+        margin: 0 0 30px 0;
+      }
     }
   }
 }

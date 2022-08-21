@@ -79,39 +79,64 @@ const items = [
     }
 ];
 
-function Item (props) {
+function Item(props) {
     return <>
-        <div className="cart-item">
-            <div className="cart-item-image">
-                <img src={'https://storio-server.herokuapp.com/'+props.src} alt={props.alt} />
-            </div>
-
-            <div className="cart-item-name">{props.name}</div>
-            <div className="cart-item-price" >${props.price}</div>
-            <input className="cart-item-quantity" type="number" defaultValue="1" min="1" max="100" />
-            <div className="cart-item-total" >${props.price}</div>
-            <button className="btn-base btn-ghost-grey cart-item-remove" >Remove</button>
-        </div >
+        <tr className="cart-table-item">
+            <th className="cart-table-item-product">
+                <div className="cart-table-item-product-div" >
+                    <a href={"/product?id=" + props.id} className="cart-table-item-product-img"><img src={'https://storio-server.herokuapp.com/' + props.src} alt={props.alt} /></a>
+                    <a href={"/product?id=" + props.id} className="cart-table-item-product-name">{props.name}</a>
+                </div>
+            </th>
+            <th className="cart-table-item-price">{'$' + props.price}</th>
+            <th className="cart-table-item-quantity">
+                <input className="cart-table-item-quantity-field" type="number" defaultValue="1" min="1" max="100" />
+            </th>
+            <th className="cart-table-item-price">{'$' + props.price}</th>
+            <th className="cart-table-item-remove">
+                <button className="btn-base btn-ghost-grey cart-table-item-remove-btn">Remove</button>
+            </th>
+        </tr>
     </>
 }
 
 function Cart() {
     return <section className="section-cart">
-        <div className="container cart-container">
+        <div className="container">
             <h2>Your cart</h2>
 
-            <div className="cart-items">
-                {items.map(el => <Item src={el.pictures[0]} alt={el.name} name={el.name} price={el.price}/>)}
+            <div className="cart-container">
+
+                <table className="cart-table table">
+                    <thead>
+                        <tr>
+                            <th>Proudct</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {items.map(el => <Item id={el.id} src={el.pictures[0]} name={el.name} alt={el.name} price={el.price} />)}
+                    </tbody>
+                </table >
+
+                <div className="cart-subtotal">
+                    <div className="cart-subtotal-div">
+                        <span className="cart-subtotal-div-title">Subtotal</span>
+                        <span className="cart-subtotal-div-price">$9.99 USD</span>
+                    </div>
+
+                    <div className="cart-subtotal-note">Taxes and shipping calculated at checkout</div>
+                </div>
+
+                <div className="cart-item-checkout">
+                    <button className='btn-base btn-full cart-item-checkout-btn'>Check out</button>
+                </div>
+
             </div>
-
-            <div className="cart-subtotal">
-                <span className="cart-subtotal-title">Subtotal</span>
-                <span className="cart-subtotal-price">$9.99 USD</span>
-
-                <div className="cart-subtotal-note">Taxes and shipping calculated at checkout</div>
-            </div>
-
-            <button className='btn-base btn-full cart-item-checkout'>Check out</button>
         </div>
     </section >
 }
