@@ -107,7 +107,7 @@ function Cart() {
 
             <div className="cart-container">
 
-                <table className="cart-table table">
+                <table className="cart-table table table-hover">
                     <thead>
                         <tr>
                             <th>Proudct</th>

@@ -18,7 +18,7 @@ function Contact() {
     return <section className="section-contact-me">
         <div className="container contact-me-box">
             <div className="contact-me-box-child">
-                <h2>Contact us</h2>
+                <h2>Contact Us</h2>
                 <h3>Have a question?</h3>
                 <p>
                     Email us and we'll get back to you within 24 hours. Monday-Saturday <br /> <br />
