@@ -596,8 +596,6 @@ textarea {
 /*------- CART -------*/
 .section-cart {
   .cart-container {
-
-
     .cart-items {
       margin-bottom: 30px;
 
@@ -620,11 +618,29 @@ textarea {
           }
         }
 
-        .cart-item-quantity {
-          padding: 5px;
-          // outline: none;
-          border: solid 1px;
+        .cart-item-name {
+          width: 200px;
         }
+
+        .cart-item-quantity {
+          padding: 10px 30px;
+          // outline: none;
+          border: solid 2px var(--color-grey-0);
+          border-radius: var(--border-radius);
+        }
+      }
+    }
+
+    .cart-subtotal {
+      margin-bottom: 30px;
+
+      .cart-subtotal-title {
+        margin-right: 30px;
+      }
+
+      .cart-subtotal-note {
+        margin-top: 10px;
+        font-size: 80%;
       }
     }
 

@@ -511,9 +511,23 @@ textarea {
   height: 100%;
   width: 100%;
 }
+.section-cart .cart-container .cart-items .cart-item .cart-item-name {
+  width: 200px;
+}
 .section-cart .cart-container .cart-items .cart-item .cart-item-quantity {
-  padding: 5px;
-  border: solid 1px;
+  padding: 10px 30px;
+  border: solid 2px var(--color-grey-0);
+  border-radius: var(--border-radius);
+}
+.section-cart .cart-container .cart-subtotal {
+  margin-bottom: 30px;
+}
+.section-cart .cart-container .cart-subtotal .cart-subtotal-title {
+  margin-right: 30px;
+}
+.section-cart .cart-container .cart-subtotal .cart-subtotal-note {
+  margin-top: 10px;
+  font-size: 80%;
 }
 .section-cart .cart-container .cart-item-checkout {
   margin: 0 0 30px 0;

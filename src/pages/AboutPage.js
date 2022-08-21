@@ -6,7 +6,7 @@ function AboutPage() {
     return (
         <div className="App">
             <Navigation />
-            <About />xw
+            <About />
             <Footer />
         </div>
     );
