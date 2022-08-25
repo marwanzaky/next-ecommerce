@@ -24,20 +24,6 @@ function Item(props) {
 }
 
 class Cart extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    // componentDidMount() {
-    //     const cartScript = document.createElement("script");
-    //
-    //     cartScript.src = "../NewCart.js";
-    //     cartScript.async = true;
-    //
-    //     document.body.appendChild(cartScript);
-    //     console.log('done');
-    // }
-
     render() {
         return (
             <section className="section-cart">

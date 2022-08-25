@@ -23,10 +23,10 @@ function removeCartItem(event) {
     const clickedUrl = clickedItem.querySelector('a').href;
 
     const cartItems = JSON.parse(window.localStorage.getItem('cartItems'));
-    const id = new URL(clickedUrl).searchParams.get('id');
+    const id = new URL(clickedUrl).searchParams.get('id') * 1;
 
     for (let i = 0; i < cartItems.length; i++) {
-        if(cartItems[i]['id'] == id) {
+        if(cartItems[i]['id'] === id) {
             const cartItemIndex = cartItems.indexOf(cartItems[i]);
 
             if(cartItemIndex !== -1) {

@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import Cart from './js/cart'
-import Products from './js/products'
+
+import './js/cart'
+import './js/products'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './css/styles.css';
