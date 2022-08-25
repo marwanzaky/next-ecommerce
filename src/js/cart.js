@@ -26,10 +26,10 @@ function removeCartItem(event) {
     const id = new URL(clickedUrl).searchParams.get('id') * 1;
 
     for (let i = 0; i < cartItems.length; i++) {
-        if(cartItems[i]['id'] === id) {
+        if (cartItems[i]['id'] === id) {
             const cartItemIndex = cartItems.indexOf(cartItems[i]);
 
-            if(cartItemIndex !== -1) {
+            if (cartItemIndex !== -1) {
                 cartItems.splice(cartItemIndex, 1);
                 window.localStorage.setItem('cartItems', JSON.stringify(cartItems));
             }
