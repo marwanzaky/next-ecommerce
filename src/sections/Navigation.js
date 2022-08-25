@@ -7,9 +7,7 @@ import { heartOutline } from 'ionicons/icons';
 const cartItems = JSON.parse(window.localStorage.getItem('cartItems'))
 
 function Nav(props) {
-    return <li>
-        <a href={props.href}>{props.name}</a>
-    </li>
+    return <li><a href={props.href}>{props.name}</a></li>
 }
 
 function ButtonCart() {
@@ -17,7 +15,7 @@ function ButtonCart() {
         display: 'none'
     }
 
-    if(cartItems.length > 0)
+    if (cartItems.length > 0)
         buttonCartLengthStyle.display = 'flex';
 
     return <a href='/cart' className='button-cart button-icon' >
@@ -46,6 +44,7 @@ class Navigation extends React.Component {
 
     render() {
         return <nav>
+            <div className='main-nav-promo'>Welcome to our Store!</div>
             <div className="container main-nav-box">
                 <a href='/' className="logo">Storio</a>
 

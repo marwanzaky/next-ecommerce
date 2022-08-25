@@ -38,9 +38,9 @@ class Instagram extends React.Component {
     render() {
         const { loaded, data } = this.state;
 
-        if (!loaded) return <section className='container'>
-            <h1>Loading...</h1>
-        </section>;
+        if (!loaded)
+            return <section className='container'>
+            </section>;
 
         return (
             <section className="section-instagram">

@@ -1,3 +1,13 @@
+// const stripe = require('stripe');
+
+// const stripeHandler = StripeCheckout.configure({
+//     key: '',
+//     locale: 'auto',
+//     token: function(token) {
+//
+//     }
+// });
+
 setTimeout(() => {
     // Remove cart item on click
     const removeCartItemButtons = document.getElementsByClassName('cart-table-item-remove-btn');
@@ -68,6 +78,10 @@ function purchase() {
     clearCartItems ();
 
     updateCartSubtotal();
+
+    // stripeHandler.open({
+    //     amount: '999'
+    // });
 }
 
 function clearCartItems () {

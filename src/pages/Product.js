@@ -7,18 +7,18 @@ import Footer from '../sections/Footer';
 
 const server = 'https://storio-api.herokuapp.com';
 
-const addToCart = function () {
+const addToCart = async function () {
     const cartItems = JSON.parse(window.localStorage.getItem('cartItems'));
     const id = new URL(window.location.href).searchParams.get('id') * 1;
 
     for (let i = 0; i < cartItems.length; i++) {
-        if(cartItems[i]['id'] === id) {
+        if (cartItems[i]['id'] === id) {
             alert('The item is already added to the cart.');
             return;
         }
     }
 
-    fetch(server + '/products/' + id)
+    await fetch(server + '/products/' + id)
         .then((res) => res.json())
         .then((json) => {
             cartItems.unshift(json);
@@ -27,8 +27,8 @@ const addToCart = function () {
         });
 }
 
-const purchase = function () {
-    addToCart();
+const purchase = async function () {
+    await addToCart();
     window.location.href = '/cart';
 }
 
@@ -76,7 +76,7 @@ class Product extends React.Component {
                     </div>
 
                     <div className='col-sm-6 p-4'>
-                        <div className='product-details-info'>
+                        <div className='product-details'>
                             <h1 className='product-details-name' >{data[id].name}</h1>
                             <p className='product-details-reviews'>★★★★★ ({data[id].reviews.length})</p>
                             <p className='product-details-price'>${data[id].price}</p>
@@ -85,13 +85,13 @@ class Product extends React.Component {
                             <NewlineText text={data[id].description} />
                         </div>
 
-                        <div className='product-details-reviews'>
+                        <div className='product-reviews'>
                             <h2>Customer Reviews</h2>
 
-                            {data[id].reviews.map(el => <div className='product-details-review'>
-                                <p className='product-details-review-fullname'>{el.fullname} - <span>{el.date}</span></p>
-                                <p className='product-details-review-stars'>{el.stars}</p>
-                                <p className='product-details-review-review'>{el.review}</p>
+                            {data[id].reviews.map(el => <div className='product-review'>
+                                <p className='product-review-fullname'>{el.fullname} - <span>{el.date}</span></p>
+                                <p className='product-review-stars'>{el.stars}</p>
+                                <p className='product-review-text'>{el.review}</p>
                             </div>)}
                         </div>
                     </div>

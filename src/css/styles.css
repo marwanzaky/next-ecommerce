@@ -143,32 +143,37 @@ h4 {
   color: var(--color-dark);
 }
 .logo:hover {
-  color: var(--color-secondary);
+  color: var(--color-secondary-dark);
 }
 
 /*------- MAIN NAVIGATOR -------*/
 nav {
-  padding: 10px;
   border-bottom: 2px solid var(--color-grey-0);
 }
-
-.main-nav-box {
+nav .main-nav-promo {
+  padding: 10px;
+  background-color: var(--color-secondary-dark);
+  color: white;
+  text-align: center;
+}
+nav .main-nav-box {
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.main-nav-box .main-nav li {
+nav .main-nav-box .main-nav li {
   display: inline-block;
   margin-left: 40px;
 }
-.main-nav-box .main-nav li a {
+nav .main-nav-box .main-nav li a {
   padding: 5px 0px;
   border-bottom: 2px solid transparent;
 }
-.main-nav-box .main-nav li a:hover {
-  border-bottom: 2px solid var(--color-secondary);
+nav .main-nav-box .main-nav li a:hover {
+  border-bottom: 2px solid var(--color-secondary-dark);
 }
-.main-nav-box .button-icon {
+nav .main-nav-box .button-icon {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -178,13 +183,13 @@ nav {
   height: 38px;
   border-radius: 50%;
 }
-.main-nav-box .button-icon:hover {
+nav .main-nav-box .button-icon:hover {
   background-color: var(--color-grey-0);
 }
-.main-nav-box .button-cart {
+nav .main-nav-box .button-cart {
   position: relative;
 }
-.main-nav-box .button-cart .button-cart-length {
+nav .main-nav-box .button-cart .button-cart-length {
   position: absolute;
   top: 5px;
   right: 0;
@@ -204,8 +209,7 @@ header {
   padding: 50px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/background.jpg");
   background-size: cover;
-  background-position: bottom;
-  background-attachment: fixed;
+  background-position: 0;
   height: 500px;
 }
 
@@ -277,7 +281,7 @@ header {
 }
 .product-box .product .product-stars {
   margin-bottom: 5px;
-  color: #d35400;
+  color: var(--color-secondary-dark);
 }
 .product-box .product .product-tag {
   display: flex;
@@ -472,44 +476,45 @@ textarea {
 .product-details-box .product-details-img .product-details-pictures .product-details-picture:hover img {
   opacity: 0.5;
 }
-.product-details-box .product-details-info {
+.product-details-box .product-details {
   margin-bottom: 30px;
 }
-.product-details-box .product-details-info .product-details-name {
+.product-details-box .product-details .product-details-name {
   margin: 0 0 10px 0;
 }
-.product-details-box .product-details-info .product-details-reviews {
+.product-details-box .product-details .product-details-reviews {
   margin: 0 0 5px 0;
+  color: var(--color-secondary-dark);
 }
-.product-details-box .product-details-info .product-details-price {
+.product-details-box .product-details .product-details-price {
   font-size: 150%;
   margin: 0 0 30px 0;
 }
-.product-details-box .product-details-info .product-details-description {
+.product-details-box .product-details .product-details-description {
   white-space: pre-wrap;
 }
-.product-details-box .product-details-info .btn-ghost-grey {
+.product-details-box .product-details .btn-ghost-grey {
   display: block;
   width: 400px;
   margin-bottom: 10px;
 }
-.product-details-box .product-details-info .btn-full {
+.product-details-box .product-details .btn-full {
   display: block;
   width: 400px;
   margin-bottom: 50px;
 }
-.product-details-box .product-details-reviews .product-details-review .product-details-review-fullname {
+.product-details-box .product-reviews {
+  border: solid 2px var(--color-primary-dark);
+  padding: 30px;
+}
+.product-details-box .product-reviews .product-review .product-review-fullname {
   margin: 0;
   color: var(--color-grey-2);
 }
-.product-details-box .product-details-reviews .product-details-review .product-details-review-stars {
+.product-details-box .product-reviews .product-review .product-review-stars {
   margin: 0;
   color: var(--color-secondary-dark);
 }
-.product-details-box .product-details-reviews .product-details-review .product-details-review-review {
-  margin: 0 0 20px 0;
-}
-
 /*------- CART -------*/
 .section-cart .cart-container {
   width: 80%;
