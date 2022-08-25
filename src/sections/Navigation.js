@@ -1,13 +1,29 @@
 import React from 'react';
 
 import { IonIcon } from '@ionic/react';
-import { cartOutline } from 'ionicons/icons'
-import { heartOutline } from 'ionicons/icons'
+import { cartOutline } from 'ionicons/icons';
+import { heartOutline } from 'ionicons/icons';
+
+const cartItems = JSON.parse(window.localStorage.getItem('cartItems'))
 
 function Nav(props) {
     return <li>
         <a href={props.href}>{props.name}</a>
     </li>
+}
+
+function ButtonCart() {
+    const buttonCartLengthStyle = {
+        display: 'none'
+    }
+
+    if(cartItems.length > 0)
+        buttonCartLengthStyle.display = 'flex';
+
+    return <a href='/cart' className='button-cart button-icon' >
+        <IonIcon src={cartOutline} />
+        <div className='button-cart-length' style={buttonCartLengthStyle} >{cartItems.length}</div>
+    </a>
 }
 
 function Navigation() {
@@ -24,7 +40,7 @@ function Navigation() {
 
             <div>
                 <a href='/favourite' className='button-icon' ><IonIcon src={heartOutline} /></a>
-                <a href='/cart' className='button-icon' ><IonIcon src={cartOutline} /></a>
+                <ButtonCart />
             </div>
         </div>
     </nav >

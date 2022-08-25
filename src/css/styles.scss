@@ -13,7 +13,7 @@
 
 body,
 button {
-  font-family: 'Cardo', serif;
+  font-family: var(--font-family);
 }
 
 :root {
@@ -31,6 +31,8 @@ button {
   --color-grey-2: #636e72;
 
   --color-black: #2d3436;
+
+  --font-family: 'Cardo', serif;
 
   --font-light: 300;
   --font-regular: 400;
@@ -208,6 +210,30 @@ nav {
 
     &:hover {
       background-color: var(--color-grey-0);
+    }
+  }
+
+  .button-cart {
+    position: relative;
+
+    .button-cart-length {
+      position: absolute;
+      top: 5px;
+      right: 0;
+
+      height: 14px;
+      width: 14px;
+
+      border-radius: 50%;
+
+      background-color: var(--color-secondary-dark);
+
+      font-size: 11px;
+      color: white;
+
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
