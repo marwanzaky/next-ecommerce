@@ -3,7 +3,7 @@ import React from 'react';
 import { IonIcon } from '@ionic/react';
 import { heartOutline } from 'ionicons/icons'
 
-const server = 'https://storio-server.herokuapp.com';
+const server = 'https://storio-api.herokuapp.com';
 
 function Product(props) {
     return <div className='product'>
