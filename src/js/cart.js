@@ -65,5 +65,13 @@ function purchase() {
     const cartItems = document.querySelectorAll('.cart-table-item');
     cartItems.forEach(cartItem => cartItem.remove());
 
+    clearCartItems ();
+
     updateCartSubtotal();
+}
+
+function clearCartItems () {
+    const items = [];
+    window.localStorage.clear();
+    window.localStorage.setItem('cartItems', JSON.stringify(items));
 }

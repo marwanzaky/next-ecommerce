@@ -26,24 +26,43 @@ function ButtonCart() {
     </a>
 }
 
-function Navigation() {
-    return <nav>
-        <div className="container main-nav-box">
-            <a href='/' className="logo">Storio</a>
+class Navigation extends React.Component {
+    // constructor(props) {
+    //     super(props);
+    //
+    //     this.state = {
+    //         onChange: false
+    //     };
+    // }
+    //
+    // componentDidMount() {
+    //     window.addEventListener('storage', () => {
+    //         console.log('update!!!!!!');
+    //         this.setState({
+    //             onChange:true
+    //         });
+    //     });
+    // }
 
-            <ul className="main-nav">
-                <Nav href='/' name='Home' />
-                <Nav href='/shop' name='Shop' />
-                <Nav href='/about' name='About' />
-                <Nav href='/contact' name='Contact' />
-            </ul>
+    render() {
+        return <nav>
+            <div className="container main-nav-box">
+                <a href='/' className="logo">Storio</a>
 
-            <div>
-                <a href='/favourite' className='button-icon' ><IonIcon src={heartOutline} /></a>
-                <ButtonCart />
+                <ul className="main-nav">
+                    <Nav href='/' name='Home' />
+                    <Nav href='/shop' name='Shop' />
+                    <Nav href='/about' name='About' />
+                    <Nav href='/contact' name='Contact' />
+                </ul>
+
+                <div>
+                    <a href='/favourite' className='button-icon' ><IonIcon src={heartOutline} /></a>
+                    <ButtonCart />
+                </div>
             </div>
-        </div>
-    </nav >
+        </nav >
+    }
 }
 
 export default Navigation;

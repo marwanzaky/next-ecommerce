@@ -7,6 +7,31 @@ import Footer from '../sections/Footer';
 
 const server = 'https://storio-api.herokuapp.com';
 
+const addToCart = function () {
+    const cartItems = JSON.parse(window.localStorage.getItem('cartItems'));
+    const id = new URL(window.location.href).searchParams.get('id') * 1;
+
+    for (let i = 0; i < cartItems.length; i++) {
+        if(cartItems[i]['id'] === id) {
+            alert('The item is already added to the cart.');
+            return;
+        }
+    }
+
+    fetch(server + '/products/' + id)
+        .then((res) => res.json())
+        .then((json) => {
+            cartItems.unshift(json);
+            window.localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            alert('The product is added to the cart.');
+        });
+}
+
+const purchase = function () {
+    addToCart();
+    window.location.href = '/cart';
+}
+
 class Product extends React.Component {
     constructor(props) {
         super(props);
@@ -55,8 +80,8 @@ class Product extends React.Component {
                             <h1 className='product-details-name' >{data[id].name}</h1>
                             <p className='product-details-reviews'>★★★★★ ({data[id].reviews.length})</p>
                             <p className='product-details-price'>${data[id].price}</p>
-                            <button className='btn-base btn-ghost-grey'>Add to cart</button>
-                            <button className='btn-base btn-full'>Buy it now</button>
+                            <button className='btn-base btn-ghost-grey' onClick={addToCart}>Add to cart</button>
+                            <button className='btn-base btn-full' onClick={purchase}>Buy it now</button>
                             <NewlineText text={data[id].description} />
                         </div>
 
