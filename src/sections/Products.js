@@ -3,7 +3,7 @@ import React from 'react';
 import { IonIcon } from '@ionic/react';
 import { heartOutline } from 'ionicons/icons'
 
-const server = 'https://storio-server.herokuapp.com';
+const server = 'https://storio-api.herokuapp.com';
 
 function Product(props) {
     return <div className='product'>
@@ -15,8 +15,8 @@ function Product(props) {
         <span className='product-stars'>★★★★★ ({props.reviews})</span>
 
         <div className='product-tag'>
-            <p className='product-price' >${props.price}</p>
-            <button className='btn-base btn-ghost-grey produce-button'>Add to card</button>
+            <p className='product-tag-price' >${props.price}</p>
+            <button className='btn-base btn-ghost-grey product-tag-add'>Add to card</button>
         </div>
     </div>
 }

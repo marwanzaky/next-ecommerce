@@ -266,7 +266,7 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-.product-box .product .product-tag .product-price {
+.product-box .product .product-tag .product-tag-price {
   margin: auto 0;
   font-size: 150%;
 }

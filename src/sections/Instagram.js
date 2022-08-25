@@ -3,7 +3,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 
-const server = 'https://storio-server.herokuapp.com';
+const server = 'https://storio-api.herokuapp.com';
 
 function Photo(props) {
     return (
