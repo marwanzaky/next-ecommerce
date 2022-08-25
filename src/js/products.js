@@ -29,6 +29,7 @@ function addToCart(event) {
         .then((json) => {
             cartItems.unshift(json);
             window.localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            alert('The product is added to the cart.');
         });
 }
 
