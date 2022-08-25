@@ -551,6 +551,7 @@ textarea {
     .product-details-preview {
       width: 100%;
       margin-bottom: 20px;
+      border-radius: var(--border-radius);
     }
 
     .product-details-pictures {
@@ -560,9 +561,10 @@ textarea {
       row-gap: 20px;
 
       .product-details-picture {
-        background-color: black;
+        // background-color: black;
 
         img {
+          border-radius: var(--border-radius);
           width: 100%;
           opacity: 1;
         }

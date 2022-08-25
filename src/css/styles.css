@@ -458,6 +458,7 @@ textarea {
 .product-details-box .product-details-img .product-details-preview {
   width: 100%;
   margin-bottom: 20px;
+  border-radius: var(--border-radius);
 }
 .product-details-box .product-details-img .product-details-pictures {
   display: grid;
@@ -466,10 +467,8 @@ textarea {
        column-gap: 20px;
   row-gap: 20px;
 }
-.product-details-box .product-details-img .product-details-pictures .product-details-picture {
-  background-color: black;
-}
 .product-details-box .product-details-img .product-details-pictures .product-details-picture img {
+  border-radius: var(--border-radius);
   width: 100%;
   opacity: 1;
 }

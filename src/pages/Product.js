@@ -57,9 +57,7 @@ class Product extends React.Component {
         const { loaded, data } = this.state;
         const id = window.location.search.split('=')[1];
 
-        if (!loaded) return <section className='container'>
-            <h1>Loading...</h1>
-        </section>;
+        if (!loaded) return <></>
 
         return <>
             <section className='container product-details-box'>
