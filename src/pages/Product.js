@@ -5,7 +5,7 @@ import YouMayAlsoLike from '../sections/YouMayAlsoLike';
 import About from '../sections/About';
 import Footer from '../sections/Footer';
 
-const server = 'https://storio-server.herokuapp.com';
+const server = 'https://storio-api.herokuapp.com';
 
 class Product extends React.Component {
     constructor(props) {
