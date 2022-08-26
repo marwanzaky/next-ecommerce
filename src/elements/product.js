@@ -15,7 +15,7 @@ function Product(props) {
         <span className='product-stars'>★★★★★ ({props.reviews})</span>
 
         <div className='product-tag'>
-            <p className='product-tag-price' >${props.price}</p>
+            <p className='product-tag-price' >${props.price / 100}</p>
             <button className='btn-base btn-ghost-grey product-tag-add'>Add to card</button>
         </div>
     </div>
