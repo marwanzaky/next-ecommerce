@@ -1,5 +1,4 @@
-// const server = 'https://storio-api.herokuapp.com';
-const server = 'http://localhost:8000';
+const server = 'https://storio-api.herokuapp.com';
 
 setTimeout(() => {
     // Remove cart item on click
@@ -80,7 +79,7 @@ function checkout() {
             return res.json().then(json => Promise.reject(json));
         })
         .then(json => {
-            window.location = json.url
+            window.location = json.url;
             clearCartItems();
             updateCartSubtotal();
         })
