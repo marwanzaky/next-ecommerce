@@ -1,4 +1,5 @@
-const server = require('./server');
+import Server from '../js/server';
+import CartItems from '../js/cartItems';
 
 setTimeout(() => {
     // Remove cart item on click
@@ -24,7 +25,7 @@ function removeCartItem(event) {
     const clickedItem = clickedButton.parentElement.parentElement;
     const clickedUrl = clickedItem.querySelector('a').href;
 
-    const cartItems = JSON.parse(window.localStorage.getItem('cartItems'));
+    const cartItems = CartItems.items;
     const id = new URL(clickedUrl).searchParams.get('id') * 1;
 
     for (let i = 0; i < cartItems.length; i++) {
@@ -33,7 +34,7 @@ function removeCartItem(event) {
 
             if (cartItemIndex !== -1) {
                 cartItems.splice(cartItemIndex, 1);
-                window.localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                CartItems.items = cartItems;
             }
         }
     }
@@ -62,14 +63,14 @@ function updateCartSubtotal() {
 }
 
 function checkout() {
-    const items = JSON.parse(window.localStorage.getItem('cartItems')).map(cartItem => {
+    const items = CartItems.items.map(cartItem => {
         return {
             id: cartItem.id,
             quantity: 1
         }
     });
 
-    fetch(`${server}/create-checkout-session`, {
+    fetch(`${Server}/create-checkout-session`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items })
@@ -87,9 +88,7 @@ function checkout() {
 }
 
 function clearCartItems() {
-    const items = [];
     window.localStorage.clear();
-    window.localStorage.setItem('cartItems', JSON.stringify(items));
 
     const cartItems = document.querySelectorAll('.cart-table-item');
     cartItems.forEach(cartItem => cartItem.remove());

@@ -6,13 +6,13 @@ import About from '../sections/About';
 import Footer from '../sections/Footer';
 
 import Server from '../js/server';
+import CartItems from '../js/cartItems';
 
 const addToCart = async function () {
-    const cartItems = JSON.parse(window.localStorage.getItem('cartItems'));
     const id = new URL(window.location.href).searchParams.get('id') * 1;
 
-    for (let i = 0; i < cartItems.length; i++) {
-        if (cartItems[i]['id'] === id) {
+    for (let i = 0; i < CartItems.items.length; i++) {
+        if (CartItems.items[i]['id'] === id) {
             alert('The item is already added to the cart.');
             return;
         }
@@ -21,8 +21,11 @@ const addToCart = async function () {
     await fetch(Server + '/products/' + id)
         .then((res) => res.json())
         .then((json) => {
+            const cartItems = CartItems.items;
+
             cartItems.unshift(json);
-            window.localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            CartItems.items = cartItems;
+
             alert('The product is added to the cart.');
         });
 }

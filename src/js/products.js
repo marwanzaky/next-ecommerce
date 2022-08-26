@@ -1,8 +1,5 @@
 import Server from '../js/server';
-
-// Verify the local cart items if it's a valid value
-if (!Array.isArray(JSON.parse(window.localStorage.getItem('cartItems'))))
-    clearCartItems();
+import CartItems from './cartItems';
 
 setTimeout(() => {
     const productBtn = document.querySelectorAll('.product-tag-add');
@@ -11,14 +8,13 @@ setTimeout(() => {
 }, 1000);
 
 function addToCart(event) {
-    const cartItems = JSON.parse(window.localStorage.getItem('cartItems'));
     const clickedCartButton = event.target;
     const clickedCartItem = clickedCartButton.parentElement.parentElement;
     const clickedCartUrl = clickedCartItem.querySelector('a').href;
     const id = new URL(clickedCartUrl).searchParams.get('id') * 1;
 
-    for (let i = 0; i < cartItems.length; i++) {
-        if (cartItems[i]['id'] === id) {
+    for (let i = 0; i < CartItems.items.length; i++) {
+        if (CartItems.items[i]['id'] === id) {
             alert('The item is already added to the cart.');
             return;
         }
@@ -27,14 +23,11 @@ function addToCart(event) {
     fetch(Server + '/products/' + id)
         .then((res) => res.json())
         .then((json) => {
+            const cartItems = CartItems.items;
+
             cartItems.unshift(json);
-            window.localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            CartItems.items = cartItems;
+
             alert('The product is added to the cart.');
         });
-}
-
-function clearCartItems() {
-    const items = [];
-    window.localStorage.clear();
-    window.localStorage.setItem('cartItems', JSON.stringify(items));
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import Server from '../js/server';
-
-const items = JSON.parse(window.localStorage.getItem('cartItems'));
+import CartItems from '../js/cartItems';
 
 function Item(props) {
     return <>
@@ -45,7 +44,7 @@ class Cart extends React.Component {
                             </thead>
 
                             <tbody>
-                                {items.map(el => <Item id={el.id} src={el.pictures[0]} name={el.name} alt={el.name} price={el.price} />)}
+                                {CartItems.items.map(el => <Item id={el.id} src={el.pictures[0]} name={el.name} alt={el.name} price={el.price} />)}
                             </tbody>
                         </table >
 
