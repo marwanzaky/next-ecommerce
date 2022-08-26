@@ -13,11 +13,11 @@ function Item(props) {
                     <a href={"/product?id=" + props.id} className="cart-table-item-product-name">{props.name}</a>
                 </div>
             </th>
-            <th className="cart-table-item-price">{'$' + props.price}</th>
+            <th className="cart-table-item-price">{'$' + props.price / 100}</th>
             <th className="cart-table-item-quantity">
                 <input className="cart-table-item-quantity-field" type="number" defaultValue="1" min="1" max="100" />
             </th>
-            <th className="cart-table-item-total">{'$' + props.price}</th>
+            <th className="cart-table-item-total">{'$' + props.price / 100}</th>
             <th className="cart-table-item-remove">
                 <button className="btn-base btn-ghost-grey cart-table-item-remove-btn">Remove</button>
             </th>
@@ -53,7 +53,7 @@ class Cart extends React.Component {
                         <div className="cart-subtotal">
                             <div className="cart-subtotal-div">
                                 <span className="cart-subtotal-div-title">Subtotal</span>
-                                <span className="cart-subtotal-div-price">$9.99 USD</span>
+                                <span className="cart-subtotal-div-price">$0 USD</span>
                             </div>
 
                             <div className="cart-subtotal-note">Taxes and shipping calculated at checkout</div>
