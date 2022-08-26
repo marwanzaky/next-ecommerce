@@ -1,12 +1,5 @@
-// const stripe = require('stripe');
-
-// const stripeHandler = StripeCheckout.configure({
-//     key: '',
-//     locale: 'auto',
-//     token: function(token) {
-//
-//     }
-// });
+// const server = 'https://storio-api.herokuapp.com';
+const server = 'http://localhost:8000';
 
 setTimeout(() => {
     // Remove cart item on click
@@ -21,7 +14,7 @@ setTimeout(() => {
 
     // Purchase on click
     const cartItemCheckoutBtn = document.querySelector('.cart-item-checkout-btn');
-    cartItemCheckoutBtn.addEventListener('click', purchase);
+    cartItemCheckoutBtn.addEventListener('click', checkout);
 
     // Update cart subtotal
     updateCartSubtotal();
@@ -69,23 +62,36 @@ function updateCartSubtotal() {
     subtotal.innerHTML = '$' + (Math.round(total * 100) / 100).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' USD';
 }
 
-function purchase() {
-    alert('Thank you for your purchase!');
+function checkout() {
+    const items = JSON.parse(window.localStorage.getItem('cartItems')).map(cartItem => {
+        return {
+            id: cartItem.id,
+            quantity: 1
+        }
+    });
 
-    const cartItems = document.querySelectorAll('.cart-table-item');
-    cartItems.forEach(cartItem => cartItem.remove());
-
-    clearCartItems ();
-
-    updateCartSubtotal();
-
-    // stripeHandler.open({
-    //     amount: '999'
-    // });
+    fetch(`${server}/create-checkout-session`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items })
+    })
+        .then(res => {
+            if (res.ok) return res.json();
+            return res.json().then(json => Promise.reject(json));
+        })
+        .then(json => {
+            window.location = json.url
+            clearCartItems();
+            updateCartSubtotal();
+        })
+        .catch(err => console.log(err));
 }
 
-function clearCartItems () {
+function clearCartItems() {
     const items = [];
     window.localStorage.clear();
     window.localStorage.setItem('cartItems', JSON.stringify(items));
+
+    const cartItems = document.querySelectorAll('.cart-table-item');
+    cartItems.forEach(cartItem => cartItem.remove());
 }
