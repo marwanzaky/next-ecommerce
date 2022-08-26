@@ -5,7 +5,7 @@ import YouMayAlsoLike from '../sections/YouMayAlsoLike';
 import About from '../sections/About';
 import Footer from '../sections/Footer';
 
-const server = 'https://storio-api.herokuapp.com';
+import Server from '../js/server';
 
 const addToCart = async function () {
     const cartItems = JSON.parse(window.localStorage.getItem('cartItems'));
@@ -18,7 +18,7 @@ const addToCart = async function () {
         }
     }
 
-    await fetch(server + '/products/' + id)
+    await fetch(Server + '/products/' + id)
         .then((res) => res.json())
         .then((json) => {
             cartItems.unshift(json);
@@ -43,7 +43,7 @@ class Product extends React.Component {
     }
 
     componentDidMount() {
-        fetch(server + '/products')
+        fetch(Server + '/products')
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
@@ -64,10 +64,10 @@ class Product extends React.Component {
                 <div className='row'>
                     <div className='col-sm-6 p-4'>
                         <div className='product-details-img'>
-                            <img className='product-details-preview' src={`${server}/` + data[id].pictures[0]} alt={data[id].name} />
+                            <img className='product-details-preview' src={`${Server}/` + data[id].pictures[0]} alt={data[id].name} />
                             <div className='product-details-pictures'>
                                 {data[id].pictures.map(el => <div className='product-details-picture'>
-                                    <img src={`${server}/` + el} alt={data[id].name}></img>
+                                    <img src={`${Server}/` + el} alt={data[id].name}></img>
                                 </div>)}
                             </div>
                         </div>

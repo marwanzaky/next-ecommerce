@@ -1,0 +1,1 @@
+export default 'https://storio-api.herokuapp.com';

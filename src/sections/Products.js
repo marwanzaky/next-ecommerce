@@ -1,7 +1,6 @@
 import React from 'react';
 import Product from '../elements/product';
-
-const server = 'https://storio-api.herokuapp.com';
+import Server from '../js/server';
 
 class Products extends React.Component {
     constructor(props) {
@@ -14,7 +13,7 @@ class Products extends React.Component {
     }
 
     componentDidMount() {
-        fetch(server + '/products')
+        fetch(Server + '/products')
             .then((res) => res.json())
             .then((json) => {
                 this.setState({

@@ -1,6 +1,5 @@
 import React from 'react';
-
-const server = 'https://storio-api.herokuapp.com';
+import Server from '../js/server';
 
 const items = JSON.parse(window.localStorage.getItem('cartItems'));
 
@@ -9,7 +8,7 @@ function Item(props) {
         <tr className="cart-table-item">
             <th className="cart-table-item-product">
                 <div className="cart-table-item-product-div" >
-                    <a href={"/product?id=" + props.id} className="cart-table-item-product-img"><img src={`${server}/${props.src}`} alt={props.alt} /></a>
+                    <a href={"/product?id=" + props.id} className="cart-table-item-product-img"><img src={`${Server}/${props.src}`} alt={props.alt} /></a>
                     <a href={"/product?id=" + props.id} className="cart-table-item-product-name">{props.name}</a>
                 </div>
             </th>

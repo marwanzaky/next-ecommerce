@@ -1,8 +1,8 @@
-const server = 'https://storio-api.herokuapp.com';
+import Server from '../js/server';
 
 // Verify the local cart items if it's a valid value
-if(!Array.isArray(JSON.parse(window.localStorage.getItem('cartItems'))))
-    clearCartItems ();
+if (!Array.isArray(JSON.parse(window.localStorage.getItem('cartItems'))))
+    clearCartItems();
 
 setTimeout(() => {
     const productBtn = document.querySelectorAll('.product-tag-add');
@@ -18,13 +18,13 @@ function addToCart(event) {
     const id = new URL(clickedCartUrl).searchParams.get('id') * 1;
 
     for (let i = 0; i < cartItems.length; i++) {
-        if(cartItems[i]['id'] === id) {
+        if (cartItems[i]['id'] === id) {
             alert('The item is already added to the cart.');
             return;
         }
     }
 
-    fetch(server + '/products/' + id)
+    fetch(Server + '/products/' + id)
         .then((res) => res.json())
         .then((json) => {
             cartItems.unshift(json);
@@ -33,7 +33,7 @@ function addToCart(event) {
         });
 }
 
-function clearCartItems () {
+function clearCartItems() {
     const items = [];
     window.localStorage.clear();
     window.localStorage.setItem('cartItems', JSON.stringify(items));

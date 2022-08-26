@@ -1,7 +1,7 @@
 import React from 'react';
 import Product from '../elements/product';
 
-const server = 'https://storio-api.herokuapp.com';
+import Server from '../js/server';
 
 class YouMayAlsoLike extends React.Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class YouMayAlsoLike extends React.Component {
     }
 
     componentDidMount() {
-        fetch(server + '/products')
+        fetch(Server + '/products')
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
@@ -27,9 +27,8 @@ class YouMayAlsoLike extends React.Component {
     render() {
         const { loaded, data } = this.state;
 
-        if (!loaded) return <section className='container'>
-            <h1>Loading...</h1>
-        </section>;
+        if (!loaded)
+            return <></>
 
         return (
             <section className='container section-product'>

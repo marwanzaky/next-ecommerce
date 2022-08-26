@@ -1,14 +1,13 @@
 import React from 'react';
+import Server from '../js/server';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 
-const server = 'https://storio-api.herokuapp.com';
-
 function Photo(props) {
     return (
         <div className='instagram-photo'>
-            <a href={props.url}><img src={`${server}/` + props.src} alt={props.alt}></img></a>
+            <a href={props.url}><img src={`${Server}/` + props.src} alt={props.alt}></img></a>
             <FontAwesomeIcon className='instagram-icon' icon={faInstagram} />
         </div>
     )
@@ -25,7 +24,7 @@ class Instagram extends React.Component {
     }
 
     componentDidMount() {
-        fetch(server + '/instagram')
+        fetch(Server + '/instagram')
             .then((res) => res.json())
             .then((json) => {
                 this.setState({

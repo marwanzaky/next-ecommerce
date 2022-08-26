@@ -1,4 +1,4 @@
-const server = 'https://storio-api.herokuapp.com';
+const server = require('./server');
 
 setTimeout(() => {
     // Remove cart item on click
