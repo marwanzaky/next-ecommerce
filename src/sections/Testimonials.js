@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Testimonial(props) {
-    return <div className='col-sm-4 p-4 testimonial'>
+    return <div className='testimonial'>
         <i className="fa fa-quote-left"></i>
 
         <blockquote>
@@ -18,7 +18,7 @@ function Testimonials() {
         </div> */}
 
         <div className="xl:container xl:mx-auto testimonials-box">
-            <div className='grid grid-cols-1 lg:grid-cols-3' >
+            <div className='grid grid-cols-3 gap-4' >
                 <Testimonial
                     blockquote='One of the bust purchases. Great, easy and safely in use.'
                     cite='Nihat Y.' />

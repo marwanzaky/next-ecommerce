@@ -2,6 +2,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@media screen and (min-width: 601px) {
+  body,
+button {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 600px) {
+  body,
+button {
+    font-size: 12px;
+  }
+}
 /*------- BASIC SETUP -------*/
 * {
   margin: 0;
@@ -57,7 +69,7 @@ p {
 }
 
 section {
-  padding: 50px;
+  padding: 50px 10px;
 }
 
 a {
@@ -236,7 +248,7 @@ header {
   overflow: hidden;
   border: 2px solid rgb(240, 240, 240);
   border-radius: var(--border-radius);
-  padding: 15px;
+  padding: 12px;
 }
 .product-box .product:hover {
   box-shadow: 0 0 20px var(--color-grey-1);
@@ -286,6 +298,16 @@ header {
 .product-box .product .product-tag .product-tag-price {
   margin: auto 0;
   font-size: 150%;
+}
+.product-box .product .product-tag .product-tag-add {
+  padding: 5px;
+  background-color: var(--color-primary-dark);
+  border-radius: 50%;
+  height: 38px;
+  width: 38px;
+}
+.product-box .product .product-tag .product-tag-add .product-tag-add-icon {
+  color: var(--color-secondary-dark);
 }
 
 /*------- TESTIMONIALS -------*/
