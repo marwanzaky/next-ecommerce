@@ -42,7 +42,7 @@ class Instagram extends React.Component {
 
         return (
             <section className="section-instagram">
-                <div className="instagram-box">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 instagram-box">
                     {data.map(el => <Photo src={el.src} url={el.url} alt={el.name} />)}
                 </div>
             </section>

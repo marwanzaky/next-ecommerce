@@ -1,8 +1,8 @@
 function Footer() {
     return <footer>
-        <div className="container footer-box">
-            <div className='row'>
-                <div className='col-sm-6'>
+        <div className="xl:container xl:mx-auto footer-box">
+            <div className='grid grid-cols-1 xl:grid-cols-2'>
+                <div className='footer-box-child'>
                     <p>Quick links</p>
                     <ul>
                         <li><a href="/search">Search</a></li>
@@ -14,7 +14,7 @@ function Footer() {
                     </ul>
                 </div>
 
-                <div className='col-sm-6'>
+                <div className='footer-box-child'>
 
                 </div>
             </div>

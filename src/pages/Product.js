@@ -63,9 +63,9 @@ class Product extends React.Component {
         if (!loaded) return <></>
 
         return <>
-            <section className='container product-details-box'>
-                <div className='row'>
-                    <div className='col-sm-6 p-4'>
+            <section className='xl:container xl:mx-auto product-details-box'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
+                    <div>
                         <div className='product-details-img'>
                             <img className='product-details-preview' src={`${Server}/` + data[id].pictures[0]} alt={data[id].name} />
                             <div className='product-details-pictures'>
@@ -76,7 +76,7 @@ class Product extends React.Component {
                         </div>
                     </div>
 
-                    <div className='col-sm-6 p-4'>
+                    <div>
                         <div className='product-details'>
                             <h1 className='product-details-name' >{data[id].name}</h1>
                             <p className='product-details-reviews'>★★★★★ ({data[id].reviews.length})</p>

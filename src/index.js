@@ -5,7 +5,6 @@ import App from './App';
 import './js/cart'
 import './js/products'
 
-import 'bootstrap/dist/css/bootstrap.css';
 import './css/styles.css';
 import '@ionic/react/css/core.css';
 

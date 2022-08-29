@@ -27,12 +27,11 @@ class Cart extends React.Component {
     render() {
         return (
             <section className="section-cart">
-                <div className="container">
+                <div className="xl:container xl:mx-auto">
                     <h2>Your cart</h2>
 
                     <div className="cart-container">
-
-                        <table className="cart-table table table-hover">
+                        <table className="cart-table">
                             <thead className='cart-table-thead'>
                                 <tr>
                                     <th className='cart-table-thead-th-product'>Product</th>

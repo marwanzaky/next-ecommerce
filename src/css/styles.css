@@ -1,4 +1,7 @@
 @charset "UTF-8";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /*------- BASIC SETUP -------*/
 * {
   margin: 0;
@@ -157,7 +160,6 @@ nav .main-nav-promo {
   text-align: center;
 }
 nav .main-nav-box {
-  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -227,13 +229,6 @@ header {
 }
 
 /*------- PRODUCTS -------*/
-.product-box {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
-  row-gap: 20px;
-}
 .product-box .product {
   display: flex;
   flex-direction: column;
@@ -339,10 +334,6 @@ header {
 .section-instagram {
   padding: 0;
 }
-.section-instagram .instagram-box {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-}
 .section-instagram .instagram-box .instagram-photo {
   position: relative;
   background-color: black;
@@ -399,11 +390,7 @@ footer {
 .section-contact-me {
   background-color: var(--color-primary);
 }
-.section-contact-me .contact-me-box {
-  display: flex;
-}
 .section-contact-me .contact-me-box .contact-me-box-child {
-  width: 50%;
   padding: 20px;
 }
 .section-contact-me .contact-me-box .contact-me-container {
@@ -515,12 +502,12 @@ textarea {
   color: var(--color-secondary-dark);
 }
 /*------- CART -------*/
-.section-cart .cart-container {
-  width: 80%;
-  margin-left: 10%;
-}
 .section-cart .cart-container .cart-table {
+  width: 100%;
   margin-bottom: 30px;
+}
+.section-cart .cart-container .cart-table th {
+  padding: 10px;
 }
 .section-cart .cart-container .cart-table .cart-table-thead .cart-table-thead-th-product {
   width: 50%;

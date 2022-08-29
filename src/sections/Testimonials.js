@@ -17,8 +17,8 @@ function Testimonials() {
             <h2>What users think?</h2>
         </div> */}
 
-        <div className="container testimonials-box">
-            <div className='row' >
+        <div className="xl:container xl:mx-auto testimonials-box">
+            <div className='grid grid-cols-1 lg:grid-cols-3' >
                 <Testimonial
                     blockquote='One of the bust purchases. Great, easy and safely in use.'
                     cite='Nihat Y.' />

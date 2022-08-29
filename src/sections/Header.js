@@ -4,7 +4,7 @@ const shopNow = () => {
 
 function Header() {
     return <header>
-        <div className="container header-box">
+        <div className="xl:container xl:mx-auto header-box">
             <h1 className="header-text">Anniversary Gift For Him.</h1>
             <p className="header-parag">This soft cover journal is a great reminder to never forget how wildly capable you are.</p>
 

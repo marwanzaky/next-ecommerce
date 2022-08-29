@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /*------- BASIC SETUP -------*/
 * {
   margin: 0;
@@ -181,8 +185,6 @@ nav {
   }
 
   .main-nav-box {
-    padding: 10px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -272,10 +274,10 @@ header {
 
 /*------- PRODUCTS -------*/
 .product-box {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  column-gap: 20px;
-  row-gap: 20px;
+  // display: grid;
+  // grid-template-columns: 1fr 1fr 1fr 1fr;
+  // column-gap: 20px;
+  // row-gap: 20px;
 
   .product {
     display: flex;
@@ -410,9 +412,6 @@ header {
   padding: 0;
 
   .instagram-box {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-
     .instagram-photo {
       position: relative;
       background-color: black;
@@ -483,10 +482,8 @@ footer {
   background-color: var(--color-primary);
 
   .contact-me-box {
-    display: flex;
-
     .contact-me-box-child {
-      width: 50%;
+      // width: 50%;
       padding: 20px;
     }
 
@@ -635,11 +632,13 @@ textarea {
 /*------- CART -------*/
 .section-cart {
   .cart-container {
-    width: 80%;
-    margin-left: 10%;
-
     .cart-table {
+      width: 100%;
       margin-bottom: 30px;
+
+      th {
+        padding: 10px;
+      }
 
       .cart-table-thead {
         .cart-table-thead-th-product {
