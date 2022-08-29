@@ -81,8 +81,8 @@ class Product extends React.Component {
                             <h1 className='product-details-name' >{data[id].name}</h1>
                             <p className='product-details-reviews'>★★★★★ ({data[id].reviews.length})</p>
                             <p className='product-details-price'>${data[id].price / 100}</p>
-                            <button className='btn-base btn-ghost-grey' onClick={addToCart}>Add to cart</button>
-                            <button className='btn-base btn-full' onClick={purchase}>Buy it now</button>
+                            <button className='w-full md:w-[400px] btn-base btn-ghost-grey' onClick={addToCart}>Add to cart</button>
+                            <button className='w-full md:w-[400px] btn-base btn-full' onClick={purchase}>Buy it now</button>
                             <NewlineText text={data[id].description} />
                         </div>
 
