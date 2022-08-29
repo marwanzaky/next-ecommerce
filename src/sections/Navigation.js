@@ -45,7 +45,7 @@ class Navigation extends React.Component {
     render() {
         return <nav>
             <div className='main-nav-promo'>Welcome to our Store!</div>
-            <div className="xl:container xl:mx-auto p-5 flex-col sm:flex-row main-nav-box">
+            <div className="xl:container xl:mx-auto p-5 main-nav-box">
                 <a href='/' className="logo">Storio</a>
 
                 <ul className="main-nav">

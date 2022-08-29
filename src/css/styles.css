@@ -80,6 +80,11 @@ a:hover {
   color: var(--color-secondary-dark);
 }
 
+ion-icon,
+.instagram-icon {
+  pointer-events: none;
+}
+
 /*------- HEADINGS -------*/
 h1 {
   color: var(--color-black);
@@ -220,7 +225,7 @@ nav .main-nav-box .button-cart .button-cart-length {
 
 /*------- HEADER -------*/
 header {
-  padding: 50px;
+  padding: 50px 0;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/background.jpg");
   background-size: cover;
   background-position: 0;
@@ -468,13 +473,6 @@ textarea {
   width: 100%;
   margin-bottom: 20px;
   border-radius: var(--border-radius);
-}
-.product-details-box .product-details-img .product-details-pictures {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
-  row-gap: 20px;
 }
 .product-details-box .product-details-img .product-details-pictures .product-details-picture img {
   border-radius: var(--border-radius);

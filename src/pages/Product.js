@@ -68,7 +68,7 @@ class Product extends React.Component {
                     <div>
                         <div className='product-details-img'>
                             <img className='product-details-preview' src={`${Server}/` + data[id].pictures[0]} alt={data[id].name} />
-                            <div className='product-details-pictures'>
+                            <div className='grid grid-cols-4 gap-2 md:gap-4 product-details-pictures'>
                                 {data[id].pictures.map(el => <div className='product-details-picture'>
                                     <img src={`${Server}/` + el} alt={data[id].name}></img>
                                 </div>)}
