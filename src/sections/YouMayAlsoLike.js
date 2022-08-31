@@ -3,6 +3,30 @@ import Product from '../components/product';
 
 import Server from '../js/server';
 
+function randomItems(data) {
+    if (data.length <= 0)
+        return;
+
+    const MAX_ITEMS = 4;
+    let items = [];
+
+    while (items.length < MAX_ITEMS) {
+        let item;
+
+        while (item == null) {
+            const randomItemIndex = Math.floor(Math.random() * data.length);
+            const randomItem = data[randomItemIndex];
+
+            if (!items.find(el => el.id == randomItem.id))
+                item = randomItem;
+        }
+
+        items.push(item);
+    }
+
+    return items;
+}
+
 class YouMayAlsoLike extends React.Component {
     constructor(props) {
         super(props);
@@ -26,6 +50,7 @@ class YouMayAlsoLike extends React.Component {
 
     render() {
         const { loaded, data } = this.state;
+        const items = randomItems(data);
 
         if (!loaded)
             return <></>
@@ -35,7 +60,7 @@ class YouMayAlsoLike extends React.Component {
                 <h2>You May Also Like</h2>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 product-box">
-                    {data.map(el => <Product id={el.id} src={el.pictures[0]} name={el.name} reviews={el.reviews.length} price={el.price} />)}
+                    {items.map(el => <Product id={el.id} src={el.pictures[0]} name={el.name} reviews={el.reviews.length} price={el.price} />)}
                 </div>
             </section>
         );
