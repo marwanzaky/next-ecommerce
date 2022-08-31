@@ -3,7 +3,7 @@ import React from 'react';
 import { IonIcon } from '@ionic/react';
 import { heartOutline, cartOutline } from 'ionicons/icons'
 
-import Server from '../js/server';
+import Settings from '../js/settings';
 
 function Product(props) {
     const styles = {
@@ -12,7 +12,7 @@ function Product(props) {
 
     return <div className='flex flex-col product'>
         <div className='save'><IonIcon className='save-icon' src={heartOutline} /></div>
-        <a className='product-img' href={'/product?id=' + props.id}><img src={`${Server}/${props.src}`} alt={props.name}></img></a>
+        <a className='product-img' href={'/product?id=' + props.id}><img src={`${Settings.server}/${props.src}`} alt={props.name}></img></a>
 
         <div className='flex flex-col p-4'>
             <span className='product-name'>{props.name}</span>

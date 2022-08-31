@@ -5,6 +5,7 @@ import { cartOutline } from 'ionicons/icons';
 import { heartOutline } from 'ionicons/icons';
 
 import CartItems from '../js/cartItems';
+import Settings from '../js/settings';
 
 function Nav(props) {
     return <li><a href={props.href}>{props.name}</a></li>
@@ -46,7 +47,7 @@ class Navigation extends React.Component {
         return <nav>
             <div className='main-nav-promo'>Welcome to our Store!</div>
             <div className="xl:container xl:mx-auto p-5 main-nav-box">
-                <a href='/' className="logo">Storio</a>
+                <a href='/' className="logo">{Settings.name}</a>
 
                 <ul className="main-nav">
                     <Nav href='/' name='Home' />

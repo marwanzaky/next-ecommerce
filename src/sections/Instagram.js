@@ -1,5 +1,5 @@
 import React from 'react';
-import Server from '../js/server';
+import Settings from '../js/settings';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -7,7 +7,7 @@ import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 function Photo(props) {
     return (
         <div className='instagram-photo'>
-            <a href={props.url}><img src={`${Server}/` + props.src} alt={props.alt}></img></a>
+            <a href={props.url}><img src={`${Settings.server}/` + props.src} alt={props.alt}></img></a>
             <FontAwesomeIcon className='instagram-icon' icon={faInstagram} />
         </div>
     )
@@ -24,7 +24,7 @@ class Instagram extends React.Component {
     }
 
     componentDidMount() {
-        fetch(Server + '/instagram')
+        fetch(Settings.server + '/instagram')
             .then((res) => res.json())
             .then((json) => {
                 this.setState({

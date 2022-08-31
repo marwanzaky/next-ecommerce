@@ -1,7 +1,6 @@
 import React from 'react';
 import Product from '../components/product';
-
-import Server from '../js/server';
+import Settings from '../js/settings';
 
 function randomItems(data) {
     if (data.length <= 0)
@@ -38,7 +37,7 @@ class YouMayAlsoLike extends React.Component {
     }
 
     componentDidMount() {
-        fetch(Server + '/products')
+        fetch(Settings.server + '/products')
             .then((res) => res.json())
             .then((json) => {
                 this.setState({

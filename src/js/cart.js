@@ -1,4 +1,4 @@
-import Server from '../js/server';
+import Settings from '../js/settings';
 import CartItems from '../js/cartItems';
 
 setTimeout(() => {
@@ -70,7 +70,7 @@ function checkout() {
         }
     });
 
-    fetch(`${Server}/create-checkout-session`, {
+    fetch(`${Settings.server}/create-checkout-session`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items })

@@ -1,4 +1,4 @@
-import Server from '../js/server';
+import Settings from '../js/settings';
 import CartItems from './cartItems';
 
 setTimeout(() => {
@@ -20,7 +20,7 @@ function addToCart(event) {
         }
     }
 
-    fetch(Server + '/products/' + id)
+    fetch(Settings.server + '/products/' + id)
         .then((res) => res.json())
         .then((json) => {
             const cartItems = CartItems.items;

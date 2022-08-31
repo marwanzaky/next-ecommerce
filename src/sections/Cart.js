@@ -1,5 +1,5 @@
 import React from 'react';
-import Server from '../js/server';
+import Settings from '../js/settings';
 import CartItems from '../js/cartItems';
 
 function Item(props) {
@@ -7,7 +7,7 @@ function Item(props) {
         <tr className="cart-table-item">
             <th className="cart-table-item-product">
                 <div className="cart-table-item-product-div" >
-                    <a href={"/product?id=" + props.id} className="cart-table-item-product-img"><img src={`${Server}/${props.src}`} alt={props.alt} /></a>
+                    <a href={"/product?id=" + props.id} className="cart-table-item-product-img"><img src={`${Settings.server}/${props.src}`} alt={props.alt} /></a>
                     <a href={"/product?id=" + props.id} className="cart-table-item-product-name">{props.name}</a>
                 </div>
             </th>

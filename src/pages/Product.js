@@ -5,7 +5,7 @@ import YouMayAlsoLike from '../sections/YouMayAlsoLike';
 import About from '../sections/About';
 import Footer from '../sections/Footer';
 
-import Server from '../js/server';
+import Settings from '../js/settings';
 import CartItems from '../js/cartItems';
 
 const addToCart = async function () {
@@ -18,7 +18,7 @@ const addToCart = async function () {
         }
     }
 
-    await fetch(Server + '/products/' + id)
+    await fetch(Settings.server + '/products/' + id)
         .then((res) => res.json())
         .then((json) => {
             const cartItems = CartItems.items;
@@ -46,7 +46,7 @@ class Product extends React.Component {
     }
 
     componentDidMount() {
-        fetch(Server + '/products')
+        fetch(Settings.server + '/products')
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
@@ -67,10 +67,10 @@ class Product extends React.Component {
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
                     <div>
                         <div className='product-details-img'>
-                            <img className='product-details-preview' src={`${Server}/` + data[id].pictures[0]} alt={data[id].name} />
+                            <img className='product-details-preview' src={`${Settings.server}/` + data[id].pictures[0]} alt={data[id].name} />
                             <div className='grid grid-cols-4 gap-2 md:gap-4 product-details-pictures'>
                                 {data[id].pictures.map(el => <div className='product-details-picture'>
-                                    <img src={`${Server}/` + el} alt={data[id].name}></img>
+                                    <img src={`${Settings.server}/` + el} alt={data[id].name}></img>
                                 </div>)}
                             </div>
                         </div>

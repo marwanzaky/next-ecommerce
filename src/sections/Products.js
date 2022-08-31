@@ -1,6 +1,6 @@
 import React from 'react';
 import Product from '../components/product';
-import Server from '../js/server';
+import Settings from '../js/settings';
 
 class Products extends React.Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class Products extends React.Component {
     }
 
     componentDidMount() {
-        fetch(Server + '/products')
+        fetch(Settings.server + '/products')
             .then((res) => res.json())
             .then((json) => {
                 this.setState({
