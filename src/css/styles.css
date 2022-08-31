@@ -94,7 +94,6 @@ h1 {
   line-height: 100%;
   letter-spacing: 1px;
   word-spacing: 4px;
-  text-transform: capitalize;
 }
 
 h2 {
@@ -282,7 +281,6 @@ header {
 .product-box .product .product-name {
   font-size: 120%;
   margin-bottom: 5px;
-  text-transform: capitalize;
 }
 .product-box .product .product-stars {
   margin-bottom: 5px;

@@ -116,8 +116,6 @@ h1 {
 
   letter-spacing: 1px;
   word-spacing: 4px;
-
-  text-transform: capitalize;
 }
 
 h2 {
@@ -337,19 +335,14 @@ header {
       }
     }
 
-    .product-img {
-      // margin-bottom: 20px;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
+    .product-img img {
+      width: 100%;
+      height: 100%;
     }
 
     .product-name {
       font-size: 120%;
       margin-bottom: 5px;
-      text-transform: capitalize;
     }
 
     .product-stars {
