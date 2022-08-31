@@ -13,7 +13,7 @@ function randomItems(data) {
     while (items.length < MAX_ITEMS) {
         let item;
 
-        while (item == null) {
+        while (!item) {
             const randomItemIndex = Math.floor(Math.random() * data.length);
             const randomItem = data[randomItemIndex];
 
