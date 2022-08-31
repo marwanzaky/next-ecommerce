@@ -17,7 +17,7 @@ function randomItems(data) {
             const randomItemIndex = Math.floor(Math.random() * data.length);
             const randomItem = data[randomItemIndex];
 
-            if (!items.find(el => el.id == randomItem.id))
+            if (!items.find(el => el.id === randomItem.id))
                 item = randomItem;
         }
 
