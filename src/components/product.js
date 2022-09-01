@@ -19,7 +19,11 @@ function Product(props) {
             <span className='product-stars'>★★★★★ ({props.reviews})</span>
 
             <div className='product-tag'>
-                <p className='product-tag-price' >${props.price / 100}</p>
+                <div className='flex flex-row'>
+                    <span className='product-tag-price' >{'$' + props.price / 100}</span>
+                    <span className='product-tag-price_compare flex items-center' >{'$' + props.priceCompare / 100}</span>
+                </div>
+
                 <button className='flex items-center justify-center product-tag-add'><IonIcon class='product-tag-add-icon' style={styles} src={cartOutline} /> </button>
             </div>
         </div>

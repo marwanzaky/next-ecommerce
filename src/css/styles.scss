@@ -52,7 +52,7 @@ button {
 
   --color-black: #2d3436;
 
-  --font-family: 'Cardo', serif;
+  --font-family: 'Helvetica', serif;
 
   --font-light: 300;
   --font-regular: 400;
@@ -214,7 +214,6 @@ nav {
 
       a {
         padding: 5px 0px;
-        // color: var(--color-dark);
 
         border-bottom: 2px solid transparent;
 
@@ -356,9 +355,15 @@ header {
       align-items: center;
 
       .product-tag-price {
-        margin: auto 0;
         font-size: 150%;
         // color: var(--color-secondary-dark);
+      }
+
+      .product-tag-price_compare {
+        font-size: 120%;
+        margin-left: 5px;
+        text-decoration: line-through;
+        color: var(--color-grey-2);
       }
 
       .product-tag-add {
@@ -623,6 +628,8 @@ textarea {
     padding: 30px;
 
     .product-review {
+      margin-bottom: 20px;
+
       .product-review-fullname {
         margin: 0;
         color: var(--color-grey-2);

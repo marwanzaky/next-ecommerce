@@ -90,9 +90,9 @@ class Product extends React.Component {
                             <h2>Customer Reviews</h2>
 
                             {data[id].reviews.map(el => <div className='product-review'>
-                                <p className='product-review-fullname'>{el.fullname} - <span>{el.date}</span></p>
-                                <p className='product-review-stars'>{el.stars}</p>
-                                <p className='product-review-text'>{el.review}</p>
+                                <div className='product-review-fullname'>{el.fullname} - <span>{el.date}</span></div>
+                                <div className='product-review-stars'>{el.stars}</div>
+                                <div className='product-review-text'>{el.review}</div>
                             </div>)}
                         </div>
                     </div>
