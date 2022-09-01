@@ -14,7 +14,7 @@ function Product(props) {
         <div className='save'><IonIcon className='save-icon' src={heartOutline} /></div>
         <a className='product-img' href={'/product?id=' + props.id}><img src={`${Settings.server}/${props.src}`} alt={props.name}></img></a>
 
-        <div className='flex flex-col p-4'>
+        <div className='flex flex-col p-2 sm:p-4'>
             <span className='product-name'>{props.name}</span>
             <span className='product-stars'>★★★★★ ({props.reviews})</span>
 
