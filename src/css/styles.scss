@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
 @media screen and (min-width: 601px) {
 
   body,
@@ -52,13 +54,13 @@ button {
 
   --color-black: #2d3436;
 
-  --font-family: 'Helvetica', serif;
+  --font-family: 'Poppins', serif;
 
   --font-light: 300;
   --font-regular: 400;
   --font-bold: 700;
 
-  --border-radius: 12px;
+  --border-radius: 0; // edited: from 12px to 0
 
   --color-shadow: rgba(0, 0, 0, 0.2);
 
@@ -110,6 +112,7 @@ h1 {
   color: var(--color-black);
   margin-bottom: 30px;
 
+  text-transform: uppercase;
   font-weight: var(--font-regular);
   font-size: 250%;
   line-height: 100%;
@@ -403,7 +406,7 @@ header {
 
   .testimonial blockquote {
     font-style: italic;
-    font-weight: var(--font-light);
+    font-weight: var(--font-regular);
   }
 
   .testimonial cite {

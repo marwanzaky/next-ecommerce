@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,11 +39,11 @@ button {
   --color-grey-1: #b2bec3;
   --color-grey-2: #636e72;
   --color-black: #2d3436;
-  --font-family: "Helvetica", serif;
+  --font-family: "Poppins", serif;
   --font-light: 300;
   --font-regular: 400;
   --font-bold: 700;
-  --border-radius: 12px;
+  --border-radius: 0;
   --color-shadow: rgba(0, 0, 0, 0.2);
   --line-width: 1px;
   --transition-delay: 0.2s;
@@ -89,6 +90,7 @@ ion-icon,
 h1 {
   color: var(--color-black);
   margin-bottom: 30px;
+  text-transform: uppercase;
   font-weight: var(--font-regular);
   font-size: 250%;
   line-height: 100%;
@@ -330,7 +332,7 @@ header {
 }
 .testimonials-box .testimonial blockquote {
   font-style: italic;
-  font-weight: var(--font-light);
+  font-weight: var(--font-regular);
 }
 .testimonials-box .testimonial cite {
   display: block;
