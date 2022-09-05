@@ -7,6 +7,7 @@ import Footer from '../sections/Footer';
 
 import Settings from '../js/settings';
 import CartItems from '../js/cartItems';
+import Stars from '../components/stars';
 
 const addToCart = async function () {
     const id = new URL(window.location.href).searchParams.get('id') * 1;
@@ -79,15 +80,21 @@ class Product extends React.Component {
                     <div>
                         <div className='product-details'>
                             <h1 className='product-details-name' >{data[id].name}</h1>
-                            <p className='product-details-reviews'>★★★★★ ({data[id].reviews.length})</p>
-                            <p className='product-details-price'>${data[id].price / 100}</p>
+                            {/* <p className='product-details-reviews'>★★★★★ ({data[id].reviews.length})</p> */}
+                            <Stars reviews={data[id].reviews.length} />
+
+                            <div className='flex flex-row mb-[30px]'>
+                                <span className='product-details-price'>{'$' + data[id].price / 100}</span>
+                                <span className='product-details-price_compare flex items-center' >{'$' + data[id].priceCompare / 100}</span>
+                            </div>
+
                             <button className='w-full md:w-[400px] btn-base btn-ghost-grey' onClick={addToCart}>Add to cart</button>
                             <button className='w-full md:w-[400px] btn-base btn-full' onClick={purchase}>Buy it now</button>
-                            <NewlineText text={data[id].description} />
+                            <Description text={data[id].description} />
                         </div>
 
                         <div className='product-reviews'>
-                            <h2>Customer Reviews</h2>
+                            <h3>Rating And Reviews</h3>
 
                             {data[id].reviews.map(el => <div className='product-review'>
                                 <div className='product-review-fullname'>{el.fullname} - <span>{el.date}</span></div>
@@ -104,9 +111,11 @@ class Product extends React.Component {
     }
 }
 
-function NewlineText(props) {
-    const text = props.text;
-    return <div className='product-details-description'>{text}</div>;
+function Description(props) {
+    return <>
+        <h3>Description</h3>
+        <div className='product-details-description'>{props.text}</div>
+    </>;
 }
 
 function App() {

@@ -1,9 +1,13 @@
 import React from 'react';
 
 import { IonIcon } from '@ionic/react';
-import { heartOutline, cartOutline } from 'ionicons/icons'
+import { cartOutline } from 'ionicons/icons';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 import Settings from '../js/settings';
+import Stars from './stars';
 
 function Product(props) {
     const styles = {
@@ -11,12 +15,15 @@ function Product(props) {
     }
 
     return <div className='flex flex-col product'>
-        <div className='save'><IonIcon className='save-icon' src={heartOutline} /></div>
+        <div className='save'>
+            {/* <IonIcon className='save-icon' src={heartOutline} /> */}
+            <FontAwesomeIcon className='save-icon' icon={faHeart} />
+        </div>
         <a className='product-img' href={'/product?id=' + props.id}><img src={`${Settings.server}/${props.src}`} alt={props.name}></img></a>
 
         <div className='flex flex-col p-2 sm:p-4'>
             <span className='product-name'>{props.name}</span>
-            <span className='product-stars'>★★★★★ ({props.reviews})</span>
+            <Stars reviews={props.reviews} />
 
             <div className='product-tag'>
                 <div className='flex flex-row'>
