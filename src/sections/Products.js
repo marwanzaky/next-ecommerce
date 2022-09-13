@@ -14,8 +14,9 @@ class Products extends React.Component {
 
     componentDidMount() {
         fetch(Settings.server + '/products')
-            .then((res) => res.json())
-            .then((json) => {
+            .then(res => res.json())
+            .then(json => {
+                console.log(json);
                 this.setState({
                     data: json,
                     loaded: true

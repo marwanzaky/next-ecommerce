@@ -70,7 +70,7 @@ function checkout() {
         }
     });
 
-    fetch(`${Settings.server}/create-checkout-session`, {
+    fetch(`${Settings.server}/payment/create-checkout-session`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items })
