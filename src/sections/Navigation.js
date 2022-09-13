@@ -26,23 +26,6 @@ function ButtonCart() {
 }
 
 class Navigation extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //
-    //     this.state = {
-    //         onChange: false
-    //     };
-    // }
-    //
-    // componentDidMount() {
-    //     window.addEventListener('storage', () => {
-    //         console.log('update!!!!!!');
-    //         this.setState({
-    //             onChange:true
-    //         });
-    //     });
-    // }
-
     render() {
         return <nav>
             <div className='main-nav-promo'>Welcome to our Store!</div>

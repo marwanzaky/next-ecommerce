@@ -58,7 +58,7 @@ class YouMayAlsoLike extends React.Component {
             <section className='xl:container xl:mx-auto section-product'>
                 <h2>You May Also Like</h2>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 product-box">
+                <div className="product-box">
                     {items.map(el => <Product id={el.id} src={el.pictures[0]} name={el.name} reviews={el.reviews.length} price={el.price} priceCompare={el.priceCompare} />)}
                 </div>
             </section>
