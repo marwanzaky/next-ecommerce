@@ -295,10 +295,7 @@ header {
 
 /*------- PRODUCTS -------*/
 .product-box {
-  // display: grid;
-  // grid-template-columns: 1fr 1fr 1fr 1fr;
-  // column-gap: 20px;
-  // row-gap: 20px;
+   @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
 
   .product {
     position: relative;
@@ -437,6 +434,8 @@ header {
 
 /*------- INSTAGRAM -------*/
 .section-instagram {
+  @apply grid grid-cols-3 md:grid-cols-6;
+
   padding: 0;
 
   .instagram-box {
