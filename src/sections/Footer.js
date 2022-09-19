@@ -1,3 +1,5 @@
+import Settings from "../js/settings";
+
 function Footer() {
     return <footer>
         <div className="xl:container xl:mx-auto footer-box">
@@ -5,7 +7,7 @@ function Footer() {
                 <div className='footer-box-child'>
                     <p>Quick links</p>
                     <ul>
-                        <li><a href="/search">Search</a></li>
+                        {/* <li><a href="/search">Search</a></li> */}
                         <li><a href="/about">About Us</a></li>
                         <li><a href="/refund-policy">Refund Policy</a></li>
                         <li><a href="/privacy-policy">Privacy Policy</a></li>
@@ -20,7 +22,7 @@ function Footer() {
             </div>
 
             <div className='copyright'>
-                <div> <p>Copyright &copy; 2022 Storio all rights reserved.</p> </div>
+                <div> <p>Copyright &copy; 2022 {Settings.name} all rights reserved.</p> </div>
             </div>
         </div>
     </footer>

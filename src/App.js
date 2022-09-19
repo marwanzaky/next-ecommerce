@@ -1,11 +1,19 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import HomePage from './pages/Home';
+
 import ShopPage from './pages/Shop';
 import ProductPage from './pages/Product';
 import CartPage from "./pages/Cart";
+
 import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
+
+import RefundPolicyPage from './pages/RefundPolicy';
+import ShippingPolicyPage from './pages/ShippingPolicy';
+import TermsOfServicePage from './pages/TermsOfService';
+import PrivacyPolicyPage from './pages/PrivacyPolicy';
+
 import SuccessPage from './pages/Success'
 import CancelPage from './pages/Cancel'
 
@@ -22,6 +30,11 @@ function App() {
 
                 <Route path="contact" element={<ContactPage />} />
                 <Route path="about" element={<AboutPage />} />
+
+                <Route path="refund-policy" element={<RefundPolicyPage />} />
+                <Route path="shipping-policy" element={<ShippingPolicyPage />} />
+                <Route path="terms-of-service" element={<TermsOfServicePage />} />
+                <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
 
                 <Route path="success" element={<SuccessPage />} />
                 <Route path="cancel" element={<CancelPage />} />
