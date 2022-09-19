@@ -2,7 +2,7 @@ import React from 'react';
 
 import { IonIcon } from '@ionic/react';
 import { cartOutline } from 'ionicons/icons';
-import { heartOutline } from 'ionicons/icons';
+// import { heartOutline } from 'ionicons/icons';
 
 import CartItems from '../js/cartItems';
 import Settings from '../js/settings';
