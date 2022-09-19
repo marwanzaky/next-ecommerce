@@ -361,8 +361,10 @@ header {
 
 /*------- INSTAGRAM -------*/
 .section-instagram {
-  @apply grid grid-cols-3 md:grid-cols-6;
   padding: 0;
+}
+.section-instagram .instagram-box {
+  @apply grid grid-cols-3 md:grid-cols-6;
 }
 .section-instagram .instagram-box .instagram-photo {
   position: relative;

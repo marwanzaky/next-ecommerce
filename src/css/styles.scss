@@ -434,11 +434,11 @@ header {
 
 /*------- INSTAGRAM -------*/
 .section-instagram {
-  @apply grid grid-cols-3 md:grid-cols-6;
-
   padding: 0;
-
+  
   .instagram-box {
+    @apply grid grid-cols-3 md:grid-cols-6;
+
     .instagram-photo {
       position: relative;
       background-color: black;
