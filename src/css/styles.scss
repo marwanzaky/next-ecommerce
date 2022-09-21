@@ -4,6 +4,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 600,
+  'GRAD' 0,
+  'opsz' 48
+}
+
 @media screen and (min-width: 601px) {
 
   body,
@@ -108,8 +116,14 @@ ion-icon,
 }
 
 .stars {
+  @apply flex items-start;
+
   color: var(--color-secondary-dark);
-  margin-bottom: 5px;
+
+  .stars-star-icon {
+    font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+    font-size: 120%;
+  }
 }
 
 /*------- HEADINGS -------*/
@@ -248,13 +262,26 @@ nav {
       }
     }
 
-    .button-cart {
+    .nav-button-cart {
+      @apply inline-flex justify-center items-center;
+
+      font-size: 24px;
+      margin-left: 10px;
+
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      
       position: relative;
 
-      .button-cart-length {
+      &:hover {
+        background-color: var(--color-grey-0);
+      }
+
+      .nav-button-cart-length {
         position: absolute;
         top: 5px;
-        right: 0;
+        right: -5px;
 
         height: 14px;
         width: 14px;
@@ -308,7 +335,7 @@ header {
       box-shadow: 0 0 20px var(--color-grey-1);
     }
 
-    .save {
+    .product-save {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -329,8 +356,8 @@ header {
         transform: scale(1.1);
       }
 
-      .save-icon {
-        font-size: 18px;
+      .product-save-icon {
+        font-size: 20px;
       }
     }
 
@@ -341,7 +368,7 @@ header {
 
     .product-name {
       font-size: 120%;
-      margin-bottom: 7px;
+      margin-bottom: 5px;
     }
 
     .product-stars {
@@ -367,15 +394,21 @@ header {
       }
 
       .product-tag-add {
-        padding: 5px;
-        background-color: var(--color-primary-dark);
-        border-radius: 50%;
+        @apply flex items-center justify-center;
 
+        padding: 5px;
+        border-radius: 50%;
+        
         height: 38px;
         width: 38px;
+      }
 
-        .product-tag-add-icon {
-          color: var(--color-secondary-dark)
+      .btn-ghost {
+        border: none;
+        background-color: var(--color-primary-dark);
+      
+        &:hover {
+          background-color: var(--color-secondary-dark);
         }
       }
     }

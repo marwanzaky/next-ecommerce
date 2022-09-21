@@ -14,7 +14,7 @@ function Header() {
 
             <div className="flex justify-center">
                 <button onClick={shopNow} className="btn-base btn-full">Shop now</button>
-                <button onClick={explore} className="btn-base btn-ghost">Explore</button>
+                {/* <button onClick={explore} className="btn-base btn-ghost">Explore</button> */}
             </div>
         </div>
     </header>

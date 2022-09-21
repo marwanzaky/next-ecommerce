@@ -1,23 +1,20 @@
 import React from 'react';
 
-import { IonIcon } from '@ionic/react';
-import { cartOutline } from 'ionicons/icons';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
-
 import Settings from '../js/settings';
 import Stars from './stars';
 
-function Product(props) {
-    const styles = {
-        fontSize: '24px'
-    }
+function AddToCart() {
+    return (
+        <button className='product-tag-add btn-base btn-ghost'>
+            <span class="material-symbols-outlined">shopping_cart</span>
+        </button>
+    )
+}
 
+function Product(props) {
     return <div className='flex flex-col product'>
-        <div className='save'>
-            {/* <IonIcon className='save-icon' src={heartOutline} /> */}
-            <FontAwesomeIcon className='save-icon' icon={faHeart} />
+        <div className='product-save'>
+            <span class="material-symbols-outlined product-save-icon">favorite</span>
         </div>
         <a className='product-img' href={'/product?id=' + props.id}><img src={`${Settings.server}/${props.src}`} alt={props.name}></img></a>
 
@@ -31,7 +28,7 @@ function Product(props) {
                     <span className='product-tag-price_compare flex items-center' >{'$' + props.priceCompare / 100}</span>
                 </div>
 
-                <button className='flex items-center justify-center product-tag-add'><IonIcon class='product-tag-add-icon' style={styles} src={cartOutline} /> </button>
+                <AddToCart />
             </div>
         </div>
     </div>

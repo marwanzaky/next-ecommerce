@@ -8,8 +8,9 @@ setTimeout(() => {
 }, 1000);
 
 function addToCart(event) {
+    console.log('event');
     const clickedCartButton = event.target;
-    const clickedCartItem = clickedCartButton.parentElement.parentElement;
+    const clickedCartItem = clickedCartButton.parentElement.parentElement.parentElement.parentElement;
     const clickedCartUrl = clickedCartItem.querySelector('a').href;
     const id = new URL(clickedCartUrl).searchParams.get('id') * 1;
 

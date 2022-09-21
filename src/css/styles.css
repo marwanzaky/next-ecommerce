@@ -3,6 +3,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 48;
+}
+
 @media screen and (min-width: 601px) {
   body,
 button {
@@ -87,8 +91,12 @@ ion-icon,
 }
 
 .stars {
+  @apply flex items-start;
   color: var(--color-secondary-dark);
-  margin-bottom: 5px;
+}
+.stars .stars-star-icon {
+  font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 48;
+  font-size: 120%;
 }
 
 /*------- HEADINGS -------*/
@@ -211,13 +219,22 @@ nav .main-nav-box .button-icon {
 nav .main-nav-box .button-icon:hover {
   background-color: var(--color-grey-0);
 }
-nav .main-nav-box .button-cart {
+nav .main-nav-box .nav-button-cart {
+  @apply inline-flex justify-center items-center;
+  font-size: 24px;
+  margin-left: 10px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
   position: relative;
 }
-nav .main-nav-box .button-cart .button-cart-length {
+nav .main-nav-box .nav-button-cart:hover {
+  background-color: var(--color-grey-0);
+}
+nav .main-nav-box .nav-button-cart .nav-button-cart-length {
   position: absolute;
   top: 5px;
-  right: 0;
+  right: -5px;
   height: 14px;
   width: 14px;
   border-radius: 50%;
@@ -260,7 +277,7 @@ header {
 .product-box .product:hover {
   box-shadow: 0 0 20px var(--color-grey-1);
 }
-.product-box .product .save {
+.product-box .product .product-save {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -273,12 +290,12 @@ header {
   box-shadow: 0 0 5px var(--color-grey-1);
   background-color: var(--color-primary);
 }
-.product-box .product .save:hover {
+.product-box .product .product-save:hover {
   box-shadow: 0 0 5px var(--color-grey-2);
   transform: scale(1.1);
 }
-.product-box .product .save .save-icon {
-  font-size: 18px;
+.product-box .product .product-save .product-save-icon {
+  font-size: 20px;
 }
 .product-box .product .product-img img {
   width: 100%;
@@ -286,7 +303,7 @@ header {
 }
 .product-box .product .product-name {
   font-size: 120%;
-  margin-bottom: 7px;
+  margin-bottom: 5px;
 }
 .product-box .product .product-stars {
   margin-bottom: 5px;
@@ -307,14 +324,18 @@ header {
   color: var(--color-grey-2);
 }
 .product-box .product .product-tag .product-tag-add {
+  @apply flex items-center justify-center;
   padding: 5px;
-  background-color: var(--color-primary-dark);
   border-radius: 50%;
   height: 38px;
   width: 38px;
 }
-.product-box .product .product-tag .product-tag-add .product-tag-add-icon {
-  color: var(--color-secondary-dark);
+.product-box .product .product-tag .btn-ghost {
+  border: none;
+  background-color: var(--color-primary-dark);
+}
+.product-box .product .product-tag .btn-ghost:hover {
+  background-color: var(--color-secondary-dark);
 }
 
 /*------- TESTIMONIALS -------*/
