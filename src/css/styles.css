@@ -331,9 +331,11 @@ header {
 }
 .product-box .product .product-tag .btn-ghost {
   border: none;
+  color: var(--color-secondary-dark);
   background-color: var(--color-primary-dark);
 }
 .product-box .product .product-tag .btn-ghost:hover {
+  color: #fff;
   background-color: var(--color-secondary-dark);
 }
 
