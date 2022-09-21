@@ -1,3 +1,5 @@
+import Settings from "../js/settings";
+
 const contactUs = () => {
     window.location.href = "https://storio.netlify.app/contact";
 }
@@ -12,7 +14,7 @@ function Paragraph(props) {
 function About() {
     return <section className="section-about">
         <div className="xl:container xl:mx-auto about-box">
-            <h2>What is Storio?</h2>
+            <h2>What is {Settings.name}?</h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-5">
                 <Paragraph title='A community doing good' description='Storio is a global online marketplace, where people come together to make, sell, buy, and collect unique items. We’re also a community pushing for positive change for small businesses, people, and the planet. Here are some of the ways we’re making a positive impact, together.' />

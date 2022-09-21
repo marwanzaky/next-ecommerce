@@ -47,7 +47,7 @@ button {
   --font-light: 300;
   --font-regular: 400;
   --font-bold: 700;
-  --border-radius: 0;
+  --border-radius: 12px;
   --color-shadow: rgba(0, 0, 0, 0.2);
   --line-width: 1px;
   --transition-delay: 0.2s;
