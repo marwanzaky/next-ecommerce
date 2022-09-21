@@ -395,12 +395,10 @@ header {
 
       .product-tag-add {
         @apply flex items-center justify-center;
+        @apply h-[32px] w-[32px] md:h-[38px] md:w-[38px];
 
         padding: 5px;
         border-radius: 50%;
-        
-        height: 38px;
-        width: 38px;
       }
 
       .btn-ghost {
