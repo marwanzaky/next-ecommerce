@@ -1,5 +1,10 @@
+// React...
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+// Settings...
+import Settings from './js/settings';
+
+// Pages...
 import HomePage from './pages/Home';
 
 import ShopPage from './pages/Shop';
@@ -18,6 +23,8 @@ import SuccessPage from './pages/Success'
 import CancelPage from './pages/Cancel'
 
 function App() {
+    document.title = Settings.name;
+
     return (
         <BrowserRouter>
             <Routes>

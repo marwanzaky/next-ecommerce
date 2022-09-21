@@ -2,9 +2,9 @@ const shopNow = () => {
     window.location.href = "/product?id=1";
 }
 
-const explore = () => {
-    window.location.href = "/shop";
-}
+// const explore = () => {
+//     window.location.href = "/shop";
+// }
 
 function Header() {
     return <header>
