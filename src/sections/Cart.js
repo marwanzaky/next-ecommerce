@@ -1,6 +1,7 @@
 import React from 'react';
 import Settings from '../js/settings';
 import CartItems from '../js/cartItems';
+import { removeCartItem, checkout, updateCartSubtotal } from '../js/cart';
 
 function Item(props) {
     return <>
@@ -17,13 +18,17 @@ function Item(props) {
             </th>
             <th className="cart-table-item-total">{'$' + props.price / 100}</th>
             <th className="cart-table-item-remove">
-                <button className="btn-base btn-ghost-grey cart-table-item-remove-btn">Remove</button>
+                <button className="btn-base btn-ghost-grey cart-table-item-remove-btn" onClick={removeCartItem}>Remove</button>
             </th>
         </tr>
     </>
 }
 
 class Cart extends React.Component {
+    componentDidMount() {
+        updateCartSubtotal();
+    }
+
     render() {
         return (
             <section className="section-cart">
@@ -57,7 +62,7 @@ class Cart extends React.Component {
                         </div>
 
                         <div className="cart-item-checkout">
-                            <button className='btn-base btn-full cart-item-checkout-btn'>Check out</button>
+                            <button className='btn-base btn-full cart-item-checkout-btn' onClick={() => checkout()}>Check out</button>
                         </div>
 
                     </div>
