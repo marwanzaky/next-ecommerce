@@ -1,11 +1,12 @@
 import React from 'react';
 
+import Products from '../js/products';
 import Settings from '../js/settings';
 import Stars from './stars';
 
 function AddToCart() {
     return (
-        <button className='product-tag-add btn-base btn-ghost'>
+        <button className='product-tag-add btn-base btn-ghost' onClick={Products}>
             <span class="material-symbols-outlined">shopping_cart</span>
         </button>
     )

@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 .material-symbols-outlined {
+  pointer-events: none;
   font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 48;
 }
 

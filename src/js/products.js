@@ -1,16 +1,11 @@
 import Settings from '../js/settings';
 import CartItems from './cartItems';
 
-setTimeout(() => {
-    const productBtn = document.querySelectorAll('.product-tag-add');
+const addToCart = event => {
+    console.log(event.target);
 
-    productBtn.forEach(el => el.addEventListener('click', addToCart));
-}, 1000);
-
-function addToCart(event) {
-    console.log('event');
     const clickedCartButton = event.target;
-    const clickedCartItem = clickedCartButton.parentElement.parentElement.parentElement.parentElement;
+    const clickedCartItem = clickedCartButton.parentElement.parentElement.parentElement;
     const clickedCartUrl = clickedCartItem.querySelector('a').href;
     const id = new URL(clickedCartUrl).searchParams.get('id') * 1;
 
@@ -32,3 +27,5 @@ function addToCart(event) {
             alert('The product is added to the cart.');
         });
 }
+
+export default addToCart;
