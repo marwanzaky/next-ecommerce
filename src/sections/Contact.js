@@ -1,18 +1,5 @@
 import React from 'react';
-
-function Input(props) {
-    return <div className="contact-me-box-feild">
-        <input type="text" id={props.id} name={props.name} placeholder={props.placeholder} />
-        <div className="contact-me-box-feild-icon"><i className={props.className}></i></div>
-    </div>
-}
-
-function Textarea(props) {
-    return <div className="contact-me-box-feild">
-        <textarea id={props.id} name={props.name} placeholder={props.placeholder}></textarea>
-        <div className="contact-me-box-feild-icon"><i className={props.className}></i></div>
-    </div>
-}
+import { InputText, InputTextarea } from '../components/Input';
 
 function Contact() {
     return <section className="section-contact-me">
@@ -29,10 +16,10 @@ function Contact() {
 
                 <div className="contact-me-box-child contact-me-container">
                     <form>
-                        <Input id='fullname' name='name' placeholder='Name' className='far fa-user' />
-                        <Input id='email' name='email' placeholder='Email' className='far fa-paper-plane' />
-                        <Input id='subject' name='subject' placeholder='Subject' className='fas fa-align-right' />
-                        <Textarea id='body' name='body' placeholder='Message' className='far fa-envelope-open' />
+                        <InputText type='text' id='fullname' placeholder='Name' icon='person' />
+                        <InputText type='text' id='email' placeholder='Email' icon='send' />
+                        <InputText type='text' id='subject' placeholder='Subject' icon='subject' />
+                        <InputTextarea placeholder='Message' icon='mail' />
                         <button className="btn-base btn-full">Send</button>
                     </form>
                 </div>

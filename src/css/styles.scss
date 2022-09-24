@@ -51,9 +51,6 @@ button {
   --color-secondary: #00b894;
   --color-secondary-dark: #009679;
 
-  --color-secondary-1: #c9fff4;
-  --color-secondary-2: #a7ffee;
-
   --color-primary: #ffffff;
   --color-primary-dark: #f6f8f8;
 
@@ -203,6 +200,52 @@ h4 {
   }
 }
 
+/*------- FORM -------*/
+label {
+  font-weight: var(--font-bold);
+}
+
+input[type=text],
+input[type=password],
+textarea {
+  width: 100%;
+  padding: 20px 25px;
+  margin-bottom: 15px;
+
+  outline: none;
+  border: none;
+  box-shadow: 0 0 0 1pt #ecf0f1;
+  border-radius: var(--border-radius);
+
+  background-color: var(--color-primary-dark);
+  resize: vertical;
+
+  &:focus {
+    box-shadow: 0 0 0 2pt cornflowerblue;
+  }
+}
+
+textarea {
+  padding: 20px 25px;
+  min-height: 150px;
+}
+
+.input-field {
+  position: relative;
+
+  .input-field-icon {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    padding-top: 20px;
+    padding-right: 25px;
+
+    color: var(--color-grey-1);
+  }
+}
+
 /*------- LOGO -------*/
 .logo {
   // text-transform: uppercase;
@@ -233,7 +276,7 @@ nav {
 
     .main-nav li {
       display: inline-block;
-      margin-left: 40px;
+      margin: 0 20px;
 
       a {
         padding: 5px 0px;
@@ -550,57 +593,8 @@ footer {
 
     .contact-me-container {
       border-radius: var(--border-radius);
-
-      .contact-me-box-feild {
-        position: relative;
-
-        .contact-me-box-feild-icon {
-          display: inline-block;
-          position: absolute;
-          width: 50px;
-          height: 100%;
-          padding-bottom: 15px;
-          top: 0;
-          right: 10px;
-          color: var(--color-grey-2);
-
-          i {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 63px;
-            opacity: 1;
-          }
-        }
-      }
     }
   }
-}
-
-/*------- FORM -------*/
-input[type=text],
-textarea {
-  width: 100%;
-  padding: 20px 25px;
-  margin-bottom: 15px;
-
-  outline: none;
-  border: none;
-  box-shadow: 0 0 0 1pt #ecf0f1;
-  border-radius: var(--border-radius);
-
-  background-color: var(--color-primary-dark);
-  resize: vertical;
-}
-
-input[type=text]:focus,
-textarea:focus {
-  box-shadow: 0 0 0 2pt cornflowerblue;
-}
-
-textarea {
-  padding: 20px 25px;
-  min-height: 150px;
 }
 
 /*------- PRODUCT -------*/
