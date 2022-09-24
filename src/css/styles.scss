@@ -289,13 +289,11 @@ nav {
       }
     }
 
-    .button-icon {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
+    .nav-btn {
+      @apply inline-flex justify-center items-center;
 
       font-size: 24px;
-      margin-left: 10px;
+      // margin-left: 10px;
 
       width: 38px;
       height: 38px;
@@ -306,21 +304,8 @@ nav {
       }
     }
 
-    .nav-button-cart {
-      @apply inline-flex justify-center items-center;
-
-      font-size: 24px;
-      margin-left: 10px;
-
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      
+    .nav-btn-icon {
       position: relative;
-
-      &:hover {
-        background-color: var(--color-grey-0);
-      }
 
       .nav-button-cart-length {
         position: absolute;

@@ -246,32 +246,20 @@ nav .main-nav-box .main-nav li a {
 nav .main-nav-box .main-nav li a:hover {
   border-bottom: 2px solid var(--color-secondary-dark);
 }
-nav .main-nav-box .button-icon {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  margin-left: 10px;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-}
-nav .main-nav-box .button-icon:hover {
-  background-color: var(--color-grey-0);
-}
-nav .main-nav-box .nav-button-cart {
+nav .main-nav-box .nav-btn {
   @apply inline-flex justify-center items-center;
   font-size: 24px;
-  margin-left: 10px;
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  position: relative;
 }
-nav .main-nav-box .nav-button-cart:hover {
+nav .main-nav-box .nav-btn:hover {
   background-color: var(--color-grey-0);
 }
-nav .main-nav-box .nav-button-cart .nav-button-cart-length {
+nav .main-nav-box .nav-btn-icon {
+  position: relative;
+}
+nav .main-nav-box .nav-btn-icon .nav-button-cart-length {
   position: absolute;
   top: 5px;
   right: -5px;

@@ -15,11 +15,12 @@ function ButtonCart() {
     if (CartItems.items.length > 0)
         buttonCartLengthStyle.display = 'flex';
 
-    return <a href='/cart' className='nav-button-cart' >
-        {/* <IonIcon src={cartOutline} /> */}
-        <span class="material-symbols-outlined">shopping_cart</span>
-        <div className='nav-button-cart-length' style={buttonCartLengthStyle} >{CartItems.items.length}</div>
-    </a>
+    return (
+        <a href='/cart' className='nav-btn nav-btn-icon' >
+            <span class="material-symbols-outlined">shopping_cart</span>
+            <div className='nav-button-cart-length' style={buttonCartLengthStyle}>{CartItems.items.length}</div>
+        </a>
+    )
 }
 
 class Navigation extends React.Component {
@@ -38,6 +39,7 @@ class Navigation extends React.Component {
                     </ul>
 
                     <div>
+                        <a href='/signup' className='nav-btn' ><span class="material-symbols-outlined">person</span></a>
                         {/* <a href='/favourite' className='button-icon' ><IonIcon src={heartOutline} /></a> */}
                         <ButtonCart />
                     </div>
