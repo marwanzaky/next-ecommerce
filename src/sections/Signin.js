@@ -3,13 +3,11 @@ import { InputText } from '../components/Input';
 import Settings from '../js/settings';
 
 const initialState = {
-    name: '',
     email: '',
     password: '',
-    passwordConfirm: ''
 }
 
-function Signup() {
+function Signin() {
     const [form, setForm] = useState(initialState);
 
     const handleChange = (event) => {
@@ -30,8 +28,8 @@ function Signup() {
             body: JSON.stringify(form)
         };
 
-        fetch(`${Settings.server}/users/signup`, requestOptions)
-            // .then(response => response.json())
+        fetch(`${Settings.server}/users/login`, requestOptions)
+            .then(response => response.json())
             .then(data => console.log(data));
     }
 
@@ -39,20 +37,18 @@ function Signup() {
         <section className='section-signup'>
             <div className='xl:container xl:mx-auto'>
                 <form onSubmit={submit} className='m-auto max-w-[500px]'>
-                    <h3>Sign Up</h3>
+                    <h3>Sign In</h3>
 
-                    <InputText type='text' id='name' placeholder='Enter Name' icon='person' onChange={handleChange} />
                     <InputText type='text' id='email' placeholder='Enter Email' icon='email' onChange={handleChange} />
                     <InputText type='password' id='password' placeholder='Enter Password' icon='password' onChange={handleChange} />
-                    <InputText type='password' id='passwordConfirm' placeholder='Repeat Password' icon='password' onChange={handleChange} />
 
-                    <button type="submit" className='btn-base btn-full w-full block mb-[15px]'>Sign up</button>
+                    <button type="submit" className='btn-base btn-full w-full block mb-[15px]'>Sign in</button>
 
-                    <p className='text-center'>Have an account? <a href='/signin'>Sign In</a></p>
+                    <p className='text-center'>You don't have an account? <a href='/signup'>Sign Up</a></p>
                 </form>
             </div>
         </section>
     )
 }
 
-export default Signup;
+export default Signin;

@@ -20,6 +20,7 @@ import TermsOfServicePage from './pages/TermsOfService';
 import PrivacyPolicyPage from './pages/PrivacyPolicy';
 
 import SignupPage from './pages/Signup';
+import SigninPage from './pages/Signin';
 
 import SuccessPage from './pages/Success'
 import CancelPage from './pages/Cancel'
@@ -45,7 +46,7 @@ function App() {
                 <Route path="terms-of-service" element={<TermsOfServicePage />} />
                 <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
 
-                <Route path="login" element={<SignupPage />} />
+                <Route path="signin" element={<SigninPage />} />
                 <Route path="signup" element={<SignupPage />} />
 
                 <Route path="success" element={<SuccessPage />} />
