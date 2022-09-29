@@ -31,8 +31,11 @@ function Signup() {
         };
 
         fetch(`${Settings.server}/users/signup`, requestOptions)
-            // .then(response => response.json())
-            .then(data => console.log(data));
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                window.location.href = '/';
+            });
     }
 
     return (

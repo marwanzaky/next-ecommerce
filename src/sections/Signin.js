@@ -30,7 +30,10 @@ function Signin() {
 
         fetch(`${Settings.server}/users/login`, requestOptions)
             .then(response => response.json())
-            .then(data => console.log(data));
+            .then(data => {
+                console.log(data);
+                window.location.href = '/';
+            });
     }
 
     return (

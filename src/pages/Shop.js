@@ -1,13 +1,13 @@
-import Navigation from '../sections/Navigation';
-import Products from '../sections/Products';
-import Footer from '../sections/Footer';
+import NavigationSection from '../sections/Navigation';
+import ProductsSection from '../sections/Products';
+import FooterSection from '../sections/Footer';
 
 function Shop() {
     return (
         <div className="App">
-            <Navigation />
-            <Products />
-            <Footer />
+            <NavigationSection />
+            <ProductsSection />
+            <FooterSection />
         </div>
     );
 }

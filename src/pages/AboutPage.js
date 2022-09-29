@@ -1,13 +1,13 @@
-import Navigation from '../sections/Navigation';
-import About from '../sections/About';
-import Footer from '../sections/Footer';
+import NavigationSection from '../sections/Navigation';
+import AboutSection from '../sections/About';
+import FooterSection from '../sections/Footer';
 
 function AboutPage() {
     return (
         <div className="App">
-            <Navigation />
-            <About />
-            <Footer />
+            <NavigationSection />
+            <AboutSection />
+            <FooterSection />
         </div>
     );
 }
