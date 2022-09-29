@@ -4,37 +4,32 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
 
-.material-symbols-outlined {
-  pointer-events: none;
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 600,
-  'GRAD' 0,
-  'opsz' 48
-}
-
 @media screen and (min-width: 601px) {
-
-  body,
-  button {
+  body, button {
     font-size: 15px;
   }
 }
 
 @media screen and (max-width: 600px) {
-
-  body,
-  button {
+  body, button {
     font-size: 12px;
   }
 }
 
 /*------- BASIC SETUP -------*/
+$btn-pv: 15px;
+$btn-ph: 30px;
+$field-pv: $btn-pv;
+$field-ph: 25px;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: transform var(--transition-delay),
+
+  // transition-timing-function: ease-in-out;
+  transition:
+    transform var(--transition-delay),
     opacity var(--transition-delay),
     background-color var(--transition-delay),
     color var(--transition-delay),
@@ -73,6 +68,15 @@ button {
   --line-width: 1px;
 
   --transition-delay: 0.2s;
+}
+
+.material-symbols-outlined {
+  pointer-events: none;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 600,
+  'GRAD' 0,
+  'opsz' 48
 }
 
 /*------- REUSEABLE COMPONENTS -------*/
@@ -159,7 +163,7 @@ h4 {
 
 /*------- BUTTONS -------*/
 .btn-base {
-  padding: 10px 30px;
+  padding: $btn-pv $btn-ph;
   font-weight: var(--font-regular);
   border-radius: var(--border-radius);
 
@@ -209,7 +213,7 @@ input[type=text],
 input[type=password],
 textarea {
   width: 100%;
-  padding: 20px 25px;
+  padding: $field-pv $field-ph;
   margin-bottom: 15px;
 
   outline: none;
@@ -226,8 +230,14 @@ textarea {
 }
 
 textarea {
-  padding: 20px 25px;
+  padding: $field-pv $field-ph;
   min-height: 150px;
+}
+
+input[type=number] {
+  padding: $field-pv $btn-ph;
+  border: solid 2px var(--color-grey-0);
+  border-radius: var(--border-radius);
 }
 
 .input-field {
@@ -239,8 +249,8 @@ textarea {
     top: 0;
     right: 0;
 
-    padding-top: 20px;
-    padding-right: 25px;
+    padding-top: $field-pv;
+    padding-right: $field-ph;
 
     color: var(--color-grey-1);
   }
@@ -723,15 +733,6 @@ footer {
 
               border-radius: var(--border-radius);
             }
-          }
-        }
-
-        .cart-table-item-quantity {
-          .cart-table-item-quantity-field {
-            padding: 10px 30px;
-
-            border: solid 2px var(--color-grey-0);
-            border-radius: var(--border-radius);
           }
         }
       }

@@ -21,7 +21,7 @@ function Contact() {
                             <InputText type='text' id='email' placeholder='Email' icon='send' />
                             <InputText type='text' id='subject' placeholder='Subject' icon='subject' />
                             <InputTextarea placeholder='Message' icon='mail' />
-                            <button className="btn-base btn-full">Send</button>
+                            <button className="btn-base btn-full w-full">Send</button>
                         </form>
                     </div>
                 </div>
