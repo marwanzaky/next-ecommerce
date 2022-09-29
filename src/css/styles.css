@@ -176,7 +176,7 @@ input[type=text],
 input[type=password],
 textarea {
   width: 100%;
-  padding: 15px 25px;
+  padding: 20px 25px;
   margin-bottom: 15px;
   outline: none;
   border: none;
@@ -192,12 +192,12 @@ textarea:focus {
 }
 
 textarea {
-  padding: 15px 25px;
+  padding: 20px 25px;
   min-height: 150px;
 }
 
 input[type=number] {
-  padding: 15px 30px;
+  padding: 20px 30px;
   border: solid 2px var(--color-grey-0);
   border-radius: var(--border-radius);
 }
@@ -209,7 +209,7 @@ input[type=number] {
   position: absolute;
   top: 0;
   right: 0;
-  padding-top: 15px;
+  padding-top: 20px;
   padding-right: 25px;
   color: var(--color-grey-1);
 }
