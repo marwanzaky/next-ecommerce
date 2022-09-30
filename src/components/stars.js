@@ -4,7 +4,7 @@ function Star() {
 
 function Stars(props) {
     return <span className='stars'>
-        <Star /><Star /><Star /><Star /><Star /> ({props.reviews})
+        <Star /><Star /><Star /><Star /><Star />&nbsp;({props.reviews})
     </span>;
 }
 

@@ -39,7 +39,7 @@ class Navigation extends React.Component {
                     </ul>
 
                     <div>
-                        <a href='/signup' className='nav-btn' ><span class="material-symbols-outlined">person</span></a>
+                        <a href='/signin' className='nav-btn' ><span class="material-symbols-outlined">person</span></a>
                         {/* <a href='/favourite' className='button-icon' ><IonIcon src={heartOutline} /></a> */}
                         <ButtonCart />
                     </div>
