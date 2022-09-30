@@ -543,6 +543,10 @@ footer {
 .section-cart .cart-container .cart-table {
   width: 100%;
   margin-bottom: 30px;
+  padding: 10px;
+  border: solid 1px var(--color-grey-0);
+  border-collapse: separate !important;
+  border-radius: var(--border-radius);
 }
 .section-cart .cart-container .cart-table th {
   padding: 10px;
@@ -567,17 +571,18 @@ footer {
   vertical-align: middle;
 }
 .section-cart .cart-container .cart-table .cart-table-item .cart-table-item-product .cart-table-item-product-div {
-  display: flex;
-  align-items: center;
+  @apply flex items-center;
 }
 .section-cart .cart-container .cart-table .cart-table-item .cart-table-item-product .cart-table-item-product-div .cart-table-item-product-img {
-  margin-right: 30px;
+  margin-right: 20px;
   width: 50px;
+  border: solid 1px var(--color-grey-0);
+  border-radius: var(--border-radius);
+  overflow: hidden;
 }
 .section-cart .cart-container .cart-table .cart-table-item .cart-table-item-product .cart-table-item-product-div .cart-table-item-product-img img {
   height: 100%;
   width: 100%;
-  border-radius: var(--border-radius);
 }
 .section-cart .cart-container .cart-subtotal {
   margin-bottom: 30px;

@@ -39,7 +39,7 @@ class Cart extends React.Component {
                         <table className="cart-table">
                             <thead className='cart-table-thead'>
                                 <tr>
-                                    <th className='cart-table-thead-th-product'>Product</th>
+                                    <th className='cart-table-thead-th-product text-left'>Product</th>
                                     <th className='cart-table-thead-th-price'>Price</th>
                                     <th className='cart-table-thead-th-quantity'>Quantity</th>
                                     <th className='cart-table-thead-th-total'>Total</th>
