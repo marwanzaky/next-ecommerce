@@ -197,7 +197,7 @@ textarea {
 }
 
 input[type=number] {
-  padding: 20px 30px;
+  padding: 15px 30px;
   border: solid 2px var(--color-grey-0);
   border-radius: var(--border-radius);
 }
