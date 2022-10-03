@@ -16,13 +16,10 @@ function Signup() {
         event.preventDefault();
         const newForm = { ...form, [event.target.id]: event.target.value };
         setForm(newForm);
-        console.log(newForm);
     }
 
     const submit = (event) => {
         event.preventDefault();
-
-        console.log(form);
 
         const requestOptions = {
             method: 'POST',
