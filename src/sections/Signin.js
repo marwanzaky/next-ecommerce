@@ -18,7 +18,7 @@ function Signin() {
         setForm(newForm);
     }
 
-    const submit = (event) => {
+    const submit = async (event) => {
         event.preventDefault();
 
         const requestOptions = {
@@ -27,12 +27,11 @@ function Signin() {
             body: JSON.stringify(form)
         };
 
-        fetch(`${Settings.server}/users/login`, requestOptions)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                window.location.href = '/';
-            });
+        const response = await fetch(`${Settings.server}/users/login`, requestOptions);
+        const data = await response.json();
+
+        console.log(data);
+        window.location.href = '/';
     }
 
     return (

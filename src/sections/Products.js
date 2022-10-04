@@ -12,15 +12,14 @@ class Products extends React.Component {
         };
     }
 
-    componentDidMount() {
-        fetch(Settings.server + '/products')
-            .then(res => res.json())
-            .then(json => {
-                this.setState({
-                    data: json,
-                    loaded: true
-                });
-            });
+    async componentDidMount() {
+        const res = await fetch(Settings.server + '/products');
+        const json = await res.json();
+
+        this.setState({
+            data: json,
+            loaded: true
+        });
     }
 
     render() {
