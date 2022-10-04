@@ -4,3 +4,4 @@
  - HTML, CSS, SCSS
  - Tailwind CSS
  - JavaScript
+ - Material UI
