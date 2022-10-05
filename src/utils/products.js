@@ -1,4 +1,4 @@
-import Settings from '../js/settings';
+import Settings from '../utils/settings';
 import CartItems from './cartItems';
 
 const addToCart = event => {
