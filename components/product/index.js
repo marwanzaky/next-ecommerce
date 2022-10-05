@@ -27,9 +27,7 @@ const addToCart = async function () {
 
 const purchase = async function () {
     await addToCart();
-
-    if (typeof window !== "undefined")
-        window.location.href = '/cart';
+    window.location.href = '/cart';
 }
 
 function Product({ id, data }) {
