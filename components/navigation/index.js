@@ -31,9 +31,9 @@ class Navigation extends React.Component {
                 <div className="xl:container xl:mx-auto p-5 main-nav-box">
                     <a href='/' className="logo">{Settings.name}</a>
 
-                    <ul className="main-nav">
+                    <ul className='main-nav'>
                         <Nav href='/' name='Home' />
-                        <Nav href='/shop' name='Shop' />
+                        <Nav href='/products' name='Products' />
                         <Nav href='/about' name='About' />
                         <Nav href='/contact' name='Contact' />
                     </ul>

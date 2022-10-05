@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 
 import Navigation from '../../components/navigation';
 import YouMayAlsoLike from '../../components/youMayAlsoLike';
@@ -34,7 +33,9 @@ const addToCart = async function () {
 
 const purchase = async function () {
     await addToCart();
-    window.location.href = '/cart';
+
+    if (typeof window !== "undefined")
+        window.location.href = '/cart';
 }
 
 class Product extends React.Component {
@@ -59,11 +60,11 @@ class Product extends React.Component {
     }
 
     render() {
+        let id = 0;
         const { loaded, data } = this.state;
-        // const id = window.location.search.split('=')[1];
 
-        const router = useRouter();
-        const { id } = router.query;
+        if (typeof window !== "undefined")
+            id = window.location.pathname.replace('/product/', '') * 1;
 
         if (!loaded) return <></>
 
