@@ -490,6 +490,9 @@ footer {
   margin-bottom: 20px;
   border-radius: var(--border-radius);
 }
+.product-details-box .product-details-img .product-details-pictures {
+  @apply grid grid-cols-4 gap-2 md:gap-4;
+}
 .product-details-box .product-details-img .product-details-pictures .product-details-picture img {
   border-radius: var(--border-radius);
   width: 100%;
@@ -508,6 +511,7 @@ footer {
   font-size: 200%;
 }
 .product-details-box .product-details .product-details-price_compare {
+  @apply flex items-center;
   margin-left: 10px;
   font-size: 150%;
   text-decoration: line-through;

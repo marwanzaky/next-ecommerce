@@ -602,6 +602,8 @@ footer {
     }
 
     .product-details-pictures {
+      @apply grid grid-cols-4 gap-2 md:gap-4;
+
       .product-details-picture {
         img {
           border-radius: var(--border-radius);
@@ -633,6 +635,8 @@ footer {
     }
 
     .product-details-price_compare {
+      @apply flex items-center;
+      
       margin-left: 10px;
       font-size: 150%;
       text-decoration: line-through;

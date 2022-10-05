@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Navigation from '../../components/navigation';
 import YouMayAlsoLike from '../../components/youMayAlsoLike';
@@ -19,16 +19,14 @@ const addToCart = async function () {
         }
     }
 
-    await fetch(Settings.server + '/products/' + id)
-        .then((res) => res.json())
-        .then((json) => {
-            const cartItems = CartItems.items;
+    const res = await fetch(Settings.server + '/products/' + id);
+    const json = await res.json();
 
-            cartItems.unshift(json);
-            CartItems.items = cartItems;
+    const cartItems = CartItems.items;
+    cartItems.unshift(json);
+    CartItems.items = cartItems;
 
-            alert('The product is added to the cart.');
-        });
+    alert('The product is added to the cart.');
 }
 
 const purchase = async function () {
@@ -38,91 +36,85 @@ const purchase = async function () {
         window.location.href = '/cart';
 }
 
-class Product extends React.Component {
-    constructor(props) {
-        super(props);
+function Product() {
+    const [id, setId] = useState(1);
+    const [data, setData] = useState(null);
+    const [loaded, setLoaded] = useState(false);
 
-        this.state = {
-            data: [],
-            loaded: false
-        };
-    }
+    useEffect(() => {
+        return async () => {
+            if (typeof window !== "undefined") {
+                const id = window.location.pathname.replace('/product/', '') * 1;
+                setId(id);
+            }
 
-    componentDidMount() {
-        fetch(Settings.server + '/products')
-            .then((res) => res.json())
-            .then((json) => {
-                this.setState({
-                    data: json,
-                    loaded: true
-                });
-            });
-    }
+            const res = await fetch(Settings.server + '/products');
+            const json = await res.json();
 
-    render() {
-        let id = 0;
-        const { loaded, data } = this.state;
+            setData(json);
+            setLoaded(true);
+        }
+    }, []);
 
-        if (typeof window !== "undefined")
-            id = window.location.pathname.replace('/product/', '') * 1;
+    if (!loaded)
+        return <></>
 
-        if (!loaded) return <></>
-
-        return <>
-            <section className='xl:container xl:mx-auto product-details-box'>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
-                    <div>
-                        <div className='product-details-img'>
-                            <img className='product-details-preview' src={`${Settings.server}/` + data[id].pictures[0]} alt={data[id].name} />
-                            <div className='grid grid-cols-4 gap-2 md:gap-4 product-details-pictures'>
-                                {data[id].pictures.map(el => <div className='product-details-picture'>
-                                    <img src={`${Settings.server}/` + el} alt={data[id].name}></img>
+    return <>
+        <section className='xl:container xl:mx-auto product-details-box'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
+                <div>
+                    <div className='product-details-img'>
+                        <img className='product-details-preview' src={`${Settings.server}/` + data[id].pictures[0]} alt={data[id].name} />
+                        <div className='product-details-pictures'>
+                            {data[id].pictures.map((el, i) =>
+                                <div className='product-details-picture'>
+                                    <img src={`${Settings.server}/` + el} alt={`${data[id].name} ${i + 1}`}></img>
                                 </div>)}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div className='product-details'>
-                            <h1 className='product-details-name' >{data[id].name}</h1>
-                            <Stars reviews={data[id].reviews.length} />
-
-                            <div className='flex flex-row mb-[30px]'>
-                                <span className='product-details-price'>{'$' + data[id].price / 100}</span>
-                                <span className='product-details-price_compare flex items-center' >{'$' + data[id].priceCompare / 100}</span>
-                            </div>
-
-                            <button className='w-full md:w-[400px] btn-base btn-ghost-grey' onClick={addToCart}>Add to cart</button>
-                            <button className='w-full md:w-[400px] btn-base btn-full' onClick={purchase}>Buy it now</button>
-                            <Description text={data[id].description} />
-                        </div>
-
-                        <div className='product-reviews'>
-                            <h3>Rating And Reviews</h3>
-
-                            {data[id].reviews.map(el => <div className='product-review'>
-                                <div className='product-review-fullname'>{el.fullname} - <span>{el.date}</span></div>
-                                <div className='product-review-stars'>{el.stars}</div>
-                                <div className='product-review-text'>{el.review}</div>
-                            </div>)}
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <YouMayAlsoLike />
-        </>;
-    }
+                <div>
+                    <div className='product-details'>
+                        <h1 className='product-details-name' >{data[id].name}</h1>
+                        <Stars reviews={data[id].reviews.length} />
+
+                        <div className='flex flex-row mb-[30px]'>
+                            <span className='product-details-price'>{'$' + data[id].price / 100}</span>
+                            <span className='product-details-price_compare' >{'$' + data[id].priceCompare / 100}</span>
+                        </div>
+
+                        <button className='w-full md:w-[400px] btn-base btn-ghost-grey' onClick={addToCart}>Add to cart</button>
+                        <button className='w-full md:w-[400px] btn-base btn-full' onClick={purchase}>Buy it now</button>
+
+                        <Description text={data[id].description} />
+                    </div>
+
+                    <div className='product-reviews'>
+                        <h3>Rating And Reviews</h3>
+
+                        {data[id].reviews.map(el => <div className='product-review'>
+                            <div className='product-review-fullname'>{el.fullname} - <span>{el.date}</span></div>
+                            <div className='product-review-stars'>{el.stars}</div>
+                            <div className='product-review-text'>{el.review}</div>
+                        </div>)}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <YouMayAlsoLike />
+    </>
 }
 
 function Description(props) {
     return <>
         <h3>Description</h3>
         <div className='product-details-description'>{props.text}</div>
-    </>;
+    </>
 }
 
-function App() {
+export default function App() {
     return (
         <div className="App">
             <Navigation />
@@ -132,8 +124,6 @@ function App() {
         </div>
     )
 }
-
-export default App;
 
 export async function getStaticProps({ params }) {
     const req = await fetch('https://storio-server.herokuapp.com/api/v1/products');
