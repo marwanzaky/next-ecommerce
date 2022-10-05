@@ -1,7 +1,7 @@
-import Settings from "../utils/settings";
+import Settings from '../../utils/settings';
 
 const contactUs = () => {
-    window.location.href = "https://storio.netlify.app/contact";
+    window.location.href = 'https://storio.netlify.app/contact';
 }
 
 function Paragraph(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import CartItems from '../utils/cartItems';
-import Settings from '../utils/settings';
+import CartItems from '../../utils/cartItems';
+import Settings from '../../utils/settings';
 
 function Nav(props) {
     return <li><a href={props.href}>{props.name}</a></li>

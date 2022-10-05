@@ -1,6 +1,6 @@
 import React from 'react';
-import Product from '../components/product';
-import Settings from '../utils/settings';
+import Product from '../../utils/components/product';
+import Settings from '../../utils/settings';
 
 function randomItems(data) {
     if (data.length <= 0)

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Products from '../utils/products';
-import Settings from '../utils/settings';
+import Products from '../products';
+import Settings from '../settings';
 import Stars from './stars';
 
 function AddToCart() {

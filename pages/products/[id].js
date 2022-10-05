@@ -1,14 +1,14 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-import Navigation from '../../src/sections/Navigation';
-import YouMayAlsoLike from '../../src/sections/YouMayAlsoLike';
-import About from '../../src/sections/About';
-import Footer from '../../src/sections/Footer';
+import Navigation from '../../components/navigation';
+import YouMayAlsoLike from '../../components/youMayAlsoLike';
+import About from '../../components/about';
+import Footer from '../../components/footer';
 
-import Settings from '../../src/utils/settings';
-import CartItems from '../../src/utils/cartItems';
-import Stars from '../../src/components/stars';
+import Settings from '../../utils/settings';
+import CartItems from '../../utils/cartItems';
+import Stars from '../../utils/components/stars';
 
 const addToCart = async function () {
     const id = new URL(window.location.href).searchParams.get('id') * 1;
