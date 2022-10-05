@@ -1,6 +1,6 @@
 import React from 'react';
-import Product from '../../src/components/product';
-import Settings from '../../src/utils/settings';
+import Product from '../../utils/components/product';
+import Settings from '../../utils/settings';
 
 class Products extends React.Component {
     constructor(props) {
