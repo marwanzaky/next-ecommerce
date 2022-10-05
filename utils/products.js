@@ -1,7 +1,7 @@
 import Settings from './settings';
 import CartItems from './cartItems';
 
-const addToCart = event => {
+const addToCart = async event => {
     console.log(event.target);
 
     const clickedCartButton = event.target;
@@ -16,16 +16,14 @@ const addToCart = event => {
         }
     }
 
-    fetch(Settings.server + '/products/' + id)
-        .then((res) => res.json())
-        .then((json) => {
-            const cartItems = CartItems.items;
+    const res = await fetch(Settings.server + '/products/' + id);
+    const json = await res.json();
 
-            cartItems.unshift(json);
-            CartItems.items = cartItems;
+    const cartItems = CartItems.items;
+    cartItems.unshift(json);
+    CartItems.items = cartItems;
 
-            alert('The product is added to the cart.');
-        });
+    alert('The product is added to the cart.');
 }
 
 export default addToCart;
