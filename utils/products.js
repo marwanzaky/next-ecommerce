@@ -1,4 +1,4 @@
-import Settings from '../utils/settings';
+import Settings from './settings';
 import CartItems from './cartItems';
 
 const addToCart = event => {
@@ -7,7 +7,7 @@ const addToCart = event => {
     const clickedCartButton = event.target;
     const clickedCartItem = clickedCartButton.parentElement.parentElement.parentElement;
     const clickedCartUrl = clickedCartItem.querySelector('a').href;
-    const id = new URL(clickedCartUrl).searchParams.get('id') * 1;
+    const id = new URL(clickedCartUrl).pathname.replace('/product/', '') * 1;
 
     for (let i = 0; i < CartItems.items.length; i++) {
         if (CartItems.items[i]['id'] === id) {
