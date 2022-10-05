@@ -5,7 +5,7 @@ import CartItems from '../../utils/cartItems';
 import { removeCartItem, checkout, updateCartSubtotal } from '../../utils/cart';
 
 function Item(props) {
-    return <>
+    return (
         <tr className="cart-table-item">
             <th className="cart-table-item-product">
                 <div className="cart-table-item-product-div" >
@@ -22,7 +22,7 @@ function Item(props) {
                 <button className="btn-base btn-ghost-grey cart-table-item-remove-btn" onClick={removeCartItem}>Remove</button>
             </th>
         </tr>
-    </>
+    )
 }
 
 function Cart() {
@@ -30,9 +30,6 @@ function Cart() {
 
     useEffect(() => {
         setCartItems(CartItems);
-
-        if (cartItems)
-            updateCartSubtotal();
     });
 
     useEffect(() => {
