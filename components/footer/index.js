@@ -1,4 +1,13 @@
 import Settings from '../../utils/settings';
+import Link from 'next/link';
+
+function FooterList(props) {
+    return (
+        <li>
+            <Link href={props.href}><a>{props.text}</a></Link>
+        </li>
+    )
+}
 
 function Footer() {
     return (
@@ -8,12 +17,19 @@ function Footer() {
                     <div className='footer-box-child'>
                         <p>Quick links</p>
                         <ul>
-                            {/* <li><a href="/search">Search</a></li> */}
+                            <FooterList href='/search' text='Search' />
+                            <FooterList href='/about' text='About Us' />
+                            <FooterList href='/refund-policy' text='Refund Policy' />
+                            <FooterList href='/privacy-policy' text='Privacy Policy' />
+                            <FooterList href='/terms-of-service' text='Terms of Service' />
+                            <FooterList href='/shipping-policy' text='Shipping Policy' />
+
+                            {/* <li><a href="/search">Search</a></li>
                             <li><a href="/about">About Us</a></li>
                             <li><a href="/refund-policy">Refund Policy</a></li>
                             <li><a href="/privacy-policy">Privacy Policy</a></li>
                             <li><a href="/terms-of-service">Terms of Service</a></li>
-                            <li><a href="/shipping-policy">Shipping Policy</a></li>
+                            <li><a href="/shipping-policy">Shipping Policy</a></li> */}
                         </ul>
                     </div>
 

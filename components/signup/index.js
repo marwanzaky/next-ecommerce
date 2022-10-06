@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { InputText } from '../../utils/components/input';
 import Settings from '../../utils/settings';
 
@@ -48,7 +49,9 @@ function Signup() {
 
                     <button type="submit" className='btn-base btn-full w-full block mb-[15px]'>Sign up</button>
 
-                    <p className='text-center'>Have an account? <a href='/signin'>Sign In</a></p>
+                    <p className='text-center'>
+                        Have an account? <Link href='/signin'><a>Sign In</a></Link>
+                    </p>
                 </form>
             </div>
         </section>

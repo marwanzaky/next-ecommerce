@@ -10,8 +10,8 @@ function Contact() {
                         <h2>Contact Us</h2>
                         <h3>Have a question?</h3>
                         <p>
-                            Email us and we'll get back to you within 24 hours. Monday-Saturday <br /> <br />
-                            Please fill the form below to contact us and we will get back to you as soon as possible! We're happy to answer questions or help.
+                            Email us and we&apos;ll get back to you within 24 hours. Monday-Saturday <br /> <br />
+                            Please fill the form below to contact us and we will get back to you as soon as possible! We&apos;re happy to answer questions or help.
                         </p>
                     </div>
 

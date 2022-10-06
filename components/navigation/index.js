@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 import CartItems from '../../utils/cartItems';
 import Settings from '../../utils/settings';
 
 function Nav(props) {
-    return <li><a href={props.href}>{props.name}</a></li>
+    return (
+        <li>
+            <Link href={props.href}>
+                <a>{props.name}</a>
+            </Link>
+        </li>
+    )
 }
 
 function ButtonCart() {
@@ -22,10 +29,12 @@ function ButtonCart() {
     });
 
     return (
-        <a href='/cart' className='nav-btn nav-btn-icon' >
-            <span className="material-symbols-outlined">shopping_cart</span>
-            <div className='nav-button-cart-length' style={buttonCartLengthStyle}>{cartItemsLength}</div>
-        </a>
+        <Link href='/cart'>
+            <a className='nav-btn nav-btn-icon'>
+                <span className="material-symbols-outlined">shopping_cart</span>
+                <div className='nav-button-cart-length' style={buttonCartLengthStyle}>{cartItemsLength}</div>
+            </a>
+        </Link>
     )
 }
 
@@ -34,7 +43,7 @@ function Navigation() {
         <nav>
             <div className='main-nav-promo'>Welcome to our Store!</div>
             <div className="xl:container xl:mx-auto p-5 main-nav-box">
-                <a href='/' className="logo">{Settings.name}</a>
+                <Link href='/'><a className='logo'>{Settings.name}</a></Link>
 
                 <ul className='main-nav'>
                     <Nav href='/' name='Home' />
@@ -44,12 +53,24 @@ function Navigation() {
                 </ul>
 
                 <div>
-                    <a href='/signin' className='nav-btn' ><span className="material-symbols-outlined">person</span></a>
-                    {/* <a href='/favourite' className='button-icon' ><span className="material-symbols-outlined">favorite</span></a> */}
+                    <NavBtn href='/signin' icon='person' />
                     <ButtonCart />
                 </div>
             </div>
         </nav >
+    )
+}
+
+function NavBtn(props) {
+    {/* <a href='/signin' className='nav-btn' ><span className="material-symbols-outlined">person</span></a> */ }
+    {/* <a href='/favourite' className='button-icon' ><span className="material-symbols-outlined">favorite</span></a> */ }
+
+    return (
+        <Link href={props.href}>
+            <a className='nav-btn' >
+                <span className="material-symbols-outlined">{props.icon}</span>
+            </a>
+        </Link>
     )
 }
 

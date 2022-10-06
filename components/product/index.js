@@ -53,7 +53,7 @@ function ProductDetailsImg({ id, data }) {
             <img className='product-details-preview' src={`${Settings.server}/` + data[id].pictures[0]} alt={data[id].name} />
             <div className='product-details-pictures'>
                 {data[id].pictures.map((el, i) =>
-                    <div className='product-details-picture'>
+                    <div key={`${data[id].name} ${i + 1}`} className='product-details-picture'>
                         <img src={`${Settings.server}/` + el} alt={`${data[id].name} ${i + 1}`}></img>
                     </div>)}
             </div>
@@ -85,7 +85,7 @@ function ProductReviews({ id, data }) {
         <div className='product-reviews'>
             <h3>Rating And Reviews</h3>
 
-            {data[id].reviews.map(el => <div className='product-review'>
+            {data[id].reviews.map((el, i) => <div key={`review ${i + 1}`} className='product-review'>
                 <div className='product-review-fullname'>{el.fullname} - <span>{el.date}</span></div>
                 <div className='product-review-stars'>{el.stars}</div>
                 <div className='product-review-text'>{el.review}</div>

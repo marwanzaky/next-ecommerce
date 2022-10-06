@@ -58,7 +58,7 @@ function Cart() {
                         </thead>
 
                         <tbody>
-                            {cartItems.items.map(el => <Item id={el.id} src={el.pictures[0]} name={el.name} alt={el.name} price={el.price} />)}
+                            {cartItems.items.map(el => <Item key={el.id} id={el.id} src={el.pictures[0]} name={el.name} alt={el.name} price={el.price} />)}
                         </tbody>
                     </table >
 

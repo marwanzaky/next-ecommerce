@@ -33,7 +33,7 @@ class Products extends React.Component {
                 <h2>Featured Collection</h2>
 
                 <div className="product-box">
-                    {data.map(el => <Product id={el.id} src={el.pictures[0]} name={el.name} reviews={el.reviews.length} price={el.price} priceCompare={el.priceCompare} />)}
+                    {data.map(el => <Product key={el.id} id={el.id} src={el.pictures[0]} name={el.name} reviews={el.reviews.length} price={el.price} priceCompare={el.priceCompare} />)}
                 </div>
             </section>
         );
