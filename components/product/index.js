@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
+import Img from '../../utils/components/img';
 import Stars from '../../utils/components/stars';
 
 import CartItems from '../../utils/cartItems';
@@ -26,35 +27,16 @@ const addToCart = async function () {
     alert('The product is added to the cart.');
 }
 
-function Product({ id, data }) {
-    return (
-        <section className='xl:container xl:mx-auto product-details-box'>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
-                <div>
-                    <ProductDetailsImg id={id} data={data} />
-                </div>
-
-                <div>
-                    <ProductDetails id={id} data={data} />
-                    <ProductReviews id={id} data={data} />
-                </div>
-            </div>
-        </section>
-    )
-}
-
 function ProductDetailsImg({ id, data }) {
-    return (
-        <div className='product-details-img'>
-            <img className='product-details-preview' src={`${Settings.server}/` + data[id].pictures[0]} alt={data[id].name} />
-            <div className='product-details-pictures'>
-                {data[id].pictures.map((el, i) =>
-                    <div key={`${data[id].name} ${i + 1}`} className='product-details-picture'>
-                        <img src={`${Settings.server}/` + el} alt={`${data[id].name} ${i + 1}`}></img>
-                    </div>)}
-            </div>
+    return <div className='product-details-img'>
+        <Img class_name='img product-details-preview' src={`${Settings.server}/` + data[id].pictures[0]} alt={data[id].name} />
+        <div className='product-details-pictures'>
+            {data[id].pictures.map((el, i) =>
+                <div key={`${data[id].name} ${i + 1}`} className='product-details-picture'>
+                    <Img class_name='img' src={`${Settings.server}/` + el} alt={`${data[id].name} ${i + 1}`} />
+                </div>)}
         </div>
-    )
+    </div>
 }
 
 function ProductDetails({ id, data }) {
@@ -66,43 +48,49 @@ function ProductDetails({ id, data }) {
         router.push('/cart');
     }
 
-    return (
-        <div className='product-details'>
-            <h1 className='product-details-name' >{data[id].name}</h1>
-            <Stars reviews={data[id].reviews.length} />
+    return <div className='product-details'>
+        <h1 className='product-details-name' >{data[id].name}</h1>
+        <Stars reviews={data[id].reviews.length} />
 
-            <div className='flex flex-row mb-[30px]'>
-                <span className='product-details-price'>{'$' + data[id].price / 100}</span>
-                <span className='product-details-price_compare' >{'$' + data[id].priceCompare / 100}</span>
-            </div>
-
-            <button className='w-full md:w-[400px] btn-base btn-ghost-grey' onClick={addToCart}>Add to cart</button>
-            <button className='w-full md:w-[400px] btn-base btn-full' onClick={purchase}>Buy it now</button>
-
-            <Description text={data[id].description} />
+        <div className='flex flex-row mb-[30px]'>
+            <span className='product-details-price'>{'$' + data[id].price / 100}</span>
+            <span className='product-details-price_compare' >{'$' + data[id].priceCompare / 100}</span>
         </div>
-    )
+
+        <button className='w-full md:w-[400px] btn-base btn-ghost-grey' onClick={addToCart}>Add to cart</button>
+        <button className='w-full md:w-[400px] btn-base btn-full' onClick={purchase}>Buy it now</button>
+
+        <h3 className='product-details-des-title'>Description</h3>
+        <div className='product-details-des-description'>{data[id].description}</div>
+    </div>
 }
 
 function ProductReviews({ id, data }) {
-    return (
-        <div className='product-reviews'>
-            <h3>Rating And Reviews</h3>
+    return <div className='product-reviews'>
+        <h3>Rating And Reviews</h3>
 
-            {data[id].reviews.map((el, i) => <div key={`review ${i + 1}`} className='product-review'>
+        {data[id].reviews.map((el, i) =>
+            <div key={`review ${i + 1}`} className='product-review'>
                 <div className='product-review-fullname'>{el.fullname} - <span>{el.date}</span></div>
                 <div className='product-review-stars'>{el.stars}</div>
                 <div className='product-review-text'>{el.review}</div>
             </div>)}
-        </div>
-    )
+    </div>
 }
 
-function Description(props) {
-    return <>
-        <h3>Description</h3>
-        <div className='product-details-description'>{props.text}</div>
-    </>
+function Product({ id, data }) {
+    return <section className='xl:container xl:mx-auto product-details-box'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
+            <div>
+                <ProductDetailsImg id={id} data={data} />
+            </div>
+
+            <div>
+                <ProductDetails id={id} data={data} />
+                <ProductReviews id={id} data={data} />
+            </div>
+        </div>
+    </section>
 }
 
 export default Product;

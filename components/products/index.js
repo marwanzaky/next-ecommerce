@@ -5,7 +5,6 @@ import Settings from '../../utils/settings';
 class Products extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             data: [],
             loaded: false
@@ -15,9 +14,9 @@ class Products extends React.Component {
     async componentDidMount() {
         const res = await fetch(Settings.server + '/products');
         const json = await res.json();
-
+        console.log(json.data.products);
         this.setState({
-            data: json,
+            data: json.data.products,
             loaded: true
         });
     }
@@ -28,15 +27,13 @@ class Products extends React.Component {
         if (!loaded)
             return <></>
 
-        return (
-            <section className='xl:container xl:mx-auto section-product'>
-                <h2>Featured Collection</h2>
+        return <section className='xl:container xl:mx-auto section-product'>
+            <h2>Featured Collection</h2>
 
-                <div className="product-box">
-                    {data.map(el => <Product key={el.id} id={el.id} src={el.pictures[0]} name={el.name} reviews={el.reviews.length} price={el.price} priceCompare={el.priceCompare} />)}
-                </div>
-            </section>
-        );
+            <div className="product-box">
+                {data.map(el => <Product key={el.id} id={el.id} src={el.pictures[0]} name={el.name} reviews={el.reviews.length} price={el.price} priceCompare={el.priceCompare} />)}
+            </div>
+        </section>
     }
 }
 

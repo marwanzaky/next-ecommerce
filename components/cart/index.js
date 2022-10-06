@@ -1,25 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
+
+import Img from '../../utils/components/img';
 
 import Settings from '../../utils/settings';
 import CartItems from '../../utils/cartItems';
 
 import { removeCartItem, checkout, updateCartSubtotal } from '../../utils/cart';
 
-function Item(props) {
+function Item({ id, name, price, src, alt }) {
     return (
         <tr className="cart-table-item">
             <th className="cart-table-item-product">
                 <div className="cart-table-item-product-div" >
-                    <Link href={'/product/' + props.id}><a className='cart-table-item-product-img'><img src={`${Settings.server}/${props.src}`} alt={props.alt} /></a></Link>
-                    <Link href={'/product/' + props.id}><a className='cart-table-item-product-name'>{props.name}</a></Link>
+                    <Link href={'/product/' + id}><a className='cart-table-item-product-img'><Img src={`${Settings.server}/${src}`} alt={alt} /></a></Link>
+                    <Link href={'/product/' + id}><a className='cart-table-item-product-name'>{name}</a></Link>
                 </div>
             </th>
-            <th className="cart-table-item-price">{'$' + props.price / 100}</th>
+            <th className="cart-table-item-price">{'$' + price / 100}</th>
             <th className="cart-table-item-quantity">
                 <input className="cart-table-item-quantity-field" type="number" defaultValue="1" min="1" max="100" />
             </th>
-            <th className="cart-table-item-total">{'$' + props.price / 100}</th>
+            <th className="cart-table-item-total">{'$' + price / 100}</th>
             <th className="cart-table-item-remove">
                 <button className="btn-base btn-ghost-grey cart-table-item-remove-btn" onClick={removeCartItem}>Remove</button>
             </th>

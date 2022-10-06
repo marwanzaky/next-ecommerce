@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import Navigation from '../../components/navigation';
 import ProductComponent from '../../components/product';
@@ -8,66 +8,79 @@ import Footer from '../../components/footer';
 
 import Settings from '../../utils/settings';
 
-function Product() {
-    const [id, setId] = useState(1);
-    const [data, setData] = useState(null);
-    const [loaded, setLoaded] = useState(false);
+class Product extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+            loaded: false
+        };
+    }
 
-    useEffect(() => {
-        return async () => {
-            if (typeof window !== "undefined") {
-                const id = window.location.pathname.replace('/product/', '') * 1;
-                setId(id);
-            }
+    async componentDidMount() {
+        const res = await fetch(Settings.server + '/products');
+        const json = await res.json();
 
-            const res = await fetch(Settings.server + '/products');
-            const json = await res.json();
+        this.setState({
+            data: json,
+            loaded: true
+        });
+    }
 
-            setData(json);
-            setLoaded(true);
-        }
-    }, []);
+    render() {
+        let id = 0;
+        const { loaded, data } = this.state;
 
-    if (!loaded)
-        return <></>
+        if (typeof window !== "undefined")
+            id = window.location.pathname.replace('/product/', '') * 1;
 
-    return <>
-        <ProductComponent id={id} data={data} />
-        <YouMayAlsoLike />
-    </>
+        if (!loaded)
+            return <></>
+
+        return <>
+            <ProductComponent id={id} data={data} />
+            <YouMayAlsoLike />
+        </>
+    }
 }
-
 
 export default function App() {
-    return (
-        <div className="App">
-            <Navigation />
-            <Product />
-            <About />
-            <Footer />
-        </div>
-    )
+    return <div className="App">
+        <Navigation />
+        <Product />
+        <About />
+        <Footer />
+    </div>
 }
 
-export async function getStaticProps({ params }) {
-    const req = await fetch('https://storio-server.herokuapp.com/api/v1/products');
+export async function getServerSideProps({ params }) {
+    const req = await fetch(`https://storio-server.herokuapp.com/api/v1/products/${params.id}`);
     const data = await req.json();
 
     return {
-        props: { product: data[params.id] }
+        props: { product: data }
     }
 }
 
-export async function getStaticPaths() {
-    const req = await fetch('https://storio-server.herokuapp.com/api/v1/products');
-    const data = await req.json();
+// export async function getStaticProps({ params }) {
+//     const req = await fetch(`https://storio-server.herokuapp.com/api/v1/products/${params.id}`);
+//     const data = await req.json();
 
-    const paths = data.map(product => {
-        return { params: { id: product.id.toString() } }
-    });
+//     return {
+//         props: { product: data }
+//     }
+// }
 
-    return {
-        paths,
-        fallback: false
-    }
-}
+// export async function getStaticPaths() {
+//     const req = await fetch('https://storio-server.herokuapp.com/api/v1/products');
+//     const data = await req.json();
+
+//     const paths = data.map(product => {
+//         return { params: { id: product.id.toString() } }
+//     });
+
+//     return {
+//         paths,
+//         fallback: false
+//     }
+// }
