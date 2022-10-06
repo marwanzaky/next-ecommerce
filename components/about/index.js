@@ -1,8 +1,5 @@
+import { useRouter } from 'next/router';
 import Settings from '../../utils/settings';
-
-const contactUs = () => {
-    window.location.href = '/contact';
-}
 
 function Paragraph(props) {
     return (
@@ -14,6 +11,13 @@ function Paragraph(props) {
 }
 
 function About() {
+    const router = useRouter();
+
+    const contactUs = event => {
+        event.preventDefault();
+        router.push('/contact');
+    }
+
     return (
         <section className="section-about">
             <div className="xl:container xl:mx-auto about-box">

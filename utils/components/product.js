@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 import Products from '../products';
 import Settings from '../settings';
@@ -18,7 +19,8 @@ function Product(props) {
             <div className='product-save'>
                 <span class="material-symbols-outlined product-save-icon">favorite</span>
             </div>
-            <a className='product-img' href={'/product/' + props.id}><img src={`${Settings.server}/${props.src}`} alt={props.name}></img></a>
+
+            <Link href={'/product/' + props.id}><a className='product-a'><img src={`${Settings.server}/${props.src}`} alt={props.name}></img></a></Link>
 
             <div className='flex flex-col p-2 sm:p-4'>
                 <span className='product-name'>{props.name}</span>
