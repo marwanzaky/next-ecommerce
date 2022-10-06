@@ -17,14 +17,14 @@ function ShippingPolicy() {
             <h4>How do I check the status of my order?</h4>
             <p>
                 When your order has shipped, you will receive an email notification from us which will include a tracking number you can use to check its status. Please allow 48 hours for the tracking information to become available.<br /><br />
-                If you haven’t received your order within 7-14 days of receiving your shipping confirmation email, please contact us at {Settings.contact} with your name and order number, and we will look into it for you.
+                If you haven&apos;t received your order within 7-14 days of receiving your shipping confirmation email, please contact us at {Settings.contact} with your name and order number, and we will look into it for you.
             </p>
 
             <h4>Refunds, returns, and exchanges</h4>
             <p>
                 We accept returns up to 10 days after delivery, if the item is unused and in its original condition, and we will refund the full order amount minus the shipping costs for the return.<br /><br />
                 In the event that your order arrives damaged in any way, please email us as soon as possible at {Settings.contact} with your order number and a photo of the item’s condition. We address these on a case-by-case basis but will try our best to work towards a satisfactory solution.<br /><br />
-                If you have any further questions, please don't hesitate to contact us at {Settings.contact}.
+                If you have any further questions, please don&apos;t hesitate to contact us at {Settings.contact}.
             </p>
         </div>
     </section>
