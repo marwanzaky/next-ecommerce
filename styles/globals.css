@@ -584,6 +584,10 @@ footer {
   border-radius: var(--border-radius);
   overflow: hidden;
 }
+.section-cart .cart-container .cart-table .cart-table-item .cart-table-item-product .cart-table-item-product-div .cart-table-item-product-img img {
+  height: 100%;
+  width: 100%;
+}
 .section-cart .cart-container .cart-subtotal {
   margin-bottom: 30px;
   display: flex;
