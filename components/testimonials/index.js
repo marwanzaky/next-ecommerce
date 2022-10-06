@@ -1,18 +1,20 @@
 import React from 'react';
 
 function Testimonial(props) {
-    return <div className='testimonial'>
-        {/* <i className="fa fa-quote-left"></i> */}
+    return (
+        <div className='testimonial'>
+            {/* <i className="fa fa-quote-left"></i> */}
 
-        <span class="material-symbols-outlined">
-            format_quote
-        </span>
+            <span class="material-symbols-outlined">
+                format_quote
+            </span>
 
-        <blockquote>
-            {props.blockquote}
-            <cite>{props.cite}</cite>
-        </blockquote>
-    </div>
+            <blockquote>
+                {props.blockquote}
+                <cite>{props.cite}</cite>
+            </blockquote>
+        </div>
+    )
 }
 
 function Testimonials() {
