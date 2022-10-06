@@ -1,12 +1,18 @@
-const shopNow = () => {
-    window.location.href = '/product/1';
-}
-
-// const explore = () => {
-//     window.location.href = '/shop';
-// }
+import { useRouter } from 'next/router';
 
 function Header() {
+    const router = useRouter();
+
+    const shopNow = event => {
+        event.preventDefault();
+        router.push('/product/1');
+    }
+
+    const explore = event => {
+        event.preventDefault();
+        router.push('/shop');
+    }
+
     return (
         <header>
             <div className='xl:container xl:mx-auto header-box'>
