@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
+
 import Settings from '../../utils/settings';
 import CartItems from '../../utils/cartItems';
 
@@ -9,8 +11,8 @@ function Item(props) {
         <tr className="cart-table-item">
             <th className="cart-table-item-product">
                 <div className="cart-table-item-product-div" >
-                    <a href={"/product?id=" + props.id} className="cart-table-item-product-img"><img src={`${Settings.server}/${props.src}`} alt={props.alt} /></a>
-                    <a href={"/product?id=" + props.id} className="cart-table-item-product-name">{props.name}</a>
+                    <a href={'/product/' + props.id} className='cart-table-item-product-img'><Image src={`${Settings.server}/${props.src}`} alt={props.alt} width='100%' height='100%' /></a>
+                    <a href={'/product/' + props.id} className='cart-table-item-product-name'>{props.name}</a>
                 </div>
             </th>
             <th className="cart-table-item-price">{'$' + props.price / 100}</th>

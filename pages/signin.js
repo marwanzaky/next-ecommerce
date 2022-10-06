@@ -1,8 +1,8 @@
 import React from 'react';
 
 import NavigationComponent from '../components/navigation';
-import SigninComponent from '../components/Signin';
-import FooterComponent from '../components/Footer';
+import SigninComponent from '../components/signin';
+import FooterComponent from '../components/footer';
 
 function Signin() {
     return (
