@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 
 import Stars from '../../utils/components/stars';
 
@@ -23,11 +24,6 @@ const addToCart = async function () {
     CartItems.items = cartItems;
 
     alert('The product is added to the cart.');
-}
-
-const purchase = async function () {
-    await addToCart();
-    window.location.href = '/cart';
 }
 
 function Product({ id, data }) {
@@ -62,6 +58,14 @@ function ProductDetailsImg({ id, data }) {
 }
 
 function ProductDetails({ id, data }) {
+    const router = useRouter();
+
+    const purchase = async event => {
+        event.preventDefault();
+        await addToCart();
+        router.push('/cart');
+    }
+
     return (
         <div className='product-details'>
             <h1 className='product-details-name' >{data[id].name}</h1>
