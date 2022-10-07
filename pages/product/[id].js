@@ -55,10 +55,10 @@ export default function App() {
 
 export async function getServerSideProps({ params }) {
     const req = await fetch(`${Settings.server}/products/${params.id}`);
-    const data = await req.json();
-
+    const json = await req.json();
+    console.log(json.data.product);
     return {
-        props: { product: data }
+        props: { product: json.data.product }
     }
 }
 
