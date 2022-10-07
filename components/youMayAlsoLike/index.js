@@ -41,7 +41,7 @@ class YouMayAlsoLike extends React.Component {
         const json = await res.json();
 
         this.setState({
-            data: json,
+            data: json.data.products,
             loaded: true
         });
     }

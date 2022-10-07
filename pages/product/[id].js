@@ -22,7 +22,7 @@ class Product extends React.Component {
         const json = await res.json();
 
         this.setState({
-            data: json,
+            data: json.data.products,
             loaded: true
         });
     }
@@ -54,7 +54,7 @@ export default function App() {
 }
 
 export async function getServerSideProps({ params }) {
-    const req = await fetch(`https://storio-server.herokuapp.com/api/v1/products/${params.id}`);
+    const req = await fetch(`${Settings.server}/products/${params.id}`);
     const data = await req.json();
 
     return {
