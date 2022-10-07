@@ -14,6 +14,8 @@ function AddToCart() {
 }
 
 function Product({ id, name, img, price, priceCompare, reviews }) {
+    console.log('img:src', `${Settings.server}/${img}`);
+
     return <div className='flex flex-col product'>
         <div className='product-save'>
             <span class="material-symbols-outlined product-save-icon">favorite</span>

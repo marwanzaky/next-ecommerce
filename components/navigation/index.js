@@ -13,13 +13,11 @@ function Nav(props) {
 }
 
 function NavBtn(props) {
-    return (
-        <Link href={props.href}>
-            <a className='nav-btn' >
-                <span className="material-symbols-outlined">{props.icon}</span>
-            </a>
-        </Link>
-    )
+    return <Link href={props.href}>
+        <a className='nav-btn' >
+            <span className="material-symbols-outlined">{props.icon}</span>
+        </a>
+    </Link>
 }
 
 class NavBtnCart extends React.Component {
