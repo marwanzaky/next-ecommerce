@@ -60,14 +60,14 @@ function ProductDetails({ id, data }) {
         <button className='w-full md:w-[400px] btn-base btn-ghost-grey' onClick={addToCart}>Add to cart</button>
         <button className='w-full md:w-[400px] btn-base btn-full' onClick={purchase}>Buy it now</button>
 
-        <h3 className='product-details-des-title'>Description</h3>
+        {/* <h4 className='product-details-des-title'>Description</h4> */}
         <p className='product-details-des-description'>{data[id].description}</p>
     </div>
 }
 
 function ProductReviews({ id, data }) {
     return <div className='product-reviews'>
-        <h3 className='text-center'>Rating And Reviews</h3>
+        <h4 className='text-center'>Rating And Reviews</h4>
 
         {data[id].reviews.map((el, i) =>
             <div key={`review ${i + 1}`} className='product-review'>

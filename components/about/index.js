@@ -27,7 +27,7 @@ function About() {
             </div>
 
             <div className='about-contact'>
-                <h4>Have a question? contact us here.</h4>
+                <h3 className='text-center'>Have a question? contact us here.</h3>
                 <button onClick={contactUs} className="btn-base btn-ghost-grey">Contact</button>
             </div>
         </div>
