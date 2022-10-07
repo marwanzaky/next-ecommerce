@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from '../../utils/components/product';
+import ProductsComponent from '../../utils/components/products';
 import Settings from '../../utils/settings';
 
 function randomItems(data) {
@@ -29,7 +29,6 @@ function randomItems(data) {
 class YouMayAlsoLike extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             data: [],
             loaded: false
@@ -53,15 +52,7 @@ class YouMayAlsoLike extends React.Component {
         if (!loaded)
             return <></>
 
-        return (
-            <section className='xl:container xl:mx-auto section-product'>
-                <h2>You May Also Like</h2>
-
-                <div className="product-box">
-                    {items.map(el => <Product key={el.id} id={el.id} img={el.pictures[0]} name={el.name} reviews={el.reviews.length} price={el.price} priceCompare={el.priceCompare} />)}
-                </div>
-            </section>
-        );
+        return <ProductsComponent title='You May Also Like' data={items} />
     }
 }
 

@@ -3,7 +3,6 @@ import React from 'react';
 import Navigation from '../../components/navigation';
 import ProductComponent from '../../components/product';
 import YouMayAlsoLike from '../../components/youMayAlsoLike';
-import About from '../../components/about';
 import Footer from '../../components/footer';
 
 import Settings from '../../utils/settings';
@@ -48,7 +47,6 @@ export default function App() {
     return <div className="App">
         <Navigation />
         <Product />
-        <About />
         <Footer />
     </div>
 }

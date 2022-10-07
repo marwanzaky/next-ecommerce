@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from '../../utils/components/product';
+import ProductsComponent from '../../utils/components/products';
 import Settings from '../../utils/settings';
 
 class Products extends React.Component {
@@ -27,13 +27,7 @@ class Products extends React.Component {
         if (!loaded)
             return <></>
 
-        return <section className='xl:container xl:mx-auto section-product'>
-            <h2>Featured Collection</h2>
-
-            <div className="product-box">
-                {data.map(el => <Product key={el.id} id={el.id} img={el.pictures[0]} name={el.name} reviews={el.reviews.length} price={el.price} priceCompare={el.priceCompare} />)}
-            </div>
-        </section>
+        return <ProductsComponent title='Featured Collection' data={data} />
     }
 }
 

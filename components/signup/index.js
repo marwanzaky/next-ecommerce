@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+
+import { useRouter } from 'next/router';
 import Link from 'next/link';
+
 import { InputText } from '../../utils/components/input';
 import Settings from '../../utils/settings';
 
@@ -11,6 +14,7 @@ const initialState = {
 }
 
 function Signup() {
+    const router = useRouter();
     const [form, setForm] = useState(initialState);
 
     const handleChange = (event) => {
@@ -19,7 +23,7 @@ function Signup() {
         setForm(newForm);
     }
 
-    const submit = (event) => {
+    const submit = async (event) => {
         event.preventDefault();
 
         const requestOptions = {
@@ -28,34 +32,31 @@ function Signup() {
             body: JSON.stringify(form)
         };
 
-        fetch(`${Settings.server}/users/signup`, requestOptions)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                window.location.href = '/';
-            });
+        const response = await fetch(`${Settings.server}/users/signup`, requestOptions);
+        const data = await response.json();
+
+        console.log('signup', data);
+        router.push('/');
     }
 
-    return (
-        <section className='section-signup'>
-            <div className='xl:container xl:mx-auto'>
-                <form onSubmit={submit} className='m-auto max-w-[500px]'>
-                    <h3>Sign Up</h3>
+    return <section className='section-signup'>
+        <div className='xl:container xl:mx-auto'>
+            <form onSubmit={submit} className='m-auto max-w-[500px]'>
+                <h3 className='text-center'>Sign Up</h3>
 
-                    <InputText type='text' id='name' placeholder='Enter Name' icon='person' onChange={handleChange} />
-                    <InputText type='text' id='email' placeholder='Enter Email' icon='email' onChange={handleChange} />
-                    <InputText type='password' id='password' placeholder='Enter Password' icon='password' onChange={handleChange} />
-                    <InputText type='password' id='passwordConfirm' placeholder='Repeat Password' icon='password' onChange={handleChange} />
+                <InputText type='text' id='name' placeholder='Enter Name' icon='person' onChange={handleChange} />
+                <InputText type='text' id='email' placeholder='Enter Email' icon='email' onChange={handleChange} />
+                <InputText type='password' id='password' placeholder='Enter Password' icon='password' onChange={handleChange} />
+                <InputText type='password' id='passwordConfirm' placeholder='Repeat Password' icon='password' onChange={handleChange} />
 
-                    <button type="submit" className='btn-base btn-full w-full block mb-[15px]'>Sign up</button>
+                <button type="submit" className='btn-base btn-full w-full block mb-[15px]'>Sign up</button>
 
-                    <p className='text-center'>
-                        Have an account? <Link href='/signin'><a>Sign In</a></Link>
-                    </p>
-                </form>
-            </div>
-        </section>
-    )
+                <p className='text-center'>
+                    Have an account?&emsp;<Link href='/signin'><a><strong>Sign In</strong></a></Link>
+                </p>
+            </form>
+        </div>
+    </section>
 }
 
 export default Signup;

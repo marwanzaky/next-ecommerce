@@ -2,7 +2,7 @@ import Settings from '../../utils/settings';
 import Link from 'next/link';
 
 function FooterList(props) {
-    return <li>
+    return <li className='footer-list'>
         <Link href={props.href}>
             <a>{props.text}</a>
         </Link>
@@ -12,9 +12,10 @@ function FooterList(props) {
 function Footer() {
     return <footer>
         <div className="xl:container xl:mx-auto footer-box">
-            <div className='grid grid-cols-1 xl:grid-cols-2'>
+            <div className='grid grid-cols-1 xl:grid-cols-2 mb-[50px]'>
                 <div className='footer-box-child'>
-                    <p>Quick links</p>
+                    <h4 className='footer-title'>Quick links</h4>
+
                     <ul>
                         {/* <FooterList href='/search' text='Search' /> */}
                         <FooterList href='/about' text='About Us' />
@@ -31,7 +32,7 @@ function Footer() {
             </div>
 
             <div className='copyright'>
-                <div> <p>Copyright &copy; 2022 {Settings.name} all rights reserved.</p> </div>
+                <p className='copyright-p'>Copyright &copy; 2022 {Settings.name} all rights reserved.</p>
             </div>
         </div>
     </footer>

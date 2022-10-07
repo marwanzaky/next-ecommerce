@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import { InputText } from '../../utils/components/input';
@@ -10,6 +12,7 @@ const initialState = {
 }
 
 function Signin() {
+    const router = useRouter();
     const [form, setForm] = useState(initialState);
 
     const handleChange = (event) => {
@@ -32,15 +35,15 @@ function Signin() {
         const response = await fetch(`${Settings.server}/users/login`, requestOptions);
         const data = await response.json();
 
-        console.log(data);
-        window.location.href = '/';
+        console.log('login', data);
+        router.push('/');
     }
 
     return (
         <section className='section-signup'>
             <div className='xl:container xl:mx-auto'>
                 <form onSubmit={submit} className='m-auto max-w-[500px]'>
-                    <h3>Sign In</h3>
+                    <h3 className='text-center'>Sign In</h3>
 
                     <InputText type='text' id='email' placeholder='Enter Email' icon='email' onChange={handleChange} />
                     <InputText type='password' id='password' placeholder='Enter Password' icon='password' onChange={handleChange} />
@@ -48,7 +51,7 @@ function Signin() {
                     <button type="submit" className='btn-base btn-full w-full block mb-[15px]'>Sign in</button>
 
                     <p className='text-center'>
-                        You don&apos;t have an account? <Link href='/signup'><a>Sign Up</a></Link>
+                        Not a member yet?&emsp;<Link href='/signup'><a><strong>Sign Up</strong></a></Link>
                     </p>
                 </form>
             </div>

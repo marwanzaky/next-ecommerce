@@ -5,13 +5,11 @@ import PrivacyPolicyComponent from '../components/privacyPolicy';
 import FooterComponent from '../components/footer';
 
 function ShippingPolicy() {
-    return (
-        <div className="App">
-            <NavigationComponent />
-            <PrivacyPolicyComponent />
-            <FooterComponent />
-        </div>
-    )
+    return <div className="App">
+        <NavigationComponent />
+        <PrivacyPolicyComponent />
+        <FooterComponent />
+    </div>
 }
 
 export default ShippingPolicy;
