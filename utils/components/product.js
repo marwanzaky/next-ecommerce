@@ -13,14 +13,14 @@ function AddToCart() {
     </button>
 }
 
-function Product({ id, name, src, price, priceCompare, reviews }) {
+function Product({ id, name, img, price, priceCompare, reviews }) {
     return <div className='flex flex-col product'>
         <div className='product-save'>
             <span class="material-symbols-outlined product-save-icon">favorite</span>
         </div>
 
         <Link href={'/product/' + id}>
-            <a className='product-a'><Img src={`${Settings.server}/${src}`} alt={name} /></a>
+            <a className='product-a'><Img src={`${Settings.server}/${img}`} alt={name} /></a>
         </Link>
 
         <div className='flex flex-col p-2 sm:p-4'>
