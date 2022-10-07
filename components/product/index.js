@@ -21,7 +21,7 @@ const addToCart = async function () {
     const json = await res.json();
 
     const cartItems = CartItems.items;
-    cartItems.unshift(json);
+    cartItems.unshift(json.data.product);
     CartItems.items = cartItems;
 
     alert('The product is added to the cart.');
