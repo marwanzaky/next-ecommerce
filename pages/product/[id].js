@@ -53,14 +53,14 @@ export default function App() {
     </div>
 }
 
-export async function getServerSideProps({ params }) {
-    const req = await fetch(`${Settings.server}/products/${params.id}`);
-    const json = await req.json();
-    console.log(json.data.product);
-    return {
-        props: { product: json.data.product }
-    }
-}
+// export async function getServerSideProps({ params }) {
+//     const req = await fetch(`${Settings.server}/products/${params.id}`);
+//     const json = await req.json();
+
+//     return {
+//         props: { product: json.data.product }
+//     }
+// }
 
 // export async function getStaticProps({ params }) {
 //     const req = await fetch(`https://storio-server.herokuapp.com/api/v1/products/${params.id}`);
