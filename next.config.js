@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   distDir: 'build',
   images: {
-    domains: ['storio-api.onrender.com'],
+    domains: ['storio-api.herokuapp.com'],
     formats: ['image/avif', 'image/webp'],
   }
 }
