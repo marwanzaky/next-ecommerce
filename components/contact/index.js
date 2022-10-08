@@ -7,8 +7,8 @@ function Contact() {
             <div className="xl:container xl:mx-auto contact-me-box">
                 <div className='grid grid-cols-1 md:grid-cols-2'>
                     <div className="contact-me-box-child">
-                        <h2>Contact Us</h2>
-                        <h3>Have a question?</h3>
+                        <h2>Contact us</h2>
+                        <h4>Have a question?</h4>
                         <p>
                             Email us and we&apos;ll get back to you within 24 hours. Monday-Saturday <br /> <br />
                             Please fill the form below to contact us and we will get back to you as soon as possible! We&apos;re happy to answer questions or help.

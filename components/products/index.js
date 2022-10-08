@@ -27,7 +27,7 @@ class Products extends React.Component {
         if (!loaded)
             return <></>
 
-        return <ProductsComponent title='Featured Collection' data={data} />
+        return <ProductsComponent title='Featured collection' data={data} />
     }
 }
 

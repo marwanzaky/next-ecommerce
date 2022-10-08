@@ -104,7 +104,8 @@ p {
 }
 
 section {
-  padding: 50px 10px;
+  // padding: 50px 10px;
+  @apply py-[30px] px-[10px] md:py-[50px] md:px-[10px];
 }
 
 a {
@@ -136,7 +137,7 @@ h1 {
   color: $color-black;
   margin-bottom: 30px;
 
-  text-transform: uppercase;
+  // text-transform: uppercase;
   font-weight: var(--font-regular);
   font-size: 250%;
   line-height: 100%;
@@ -146,16 +147,18 @@ h1 {
 }
 
 h2 {
-  font-size: 200%;
-  text-align: center;
+  @apply text-center md:text-left;
+
+  font-size: 150%;
+  // text-transform: uppercase;
   font-weight: var(--font-regular);
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 h3 {
-  font-size: 130%;
-  font-weight: var(--font-bold);
-  margin-bottom: 30px;
+  font-size: 120%;
+  font-weight: var(--font-regular);
+  margin-bottom: 5px;
 }
 
 h4 {
@@ -617,7 +620,7 @@ footer {
   margin-bottom: 30px;
 
   .product-details-name {
-    margin: 0 0 10px 0;
+    margin: 0 0 5px 0;
   }
 
   .product-details-price {
@@ -633,6 +636,10 @@ footer {
     color: $color-grey;
   }
 
+  .product-details-stars {
+    margin-bottom: 30px;
+  }
+
   .btn-ghost-grey {
     display: block;
     margin-bottom: 10px;
@@ -640,7 +647,7 @@ footer {
 
   .btn-full {
     display: block;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
 
   .product-details-des-description {

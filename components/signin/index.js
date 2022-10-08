@@ -42,7 +42,7 @@ function Signin() {
     return <section className='section-signup'>
         <div className='xl:container xl:mx-auto'>
             <form onSubmit={submit} className='m-auto max-w-[500px]'>
-                <h3 className='text-center'>Sign In</h3>
+                <h4 className='text-center'>Sign In</h4>
 
                 <InputText type='text' id='email' placeholder='Enter Email' icon='email' onChange={handleChange} />
                 <InputText type='password' id='password' placeholder='Enter Password' icon='password' onChange={handleChange} />

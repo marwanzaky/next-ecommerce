@@ -55,7 +55,7 @@ class Cart extends React.Component {
 
         return <section className="section-cart">
             <div className="xl:container xl:mx-auto">
-                <h2>Your cart</h2>
+                <h4 className='text-center'>Your cart</h4>
 
                 <div className="cart-container">
                     <table className="cart-table">

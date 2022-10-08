@@ -14,7 +14,7 @@ function Reason({ title, des, icon }) {
 function WhyChooseUs() {
     return <section className='section-why_choose_us'>
         <div className='xl:container xl:mx-auto'>
-            <h2>Why Should You Choose Us?</h2>
+            <h2>Why should you choose us?</h2>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-[50px] mb-[50px]">
                 <Reason icon='local_shipping' title='Free Shipping' des='All purchases over $199 are eligible for free shipping via USPS First Class Mail.' />

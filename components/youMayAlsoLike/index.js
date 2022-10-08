@@ -52,7 +52,7 @@ class YouMayAlsoLike extends React.Component {
         if (!loaded)
             return <></>
 
-        return <ProductsComponent title='You May Also Like' data={items} />
+        return <ProductsComponent title='You may also like' data={items} />
     }
 }
 

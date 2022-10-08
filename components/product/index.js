@@ -54,24 +54,25 @@ function ProductDetails({ id, data }) {
 
     return <div className='product-details'>
         <h1 className='product-details-name' >{data[id].name}</h1>
-        <Stars reviews={data[id].reviews.length} />
 
-        <div className='flex flex-row mb-[30px]'>
+        <div className='flex flex-row mb-[5px]'>
             <span className='product-details-price'>{'$' + data[id].price / 100}</span>
             <span className='product-details-price_compare' >{'$' + data[id].priceCompare / 100}</span>
         </div>
 
+        <div className='product-details-stars'><Stars reviews={data[id].reviews.length} /></div>
+
         <button className='w-full md:w-[400px] btn-base btn-ghost-grey' onClick={addToCart}>Add to cart</button>
         <button className='w-full md:w-[400px] btn-base btn-full' onClick={purchase}>Buy it now</button>
 
-        {/* <h4 className='product-details-des-title'>Description</h4> */}
+        <h4 className='product-details-des-title'>Description</h4>
         <p className='product-details-des-description'>{data[id].description}</p>
     </div>
 }
 
 function ProductReviews({ id, data }) {
     return <div className='product-reviews'>
-        <h4 className='text-center'>Rating And Reviews</h4>
+        <h4 className='text-cente'>Rating and reviews</h4>
 
         {data[id].reviews.map((el, i) =>
             <div key={`review ${i + 1}`} className='product-review'>
@@ -84,7 +85,7 @@ function ProductReviews({ id, data }) {
 
 function Product({ id, data }) {
     return <section className='xl:container xl:mx-auto product-details-box'>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5'>
             <div>
                 <ProductPreview id={id} data={data} />
             </div>

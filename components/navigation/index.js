@@ -59,7 +59,7 @@ function Navigation() {
         <div className="xl:container xl:mx-auto p-5 main-nav-box">
             <Link href='/'><a className='logo'>{Settings.name}</a></Link>
 
-            <ul className='main-nav'>
+            <ul className='hidden sm:block main-nav'>
                 <Nav href='/' name='Home' />
                 <Nav href='/products' name='Shop' />
                 <Nav href='/about' name='About' />
