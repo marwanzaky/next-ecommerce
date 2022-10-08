@@ -51,7 +51,16 @@ export default function App() {
     </div>
 }
 
-// export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params }) {
+    const req = await fetch(`${Settings.server}/products/${params.id}`);
+    const json = await req.json();
+
+    return {
+        props: { product: json.data.product }
+    }
+}
+
+// export async function getStaticProps({ params }) {
 //     const req = await fetch(`${Settings.server}/products/${params.id}`);
 //     const json = await req.json();
 
@@ -60,20 +69,11 @@ export default function App() {
 //     }
 // }
 
-// export async function getStaticProps({ params }) {
-//     const req = await fetch(`https://storio-server.herokuapp.com/api/v1/products/${params.id}`);
-//     const data = await req.json();
-
-//     return {
-//         props: { product: data }
-//     }
-// }
-
 // export async function getStaticPaths() {
-//     const req = await fetch('https://storio-server.herokuapp.com/api/v1/products');
-//     const data = await req.json();
+//     const req = await fetch(`${Settings.server}/products`);
+//     const json = await req.json();
 
-//     const paths = data.map(product => {
+//     const paths = json.data.products.map(product => {
 //         return { params: { id: product.id.toString() } }
 //     });
 

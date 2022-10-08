@@ -16,7 +16,7 @@ function WhyChooseUs() {
         <div className='xl:container xl:mx-auto'>
             <h2>Why Should You Choose Us?</h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-5 gap-y-[50px] mb-[50px]">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-[50px] mb-[50px]">
                 <Reason icon='local_shipping' title='Free Shipping' des='All purchases over $199 are eligible for free shipping via USPS First Class Mail.' />
                 <Reason icon='payments' title='Easy Payments' des='All payments are processed instantly over a secure payment protocol.' />
                 <Reason icon='attach_money' title='Money-Back Guarantee' des='If an item arrived damaged or you&apos;ve changed your mind, you can send it back for a full refund.' />
