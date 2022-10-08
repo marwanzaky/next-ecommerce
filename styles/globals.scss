@@ -656,9 +656,10 @@ footer {
 }
 
 .product-details-feedback {
+  @apply p-[30px] md:p-[50px];
+  
   border: solid 2px $color-bg-dark;
   border-radius: $border-radius;
-  padding: 50px;
   
   .product-details-feedback-reviews-review {
     @apply flex;

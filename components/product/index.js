@@ -74,7 +74,7 @@ function ProductDetails({ id, data }) {
 
 function Product({ id, data }) {
     return <section className='xl:container xl:mx-auto product-details-box'>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5 mb-[50px]'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5 mb:[30px] md:mb-[50px]'>
             <ProductPreview id={id} data={data} />
             <ProductDetails id={id} data={data} />
         </div>

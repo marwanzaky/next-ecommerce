@@ -58,7 +58,7 @@ function ProductDetailsFeedback({ id, data }) {
     return <div className='product-details-feedback'>
         <h4>Rating and reviews</h4>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10'>
             <ProductDetailsFeedbackOverview id={id} data={data} />
             <ProductDetailsFeedbackReviews id={id} data={data} />
         </div>
