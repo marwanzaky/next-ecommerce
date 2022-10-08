@@ -525,18 +525,63 @@ footer {
   white-space: pre-wrap;
 }
 
-.product-reviews {
+.product-details-feedback {
   border: solid 2px #f6f8f8;
-  padding: 30px;
+  border-radius: 12px;
+  padding: 50px;
 }
-.product-reviews .product-review {
-  margin-bottom: 20px;
+.product-details-feedback .product-details-feedback-reviews-review {
+  @apply flex;
+  margin-bottom: 30px;
 }
-.product-reviews .product-review .product-review-fullname {
+.product-details-feedback .product-details-feedback-reviews-review .product-details-feedback-reviews-review-profile {
+  @apply flex justify-center items-center w-[40px] h-[40px] rounded-[50%];
+  font-size: 18px;
+  color: #009679;
+  background-color: #b8fff1;
+}
+.product-details-feedback .product-details-feedback-reviews-review .product-details-feedback-reviews-review-stars {
+  color: #009679;
+  margin-bottom: 5px;
+}
+.product-details-feedback .product-details-feedback-reviews-review .product-details-feedback-reviews-review-text {
   color: #868686;
 }
-.product-reviews .product-review .product-review-stars {
+
+.product-details-feedback-overview-rating .product-details-feedback-overview-rating-value {
+  font-size: 300%;
+  font-weight: var(--font-bold);
+  text-align: center;
+}
+.product-details-feedback-overview-rating .product-details-feedback-overview-rating-stars {
   color: #009679;
+  text-align: center;
+}
+.product-details-feedback-overview-rating .product-details-feedback-overview-rating-total {
+  @apply flex justify-center items-center;
+  color: #868686;
+  text-align: center;
+}
+
+.product-details-feedback-overview-rates .product-details-feedback-overview-rates-ul .product-details-feedback-overview-rates-li {
+  @apply flex flex-row items-center;
+}
+.product-details-feedback-overview-rates .product-details-feedback-overview-rates-ul .product-details-feedback-overview-rates-li .product-details-feedback-overview-rates-li-star {
+  color: #009679;
+  width: 10px;
+}
+.product-details-feedback-overview-rates .product-details-feedback-overview-rates-ul .product-details-feedback-overview-rates-li .product-details-feedback-overview-rates-li-stars {
+  text-align: center;
+  width: 50px;
+}
+.product-details-feedback-overview-rates .product-details-feedback-overview-rates-ul .product-details-feedback-overview-rates-li .product-details-feedback-overview-rates-li-bar {
+  height: 2px;
+  width: 100%;
+  background-color: #dfe6e9;
+}
+.product-details-feedback-overview-rates .product-details-feedback-overview-rates-ul .product-details-feedback-overview-rates-li .product-details-feedback-overview-rates-li-bar .product-details-feedback-overview-rates-li-bar-percent {
+  height: 100%;
+  background-color: #009679;
 }
 
 /*------- CART -------*/

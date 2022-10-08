@@ -1,6 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
+import ProductDetailsFeedback from './feedback';
+
 import Img from '../../utils/components/img';
 import Stars from '../../utils/components/stars';
 
@@ -70,31 +72,14 @@ function ProductDetails({ id, data }) {
     </div>
 }
 
-function ProductReviews({ id, data }) {
-    return <div className='product-reviews'>
-        <h4 className='text-cente'>Rating and reviews</h4>
-
-        {data[id].reviews.map((el, i) =>
-            <div key={`review ${i + 1}`} className='product-review'>
-                <div className='product-review-fullname'>{el.fullname} - <span>{el.date}</span></div>
-                <div className='product-review-stars'>{el.stars}</div>
-                <div className='product-review-text'>{el.review}</div>
-            </div>)}
-    </div>
-}
-
 function Product({ id, data }) {
     return <section className='xl:container xl:mx-auto product-details-box'>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5'>
-            <div>
-                <ProductPreview id={id} data={data} />
-            </div>
-
-            <div>
-                <ProductDetails id={id} data={data} />
-                <ProductReviews id={id} data={data} />
-            </div>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5 mb-[50px]'>
+            <ProductPreview id={id} data={data} />
+            <ProductDetails id={id} data={data} />
         </div>
+
+        <ProductDetailsFeedback id={id} data={data} />
     </section>
 }
 

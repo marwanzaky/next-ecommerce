@@ -655,19 +655,79 @@ footer {
   }
 }
 
-.product-reviews {
+.product-details-feedback {
   border: solid 2px $color-bg-dark;
-  padding: 30px;
+  border-radius: $border-radius;
+  padding: 50px;
+  
+  .product-details-feedback-reviews-review {
+    @apply flex;
+    margin-bottom: 30px;
 
-  .product-review {
-    margin-bottom: 20px;
-
-    .product-review-fullname {
-      color: $color-grey;
+    .product-details-feedback-reviews-review-profile {
+      @apply flex justify-center items-center w-[40px] h-[40px] rounded-[50%];
+      font-size: 18px;
+      color: $color-primary-dark;
+      background-color: $color-primary-light;
     }
 
-    .product-review-stars {
+    .product-details-feedback-reviews-review-fullname {
+      // color: $color-grey;
+    }
+
+    .product-details-feedback-reviews-review-stars {
       color: $color-primary-dark;
+      margin-bottom: 5px;
+    }
+
+    .product-details-feedback-reviews-review-text {
+      color: $color-grey;
+    }
+  }
+}
+
+.product-details-feedback-overview-rating {
+  .product-details-feedback-overview-rating-value {
+    font-size: 300%;
+    font-weight: var(--font-bold);
+    text-align: center;
+  }
+
+  .product-details-feedback-overview-rating-stars {
+    color: $color-primary-dark;
+    text-align: center;
+  }
+
+  .product-details-feedback-overview-rating-total {
+    @apply flex justify-center items-center;
+    color: $color-grey;
+    text-align: center;
+  }
+}
+
+.product-details-feedback-overview-rates .product-details-feedback-overview-rates-ul {
+  .product-details-feedback-overview-rates-li {
+    @apply flex flex-row items-center;
+
+    .product-details-feedback-overview-rates-li-star {
+      color: $color-primary-dark;
+      width: 10px;
+    }
+    
+    .product-details-feedback-overview-rates-li-stars {
+      text-align: center;
+      width: 50px;
+    }
+
+    .product-details-feedback-overview-rates-li-bar {
+      height: 2px;
+      width: 100%;
+      background-color: $color-grey-light;
+    
+      .product-details-feedback-overview-rates-li-bar-percent {
+        height: 100%;
+        background-color: $color-primary-dark;
+      }
     }
   }
 }
