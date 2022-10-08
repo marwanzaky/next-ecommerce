@@ -657,7 +657,7 @@ footer {
 
 .product-details-feedback {
   @apply p-[30px] md:p-[50px];
-  
+
   border: solid 2px $color-bg-dark;
   border-radius: $border-radius;
   
@@ -672,9 +672,9 @@ footer {
       background-color: $color-primary-light;
     }
 
-    .product-details-feedback-reviews-review-fullname {
-      // color: $color-grey;
-    }
+    // .product-details-feedback-reviews-review-fullname span {
+    //   color: $color-grey;
+    // }
 
     .product-details-feedback-reviews-review-stars {
       color: $color-primary-dark;
@@ -695,8 +695,8 @@ footer {
   }
 
   .product-details-feedback-overview-rating-stars {
+    @apply flex justify-center;
     color: $color-primary-dark;
-    text-align: center;
   }
 
   .product-details-feedback-overview-rating-total {

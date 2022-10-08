@@ -554,8 +554,8 @@ footer {
   text-align: center;
 }
 .product-details-feedback-overview-rating .product-details-feedback-overview-rating-stars {
+  @apply flex justify-center;
   color: #009679;
-  text-align: center;
 }
 .product-details-feedback-overview-rating .product-details-feedback-overview-rating-total {
   @apply flex justify-center items-center;

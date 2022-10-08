@@ -1,3 +1,5 @@
+import Stars from "../../../utils/components/stars";
+
 function ProductDetailsFeedbackReviews({ id, data }) {
     return <div className='product-details-feedback-reviews'>
         {data[id].reviews.map((item, i) =>
@@ -20,7 +22,7 @@ function ProductDetailsFeedbackOverview({ id, data }) {
         <div className='mb-[30px] grid grid-cols-2'>
             <div className='product-details-feedback-overview-rating'>
                 <div className='product-details-feedback-overview-rating-value'>4.5</div>
-                <div className='product-details-feedback-overview-rating-stars'>★ ★ ★ ★ ★</div>
+                <div className='product-details-feedback-overview-rating-stars'><Stars displayTotal={false} /></div>
                 <div className='product-details-feedback-overview-rating-total'>
                     <span class='material-symbols-outlined'>person</span>
                     {data[id].reviews.length} total reviews
