@@ -2,7 +2,7 @@ import React from 'react';
 
 export function InputText(props) {
     return <div className='input-field'>
-        <input type={props.type} id={props.id} placeholder={props.placeholder} onChange={props.onChange} />
+        <input type={props.type} id={props.id} placeholder={props.placeholder} onChange={props.onChange} required />
         <div className='input-field-icon'><span class="material-symbols-outlined">{props.icon}</span></div>
     </div>
 }
