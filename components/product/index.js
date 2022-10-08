@@ -27,12 +27,16 @@ const addToCart = async function () {
     alert('The product is added to the cart.');
 }
 
-function ProductDetailsImg({ id, data }) {
-    return <div className='product-details-img'>
-        <Img class_name='img product-details-preview' src={`${Settings.server}/` + data[id].pictures[0]} alt={data[id].name} />
-        <div className='product-details-pictures'>
+function ProductPreview({ id, data }) {
+    return <div className='product-preview'>
+        <div className='product-save opacity-0'>
+            <span class="material-symbols-outlined product-preview-save-icon">favorite</span>
+        </div>
+
+        <Img class_name='img product-preview-img' src={`${Settings.server}/` + data[id].pictures[0]} alt={data[id].name} />
+        <div className='product-preview-imgs'>
             {data[id].pictures.map((el, i) =>
-                <div key={`${data[id].name} ${i + 1}`} className='product-details-picture'>
+                <div key={`${data[id].name} ${i + 1}`} className='product-preview-imgs-img'>
                     <Img class_name='img' src={`${Settings.server}/` + el} alt={`${data[id].name} ${i + 1}`} />
                 </div>)}
         </div>
@@ -82,7 +86,7 @@ function Product({ id, data }) {
     return <section className='xl:container xl:mx-auto product-details-box'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
             <div>
-                <ProductDetailsImg id={id} data={data} />
+                <ProductPreview id={id} data={data} />
             </div>
 
             <div>

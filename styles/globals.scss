@@ -206,6 +206,33 @@ h4 {
   }
 }
 
+/*------- PRODUCT SAVE -------*/
+.product-save {
+  @apply flex justify-center items-center;
+
+  z-index: 1;
+
+  position: absolute;
+  top: 7px;
+  right: 7px;
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+  box-shadow: 0 0 5px $color-shadow;
+  background-color: $color-bg;
+
+  &:hover {
+    box-shadow: 0 0 5px $color-shadow-dark;
+    transform: scale(1.1);
+  }
+
+  .product-save-icon {
+    font-size: 20px;
+  }
+}
+
 /*------- FORM -------*/
 label {
   font-weight: var(--font-bold);
@@ -377,32 +404,6 @@ header {
       box-shadow: 0 0 20px $color-shadow;
     }
 
-    .product-save {
-      @apply flex justify-center items-center;
-
-      z-index: 1;
-
-      position: absolute;
-      top: 7px;
-      right: 7px;
-
-      width: 32px;
-      height: 32px;
-
-      border-radius: 50%;
-      box-shadow: 0 0 5px $color-shadow;
-      background-color: $color-bg;
-
-      &:hover {
-        box-shadow: 0 0 5px $color-shadow-dark;
-        transform: scale(1.1);
-      }
-
-      .product-save-icon {
-        font-size: 20px;
-      }
-    }
-
     .product-name {
       font-size: 120%;
       margin-bottom: 5px;
@@ -565,6 +566,7 @@ footer {
     color: $color-bg;
     text-align: center;
     font-weight: var(--font-bold);
+    margin-bottom: 30px;
   }
 }
 
@@ -585,22 +587,26 @@ footer {
 }
 
 /*------- PRODUCT -------*/
-.product-details-img {
-  .product-details-preview {
+.product-preview {
+  position: relative;
+
+  &:hover .product-save {
+    opacity: 1;
+  }
+
+  .product-preview-img {
     width: 100%;
     @apply mb-2 md:mb-4;
   }
 
-  .product-details-pictures {
+  .product-preview-imgs {
     @apply grid grid-cols-4 gap-2 md:gap-4;
 
-    .product-details-picture {
-      img {
-        width: 100%;
-        opacity: 1;
-      }
+    .product-preview-imgs-img img {
+      width: 100%;
+      opacity: 1;
 
-      &:hover img {
+      &:hover {
         opacity: .5;
       }
     }

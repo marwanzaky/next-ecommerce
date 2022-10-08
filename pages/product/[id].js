@@ -51,14 +51,14 @@ export default function App() {
     </div>
 }
 
-export async function getServerSideProps({ params }) {
-    const req = await fetch(`${Settings.server}/products/${params.id}`);
-    const json = await req.json();
+// export async function getServerSideProps({ params }) {
+//     const req = await fetch(`${Settings.server}/products/${params.id}`);
+//     const json = await req.json();
 
-    return {
-        props: { product: json.data.product }
-    }
-}
+//     return {
+//         props: { product: json.data.product }
+//     }
+// }
 
 // export async function getStaticProps({ params }) {
 //     const req = await fetch(`${Settings.server}/products/${params.id}`);

@@ -39,24 +39,22 @@ function Signin() {
         router.push('/');
     }
 
-    return (
-        <section className='section-signup'>
-            <div className='xl:container xl:mx-auto'>
-                <form onSubmit={submit} className='m-auto max-w-[500px]'>
-                    <h3 className='text-center'>Sign In</h3>
+    return <section className='section-signup'>
+        <div className='xl:container xl:mx-auto'>
+            <form onSubmit={submit} className='m-auto max-w-[500px]'>
+                <h3 className='text-center'>Sign In</h3>
 
-                    <InputText type='text' id='email' placeholder='Enter Email' icon='email' onChange={handleChange} />
-                    <InputText type='password' id='password' placeholder='Enter Password' icon='password' onChange={handleChange} />
+                <InputText type='text' id='email' placeholder='Enter Email' icon='email' onChange={handleChange} />
+                <InputText type='password' id='password' placeholder='Enter Password' icon='password' onChange={handleChange} />
 
-                    <button type="submit" className='btn-base btn-full w-full block mb-[15px]'>Sign in</button>
+                <button type="submit" className='btn-base btn-full w-full block mb-[15px]'>Sign in</button>
 
-                    <p className='text-center'>
-                        Not a member yet?&emsp;<Link href='/signup'><a><strong>Sign Up</strong></a></Link>
-                    </p>
-                </form>
-            </div>
-        </section>
-    )
+                <p className='text-center'>
+                    Not a member yet?&emsp;<Link href='/signup'><a><strong>Sign Up</strong></a></Link>
+                </p>
+            </form>
+        </div>
+    </section>
 }
 
 export default Signin;

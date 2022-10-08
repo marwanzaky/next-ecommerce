@@ -155,6 +155,27 @@ h4 {
   color: #fff;
 }
 
+/*------- PRODUCT SAVE -------*/
+.product-save {
+  @apply flex justify-center items-center;
+  z-index: 1;
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #b2bec3;
+  background-color: #fff;
+}
+.product-save:hover {
+  box-shadow: 0 0 5px #636e72;
+  transform: scale(1.1);
+}
+.product-save .product-save-icon {
+  font-size: 20px;
+}
+
 /*------- FORM -------*/
 label {
   font-weight: var(--font-bold);
@@ -311,25 +332,6 @@ header {
 .product-box .product:hover {
   box-shadow: 0 0 20px #b2bec3;
 }
-.product-box .product .product-save {
-  @apply flex justify-center items-center;
-  z-index: 1;
-  position: absolute;
-  top: 7px;
-  right: 7px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  box-shadow: 0 0 5px #b2bec3;
-  background-color: #fff;
-}
-.product-box .product .product-save:hover {
-  box-shadow: 0 0 5px #636e72;
-  transform: scale(1.1);
-}
-.product-box .product .product-save .product-save-icon {
-  font-size: 20px;
-}
 .product-box .product .product-name {
   font-size: 120%;
   margin-bottom: 5px;
@@ -457,6 +459,7 @@ footer {
   color: #fff;
   text-align: center;
   font-weight: var(--font-bold);
+  margin-bottom: 30px;
 }
 
 /*------- CONTACT US -------*/
@@ -471,18 +474,24 @@ footer {
 }
 
 /*------- PRODUCT -------*/
-.product-details-img .product-details-preview {
+.product-preview {
+  position: relative;
+}
+.product-preview:hover .product-save {
+  opacity: 1;
+}
+.product-preview .product-preview-img {
   width: 100%;
   @apply mb-2 md:mb-4;
 }
-.product-details-img .product-details-pictures {
+.product-preview .product-preview-imgs {
   @apply grid grid-cols-4 gap-2 md:gap-4;
 }
-.product-details-img .product-details-pictures .product-details-picture img {
+.product-preview .product-preview-imgs .product-preview-imgs-img img {
   width: 100%;
   opacity: 1;
 }
-.product-details-img .product-details-pictures .product-details-picture:hover img {
+.product-preview .product-preview-imgs .product-preview-imgs-img img:hover {
   opacity: 0.5;
 }
 
