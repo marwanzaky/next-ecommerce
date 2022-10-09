@@ -1,4 +1,5 @@
-# eCommerce website
+# Next.js ecommerce
+
 ## Tech
  - HTML, CSS, SCSS
  - Tailwind CSS
