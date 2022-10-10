@@ -1,8 +1,8 @@
 const settings = {
-    name: 'Storio',
-    server: 'https://storio-api.herokuapp.com/api/v1',
-    website: 'storio.com',
-    contact: 'contact@storio.com'
+    name: 'Mamolio',
+    server: 'https://mamolio-api.vercel.app/api/v1',
+    website: 'mamolio.com',
+    contact: 'contact@mamolio.com'
 };
 
 export default settings;

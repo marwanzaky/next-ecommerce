@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   distDir: 'build',
   images: {
-    domains: ['storio-api.herokuapp.com'],
+    domains: ['mamolio-api.vercel.app'],
     formats: ['image/avif', 'image/webp'],
   }
 }
