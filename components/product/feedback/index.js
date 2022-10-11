@@ -4,15 +4,17 @@ function ProductDetailsFeedbackReviews({ id, data }) {
     return <div className='product-details-feedback-reviews'>
         {data[id].reviews.map((item, i) =>
             <div key={`review ${i + 1}`} className='product-details-feedback-reviews-review'>
-                <div className='mr-[15px] shrink-0'>
-                    <div className='product-details-feedback-reviews-review-profile'>{Shortname(item.fullname)}</div>
-                </div>
+                <div className='flex mb-[10px]'>
+                    <div className='mr-[15px] shrink-0'>
+                        <div className='product-details-feedback-reviews-review-profile'>{Shortname(item.fullname)}</div>
+                    </div>
 
-                <div className='w-auto'>
-                    <div className='product-details-feedback-reviews-review-fullname'>{item.fullname} - <span>{item.date}</span></div>
-                    <div className='product-details-feedback-reviews-review-stars'>{item.stars}</div>
-                    <div className='product-details-feedback-reviews-review-text'>{item.review}</div>
+                    <div className='w-auto'>
+                        <div className='product-details-feedback-reviews-review-fullname'>{item.fullname}&ensp;<span>{item.date}</span></div>
+                        <div className='product-details-feedback-reviews-review-stars'><Stars displayTotal={false} /></div>
+                    </div>
                 </div>
+                <div className='product-details-feedback-reviews-review-text'>{item.review}</div>
             </div>)}
     </div>
 }
@@ -23,10 +25,7 @@ function ProductDetailsFeedbackOverview({ id, data }) {
             <div className='product-details-feedback-overview-rating'>
                 <div className='product-details-feedback-overview-rating-value'>4.5</div>
                 <div className='product-details-feedback-overview-rating-stars'><Stars displayTotal={false} /></div>
-                <div className='product-details-feedback-overview-rating-total'>
-                    <span class='material-symbols-outlined'>person</span>
-                    {data[id].reviews.length} total reviews
-                </div>
+                <div className='product-details-feedback-overview-rating-total'>{data[id].reviews.length} reviews</div>
             </div>
 
             <div className='product-details-feedback-overview-rates'>
@@ -41,7 +40,7 @@ function ProductDetailsFeedbackOverview({ id, data }) {
         </div>
 
         <div className='flex justify-center'>
-            <button className='btn-base btn-full !m-0'>Add review</button>
+            <button className='btn-base btn-full !m-0'>Write a review</button>
         </div>
     </div>
 }

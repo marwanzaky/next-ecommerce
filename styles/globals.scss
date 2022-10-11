@@ -662,7 +662,7 @@ footer {
   border-radius: $border-radius;
   
   .product-details-feedback-reviews-review {
-    @apply flex;
+    // @apply flex;
     margin-bottom: 30px;
 
     .product-details-feedback-reviews-review-profile {
@@ -672,13 +672,18 @@ footer {
       background-color: $color-primary-light;
     }
 
-    // .product-details-feedback-reviews-review-fullname span {
-    //   color: $color-grey;
-    // }
+    .product-details-feedback-reviews-review-fullname {
+      @apply flex items-center;
+
+      span {
+        font-size: 80%;
+        color: $color-grey;
+      }
+    }
 
     .product-details-feedback-reviews-review-stars {
       color: $color-primary-dark;
-      margin-bottom: 5px;
+      font-size: 80%;
     }
 
     .product-details-feedback-reviews-review-text {
@@ -697,6 +702,7 @@ footer {
   .product-details-feedback-overview-rating-stars {
     @apply flex justify-center;
     color: $color-primary-dark;
+    margin-bottom: 5px;
   }
 
   .product-details-feedback-overview-rating-total {
@@ -721,8 +727,10 @@ footer {
     }
 
     .product-details-feedback-overview-rates-li-bar {
-      height: 2px;
+      height: 5px;
       width: 100%;
+      // border-radius: 8px;
+      overflow: hidden;
       background-color: $color-grey-light;
     
       .product-details-feedback-overview-rates-li-bar-percent {

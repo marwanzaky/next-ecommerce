@@ -531,7 +531,6 @@ footer {
   border-radius: 12px;
 }
 .product-details-feedback .product-details-feedback-reviews-review {
-  @apply flex;
   margin-bottom: 30px;
 }
 .product-details-feedback .product-details-feedback-reviews-review .product-details-feedback-reviews-review-profile {
@@ -540,9 +539,16 @@ footer {
   color: #009679;
   background-color: #b8fff1;
 }
+.product-details-feedback .product-details-feedback-reviews-review .product-details-feedback-reviews-review-fullname {
+  @apply flex items-center;
+}
+.product-details-feedback .product-details-feedback-reviews-review .product-details-feedback-reviews-review-fullname span {
+  font-size: 80%;
+  color: #868686;
+}
 .product-details-feedback .product-details-feedback-reviews-review .product-details-feedback-reviews-review-stars {
   color: #009679;
-  margin-bottom: 5px;
+  font-size: 80%;
 }
 .product-details-feedback .product-details-feedback-reviews-review .product-details-feedback-reviews-review-text {
   color: #868686;
@@ -556,6 +562,7 @@ footer {
 .product-details-feedback-overview-rating .product-details-feedback-overview-rating-stars {
   @apply flex justify-center;
   color: #009679;
+  margin-bottom: 5px;
 }
 .product-details-feedback-overview-rating .product-details-feedback-overview-rating-total {
   @apply flex justify-center items-center;
@@ -575,8 +582,9 @@ footer {
   width: 50px;
 }
 .product-details-feedback-overview-rates .product-details-feedback-overview-rates-ul .product-details-feedback-overview-rates-li .product-details-feedback-overview-rates-li-bar {
-  height: 2px;
+  height: 5px;
   width: 100%;
+  overflow: hidden;
   background-color: #dfe6e9;
 }
 .product-details-feedback-overview-rates .product-details-feedback-overview-rates-ul .product-details-feedback-overview-rates-li .product-details-feedback-overview-rates-li-bar .product-details-feedback-overview-rates-li-bar-percent {
