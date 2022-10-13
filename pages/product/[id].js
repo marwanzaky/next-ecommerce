@@ -18,7 +18,12 @@ class Product extends React.Component {
     }
 
     async componentDidMount() {
-        const res = await fetch(Settings.server + '/products');
+        let id = '';
+
+        if (loaded && typeof window !== "undefined")
+            id = convertIdToName(window.location.pathname.replace('/product/', ''));
+
+        const res = await fetch(`${Settings.server}/products/${id}`);
         const json = await res.json();
 
         this.setState({
@@ -28,19 +33,13 @@ class Product extends React.Component {
     }
 
     render() {
-        let product = {};
         const { loaded, data } = this.state;
-
-        if (loaded && typeof window !== "undefined") {
-            const id = window.location.pathname.replace('/product/', '');
-            product = data.find(el => el.name === convertIdToName(id));
-        }
 
         if (!loaded)
             return <></>
 
         return <>
-            <ProductComponent product={product} />
+            <ProductComponent product={data} />
             <YouMayAlsoLike />
         </>
     }
