@@ -20,14 +20,16 @@ class Product extends React.Component {
     async componentDidMount() {
         let id = '';
 
-        if (loaded && typeof window !== "undefined")
+        if (typeof window !== "undefined")
             id = convertIdToName(window.location.pathname.replace('/product/', ''));
 
         const res = await fetch(`${Settings.server}/products/${id}`);
         const json = await res.json();
 
+        console.log(json);
+
         this.setState({
-            data: json.data.products,
+            data: json.data.product,
             loaded: true
         });
     }
