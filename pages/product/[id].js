@@ -6,7 +6,7 @@ import YouMayAlsoLike from '../../components/youMayAlsoLike';
 import Footer from '../../components/footer';
 
 import Settings from '../../utils/settings';
-import { convertIdToName } from '../../utils/convertStr';
+import { convertIdToName, convertNameToId } from '../../utils/convertStr';
 
 class Product extends React.Component {
     constructor(props) {
@@ -18,30 +18,29 @@ class Product extends React.Component {
     }
 
     async componentDidMount() {
-        let id = '';
-
-        if (typeof window !== "undefined")
-            id = convertIdToName(window.location.pathname.replace('/product/', ''));
-
-        const res = await fetch(`${Settings.server}/products/${id}`);
+        const res = await fetch(Settings.server + '/products');
         const json = await res.json();
 
-        console.log(json);
-
         this.setState({
-            data: json.data.product,
+            data: json.data.products,
             loaded: true
         });
     }
 
     render() {
+        let product = {};
         const { loaded, data } = this.state;
+
+        if (loaded && typeof window !== "undefined") {
+            const id = window.location.pathname.replace('/product/', '');
+            product = data.find(el => el.name === convertIdToName(id));
+        }
 
         if (!loaded)
             return <></>
 
         return <>
-            <ProductComponent product={data} />
+            <ProductComponent product={product} />
             <YouMayAlsoLike />
         </>
     }
@@ -78,7 +77,7 @@ export default function App() {
 //     const json = await req.json();
 
 //     const paths = json.data.products.map(product => {
-//         return { params: { id: product.id.toString() } }
+//         return { params: { id: convertNameToId(product.name) } }
 //     });
 
 //     return {
