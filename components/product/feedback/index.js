@@ -1,8 +1,8 @@
 import Stars from "../../../utils/components/stars";
 
-function ProductDetailsFeedbackReviews({ id, data }) {
+function ProductDetailsFeedbackReviews({ product }) {
     return <div className='product-details-feedback-reviews'>
-        {data[id].reviews.map((item, i) =>
+        {product.reviews.map((item, i) =>
             <div key={`review ${i + 1}`} className='product-details-feedback-reviews-review'>
                 <div className='flex mb-[10px]'>
                     <div className='mr-[15px] shrink-0'>
@@ -19,13 +19,13 @@ function ProductDetailsFeedbackReviews({ id, data }) {
     </div>
 }
 
-function ProductDetailsFeedbackOverview({ id, data }) {
+function ProductDetailsFeedbackOverview({ product }) {
     return <div className='product-details-feedback-overview'>
         <div className='mb-[30px] grid grid-cols-2'>
             <div className='product-details-feedback-overview-rating'>
                 <div className='product-details-feedback-overview-rating-value'>4.5</div>
                 <div className='product-details-feedback-overview-rating-stars'><Stars displayTotal={false} /></div>
-                <div className='product-details-feedback-overview-rating-total'>{data[id].reviews.length} reviews</div>
+                <div className='product-details-feedback-overview-rating-total'>{product.reviews.length} reviews</div>
             </div>
 
             <div className='product-details-feedback-overview-rates'>
@@ -55,13 +55,13 @@ function ProductDetailsFeedbackOverviewRatesLi({ stars, percent }) {
     </li>
 }
 
-function ProductDetailsFeedback({ id, data }) {
+function ProductDetailsFeedback({ product }) {
     return <div className='product-details-feedback'>
         <h4>Rating and reviews</h4>
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10'>
-            <ProductDetailsFeedbackOverview id={id} data={data} />
-            <ProductDetailsFeedbackReviews id={id} data={data} />
+            <ProductDetailsFeedbackOverview product={product} />
+            <ProductDetailsFeedbackReviews product={product} />
         </div>
     </div>
 }

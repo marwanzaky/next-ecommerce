@@ -47,12 +47,12 @@ class YouMayAlsoLike extends React.Component {
 
     render() {
         const { loaded, data } = this.state;
-        const items = randomItems(data);
+        // const items = randomItems(data);
 
         if (!loaded)
             return <></>
 
-        return <ProductsComponent title='You may also like' data={items} />
+        return <ProductsComponent title='You may also like' data={data} />
     }
 }
 

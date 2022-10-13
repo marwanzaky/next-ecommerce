@@ -6,6 +6,7 @@ import YouMayAlsoLike from '../../components/youMayAlsoLike';
 import Footer from '../../components/footer';
 
 import Settings from '../../utils/settings';
+import { convertIdToName } from '../../utils/convertStr';
 
 class Product extends React.Component {
     constructor(props) {
@@ -27,17 +28,19 @@ class Product extends React.Component {
     }
 
     render() {
-        let id = 0;
+        let product = {};
         const { loaded, data } = this.state;
 
-        if (typeof window !== "undefined")
-            id = window.location.pathname.replace('/product/', '') * 1;
+        if (loaded && typeof window !== "undefined") {
+            const id = window.location.pathname.replace('/product/', '');
+            product = data.find(el => el.name === convertIdToName(id));
+        }
 
         if (!loaded)
             return <></>
 
         return <>
-            <ProductComponent id={id} data={data} />
+            <ProductComponent product={product} />
             <YouMayAlsoLike />
         </>
     }

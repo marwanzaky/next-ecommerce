@@ -29,23 +29,23 @@ const addToCart = async function () {
     alert('The product is added to the cart.');
 }
 
-function ProductPreview({ id, data }) {
+function ProductPreview({ product }) {
     return <div className='product-preview'>
         <div className='product-save opacity-0'>
             <span class="material-symbols-outlined product-preview-save-icon">favorite</span>
         </div>
 
-        <Img class_name='img product-preview-img' src={`${Settings.server}/` + data[id].pictures[0]} alt={data[id].name} />
+        <Img class_name='img product-preview-img' src={`${Settings.server}/` + product.imgs[0]} alt={product.name} />
         <div className='product-preview-imgs'>
-            {data[id].pictures.map((el, i) =>
-                <div key={`${data[id].name} ${i + 1}`} className='product-preview-imgs-img'>
-                    <Img class_name='img' src={`${Settings.server}/` + el} alt={`${data[id].name} ${i + 1}`} />
+            {product.imgs.map((el, i) =>
+                <div key={`${product.name} ${i + 1}`} className='product-preview-imgs-img'>
+                    <Img class_name='img' src={`${Settings.server}/` + el} alt={`${product.name} ${i + 1}`} />
                 </div>)}
         </div>
     </div>
 }
 
-function ProductDetails({ id, data }) {
+function ProductDetails({ product }) {
     const router = useRouter();
 
     const purchase = async event => {
@@ -55,31 +55,31 @@ function ProductDetails({ id, data }) {
     }
 
     return <div className='product-details'>
-        <h1 className='product-details-name' >{data[id].name}</h1>
+        <h1 className='product-details-name' >{product.name}</h1>
 
         <div className='flex flex-row mb-[5px]'>
-            <span className='product-details-price'>{'$' + data[id].price / 100}</span>
-            <span className='product-details-price_compare' >{'$' + data[id].priceCompare / 100}</span>
+            <span className='product-details-price'>{'$' + product.price / 100}</span>
+            <span className='product-details-price_compare' >{'$' + product.priceCompare / 100}</span>
         </div>
 
-        <div className='product-details-stars'><Stars reviews={data[id].reviews.length} /></div>
+        <div className='product-details-stars'><Stars reviews={product.reviews.length} /></div>
 
         <button className='w-full md:w-[400px] btn-base btn-ghost-grey' onClick={addToCart}>Add to cart</button>
         <button className='w-full md:w-[400px] btn-base btn-full' onClick={purchase}>Buy it now</button>
 
         <h4 className='product-details-des-title'>Description</h4>
-        <p className='product-details-des-description'>{data[id].description}</p>
+        <p className='product-details-des-description'>{product.description}</p>
     </div>
 }
 
-function Product({ id, data }) {
+function Product({ product }) {
     return <section className='xl:container xl:mx-auto product-details-box'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5 mb:[30px] md:mb-[50px]'>
-            <ProductPreview id={id} data={data} />
-            <ProductDetails id={id} data={data} />
+            <ProductPreview product={product} />
+            <ProductDetails product={product} />
         </div>
 
-        <ProductDetailsFeedback id={id} data={data} />
+        <ProductDetailsFeedback product={product} />
     </section>
 }
 
