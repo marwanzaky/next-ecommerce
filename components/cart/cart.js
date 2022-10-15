@@ -1,13 +1,8 @@
-import Settings from './settings';
-import CartItems from './cartItems';
+import Settings from '../../utils/settings';
+import CartItems from '../../utils/cartItems';
 
-export const removeCartItem = event => {
-    const clickedButton = event.target;
-    const clickedItem = clickedButton.parentElement.parentElement;
-    const clickedUrl = clickedItem.querySelector('a').href;
-
+export const removeCartItem = (event, id) => {
     const cartItems = CartItems.items;
-    const id = new URL(clickedUrl).searchParams.get('id') * 1;
 
     for (let i = 0; i < cartItems.length; i++) {
         if (cartItems[i]['id'] === id) {
@@ -20,7 +15,9 @@ export const removeCartItem = event => {
         }
     }
 
+    const clickedItem = event.target.parentElement.parentElement;
     clickedItem.remove();
+
     updateCartSubtotal();
 }
 

@@ -6,15 +6,18 @@ import Img from '../../utils/components/img';
 import Settings from '../../utils/settings';
 import CartItems from '../../utils/cartItems';
 
-import { removeCartItem, checkout, updateCartSubtotal } from '../../utils/cart';
+import { removeCartItem, checkout, updateCartSubtotal } from './cart';
+import { convertNameToId } from '../../utils/convertStr';
 
 function Item({ id, name, price, src, alt }) {
+    const nameId = convertNameToId(name);
+
     return (
         <tr className="cart-table-item">
             <th className="cart-table-item-product">
                 <div className="cart-table-item-product-div" >
-                    <Link href={'/product/' + id}><a className='cart-table-item-product-img'><Img src={`${Settings.server}/${src}`} alt={alt} /></a></Link>
-                    <Link href={'/product/' + id}><a className='cart-table-item-product-name'>{name}</a></Link>
+                    <Link href={'/product/' + nameId}><a className='cart-table-item-product-img'><Img src={`${Settings.server}/${src}`} alt={alt} /></a></Link>
+                    <Link href={'/product/' + nameId}><a className='cart-table-item-product-name'>{name}</a></Link>
                 </div>
             </th>
             <th className="cart-table-item-price">{'$' + price / 100}</th>
@@ -23,7 +26,7 @@ function Item({ id, name, price, src, alt }) {
             </th>
             <th className="cart-table-item-total">{'$' + price / 100}</th>
             <th className="cart-table-item-remove">
-                <button className="btn-base btn-ghost-grey cart-table-item-remove-btn" onClick={removeCartItem}>Remove</button>
+                <button className="btn-base btn-ghost-grey cart-table-item-remove-btn" onClick={event => removeCartItem(event, id)}>Remove</button>
             </th>
         </tr>
     )
