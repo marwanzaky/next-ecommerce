@@ -656,4 +656,12 @@ footer {
 }
 .cart-item-checkout .cart-item-checkout-btn {
   margin: 0 0 30px 0;
+}
+
+/*------- SIGN UP / SING IN -------*/
+.section-signin .signin-p,
+.section-signup .signup-p {
+  color: #868686;
+  text-align: center;
+  margin-bottom: 30px;
 }/*# sourceMappingURL=globals.css.map */

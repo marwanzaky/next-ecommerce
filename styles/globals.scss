@@ -829,3 +829,11 @@ footer {
     margin: 0 0 30px 0;
   }
 }
+
+/*------- SIGN UP / SING IN -------*/
+.section-signin .signin-p,
+.section-signup .signup-p {
+  color: $color-grey;
+  text-align: center;
+  margin-bottom: 30px;
+}
