@@ -4,10 +4,10 @@ import Link from 'next/link';
 import CartItems from '../../utils/cartItems';
 import Settings from '../../utils/settings';
 
-function Nav(props) {
+function Nav({ href, name }) {
     return <li>
-        <Link href={props.href}>
-            <a>{props.name}</a>
+        <Link href={href}>
+            <a id={`${name.toLowerCase()}`}>{name}</a>
         </Link>
     </li>
 }

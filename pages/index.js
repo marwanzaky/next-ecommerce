@@ -3,7 +3,6 @@ import Header from '../components/header';
 import Products from '../components/products';
 import Testimonials from '../components/testimonials';
 import WhyChooseUs from '../components/whyChooseUs';
-import About from '../components/about';
 import Footer from '../components/footer';
 
 function Home() {
@@ -13,7 +12,6 @@ function Home() {
     <Products />
     <WhyChooseUs />
     <Testimonials />
-    {/* <About /> */}
     <Footer />
   </div>
 }

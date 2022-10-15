@@ -43,7 +43,7 @@ function Signin() {
         <div className='xl:container xl:mx-auto'>
             <form onSubmit={submit} className='m-auto max-w-[500px]'>
                 <h4 className='text-center'>Sign In</h4>
-                <p className='signin-p'>Sign in to get personalized product recommendations, save products and synchronize your data across your devices.</p>
+                <p className='signin-p'>Sign in to get personalized product recommendations, save and synchronize your data across your devices.</p>
 
                 <InputText type='text' id='email' placeholder='Enter Email' icon='email' onChange={handleChange} />
                 <InputText type='password' id='password' placeholder='Enter Password' icon='password' onChange={handleChange} />

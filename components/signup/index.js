@@ -43,7 +43,7 @@ function Signup() {
         <div className='xl:container xl:mx-auto'>
             <form onSubmit={submit} className='m-auto max-w-[500px]'>
                 <h4 className='text-center'>Sign Up</h4>
-                <p className='signup-p'>Create an account to unlock all the benefits to easily save, and synchronize your data across your devices.</p>
+                <p className='signup-p'>Create an account to unlock all the benefits to easily save and synchronize your data across your devices.</p>
 
                 <InputText type='text' id='name' placeholder='Enter Name' icon='person' onChange={handleChange} />
                 <InputText type='text' id='email' placeholder='Enter Email' icon='email' onChange={handleChange} />
