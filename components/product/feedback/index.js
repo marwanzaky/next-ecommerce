@@ -6,11 +6,11 @@ function ProductDetailsFeedbackReviews({ product }) {
             <div key={`review ${i + 1}`} className='product-details-feedback-reviews-review'>
                 <div className='flex mb-[10px]'>
                     <div className='mr-[15px] shrink-0'>
-                        <div className='product-details-feedback-reviews-review-profile'>{Shortname(item.fullname)}</div>
+                        <div className='product-details-feedback-reviews-review-profile'>{shortname(item.user.name)}</div>
                     </div>
 
                     <div className='w-auto'>
-                        <div className='product-details-feedback-reviews-review-fullname'>{item.fullname}&ensp;<span>{item.date}</span></div>
+                        <div className='product-details-feedback-reviews-review-fullname'>{item.user.name}&ensp;<span>{stringToDate(item.createdAt)}</span></div>
                         <div className='product-details-feedback-reviews-review-stars'><Stars displayTotal={false} /></div>
                     </div>
                 </div>
@@ -66,7 +66,12 @@ function ProductDetailsFeedback({ product }) {
     </div>
 }
 
-function Shortname(fullname) {
+function stringToDate(string) {
+    const date = new Date(string);
+    return date.toLocaleDateString('en-us', { year: "numeric", month: "short", day: "numeric" });
+}
+
+function shortname(fullname) {
     return fullname.split(' ').map(word => word[0]).join('').toUpperCase();
 }
 
