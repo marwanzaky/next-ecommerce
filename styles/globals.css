@@ -4,16 +4,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@media screen and (min-width: 601px) {
-  body, button {
-    font-size: 15px;
-  }
-}
-@media screen and (max-width: 600px) {
-  body, button {
-    font-size: 12px;
-  }
-}
 /*------- VARIABLES -------*/
 /*------- BASIC SETUP -------*/
 * {
@@ -25,6 +15,7 @@
 
 body,
 button {
+  @apply text-[12px] sm:text-[15px];
   font-family: var(--font-family);
 }
 
@@ -543,7 +534,7 @@ footer {
   @apply flex items-center;
 }
 .product-details-feedback .product-details-feedback-reviews-review .product-details-feedback-reviews-review-fullname span {
-  font-size: 80%;
+  font-size: 100%;
   color: #868686;
 }
 .product-details-feedback .product-details-feedback-reviews-review .product-details-feedback-reviews-review-stars {

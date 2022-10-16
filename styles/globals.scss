@@ -5,18 +5,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
-@media screen and (min-width: 601px) {
-  body, button {
-    font-size: 15px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  body, button {
-    font-size: 12px;
-  }
-}
-
 /*------- VARIABLES -------*/
 $color-primary-light: #b8fff1;
 $color-primary: #00b894;
@@ -64,6 +52,7 @@ $field-ph: 25px;
 
 body,
 button {
+  @apply text-[12px] sm:text-[15px];
   font-family: var(--font-family);
 }
 
@@ -676,7 +665,7 @@ footer {
       @apply flex items-center;
 
       span {
-        font-size: 80%;
+        font-size: 100%;
         color: $color-grey;
       }
     }
