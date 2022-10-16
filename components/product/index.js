@@ -6,28 +6,8 @@ import ProductDetailsFeedback from './feedback';
 import Img from '../../utils/components/img';
 import Stars from '../../utils/components/stars';
 
-import CartItems from '../../utils/cartItems';
 import Settings from '../../utils/settings';
-
-const addToCart = async function () {
-    const id = new URL(window.location.href).searchParams.get('id') * 1;
-
-    for (let i = 0; i < CartItems.items.length; i++) {
-        if (CartItems.items[i]['id'] === id) {
-            alert('The item is already added to the cart.');
-            return;
-        }
-    }
-
-    const res = await fetch(Settings.server + '/products/' + id);
-    const json = await res.json();
-
-    const cartItems = CartItems.items;
-    cartItems.unshift(json.data.product);
-    CartItems.items = cartItems;
-
-    alert('The product is added to the cart.');
-}
+import AddToCart from '../../utils/addToCart';
 
 function ProductPreview({ product }) {
     return <div className='product-preview'>
@@ -50,7 +30,7 @@ function ProductDetails({ product }) {
 
     const purchase = async event => {
         event.preventDefault();
-        await addToCart();
+        await AddToCart(product.id, product.name);
         router.push('/cart');
     }
 
@@ -64,7 +44,7 @@ function ProductDetails({ product }) {
 
         <div className='product-details-stars'><Stars reviews={product.reviews.length} /></div>
 
-        <button className='w-full md:w-[400px] btn-base btn-ghost-grey' onClick={addToCart}>Add to cart</button>
+        <button className='w-full md:w-[400px] btn-base btn-ghost-grey' onClick={() => AddToCart(product.id, product.name)}>Add to cart</button>
         <button className='w-full md:w-[400px] btn-base btn-full' onClick={purchase}>Buy it now</button>
 
         <h4 className='product-details-des-title'>Description</h4>

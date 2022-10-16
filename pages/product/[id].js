@@ -6,7 +6,7 @@ import YouMayAlsoLike from '../../components/youMayAlsoLike';
 import Footer from '../../components/footer';
 
 import Settings from '../../utils/settings';
-import { convertIdToName, convertNameToId } from '../../utils/convertStr';
+import { convertIdToName } from '../../utils/convertStr';
 
 class Product extends React.Component {
     constructor(props) {
