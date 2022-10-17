@@ -5,7 +5,7 @@ function Header() {
 
     const shopNow = event => {
         event.preventDefault();
-        router.push('/product/1');
+        router.push('/product/soft-cover-journal');
     }
 
     const explore = event => {
@@ -16,8 +16,8 @@ function Header() {
     return (
         <header>
             <div className='xl:container xl:mx-auto header-box'>
-                <h1 className='header-text'>Anniversary Gift For Him.</h1>
-                <p className='header-parag mb-[50px]'>This soft cover journal is a great reminder to never forget how wildly capable you are.</p>
+                <h1 className='header-text'>Soft Cover Journal.</h1>
+                <p className='header-parag mb-[50px]'>This handmade, one-of-a-kind journal is perfect for note taking on the go.</p>
 
                 <div className='flex justify-center'>
                     <button onClick={shopNow} className='btn-base btn-full'>Shop now</button>
