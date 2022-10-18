@@ -3,7 +3,7 @@ import React from 'react';
 function Reason({ title, des, icon }) {
     return <div className='why_choose_us-reason'>
         <div className='m-auto lg:m-0 why_choose_us-reason-icon'>
-            <span class='material-symbols-outlined'>{icon}</span>
+            <span className='material-symbols-outlined'>{icon}</span>
         </div>
 
         <h4 className='text-center lg:text-left'>{title}</h4>

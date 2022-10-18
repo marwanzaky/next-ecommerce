@@ -12,7 +12,7 @@ import AddToCart from '../../utils/addToCart';
 function ProductPreview({ product }) {
     return <div className='product-preview'>
         <div className='product-save opacity-0'>
-            <span class="material-symbols-outlined product-preview-save-icon">favorite</span>
+            <span className="material-symbols-outlined product-preview-save-icon">favorite</span>
         </div>
 
         <Img class_name='img product-preview-img' src={`${Settings.server}/` + product.imgs[0]} alt={product.name} />

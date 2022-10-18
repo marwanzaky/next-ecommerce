@@ -1,5 +1,5 @@
 function Star() {
-    return <span class="material-symbols-outlined stars-star-icon">star</span>
+    return <span className="material-symbols-outlined stars-star-icon">star</span>
 }
 
 function Stars({ reviews, displayTotal = true }) {

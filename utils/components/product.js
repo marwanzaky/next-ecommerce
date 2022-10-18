@@ -11,14 +11,14 @@ import { convertNameToId } from '../convertStr';
 
 function AddToCart({ id, name }) {
     return <button className='product-tag-add btn-base btn-ghost' onClick={() => AddToCartFun(id, name)}>
-        <span class="material-symbols-outlined">shopping_cart</span>
+        <span className="material-symbols-outlined">shopping_cart</span>
     </button>
 }
 
 function Product({ id, name, img, price, priceCompare, reviews }) {
     return <div className='flex flex-col product'>
         <div className='product-save'>
-            <span class="material-symbols-outlined product-save-icon">favorite</span>
+            <span className="material-symbols-outlined product-save-icon">favorite</span>
         </div>
 
         <Link href={'/product/' + convertNameToId(name)}>

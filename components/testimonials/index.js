@@ -4,7 +4,7 @@ function Testimonial(props) {
     return (
         <div className='testimonial'>
             <div className='m-auto lg:m-0 testimonial-icon'>
-                <span class='material-symbols-outlined'>format_quote</span>
+                <span className='material-symbols-outlined'>format_quote</span>
             </div>
 
             <blockquote className='text-center lg:text-left'>
