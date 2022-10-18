@@ -9,20 +9,36 @@ import Stars from '../../utils/components/stars';
 import Settings from '../../utils/settings';
 import AddToCart from '../../utils/addToCart';
 
-function ProductPreview({ product }) {
-    return <div className='product-preview'>
-        <div className='product-save opacity-0'>
-            <span className="material-symbols-outlined product-preview-save-icon">favorite</span>
-        </div>
+class ProductPreview extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            img: 0
+        };
+    }
 
-        <Img class_name='img product-preview-img' src={`${Settings.server}/` + product.imgs[0]} alt={product.name} />
-        <div className='product-preview-imgs'>
-            {product.imgs.map((el, i) =>
-                <div key={`${product.name} ${i + 1}`} className='product-preview-imgs-img'>
-                    <Img class_name='img' src={`${Settings.server}/` + el} alt={`${product.name} ${i + 1}`} />
-                </div>)}
+    render() {
+        const { product } = this.props;
+        const { img } = this.state;
+
+        const previewImg = img => {
+            this.setState({ img });
+        }
+
+        return <div className='product-preview'>
+            <div className='product-save opacity-0'>
+                <span className="material-symbols-outlined product-preview-save-icon">favorite</span>
+            </div>
+
+            <Img class_name='img product-preview-img' src={`${Settings.server}/` + product.imgs[img]} alt={product.name} />
+            <div className='product-preview-imgs'>
+                {product.imgs.map((el, i) =>
+                    <div key={`${product.name} ${i + 1}`} className='product-preview-imgs-img' onClick={() => previewImg(i)}>
+                        <Img class_name='img' src={`${Settings.server}/` + el} alt={`${product.name} ${i + 1}`} />
+                    </div>)}
+            </div>
         </div>
-    </div>
+    }
 }
 
 function ProductDetails({ product }) {
