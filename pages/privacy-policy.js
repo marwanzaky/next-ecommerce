@@ -1,10 +1,10 @@
 import Layout from '../components/layout';
 import PrivacyPolicyComponent from '../components/privacyPolicy';
 
-function ShippingPolicy() {
-    return <Layout title='Shipping Policy'>
+function PrivacyPolicy() {
+    return <Layout title='Privacy Policy'>
         <PrivacyPolicyComponent />
     </Layout>
 }
 
-export default ShippingPolicy;
+export default PrivacyPolicy;

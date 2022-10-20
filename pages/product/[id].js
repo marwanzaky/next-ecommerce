@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Navigation from '../../components/navigation';
+import Layout from '../../components/layout';
+
 import ProductComponent from '../../components/product';
 import YouMayAlsoLike from '../../components/youMayAlsoLike';
-import Footer from '../../components/footer';
 
 import Settings from '../../utils/settings';
 import { convertIdToName } from '../../utils/convertStr';
@@ -47,11 +47,9 @@ class Product extends React.Component {
 }
 
 export default function App() {
-    return <div className="App">
-        <Navigation />
+    return <Layout title='Product'>
         <Product />
-        <Footer />
-    </div>
+    </Layout>
 }
 
 // export async function getServerSideProps({ params }) {
