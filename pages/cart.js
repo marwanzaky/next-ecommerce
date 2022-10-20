@@ -1,13 +1,10 @@
-import Navigation from '../components/navigation';
+import Layout from '../components/layout';
 import CartComponent from "../components/cart";
-import Footer from '../components/footer';
 
 function Cart() {
-    return <div className="App">
-        <Navigation />
+    return <Layout title='Cart'>
         <CartComponent />
-        <Footer />
-    </div>
+    </Layout>
 }
 
 export default Cart;

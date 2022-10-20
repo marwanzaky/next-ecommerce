@@ -1,15 +1,10 @@
-import React from 'react';
-
-import NavigationComponent from '../components/navigation';
+import Layout from '../components/layout';
 import SigninComponent from '../components/signin';
-import FooterComponent from '../components/footer';
 
 function Signin() {
-    return <div className="App">
-        <NavigationComponent />
+    return <Layout title='Sign In'>
         <SigninComponent />
-        <FooterComponent />
-    </div>
+    </Layout>
 }
 
 export default Signin;

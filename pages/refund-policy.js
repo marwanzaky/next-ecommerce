@@ -1,15 +1,10 @@
-import React from 'react';
-
-import NavigationComponent from '../components/navigation';
+import Layout from '../components/layout';
 import RefundPolicyComponent from '../components/refundPolicy';
-import FooterComponent from '../components/footer';
 
 function RefundPolicy() {
-    return <div className="App">
-        <NavigationComponent />
+    return <Layout title='Refund Policy'>
         <RefundPolicyComponent />
-        <FooterComponent />
-    </div>
+    </Layout>
 }
 
 export default RefundPolicy;

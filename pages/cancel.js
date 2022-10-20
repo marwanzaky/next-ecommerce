@@ -1,15 +1,12 @@
-import NavigationComponent from '../components/navigation';
+import Layout from '../components/layout';
 import CancelComponent from '../components/cancel';
 import AboutComponent from '../components/about';
-import FooterComponent from '../components/footer';
 
 function Cancel() {
-    return <div className='App'>
-        <NavigationComponent />
+    return <Layout title='Cancel'>
         <CancelComponent />
         <AboutComponent />
-        <FooterComponent />
-    </div>
+    </Layout>
 }
 
 export default Cancel;

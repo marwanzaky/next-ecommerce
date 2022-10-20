@@ -1,15 +1,12 @@
-import NavigationComponent from '../components/navigation';
+import Layout from '../components/layout';
 import SuccessComponent from '../components/success';
 import AboutComponent from '../components/about';
-import FooterComponent from '../components/footer';
 
 function Success() {
-    return <div className='App'>
-        <NavigationComponent />
+    return <Layout title='Success'>
         <SuccessComponent />
         <AboutComponent />
-        <FooterComponent />
-    </div>
+    </Layout>
 }
 
 export default Success;

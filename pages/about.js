@@ -1,13 +1,10 @@
-import NavigationComponent from '../components/navigation';
 import AboutComponent from '../components/about';
-import FooterComponent from '../components/footer';
+import Layout from '../components/layout';
 
 function AboutPage() {
-    return <div className="App">
-        <NavigationComponent />
+    return <Layout title='About'>
         <AboutComponent />
-        <FooterComponent />
-    </div>
+    </Layout>
 }
 
 export default AboutPage;

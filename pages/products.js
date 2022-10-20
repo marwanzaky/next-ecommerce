@@ -1,13 +1,10 @@
-import Navigation from '../components/navigation';
 import Products from '../components/products';
-import Footer from '../components/footer';
+import Layout from '../components/layout';
 
 function Shop() {
-    return <div className="App">
-        <Navigation />
+    return <Layout title='Products'>
         <Products />
-        <Footer />
-    </div>
+    </Layout>
 }
 
 export default Shop;

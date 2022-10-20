@@ -1,15 +1,10 @@
-import React from 'react';
-
-import NavigationComponent from '../components/navigation';
+import Layout from '../components/layout';
 import PrivacyPolicyComponent from '../components/privacyPolicy';
-import FooterComponent from '../components/footer';
 
 function ShippingPolicy() {
-    return <div className="App">
-        <NavigationComponent />
+    return <Layout title='Shipping Policy'>
         <PrivacyPolicyComponent />
-        <FooterComponent />
-    </div>
+    </Layout>
 }
 
 export default ShippingPolicy;

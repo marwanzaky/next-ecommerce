@@ -1,15 +1,10 @@
-import React from 'react';
-
-import NavigationComponent from '../components/navigation';
+import Layout from '../components/layout';
 import TermsOfServiceComponent from '../components/termsOfService';
-import FooterComponent from '../components/footer';
 
 function TermsOfService() {
-    return <div className="App">
-        <NavigationComponent />
+    return <Layout title='Terms Of Service'>
         <TermsOfServiceComponent />
-        <FooterComponent />
-    </div>
+    </Layout>
 }
 
 export default TermsOfService;

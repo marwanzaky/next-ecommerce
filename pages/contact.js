@@ -1,13 +1,10 @@
-import Navigation from '../components/navigation';
+import Layout from '../components/layout';
 import Contact from '../components/contact';
-import Footer from '../components/footer';
 
 function ContactPage() {
-    return <div className="App">
-        <Navigation />
+    return <Layout title='Contact'>
         <Contact />
-        <Footer />
-    </div>
+    </Layout>
 }
 
 export default ContactPage;
