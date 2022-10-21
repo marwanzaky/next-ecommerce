@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Layout from '../components/layout';
 import SignupComponent from '../components/signup';
 

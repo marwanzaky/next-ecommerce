@@ -1,4 +1,5 @@
 import Layout from '../components/layout';
+
 import SuccessComponent from '../components/success';
 import AboutComponent from '../components/about';
 

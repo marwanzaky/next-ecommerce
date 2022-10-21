@@ -1,5 +1,5 @@
-import AboutComponent from '../components/about';
 import Layout from '../components/layout';
+import AboutComponent from '../components/about';
 
 function AboutPage() {
     return <Layout title='About'>
