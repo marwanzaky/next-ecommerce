@@ -31,7 +31,7 @@ class Cart extends React.Component {
 
         return <section className="section-cart">
             <div className="xl:container xl:mx-auto">
-                <h4 className='text-center'>Shopping Cart</h4>
+                <h4 className='text-center'>Your Cart</h4>
 
                 <div className="cart-container">
                     <CartTable items={cartItems.items} />
