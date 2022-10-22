@@ -55,7 +55,7 @@ class NavBtnCart extends React.Component {
 
 function Navigation() {
     return <nav>
-        <div className='main-nav-promo'>Welcome to our Store!</div>
+        <div className='main-nav-promo'>Free shipping on orders over $50</div>
         <div className="xl:container xl:mx-auto p-5 main-nav-box">
             <Link href='/'><a className='logo'>{Settings.name}</a></Link>
 

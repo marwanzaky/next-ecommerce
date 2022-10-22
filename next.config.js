@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   distDir: 'build',
   images: {
-    domains: ['mamolio-api.vercel.app'],
+    domains: ['localhost'],
     formats: ['image/avif', 'image/webp'],
   }
 }

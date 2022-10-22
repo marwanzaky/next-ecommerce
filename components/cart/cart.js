@@ -22,6 +22,9 @@ export const removeCartItem = (event, id) => {
 }
 
 export const updateCartSubtotal = () => {
+    if (CartItems.items.length <= 0)
+        return;
+
     let total = 0;
 
     const cartItems = document.querySelectorAll('.cart-table-item');
