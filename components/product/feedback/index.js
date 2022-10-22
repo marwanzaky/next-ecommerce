@@ -12,9 +12,9 @@ function ProductDetailsFeedbackReviews({ product }) {
                     <div className='w-auto'>
                         <div className='product-details-feedback-reviews-review-fullname'>{item.user.name}&ensp;<span>{stringToDate(item.createdAt)}</span></div>
                         <div className='product-details-feedback-reviews-review-stars'><Stars displayTotal={false} /></div>
+                        <div className='product-details-feedback-reviews-review-text'>{item.review}</div>
                     </div>
                 </div>
-                <div className='product-details-feedback-reviews-review-text'>{item.review}</div>
             </div>)}
     </div>
 }

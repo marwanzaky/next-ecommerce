@@ -540,6 +540,7 @@ footer {
 .product-details-feedback .product-details-feedback-reviews-review .product-details-feedback-reviews-review-stars {
   color: #009679;
   font-size: 80%;
+  margin-bottom: 5px;
 }
 .product-details-feedback .product-details-feedback-reviews-review .product-details-feedback-reviews-review-text {
   color: #868686;
