@@ -8,7 +8,7 @@ import YouMayAlsoLike from '../../components/youMayAlsoLike';
 import Settings from '../../utils/settings';
 import { convertIdToName } from '../../utils/convertStr';
 
-class Product extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -31,7 +31,7 @@ class Product extends React.Component {
         let product = {};
         const { loaded, data } = this.state;
 
-        if (loaded && typeof window !== "undefined") {
+        if (loaded && typeof window !== 'undefined') {
             const id = window.location.pathname.replace('/product/', '');
             product = data.find(el => el.name === convertIdToName(id));
         }
@@ -39,18 +39,14 @@ class Product extends React.Component {
         if (!loaded)
             return <></>
 
-        return <>
+        return <Layout title={product.name}>
             <ProductComponent product={product} />
             <YouMayAlsoLike />
-        </>
+        </Layout>
     }
 }
 
-export default function App() {
-    return <Layout title='Product'>
-        <Product />
-    </Layout>
-}
+export default App;
 
 // export async function getServerSideProps({ params }) {
 //     const req = await fetch(`${Settings.server}/products/${params.id}`);
