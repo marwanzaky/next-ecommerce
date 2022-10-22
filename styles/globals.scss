@@ -791,32 +791,13 @@ footer {
 }
 
 .cart-subtotal {
-  margin-bottom: 30px;
+  @apply flex flex-col justify-center items-end;
 
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  flex-direction: column;
-
-  .cart-subtotal-div {
-    .cart-subtotal-div-title {
-      margin-right: 30px;
-    }
-  }
+  margin-bottom: 20px;
 
   .cart-subtotal-note {
-    margin-top: 10px;
     font-size: 80%;
-  }
-}
-
-.cart-item-checkout {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-
-  .cart-item-checkout-btn {
-    margin: 0 0 30px 0;
+    color: $color-grey;
   }
 }
 

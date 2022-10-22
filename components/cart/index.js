@@ -32,16 +32,16 @@ function YourCart({ items }) {
             <CartTable items={items} />
 
             <div className='cart-subtotal'>
-                <div className='cart-subtotal-div'>
-                    <span className='cart-subtotal-div-title'>Subtotal</span>
+                <div className='cart-subtotal-div mb-[10px]'>
+                    <span className='cart-subtotal-div-title'>Subtotal&emsp;</span>
                     <span className='cart-subtotal-div-price'>$0 USD</span>
                 </div>
 
                 <div className='cart-subtotal-note'>Taxes and shipping calculated at checkout</div>
             </div>
 
-            <div className='cart-item-checkout'>
-                <button className='btn-base btn-full cart-item-checkout-btn' onClick={() => checkout()}>Check out</button>
+            <div className='flex justify-end items-end'>
+                <button className='btn-base btn-full !mr-0' onClick={() => checkout()}>Check out</button>
             </div>
         </div>
     </>
