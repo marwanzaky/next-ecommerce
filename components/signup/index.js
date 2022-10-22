@@ -28,12 +28,17 @@ function Signup() {
 
         const requestOptions = {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(form)
         };
 
         const response = await fetch(`${Settings.server}/users/signup`, requestOptions);
         const data = await response.json();
+
+        if (data.token)
+            alert('Signed up successfully!');
+        else alert(data.message);
 
         console.log('signup', data);
         router.push('/');

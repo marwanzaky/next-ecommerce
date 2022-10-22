@@ -28,12 +28,17 @@ function Signin() {
 
         const requestOptions = {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(form)
         };
 
         const response = await fetch(`${Settings.server}/users/login`, requestOptions);
         const data = await response.json();
+
+        if (data.token)
+            alert('Logged in successfully!');
+        else alert(data.message);
 
         console.log('login', data);
         router.push('/');
