@@ -1,9 +1,9 @@
 import Layout from '../components/layout';
-import Products from '../components/products';
+import ProductsComponent from '../components/products';
 
 function Shop() {
     return <Layout title='Products'>
-        <Products />
+        <ProductsComponent />
     </Layout>
 }
 

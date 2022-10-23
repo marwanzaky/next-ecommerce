@@ -1,16 +1,16 @@
 import Layout from '../components/layout';
 
-import Header from '../components/header';
-import Products from '../components/products';
-import Testimonials from '../components/testimonials';
-import WhyChooseUs from '../components/whyChooseUs';
+import HeaderComponent from '../components/header';
+import ProductsComponent from '../components/products';
+import WhyChooseUsComponent from '../components/whyChooseUs';
+import TestimonialsComponent from '../components/testimonials';
 
 function Home() {
   return <Layout>
-    <Header />
-    <Products />
-    <WhyChooseUs />
-    <Testimonials />
+    <HeaderComponent />
+    <ProductsComponent />
+    <WhyChooseUsComponent />
+    <TestimonialsComponent />
   </Layout >
 }
 
