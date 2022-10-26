@@ -1,6 +1,6 @@
 const settings = {
     name: 'Mamolio',
-    server: 'https://mamolio-api.vercel.app/api/v1',
+    server: 'http://localhost:8000/api/v1',
     website: 'mamolio.com',
     contact: 'contact@mamolio.com'
 };

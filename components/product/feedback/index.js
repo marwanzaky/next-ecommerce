@@ -1,4 +1,5 @@
-import Stars from "../../../utils/components/stars";
+import Stars from '../../../utils/components/stars';
+import ProductReview from './review';
 
 function ProductDetailsFeedbackReviews({ product }) {
     return <div className='product-details-feedback-reviews'>
@@ -20,6 +21,11 @@ function ProductDetailsFeedbackReviews({ product }) {
 }
 
 function ProductDetailsFeedbackOverview({ product }) {
+
+    const review = event => {
+        event.preventDefault();
+    }
+
     return <div className='product-details-feedback-overview'>
         <div className='mb-[30px] grid grid-cols-2'>
             <div className='product-details-feedback-overview-rating'>
@@ -40,8 +46,10 @@ function ProductDetailsFeedbackOverview({ product }) {
         </div>
 
         <div className='flex justify-center'>
-            <button className='btn-base btn-full !m-0'>Write a review</button>
+            <button className='btn-base btn-full !m-0' onClick={review}>Write a review</button>
         </div>
+
+        {/* <ProductReview /> */}
     </div>
 }
 

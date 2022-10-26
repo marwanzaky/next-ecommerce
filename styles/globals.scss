@@ -74,6 +74,18 @@ button {
 }
 
 /*------- REUSEABLE COMPONENTS -------*/
+.btn-icon {
+  @apply inline-flex justify-center items-center;
+  @apply w-[38px] h-[38px];
+
+  font-size: 24px;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: $color-grey-light;
+  }
+}
+
 button {
   display: inline;
   border: none;
@@ -250,14 +262,14 @@ textarea {
   }
 
   &::placeholder {
-    color: $color-placeholder;
+    color: $color-placehoprlder;
     opacity: 1; /* Firefox */
   }
 }
 
 textarea {
   padding: $field-pv $field-ph;
-  min-height: 150px;
+  // min-height: 150px;
 }
 
 input[type=number] {
@@ -728,6 +740,25 @@ footer {
         background-color: $color-primary-dark;
       }
     }
+  }
+}
+
+/*------- PRODUCT REVIEW -------*/
+.product-review {
+  @apply flex justify-center items-center;
+  @apply w-[100vw] h-[100vh];
+  @apply fixed top-0 left-0;
+
+  background-color: rgba(0, 0, 0, 0.2);
+
+  .product-review-bg {
+    @apply relative bg-white w-[500px] p-[25px];
+
+    border-radius: $border-radius;
+  }
+
+  .product-review-close {
+    @apply absolute top-[15px] right-[15px];
   }
 }
 

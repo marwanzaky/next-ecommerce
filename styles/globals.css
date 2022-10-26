@@ -34,6 +34,16 @@ button {
 }
 
 /*------- REUSEABLE COMPONENTS -------*/
+.btn-icon {
+  @apply inline-flex justify-center items-center;
+  @apply w-[38px] h-[38px];
+  font-size: 24px;
+  border-radius: 50%;
+}
+.btn-icon:hover {
+  background-color: #dfe6e9;
+}
+
 button {
   display: inline;
   border: none;
@@ -206,7 +216,6 @@ textarea::placeholder {
 
 textarea {
   padding: 20px 25px;
-  min-height: 150px;
 }
 
 input[type=number] {
@@ -582,6 +591,20 @@ footer {
 .product-details-feedback-overview-rates .product-details-feedback-overview-rates-ul .product-details-feedback-overview-rates-li .product-details-feedback-overview-rates-li-bar .product-details-feedback-overview-rates-li-bar-percent {
   height: 100%;
   background-color: #009679;
+}
+
+.product-review {
+  @apply flex justify-center items-center;
+  @apply w-[100vw] h-[100vh];
+  @apply fixed top-0 left-0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.product-review .product-review-bg {
+  @apply relative bg-white w-[500px] p-[25px];
+  border-radius: 12px;
+}
+.product-review .product-review-close {
+  @apply absolute top-[15px] right-[15px];
 }
 
 /*------- CART -------*/

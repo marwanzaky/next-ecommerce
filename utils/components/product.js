@@ -28,7 +28,7 @@ function Product({ id, name, img, price, priceCompare, reviews }) {
         <div className='flex flex-col p-2 sm:p-4'>
             {/* <span className='product-name'>{name}</span> */}
             <h3 className='product-nam'>{name}</h3>
-            <Stars reviews={reviews} />
+            <Stars total={reviews} />
 
             <div className='product-tag'>
                 <div className='flex flex-row'>

@@ -1,15 +1,19 @@
 import React from 'react';
 
-export function InputText(props) {
+export function InputText({ id, type, placeholder, onChange, icon }) {
     return <div className='input-field'>
-        <input type={props.type} id={props.id} placeholder={props.placeholder} onChange={props.onChange} required />
-        <div className='input-field-icon'><span className="material-symbols-outlined">{props.icon}</span></div>
+        <input type={type} id={id} placeholder={placeholder} onChange={onChange} required />
+        <div className='input-field-icon'><span className="material-symbols-outlined">{icon}</span></div>
     </div>
 }
 
-export function InputTextarea(props) {
+export function InputTextarea({ placeholder, icon, minHeight = '150px' }) {
+    const style = {
+        minHeight
+    }
+
     return <div className='input-field'>
-        <textarea placeholder={props.placeholder}></textarea>
-        <div className='input-field-icon'><span className="material-symbols-outlined">{props.icon}</span></div>
+        <textarea placeholder={placeholder} style={style}></textarea>
+        <div className='input-field-icon'><span className="material-symbols-outlined">{icon}</span></div>
     </div>
 }
