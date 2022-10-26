@@ -26,11 +26,10 @@ class ProductPreview extends React.Component {
         }
 
         return <div className='product-preview'>
-            <div className='product-save opacity-0'>
-                <span className="material-symbols-outlined product-preview-save-icon">favorite</span>
-            </div>
+            <div className='product_item-save opacity-0'><span className='material-symbols-outlined'>favorite</span></div>
 
             <Img class_name='img product-preview-img' src={`${Settings.server}/` + product.imgs[img]} alt={product.name} />
+
             <div className='product-preview-imgs'>
                 {product.imgs.map((el, i) =>
                     <div key={`${product.name} ${i + 1}`} className='product-preview-imgs-img' onClick={() => previewImg(i)}>

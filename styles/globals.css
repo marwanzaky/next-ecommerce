@@ -156,7 +156,7 @@ h4 {
 }
 
 /*------- PRODUCT SAVE -------*/
-.product-save {
+.product_item-save {
   @apply flex justify-center items-center;
   z-index: 1;
   position: absolute;
@@ -168,11 +168,11 @@ h4 {
   box-shadow: 0 0 5px #b2bec3;
   background-color: #fff;
 }
-.product-save:hover {
+.product_item-save:hover {
   box-shadow: 0 0 5px #636e72;
   transform: scale(1.1);
 }
-.product-save .product-save-icon {
+.product_item-save .material-symbols-outlined {
   font-size: 20px;
 }
 
@@ -319,50 +319,44 @@ header {
 }
 
 /*------- PRODUCTS -------*/
-.product-box {
+.products-box {
   @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
 }
-.product-box .product {
-  position: relative;
-  overflow: hidden;
+
+/*------- PRODUCT ITEM -------*/
+.product_item {
+  @apply relative overflow-hidden flex flex-col;
   border: 2px solid rgb(240, 240, 240);
   border-radius: 12px;
 }
-.product-box .product:hover {
+.product_item:hover {
   box-shadow: 0 0 20px #b2bec3;
 }
-.product-box .product .product-name {
-  font-size: 120%;
-  margin-bottom: 5px;
-}
-.product-box .product .product-stars {
-  margin-bottom: 5px;
-  color: #009679;
-}
-.product-box .product .product-tag {
+
+.product_item-tag {
   @apply flex justify-between items-center;
 }
-.product-box .product .product-tag .product-tag-price {
+.product_item-tag .product_item-tag-price {
   font-size: 150%;
 }
-.product-box .product .product-tag .product-tag-price_compare {
+.product_item-tag .product_item-tag-price_compare {
   font-size: 120%;
   margin-left: 5px;
   text-decoration: line-through;
   color: #868686;
 }
-.product-box .product .product-tag .product-tag-add {
+.product_item-tag .product_item-tag-add {
   @apply flex items-center justify-center;
   @apply h-[32px] w-[32px] md:h-[38px] md:w-[38px];
   padding: 5px;
   border-radius: 50%;
 }
-.product-box .product .product-tag .btn-ghost {
+.product_item-tag .btn-ghost {
   border: none;
   color: #009679;
   background-color: #f6f8f8;
 }
-.product-box .product .product-tag .btn-ghost:hover {
+.product_item-tag .btn-ghost:hover {
   color: #fff;
   background-color: #009679;
 }
@@ -476,7 +470,7 @@ footer {
 .product-preview {
   position: relative;
 }
-.product-preview:hover .product-save {
+.product-preview:hover .product_item-save {
   opacity: 1;
 }
 .product-preview .product-preview-img {
@@ -593,6 +587,7 @@ footer {
   background-color: #009679;
 }
 
+/*------- PRODUCT REVIEW -------*/
 .product-review {
   @apply flex justify-center items-center;
   @apply w-[100vw] h-[100vh];

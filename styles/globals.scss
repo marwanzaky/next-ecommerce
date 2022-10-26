@@ -211,7 +211,7 @@ h4 {
 }
 
 /*------- PRODUCT SAVE -------*/
-.product-save {
+.product_item-save {
   @apply flex justify-center items-center;
 
   z-index: 1;
@@ -232,7 +232,7 @@ h4 {
     transform: scale(1.1);
   }
 
-  .product-save-icon {
+  .material-symbols-outlined {
     font-size: 20px;
   }
 }
@@ -262,7 +262,7 @@ textarea {
   }
 
   &::placeholder {
-    color: $color-placehoprlder;
+    color: $color-placeholder;
     opacity: 1; /* Firefox */
   }
 }
@@ -394,62 +394,57 @@ header {
 }
 
 /*------- PRODUCTS -------*/
-.product-box {
+.products-box {
    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
+}
 
-  .product {
-    position: relative;
-    overflow: hidden;
+/*------- PRODUCT ITEM -------*/
+.product_item {
+  @apply relative overflow-hidden flex flex-col;
 
-    border: 2px solid rgb(240, 240, 240);
-    border-radius: $border-radius;
+  border: 2px solid rgb(240, 240, 240);
+  border-radius: $border-radius;
 
+  &:hover {
+    box-shadow: 0 0 20px $color-shadow;
+  }
+
+  // .product_item-stars {
+  //   margin-bottom: 5px;
+  //   color: $color-primary-dark;
+  // }
+}
+
+.product_item-tag {
+  @apply flex justify-between items-center;
+
+  .product_item-tag-price {
+    font-size: 150%;
+  }
+
+  .product_item-tag-price_compare {
+    font-size: 120%;
+    margin-left: 5px;
+    text-decoration: line-through;
+    color: $color-grey;
+  }
+
+  .product_item-tag-add {
+    @apply flex items-center justify-center;
+    @apply h-[32px] w-[32px] md:h-[38px] md:w-[38px];
+
+    padding: 5px;
+    border-radius: 50%;
+  }
+
+  .btn-ghost {
+    border: none;
+    color: $color-primary-dark;
+    background-color: $color-bg-dark;
+  
     &:hover {
-      box-shadow: 0 0 20px $color-shadow;
-    }
-
-    .product-name {
-      font-size: 120%;
-      margin-bottom: 5px;
-    }
-
-    .product-stars {
-      margin-bottom: 5px;
-      color: $color-primary-dark;
-    }
-
-    .product-tag {
-      @apply flex justify-between items-center;
-
-      .product-tag-price {
-        font-size: 150%;
-      }
-
-      .product-tag-price_compare {
-        font-size: 120%;
-        margin-left: 5px;
-        text-decoration: line-through;
-        color: $color-grey;
-      }
-
-      .product-tag-add {
-        @apply flex items-center justify-center;
-        @apply h-[32px] w-[32px] md:h-[38px] md:w-[38px];
-
-        padding: 5px;
-        border-radius: 50%;
-      }
-
-      .btn-ghost {
-        border: none;
-        color: $color-primary-dark;
-        background-color: $color-bg-dark;
-      
-        &:hover {
-          color: #fff;
-          background-color: $color-primary-dark;
-        }
-      }
+      color: #fff;
+      background-color: $color-primary-dark;
     }
   }
 }
@@ -594,7 +589,7 @@ footer {
 .product-preview {
   position: relative;
 
-  &:hover .product-save {
+  &:hover .product_item-save {
     opacity: 1;
   }
 
