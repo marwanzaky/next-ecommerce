@@ -274,7 +274,7 @@ textarea {
 
 textarea {
   padding: $field-pv $field-ph;
-  // min-height: 150px;
+  max-height: 500px;
 }
 
 input[type=number] {

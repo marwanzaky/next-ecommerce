@@ -19,7 +19,7 @@ function AddToCart({ id, name }) {
     </button>
 }
 
-function ProductItem({ id, name, img, price, priceCompare, reviews }) {
+function ProductItem({ id, name, img, price, priceCompare, reviews, averageRating = 5 }) {
     return <div className='product_item'>
         <div className='product_item-save'><span className='material-symbols-outlined'>favorite</span></div>
 
@@ -29,7 +29,7 @@ function ProductItem({ id, name, img, price, priceCompare, reviews }) {
 
         <div className='flex flex-col p-2 sm:p-4'>
             <h3>{name}</h3>
-            <Stars total={reviews} />
+            <Stars value={averageRating} total={reviews} />
 
             <div className='product_item-tag'>
                 <div className='flex flex-row'>

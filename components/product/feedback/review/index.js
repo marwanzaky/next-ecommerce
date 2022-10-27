@@ -4,10 +4,10 @@ import Stars from '../../../../utils/components/stars';
 import { InputTextarea, InputText } from '../../../../utils/components/input';
 import { BtnIcon } from '../../../../utils/components/btn';
 
-function ProductReview() {
+function ProductReview({ onClick }) {
     return <div className='product-review z-10'>
         <div className='product-review-bg'>
-            <BtnIcon className='product-review-close' icon='close' />
+            <BtnIcon className='product-review-close' icon='close' onClick={onClick} />
 
             <h2>Overall rating</h2>
 

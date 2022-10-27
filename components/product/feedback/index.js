@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Stars from '../../../utils/components/stars';
 import ProductReview from './review';
 
@@ -21,16 +22,13 @@ function ProductDetailsFeedbackReviews({ product }) {
 }
 
 function ProductDetailsFeedbackOverview({ product }) {
-
-    const review = event => {
-        event.preventDefault();
-    }
+    const [review, setReview] = useState(false);
 
     return <div className='product-details-feedback-overview'>
         <div className='mb-[30px] grid grid-cols-2'>
             <div className='product-details-feedback-overview-rating'>
                 <div className='product-details-feedback-overview-rating-value'>4.5</div>
-                <div className='product-details-feedback-overview-rating-stars'><Stars displayTotal={false} /></div>
+                <div className='product-details-feedback-overview-rating-stars'><Stars value={product.averageRatings} displayTotal={false} /></div>
                 <div className='product-details-feedback-overview-rating-total'>{product.reviews.length} reviews</div>
             </div>
 
@@ -46,10 +44,10 @@ function ProductDetailsFeedbackOverview({ product }) {
         </div>
 
         <div className='flex justify-center'>
-            <button className='btn-base btn-full !m-0' onClick={review}>Write a review</button>
+            <button className='btn-base btn-full !m-0' onClick={() => setReview(true)}>Write a review</button>
         </div>
 
-        {/* <ProductReview /> */}
+        {review ? <ProductReview onClick={() => setReview(false)} /> : <></>}
     </div>
 }
 

@@ -57,7 +57,7 @@ function ProductDetails({ product }) {
             <span className='product-details-price_compare' >{'$' + product.priceCompare / 100}</span>
         </div>
 
-        <div className='product-details-stars'><Stars total={product.reviews.length} /></div>
+        <div className='product-details-stars'><Stars value={product.averageRatings} total={product.reviews.length} /></div>
 
         <button className='w-full md:w-[400px] btn-base btn-ghost-grey' onClick={() => AddToCart(product.id, product.name)}>Add to cart</button>
         <button className='w-full md:w-[400px] btn-base btn-full' onClick={purchase}>Buy it now</button>
