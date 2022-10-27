@@ -118,19 +118,19 @@ a {
   }
 }
 
-.img img {
-  border-radius: $border-radius;
-}
-
-/*------- MATERIAL ICONS -------*/
 .stars {
   @apply flex items-start;
+
   color: $color-primary-dark;
 
-  .stars-star {
-    // font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 48;
+  .stars-star-icon {
+    font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 48;
     font-size: 120%;
   }
+}
+
+.img img {
+  border-radius: $border-radius;
 }
 
 /*------- HEADINGS -------*/
@@ -232,7 +232,7 @@ h4 {
     transform: scale(1.1);
   }
 
-  .product_item-save-icon {
+  .material-symbols-outlined {
     font-size: 20px;
   }
 }

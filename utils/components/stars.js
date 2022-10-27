@@ -1,20 +1,21 @@
-import StarIcon from '@mui/icons-material/Star';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import StarHalfIcon from '@mui/icons-material/StarHalf';
+function Star() {
+    return <span className="material-symbols-outlined stars-star-icon">star</span>
+}
 
-function Stars({ className, total, value = 4.5, displayTotal = true }) {
+function StarHalf() {
+    return <span className="material-symbols-outlined stars-star-icon">star_half</span>
+}
+
+function Stars({ className, total, value = 5, displayTotal = true }) {
     const stars = [];
 
-    for (let i = 0; i < parseInt(value); i++)
-        stars.push(<StarIcon className='stars-star' />)
+    for (let i = 0; i < value; i++)
+        stars.push(<Star />)
 
     if (value % 1 !== 0)
-        stars.push(<StarHalfIcon className='stars-star' />)
+        stars.push(<StarHalf />)
 
-    for (let i = 0; i < 5 - Math.ceil(value); i++)
-        stars.push(<StarBorderIcon className='stars-star' />)
-
-    return <span className={`stars ${className}`}>
+    return <span className={`${className} stars`}>
         {stars}{displayTotal ? `\u00A0(${total})` : ''}
     </span>
 }
