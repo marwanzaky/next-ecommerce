@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Stars from '../../../../utils/components/stars';
-import { InputTextarea, InputText } from '../../../../utils/components/input';
-import { BtnIcon } from '../../../../utils/components/btn';
+import Stars from '../../utils/components/stars';
+import { InputTextarea, InputText } from '../../utils/components/input';
+import { BtnIcon } from '../../utils/components/btn';
 
 function ProductReview({ onClick }) {
     return <div className='product-review z-10'>

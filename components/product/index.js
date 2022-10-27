@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
-import ProductDetailsFeedback from './feedback';
+import ProductFeedback from './feedback';
 
 import Img from '../../utils/components/img';
 import Stars from '../../utils/components/stars';
@@ -9,35 +9,25 @@ import Stars from '../../utils/components/stars';
 import Settings from '../../utils/settings';
 import AddToCart from '../../utils/addToCart';
 
-class ProductPreview extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            img: 0
-        };
+function ProductPreview({ product }) {
+    const [img, setImg] = useState(0);
+
+    const previewImg = img => {
+        setImg(img);
     }
 
-    render() {
-        const { product } = this.props;
-        const { img } = this.state;
+    return <div className='product-preview'>
+        <div className='product_item-save opacity-0'><span className='material-symbols-outlined'>favorite</span></div>
 
-        const previewImg = img => {
-            this.setState({ img });
-        }
+        <Img class_name='product-preview-img img' src={`${Settings.server}/` + product.imgs[img]} alt={product.name} />
 
-        return <div className='product-preview'>
-            <div className='product_item-save opacity-0'><span className='material-symbols-outlined'>favorite</span></div>
-
-            <Img class_name='img product-preview-img' src={`${Settings.server}/` + product.imgs[img]} alt={product.name} />
-
-            <div className='product-preview-imgs'>
-                {product.imgs.map((el, i) =>
-                    <div key={`${product.name} ${i + 1}`} className='product-preview-imgs-img' onClick={() => previewImg(i)}>
-                        <Img class_name='img' src={`${Settings.server}/` + el} alt={`${product.name} ${i + 1}`} />
-                    </div>)}
-            </div>
+        <div className='product-preview-imgs'>
+            {product.imgs.map((el, i) =>
+                <div key={`${product.name} ${i + 1}`} className='product-preview-imgs-img' onClick={() => previewImg(i)}>
+                    <Img class_name='img' src={`${Settings.server}/` + el} alt={`${product.name} ${i + 1}`} />
+                </div>)}
         </div>
-    }
+    </div>
 }
 
 function ProductDetails({ product }) {
@@ -68,13 +58,13 @@ function ProductDetails({ product }) {
 }
 
 function Product({ product }) {
-    return <section className='xl:container xl:mx-auto product-details-box'>
+    return <section className='xl:container xl:mx-auto product-box'>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5 mb:[30px] md:mb-[50px]'>
             <ProductPreview product={product} />
             <ProductDetails product={product} />
         </div>
 
-        <ProductDetailsFeedback product={product} />
+        <ProductFeedback product={product} />
     </section>
 }
 
