@@ -9,6 +9,8 @@ import Stars from '../../utils/components/stars';
 import Settings from '../../utils/settings';
 import AddToCart from '../../utils/addToCart';
 
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+
 class ProductPreview extends React.Component {
     constructor(props) {
         super(props);
@@ -26,7 +28,9 @@ class ProductPreview extends React.Component {
         }
 
         return <div className='product-preview'>
-            <div className='product_item-save opacity-0'><span className='material-symbols-outlined'>favorite</span></div>
+            <div className='product_item-save opacity-0'>
+                <FavoriteBorderOutlinedIcon className='product_item-save-icon' />
+            </div>
 
             <Img class_name='img product-preview-img' src={`${Settings.server}/` + product.imgs[img]} alt={product.name} />
 

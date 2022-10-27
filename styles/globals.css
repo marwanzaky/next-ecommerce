@@ -74,17 +74,17 @@ a:hover {
   color: #009679;
 }
 
+.img img {
+  border-radius: 12px;
+}
+
+/*------- MATERIAL ICONS -------*/
 .stars {
   @apply flex items-start;
   color: #009679;
 }
-.stars .stars-star-icon {
-  font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 48;
+.stars .stars-star {
   font-size: 120%;
-}
-
-.img img {
-  border-radius: 12px;
 }
 
 /*------- HEADINGS -------*/
@@ -172,7 +172,7 @@ h4 {
   box-shadow: 0 0 5px #636e72;
   transform: scale(1.1);
 }
-.product_item-save .material-symbols-outlined {
+.product_item-save .product_item-save-icon {
   font-size: 20px;
 }
 

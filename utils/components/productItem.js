@@ -7,6 +7,9 @@ import Settings from '../settings';
 import AddToCartFun from '../addToCart';
 import Stars from './stars';
 
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+
 import { convertNameToId } from '../convertStr';
 
 function AddToCart({ id, name }) {
@@ -15,13 +18,15 @@ function AddToCart({ id, name }) {
     }
 
     return <button className='product_item-tag-add btn-base btn-ghost' onClick={addToCart}>
-        <span className="material-symbols-outlined">shopping_cart</span>
+        <ShoppingCartOutlinedIcon />
     </button>
 }
 
 function ProductItem({ id, name, img, price, priceCompare, reviews }) {
     return <div className='product_item'>
-        <div className='product_item-save'><span className='material-symbols-outlined'>favorite</span></div>
+        <div className='product_item-save'>
+            <FavoriteBorderOutlinedIcon className='product_item-save-icon' />
+        </div>
 
         <Link href={'/product/' + convertNameToId(name)}>
             <a className='product_item-a'><Img src={`${Settings.server}/${img}`} alt={name} /></a>
