@@ -78,8 +78,12 @@ a:hover {
   @apply flex items-start;
   color: #009679;
 }
-.stars .stars-star-icon {
+.stars .stars-star {
   font-variation-settings: "FILL" 1, "wght" 600, "GRAD" 0, "opsz" 48;
+  font-size: 120%;
+}
+.stars .stars-star_half, .stars .stars-star_border {
+  font-variation-settings: "FILL" 0, "wght" 600, "GRAD" 0, "opsz" 48;
   font-size: 120%;
 }
 
