@@ -22,7 +22,7 @@ function ProductFeedbackReviews({ product }) {
 
                     <div className='w-auto'>
                         <div className='product-feedback-reviews-review-fullname'>{item.user.name}&ensp;<span>{stringToDate(item.createdAt)}</span></div>
-                        <div className='product-feedback-reviews-review-stars'><Stars displayTotal={false} /></div>
+                        <div className='product-feedback-reviews-review-stars'><Stars value={item.rating} displayTotal={false} /></div>
                         <div className='product-feedback-reviews-review-text'>{item.review}</div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ function ProductFeedbackOverview({ product }) {
 
     function ProductFeedbackOverviewRating() {
         return <div className='product-feedback-overview-rating'>
-            <div className='product-feedback-overview-rating-value'>4.5</div>
+            <div className='product-feedback-overview-rating-value'>{(Math.round(product.averageRatings * 100) / 100).toFixed(1)}</div>
             <div className='product-feedback-overview-rating-stars'><Stars value={product.averageRatings} displayTotal={false} /></div>
             <div className='product-feedback-overview-rating-total'>{product.reviews.length} reviews</div>
         </div>
