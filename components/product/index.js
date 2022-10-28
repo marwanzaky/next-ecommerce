@@ -19,10 +19,10 @@ function ProductPreview({ product }) {
     return <div className='product-preview'>
         <div className='product_item-save opacity-0'><span className='material-symbols-outlined'>favorite</span></div>
 
-        <Img class_name='product-preview-img img' src={`${Settings.server}/` + product.imgs[img]} alt={product.name} />
+        <Img class_name='product-preview-img img' src={product.imgs ? `${Settings.server}/${product.imgs[img]}` : '/dummy-product.png'} alt={product.name} />
 
         <div className='product-preview-imgs'>
-            {product.imgs.map((el, i) =>
+            {product.imgs && product.imgs.map((el, i) =>
                 <div key={`${product.name} ${i + 1}`} className='product-preview-imgs-img' onClick={() => previewImg(i)}>
                     <Img class_name='img' src={`${Settings.server}/` + el} alt={`${product.name} ${i + 1}`} />
                 </div>)}
@@ -47,7 +47,7 @@ function ProductDetails({ product }) {
             <span className='product-details-price_compare' >{'$' + product.priceCompare / 100}</span>
         </div>
 
-        <div className='product-details-stars'><Stars value={product.averageRatings} total={product.reviews.length} /></div>
+        <div className='product-details-stars'><Stars value={product.averageRatings} total={product.numReviews} /></div>
 
         <button className='w-full md:w-[400px] btn-base btn-ghost-grey' onClick={() => AddToCart(product.id, product.name)}>Add to cart</button>
         <button className='w-full md:w-[400px] btn-base btn-full' onClick={purchase}>Buy it now</button>

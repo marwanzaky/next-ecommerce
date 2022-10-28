@@ -50,7 +50,7 @@ function ProductFeedbackOverview({ product }) {
         return <div className='product-feedback-overview-rating'>
             <div className='product-feedback-overview-rating-value'>{(Math.round(product.averageRatings * 100) / 100).toFixed(1)}</div>
             <div className='product-feedback-overview-rating-stars'><Stars value={product.averageRatings} displayTotal={false} /></div>
-            <div className='product-feedback-overview-rating-total'>{product.reviews.length} reviews</div>
+            <div className='product-feedback-overview-rating-total'>{product.numReviews} reviews</div>
         </div>
     }
 

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 import Layout from '../../components/layout';
 
@@ -6,44 +7,52 @@ import ProductComponent from '../../components/product';
 import YouMayAlsoLike from '../../components/youMayAlsoLike';
 
 import Settings from '../../utils/settings';
-import { convertIdToName } from '../../utils/convertStr';
 
-class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: [],
-            loaded: false
-        };
-    }
-
-    async componentDidMount() {
-        const res = await fetch(Settings.server + '/products');
-        const json = await res.json();
-
-        this.setState({
-            data: json.data.products,
-            loaded: true
-        });
-    }
-
-    render() {
-        let product = {};
-        const { loaded, data } = this.state;
-
-        if (loaded && typeof window !== 'undefined') {
-            const id = window.location.pathname.replace('/product/', '');
-            product = data.find(el => el.name === convertIdToName(id));
+const productDummy = {
+    name: '...',
+    price: 0,
+    priceCompare: 0,
+    averageRatings: 5,
+    numReviews: 0,
+    imgs: null,
+    description: '...',
+    reviews: [
+        {
+            user: {
+                name: '...'
+            }
         }
+    ]
+}
 
-        if (!loaded)
-            return <></>
+function App() {
+    const router = useRouter();
 
-        return <Layout title={product.name}>
-            <ProductComponent product={product} />
-            <YouMayAlsoLike />
-        </Layout>
-    }
+    const [data, setData] = useState(productDummy)
+    const [loaded, setLoaded] = useState(false)
+
+    useEffect(() => {
+        let id = window.location.pathname.replace('/product/', '');
+
+        setData(productDummy);
+        setLoaded(false);
+
+        fetch(Settings.server + '/products/' + id)
+            .then(res => res.json())
+            .then(json => {
+                setData(json.data.product);
+                setLoaded(true);
+            });
+
+    }, [router.asPath])
+
+    // if (!loaded)
+    //     return <></>
+
+    return <Layout title={data.name}>
+        <ProductComponent product={data} />
+        <YouMayAlsoLike />
+    </Layout>
 }
 
 export default App;

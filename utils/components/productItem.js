@@ -7,8 +7,6 @@ import Settings from '../settings';
 import AddToCartFun from '../addToCart';
 import Stars from './stars';
 
-import { convertNameToId } from '../convertStr';
-
 function AddToCart({ id, name }) {
     const addToCart = event => {
         AddToCartFun(id, name);
@@ -23,7 +21,7 @@ function ProductItem({ id, name, img, price, priceCompare, reviews, averageRatin
     return <div className='product_item'>
         <div className='product_item-save'><span className='material-symbols-outlined'>favorite</span></div>
 
-        <Link href={'/product/' + convertNameToId(name)}>
+        <Link href={`/product/${id}`}>
             <a className='product_item-a'><Img src={`${Settings.server}/${img}`} alt={name} /></a>
         </Link>
 
