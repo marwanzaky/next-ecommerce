@@ -5,7 +5,7 @@ function Header() {
 
     const shopNow = event => {
         event.preventDefault();
-        router.push('/product/soft-cover-journal');
+        router.push('/product/6349f871cab75287de7915df');
     }
 
     const explore = event => {
