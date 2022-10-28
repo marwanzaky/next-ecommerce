@@ -7,9 +7,9 @@ import Settings from '../settings';
 import AddToCartFun from '../addToCart';
 import Stars from './stars';
 
-function AddToCart({ id, name }) {
+function AddToCart({ id }) {
     const addToCart = event => {
-        AddToCartFun(id, name);
+        AddToCartFun(id);
     }
 
     return <button className='product_item-tag-add btn-base btn-ghost' onClick={addToCart}>
@@ -35,7 +35,7 @@ function ProductItem({ id, name, img, price, priceCompare, reviews, averageRatin
                     <span className='product_item-tag-price_compare flex items-center' >{'$' + priceCompare / 100}</span>
                 </div>
 
-                <AddToCart id={id} name={name} />
+                <AddToCart id={id} />
             </div>
         </div>
     </div>

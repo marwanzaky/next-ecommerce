@@ -49,7 +49,7 @@ function ProductDetails({ product }) {
 
         <div className='product-details-stars'><Stars value={product.averageRatings} total={product.numReviews} /></div>
 
-        <button className='w-full md:w-[400px] btn-base btn-ghost-grey' onClick={() => AddToCart(product.id, product.name)}>Add to cart</button>
+        <button className='w-full md:w-[400px] btn-base btn-ghost-grey' onClick={() => AddToCart(product.id)}>Add to cart</button>
         <button className='w-full md:w-[400px] btn-base btn-full' onClick={purchase}>Buy it now</button>
 
         <h4 className='product-details-des-title'>Description</h4>
