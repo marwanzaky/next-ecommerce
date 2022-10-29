@@ -7,10 +7,10 @@ import YouMayAlsoLike from '../../components/youMayAlsoLike';
 
 import Settings from '../../utils/settings';
 
-function App(data) {
-    return <Layout title={data.name}>
-        <ProductComponent product={data} />
-        <YouMayAlsoLike />
+function App(props) {
+    return <Layout title={props.product.name}>
+        <ProductComponent product={props.product} />
+        <YouMayAlsoLike products={props.products} />
     </Layout>
 }
 
@@ -26,11 +26,17 @@ export default App;
 // }
 
 export async function getStaticProps({ params }) {
-    const req = await fetch(`${Settings.server}/products/${params.id}`);
-    const json = await req.json();
+    const productReq = await fetch(`${Settings.server}/products/${params.id}`);
+    const productJson = await productReq.json();
+
+    const productsReq = await fetch(`${Settings.server}/products`);
+    const productsJson = await productsReq.json();
 
     return {
-        props: json.data.product
+        props: {
+            product: productJson.data.product,
+            products: productsJson.data.products
+        }
     }
 }
 
