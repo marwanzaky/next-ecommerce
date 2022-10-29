@@ -1,6 +1,5 @@
 import Layout from '../components/layout';
 import CartComponent from "../components/cart";
-import Settings from '../utils/settings';
 
 function Cart({ products }) {
     return <Layout title='Cart'>
@@ -11,7 +10,7 @@ function Cart({ products }) {
 export default Cart;
 
 export async function getStaticProps() {
-    const req = await fetch(`${Settings.server}/products`);
+    const req = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/products`);
     const json = await req.json();
 
     return {

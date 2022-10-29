@@ -5,8 +5,6 @@ import Layout from '../../components/layout';
 import ProductComponent from '../../components/product';
 import YouMayAlsoLike from '../../components/youMayAlsoLike';
 
-import Settings from '../../utils/settings';
-
 function App(props) {
     return <Layout title={props.product.name}>
         <ProductComponent product={props.product} />
@@ -16,20 +14,11 @@ function App(props) {
 
 export default App;
 
-// export async function getServerSideProps({ params }) {
-//     const req = await fetch(`${Settings.server}/products/${params.id}`);
-//     const json = await req.json();
-
-//     return {
-//         props: { product: json.data.product }
-//     }
-// }
-
 export async function getStaticProps({ params }) {
-    const productReq = await fetch(`${Settings.server}/products/${params.id}`);
+    const productReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/products/${params.id}`);
     const productJson = await productReq.json();
 
-    const productsReq = await fetch(`${Settings.server}/products`);
+    const productsReq = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/products`);
     const productsJson = await productsReq.json();
 
     return {
@@ -41,7 +30,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-    const req = await fetch(`${Settings.server}/products`);
+    const req = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/products`);
     const json = await req.json();
 
     const paths = json.data.products.map(product => {

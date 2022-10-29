@@ -1,12 +1,11 @@
-import Settings from "./settings";
-import CartItems from "./cartItems";
+import CartItems from './cartItems';
 
 const addToCart = async id => {
     for (let i = 0; i < CartItems.items.length; i++)
         if (CartItems.items[i]['_id'] === id)
             return alert('The item is already added to the cart.');
 
-    const res = await fetch(Settings.server + '/products/' + id);
+    const res = await fetch(process.env.NEXT_PUBLIC_SERVER + '/products/' + id);
     const json = await res.json();
 
     const cartItems = CartItems.items;

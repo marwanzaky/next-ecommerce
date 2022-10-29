@@ -3,7 +3,6 @@ import React from 'react';
 import Link from 'next/link';
 import Img from './img';
 
-import Settings from '../settings';
 import AddToCartFun from '../addToCart';
 import Stars from './stars';
 
@@ -17,12 +16,12 @@ function AddToCart({ id }) {
     </button>
 }
 
-function ProductItem({ id, name, img, price, priceCompare, reviews, averageRating = 5 }) {
+function ProductItem({ id, name, price, priceCompare, img, reviews, averageRating = 5 }) {
     return <div className='product_item'>
         <div className='product_item-save'><span className='material-symbols-outlined'>favorite</span></div>
 
         <Link href={`/product/${id}`}>
-            <a className='product_item-a'><Img src={`${Settings.server}/${img}`} alt={name} /></a>
+            <a className='product_item-a'><Img src={`${process.env.NEXT_PUBLIC_SERVER}/${img}`} alt={name} /></a>
         </Link>
 
         <div className='flex flex-col p-2 sm:p-4'>

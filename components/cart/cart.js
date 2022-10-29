@@ -1,4 +1,3 @@
-import Settings from '../../utils/settings';
 import CartItems from '../../utils/cartItems';
 
 export const removeCartItem = (event, id) => {
@@ -51,7 +50,7 @@ export const checkout = () => {
         }
     });
 
-    fetch(`${Settings.server}/payment/create-checkout-session`, {
+    fetch(`${process.env.NEXT_PUBLIC_SERVER}/payment/create-checkout-session`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items })

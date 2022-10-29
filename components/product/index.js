@@ -6,7 +6,6 @@ import ProductFeedback from './feedback';
 import Img from '../../utils/components/img';
 import Stars from '../../utils/components/stars';
 
-import Settings from '../../utils/settings';
 import AddToCart from '../../utils/addToCart';
 
 function ProductPreview({ product }) {
@@ -19,12 +18,12 @@ function ProductPreview({ product }) {
     return <div className='product-preview'>
         <div className='product_item-save opacity-0'><span className='material-symbols-outlined'>favorite</span></div>
 
-        <Img class_name='product-preview-img img' src={`${Settings.server}/${product.imgs[img]}`} alt={product.name} />
+        <Img class_name='product-preview-img img' src={`${process.env.NEXT_PUBLIC_SERVER}/${product.imgs[img]}`} alt={product.name} />
 
         <div className='product-preview-imgs'>
             {product.imgs.map((el, i) =>
                 <div key={`${product.name} ${i + 1}`} className='product-preview-imgs-img' onClick={() => previewImg(i)}>
-                    <Img class_name='img' src={`${Settings.server}/${el}`} alt={`${product.name} ${i + 1}`} />
+                    <Img class_name='img' src={`${process.env.NEXT_PUBLIC_SERVER}/${el}`} alt={`${product.name} ${i + 1}`} />
                 </div>)}
         </div>
     </div>

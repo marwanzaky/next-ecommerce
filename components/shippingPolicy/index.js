@@ -1,5 +1,4 @@
 import React from 'react';
-import Settings from '../../utils/settings';
 
 function ShippingPolicy() {
     return <section className='section-refund-policy'>
@@ -27,7 +26,7 @@ function ShippingPolicy() {
                 When your order has shipped, you will receive an email notification from us which will include a tracking number you can use to check its status. Please allow 48 hours for the tracking information to become available.
                 <br />
                 <br />
-                If you haven&apos;t received your order within 7-14 days of receiving your shipping confirmation email, please contact us at {Settings.contact} with your name and order number, and we will look into it for you.
+                If you haven&apos;t received your order within 7-14 days of receiving your shipping confirmation email, please contact us at {process.env.NEXT_PUBLIC_CONTACT} with your name and order number, and we will look into it for you.
                 <br />
                 <br />
             </p>
@@ -37,10 +36,10 @@ function ShippingPolicy() {
                 We accept returns up to 10 days after delivery, if the item is unused and in its original condition, and we will refund the full order amount minus the shipping costs for the return.
                 <br />
                 <br />
-                In the event that your order arrives damaged in any way, please email us as soon as possible at {Settings.contact} with your order number and a photo of the item’s condition. We address these on a case-by-case basis but will try our best to work towards a satisfactory solution.
+                In the event that your order arrives damaged in any way, please email us as soon as possible at {process.env.NEXT_PUBLIC_CONTACT} with your order number and a photo of the item’s condition. We address these on a case-by-case basis but will try our best to work towards a satisfactory solution.
                 <br />
                 <br />
-                If you have any further questions, please don&apos;t hesitate to contact us at {Settings.contact}.
+                If you have any further questions, please don&apos;t hesitate to contact us at {process.env.NEXT_PUBLIC_CONTACT}.
                 <br />
                 <br />
             </p>

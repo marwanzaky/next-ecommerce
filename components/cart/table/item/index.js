@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 
-import Settings from '../../../../utils/settings';
 import Img from '../../../../utils/components/img';
 
 import { removeCartItem } from '../../cart';
@@ -10,7 +9,7 @@ function CartTableItem({ id, name, price, src, alt }) {
     return <tr className='cart-table-item'>
         <th className='cart-table-item-product'>
             <div className='cart-table-item-product-div'>
-                <Link href={`/product/${id}`}><a className='cart-table-item-product-img'><Img src={`${Settings.server}/${src}`} alt={alt} /></a></Link>
+                <Link href={`/product/${id}`}><a className='cart-table-item-product-img'><Img src={`${process.env.NEXT_PUBLIC_SERVER}/${src}`} alt={alt} /></a></Link>
                 <Link href={`/product/${id}`}><a className='cart-table-item-product-name'>{name}</a></Link>
             </div>
         </th>

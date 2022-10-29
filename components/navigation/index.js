@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import CartItems from '../../utils/cartItems';
-import Settings from '../../utils/settings';
 
 function Nav({ href, name }) {
     return <li>
@@ -46,7 +45,7 @@ function Navigation() {
     return <nav>
         <div className='main-nav-promo'>Free shipping on orders over $50</div>
         <div className="xl:container xl:mx-auto p-5 main-nav-box">
-            <Link href='/'><a className='logo'>{Settings.name}</a></Link>
+            <Link href='/'><a className='logo'>{process.env.NEXT_PUBLIC_NAME}</a></Link>
 
             <ul className='hidden sm:block main-nav'>
                 <Nav href='/' name='Home' />

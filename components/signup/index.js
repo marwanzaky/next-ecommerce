@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import { InputText } from '../../utils/components/input';
-import Settings from '../../utils/settings';
 
 const initialState = {
     name: '',
@@ -33,7 +32,7 @@ function Signup() {
             body: JSON.stringify(form)
         };
 
-        const response = await fetch(`${Settings.server}/users/signup`, requestOptions);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/signup`, requestOptions);
         const data = await response.json();
 
         if (data.token)

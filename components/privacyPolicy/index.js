@@ -1,5 +1,4 @@
 import React from 'react';
-import Settings from '../../utils/settings';
 
 function PrivacyPolicy() {
     return <section className='section-refund-policy'>
@@ -8,7 +7,7 @@ function PrivacyPolicy() {
 
             <h4>Privacy Policy</h4>
             <p>
-                This Privacy Policy describes how {Settings.website} (the “Site” or “we”) collects, uses, and discloses your Personal Information when you visit or make a purchase from the Site.
+                This Privacy Policy describes how {process.env.NEXT_PUBLIC_WEBSITE} (the “Site” or “we”) collects, uses, and discloses your Personal Information when you visit or make a purchase from the Site.
                 <br />
                 <br />
             </p>

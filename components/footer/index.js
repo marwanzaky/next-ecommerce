@@ -1,4 +1,3 @@
-import Settings from '../../utils/settings';
 import Link from 'next/link';
 
 function FooterList(props) {
@@ -32,7 +31,7 @@ function Footer() {
             </div>
 
             <div className='copyright'>
-                <p className='copyright-p'>Copyright &copy; 2022 {Settings.name} all rights reserved.</p>
+                <p className='copyright-p'>Copyright &copy; 2022 {process.env.NEXT_PUBLIC_NAME} all rights reserved.</p>
             </div>
         </div>
     </footer>
