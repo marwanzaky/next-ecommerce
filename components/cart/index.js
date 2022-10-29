@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import CartTable from './table';
@@ -47,35 +47,25 @@ function YourCart({ items }) {
     </>
 }
 
-class Cart extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            items: []
-        };
-    }
+function Cart({ products }) {
+    const [items, setItems] = useState([]);
 
-    componentDidMount() {
-        this.setState({
-            items: CartItems.items
-        });
-    }
+    useEffect(() => {
+        setItems(CartItems.items);
+    }, []);
 
-    componentDidUpdate() {
-        updateCartSubtotal();
-    }
+    useEffect(() => {
+        if (items.length > 0)
+            updateCartSubtotal();
+    });
 
-    render() {
-        const { items } = this.state;
+    return <section className='section-cart'>
+        <div className='xl:container xl:mx-auto'>
+            {items.length > 0 ? <YourCart items={items} /> : <YourCartIsEmpty />}
+        </div>
 
-        return <section className='section-cart'>
-            <div className='xl:container xl:mx-auto'>
-                {items.length > 0 ? <YourCart items={items} /> : <YourCartIsEmpty />}
-            </div>
-
-            {items.length <= 0 ? <YouMayAlsoLike /> : <></>}
-        </section >
-    }
+        {items.length <= 0 ? <YouMayAlsoLike products={products} /> : <></>}
+    </section >
 }
 
 export default Cart;
