@@ -178,6 +178,19 @@ h4 {
   margin-bottom: 20px;
 }
 
+/*------- LINK -------*/
+.li-icon {
+  @apply inline-flex justify-center items-center;
+  @apply w-[38px] h-[38px];
+
+  font-size: 24px;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: $color-grey-light;
+  }
+}
+
 /*------- BUTTONS -------*/
 .btn-base {
   padding: $btn-pv $btn-ph;
@@ -345,42 +358,30 @@ nav {
         }
       }
     }
+  }
+}
 
-    .nav-btn {
-      @apply inline-flex justify-center items-center;
-      @apply w-[38px] h-[38px];
+.main-nav-box .li-icon-cart {
+  position: relative;
 
-      font-size: 24px;
-      border-radius: 50%;
+  .li-icon-cart-length {
+    position: absolute;
+    top: 5px;
+    right: -5px;
 
-      &:hover {
-        background-color: $color-grey-light;
-      }
-    }
+    height: 14px;
+    width: 14px;
 
-    .nav-btn-icon {
-      position: relative;
+    border-radius: 50%;
 
-      .nav-button-cart-length {
-        position: absolute;
-        top: 5px;
-        right: -5px;
+    background-color: $color-primary-dark;
 
-        height: 14px;
-        width: 14px;
+    font-size: 11px;
+    color: white;
 
-        border-radius: 50%;
-
-        background-color: $color-primary-dark;
-
-        font-size: 11px;
-        color: white;
-
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 

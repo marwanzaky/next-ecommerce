@@ -125,6 +125,17 @@ h4 {
   margin-bottom: 20px;
 }
 
+/*------- LINK -------*/
+.li-icon {
+  @apply inline-flex justify-center items-center;
+  @apply w-[38px] h-[38px];
+  font-size: 24px;
+  border-radius: 50%;
+}
+.li-icon:hover {
+  background-color: #dfe6e9;
+}
+
 /*------- BUTTONS -------*/
 .btn-base {
   padding: 15px 30px;
@@ -282,19 +293,11 @@ nav .main-nav-box .main-nav li a {
 nav .main-nav-box .main-nav li a:hover {
   border-bottom: 2px solid #009679;
 }
-nav .main-nav-box .nav-btn {
-  @apply inline-flex justify-center items-center;
-  @apply w-[38px] h-[38px];
-  font-size: 24px;
-  border-radius: 50%;
-}
-nav .main-nav-box .nav-btn:hover {
-  background-color: #dfe6e9;
-}
-nav .main-nav-box .nav-btn-icon {
+
+.main-nav-box .li-icon-cart {
   position: relative;
 }
-nav .main-nav-box .nav-btn-icon .nav-button-cart-length {
+.main-nav-box .li-icon-cart .li-icon-cart-length {
   position: absolute;
   top: 5px;
   right: -5px;

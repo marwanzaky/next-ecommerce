@@ -1,3 +1,4 @@
+import Navigation from '../components/navigation';
 import '../styles/globals.css';
 
 export default function RootLayout({ children }) {
@@ -6,6 +7,9 @@ export default function RootLayout({ children }) {
             <title>{process.env.NEXT_PUBLIC_NAME}</title>
             <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         </head>
-        <body>{children}</body>
+        <body>
+            <Navigation />
+            {children}
+        </body>
     </html>
 }
