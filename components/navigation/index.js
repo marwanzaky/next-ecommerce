@@ -62,7 +62,7 @@ function Navigation() {
             </ul>
 
             <div className='flex flex-row'>
-                {token ? <Avatar /> : <ListIcon href='/signin' icon='person' />}
+                {/* {token ? <Avatar /> : <ListIcon href='/signin' icon='person' />} */}
                 <ListIconCart href='/cart' icon='shopping_cart' length={cartItemsLength} />
             </div>
         </div>
