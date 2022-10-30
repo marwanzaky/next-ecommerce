@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Reason({ title, des, icon }) {
     return <div className='why_choose_us-reason'>
         <div className='m-auto lg:m-0 why_choose_us-reason-icon'>

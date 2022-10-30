@@ -1,3 +1,5 @@
+'use client';
+
 import { useRouter } from 'next/navigation';
 
 function Header() {
@@ -20,7 +22,7 @@ function Header() {
                 <p className='header-parag mb-[50px]'>This handmade, one-of-a-kind journal is perfect for note taking on the go.</p>
 
                 <div className='flex justify-center'>
-                    <button className='btn-base btn-full'>Shop now</button>
+                    <button onClick={shopNow} className='btn-base btn-full'>Shop now</button>
                     {/* <button onClick={explore} className='btn-base btn-ghost'>Explore</button> */}
                 </div>
             </div>

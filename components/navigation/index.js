@@ -1,27 +1,31 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
+import CartItems from '../../utils/cartItems';
+import User from '../../utils/user';
+
+import { BtnImg } from '../../utils/components/btn';
 import ListIcon from '../../utils/components/listIcon';
 
-// import CartItems from '../../utils/cartItems';
-// import { BtnImg } from '../../utils/components/btn';
-// import User from '../../utils/user';
+function Avatar() {
+    const router = useRouter();
+    const [user, setUser] = useState([]);
 
-// function Avatar() {
-//     const router = useRouter();
-//     const [user, setUser] = useState([]);
+    const me = event => {
+        event.preventDefault();
+        router.push('/me');
+    }
 
-//     const me = event => {
-//         event.preventDefault();
-//         router.push('/me');
-//     }
+    useEffect(() => {
+        setUser(User.getUser());
+    }, []);
 
-//     useEffect(() => {
-//         setUser(User.getUser());
-//     }, []);
-
-//     return <BtnImg src={`${process.env.NEXT_PUBLIC_SERVER}/imgs/users/${user.photo}`} onClick={me} />
-// }
+    return <BtnImg src={`${process.env.NEXT_PUBLIC_SERVER}/imgs/users/${user.photo}`} onClick={me} />
+}
 
 function ListIconCart({ length, href, icon }) {
     const lengthStyle = {
@@ -37,16 +41,13 @@ function ListIconCart({ length, href, icon }) {
 }
 
 function Navigation() {
-    const token = null;
-    const cartItemsLength = 1;
+    const [token, setToken] = useState('s');
+    const [cartItemsLength, setCartItemsLength] = useState(0);
 
-    // const [token, setToken] = useState('');
-    // const [cartItemsLength, setCartItemsLength] = useState(0);
-
-    // useEffect(() => {
-    //     setToken(User.getToken());
-    //     setCartItemsLength(CartItems.items.length);
-    // }, []);
+    useEffect(() => {
+        setToken(User.getToken());
+        setCartItemsLength(CartItems.items.length);
+    }, []);
 
     return <nav>
         <div className='main-nav-promo'>Free shipping on orders over $50</div>
