@@ -29,7 +29,7 @@ function ProductReview({ id, onClick, onSubmit }) {
             method: 'POST',
             credentials: 'include',
             headers: {
-                'Authorization': `Bearer ${User.token}`,
+                'Authorization': `Bearer ${User.getToken()}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(form)

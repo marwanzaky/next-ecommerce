@@ -3,18 +3,23 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import CartItems from '../../utils/cartItems';
-import User from '../../utils/user';
 import { BtnImg } from '../../utils/components/btn';
+import User from '../../utils/user';
 
 function Avatar() {
     const router = useRouter();
+    const [user, setUser] = useState([]);
 
     const me = event => {
         event.preventDefault();
         router.push('/me');
     }
 
-    return <BtnImg src={`${process.env.NEXT_PUBLIC_SERVER}/imgs/users/${User.photo}`} onClick={me} />
+    useEffect(() => {
+        setUser(User.getUser());
+    }, []);
+
+    return <BtnImg src={`${process.env.NEXT_PUBLIC_SERVER}/imgs/users/${user.photo}`} onClick={me} />
 }
 
 function Nav({ href, name }) {
@@ -50,9 +55,11 @@ function NavBtnCart({ cartItemsLength }) {
 }
 
 function Navigation() {
+    const [token, setToken] = useState('');
     const [cartItemsLength, setCartItemsLength] = useState(0);
 
     useEffect(() => {
+        setToken(User.getToken());
         setCartItemsLength(CartItems.items.length);
     }, []);
 
@@ -69,7 +76,7 @@ function Navigation() {
             </ul>
 
             <div className='flex flex-row'>
-                {User.token ? <Avatar /> : <NavBtn href='/signin' icon='person' />}
+                {token ? <Avatar /> : <NavBtn href='/signin' icon='person' />}
                 <NavBtnCart cartItemsLength={cartItemsLength} />
             </div>
         </div>

@@ -37,7 +37,7 @@ function ProductFeedbackOverview({ product }) {
     const [review, setReview] = useState(false);
 
     const writeReview = open => {
-        if (open && !User.token)
+        if (open && !User.getToken())
             return router.push('/signin');
 
         setReview(open);
