@@ -38,6 +38,10 @@ button {
   @apply inline-flex justify-center items-center;
   @apply w-[38px] h-[38px];
   font-size: 24px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.btn-icon img {
   border-radius: 50%;
 }
 .btn-icon:hover {

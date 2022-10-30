@@ -1,7 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import CartItems from '../../utils/cartItems';
+import User from '../../utils/user';
+import { BtnImg } from '../../utils/components/btn';
+
+function Avatar() {
+    const router = useRouter();
+
+    const me = event => {
+        event.preventDefault();
+        router.push('/me');
+    }
+
+    return <BtnImg src={`${process.env.NEXT_PUBLIC_SERVER}/imgs/users/${User.photo}`} onClick={me} />
+}
 
 function Nav({ href, name }) {
     return <li>
@@ -11,10 +25,10 @@ function Nav({ href, name }) {
     </li>
 }
 
-function NavBtn(props) {
-    return <Link href={props.href}>
+function NavBtn({ href, icon }) {
+    return <Link href={href}>
         <a className='nav-btn' >
-            <span className="material-symbols-outlined">{props.icon}</span>
+            <span className='material-symbols-outlined'>{icon}</span>
         </a>
     </Link>
 }
@@ -29,7 +43,7 @@ function NavBtnCart({ cartItemsLength }) {
 
     return <Link href='/cart'>
         <a className='nav-btn nav-btn-icon'>
-            <span className="material-symbols-outlined">shopping_cart</span>
+            <span className='material-symbols-outlined'>shopping_cart</span>
             <div className='nav-button-cart-length' style={buttonCartLengthStyle}>{cartItemsLength}</div>
         </a>
     </Link>
@@ -44,7 +58,7 @@ function Navigation() {
 
     return <nav>
         <div className='main-nav-promo'>Free shipping on orders over $50</div>
-        <div className="xl:container xl:mx-auto p-5 main-nav-box">
+        <div className='xl:container xl:mx-auto p-5 main-nav-box'>
             <Link href='/'><a className='logo'>{process.env.NEXT_PUBLIC_NAME}</a></Link>
 
             <ul className='hidden sm:block main-nav'>
@@ -54,8 +68,8 @@ function Navigation() {
                 <Nav href='/contact' name='Contact' />
             </ul>
 
-            <div>
-                <NavBtn href='/signin' icon='person' />
+            <div className='flex flex-row'>
+                {User.token ? <Avatar /> : <NavBtn href='/signin' icon='person' />}
                 <NavBtnCart cartItemsLength={cartItemsLength} />
             </div>
         </div>

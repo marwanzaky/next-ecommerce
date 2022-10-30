@@ -79,7 +79,12 @@ button {
   @apply w-[38px] h-[38px];
 
   font-size: 24px;
+  overflow: hidden;
   border-radius: 50%;
+  
+  img {
+    border-radius: 50%;
+  }
 
   &:hover {
     background-color: $color-grey-light;

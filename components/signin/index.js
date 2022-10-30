@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 import { InputText } from '../../utils/components/input';
+import User from '../../utils/user';
 
 const initialState = {
     email: '',
@@ -22,7 +23,7 @@ function Signin() {
         setForm(newForm);
     }
 
-    const submit = async (event) => {
+    const submit = async event => {
         event.preventDefault();
 
         const requestOptions = {
@@ -39,7 +40,9 @@ function Signin() {
             alert('Logged in successfully!');
         else alert(data.message);
 
+        User.login(data.token, data.data.user);
         console.log('login', data);
+
         router.push('/');
     }
 

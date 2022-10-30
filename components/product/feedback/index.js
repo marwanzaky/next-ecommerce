@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Stars from '../../../utils/components/stars';
+import User from '../../../utils/user';
 import ProductReview from '../../review';
 
 const stringToDate = str => {
@@ -31,7 +33,15 @@ function ProductFeedbackReviews({ product }) {
 }
 
 function ProductFeedbackOverview({ product }) {
+    const router = useRouter();
     const [review, setReview] = useState(false);
+
+    const writeReview = open => {
+        if (open && !User.token)
+            return router.push('/signin');
+
+        setReview(open);
+    }
 
     return <div className='product-feedback-overview'>
         <div className='mb-[30px] grid grid-cols-2'>
@@ -40,10 +50,10 @@ function ProductFeedbackOverview({ product }) {
         </div>
 
         <div className='flex justify-center'>
-            <button className='btn-base btn-full !m-0' onClick={() => setReview(true)}>Write a review</button>
+            <button className='btn-base btn-full !m-0' onClick={() => writeReview(true)}>Write a review</button>
         </div>
 
-        {review ? <ProductReview onClick={() => setReview(false)} /> : <></>}
+        {review ? <ProductReview id={product._id} onClick={() => setReview(false)} onSubmit={() => writeReview(false)} /> : <></>}
     </div>
 
     function ProductFeedbackOverviewRating() {
