@@ -1,16 +1,10 @@
-import Header from '../components/header';
-import FeaturedCollection from '../components/featuredCollection';
-import WhyChooseUs from '../components/whyChooseUs';
-import Testimonials from '../components/testimonials';
+import FeaturedCollection from '../../components/featuredCollection';
 
 export default async function Page() {
     const products = await getData();
 
     return <div className='App'>
-        <Header />
         <FeaturedCollection products={products} />
-        <WhyChooseUs />
-        <Testimonials />
     </div>
 }
 

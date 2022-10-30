@@ -1,7 +1,6 @@
 import ProductItem from './productItem';
 
 function Products({ title, data }) {
-    console.log('products::::', data);
     return <section className='xl:container xl:mx-auto section-products'>
         <h2>{title}</h2>
 
