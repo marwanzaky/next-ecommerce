@@ -17,7 +17,7 @@ function Stars({ className, total, value = 5, displayTotal = true }) {
         stars.push(<Star key={`Star ${i}`} />)
 
     if (value % 1 !== 0)
-        stars.push(<StarHalf />)
+        stars.push(<StarHalf key={'Star half'} />)
 
     for (let i = 0; i < 5 - Math.ceil(value); i++)
         stars.push(<StarBorder key={`Star border ${i}`} />)
