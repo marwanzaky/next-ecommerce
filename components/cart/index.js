@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 
 import CartTable from './table';
+import { checkout } from './cart';
 
-import { checkout, updateCartSubtotal } from './cart';
 import CartItems from '../../utils/cartItems';
 import YouMayAlsoLike from '../youMayAlsoLike';
 
@@ -27,6 +27,17 @@ function YourCartIsEmpty() {
 }
 
 function YourCart({ items }) {
+    const cartSubtotalPriceElement = useRef();
+
+    useEffect(() => {
+        let subtotal = 0;
+
+        for (let i = 0; i < items.length; i++)
+            subtotal = subtotal + items[i].price;
+
+        cartSubtotalPriceElement.current.innerText = '$' + (subtotal / 100).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' USD';
+    }, [items]);
+
     return <>
         <h4 className='text-center'>Your Cart</h4>
 
@@ -36,7 +47,7 @@ function YourCart({ items }) {
             <div className='cart-subtotal'>
                 <div className='cart-subtotal-div mb-[10px]'>
                     <span className='cart-subtotal-div-title'>Subtotal&emsp;</span>
-                    <span className='cart-subtotal-div-price'>$0 USD</span>
+                    <span className='cart-subtotal-div-price' ref={cartSubtotalPriceElement}>$0 USD</span>
                 </div>
 
                 <div className='cart-subtotal-note'>Taxes and shipping calculated at checkout</div>
@@ -50,16 +61,16 @@ function YourCart({ items }) {
 }
 
 export default function Cart({ products }) {
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(CartItems.items);
 
-    useEffect(() => {
-        setItems(CartItems.items);
-    }, []);
+    // useEffect(() => {
+    //     setItems(CartItems.items);
+    // }, [])
 
-    useEffect(() => {
-        if (items.length > 0)
-            updateCartSubtotal();
-    });
+    // useEffect(() => {
+    // console.log('carts');
+    // }, [CartItems.items]);
+    console.log('items', items.length);
 
     return <section className='section-cart'>
         <div className='xl:container xl:mx-auto'>

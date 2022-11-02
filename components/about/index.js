@@ -9,7 +9,7 @@ function Paragraph(props) {
     </div >
 }
 
-function About() {
+export default function About() {
     const router = useRouter();
 
     const contactUs = event => {
@@ -34,5 +34,3 @@ function About() {
         </div>
     </section>
 }
-
-export default About;

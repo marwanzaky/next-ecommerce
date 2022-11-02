@@ -1,14 +1,14 @@
 import FeaturedCollection from '../../components/featuredCollection';
 
 export default async function Page() {
-    const products = await getData();
+    const products = await getProducts();
 
     return <div className='App'>
         <FeaturedCollection products={products} />
     </div>
 }
 
-async function getData() {
+async function getProducts() {
     const req = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/products`);
     const json = await req.json();
 
