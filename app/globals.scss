@@ -283,60 +283,10 @@ input[type=number] {
 @import '../components/header/style';
 
 /*------- PRODUCTS -------*/
-.products-box {
-   @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4;
-}
+@import '../components/ui/Products/style';
 
 /*------- PRODUCT ITEM -------*/
-.product_item {
-  @apply relative overflow-hidden flex flex-col;
-
-  border: 2px solid rgb(240, 240, 240);
-  border-radius: $border-radius;
-
-  &:hover {
-    box-shadow: 0 0 20px $color-shadow;
-  }
-
-  // .product_item-stars {
-  //   margin-bottom: 5px;
-  //   color: $color-primary-dark;
-  // }
-}
-
-.product_item-tag {
-  @apply flex justify-between items-center;
-
-  .product_item-tag-price {
-    font-size: 150%;
-  }
-
-  .product_item-tag-price_compare {
-    font-size: 120%;
-    margin-left: 5px;
-    text-decoration: line-through;
-    color: $color-grey;
-  }
-
-  .product_item-tag-add {
-    @apply flex items-center justify-center;
-    @apply h-[32px] w-[32px] md:h-[38px] md:w-[38px];
-
-    padding: 5px;
-    border-radius: 50%;
-  }
-
-  .btn-ghost {
-    border: none;
-    color: $color-primary-dark;
-    background-color: $color-bg-dark;
-  
-    &:hover {
-      color: #fff;
-      background-color: $color-primary-dark;
-    }
-  }
-}
+@import '../components/ui/ProductItem/style';
 
 /*------- WHY CHOOSE US -------*/
 .why_choose_us-reason {
