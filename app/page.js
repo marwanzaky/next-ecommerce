@@ -3,7 +3,7 @@
 import Header from '@components/header';
 import Products from '@components/products';
 import WhyChooseUs from '@components/whyChooseUs';
-// import Testimonials from '@components/testimonials';
+import Testimonials from '@components/testimonials';
 
 export default async function Page() {
     const { data } = await getProducts();
@@ -12,7 +12,7 @@ export default async function Page() {
         <Header />
         <Products products={data.products} />
         <WhyChooseUs />
-        {/* <Testimonials /> */}
+        <Testimonials />
     </div>
 }
 

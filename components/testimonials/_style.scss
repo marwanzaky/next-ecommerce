@@ -1,0 +1,42 @@
+.section-testimonials {
+  // ! NOT SURE WHICH ONE TO PICK
+  background-color: $color-grey-light;
+  // background-color: $color-bg-dark;
+}
+
+.testimonials-box {
+  overflow: hidden;
+  margin-bottom: 15px;
+
+  .testimonial-icon {
+    width: 32px;
+    
+    span {
+      font-size: 32px;
+    }
+  }
+
+  blockquote {
+    color: $color-black;
+  }
+
+  .testimonial i {
+    font-size: 120%;
+    margin-bottom: 15px;
+    color: $color-black;
+  }
+
+  .testimonial blockquote {
+    font-style: italic;
+    font-weight: var(--font-regular);
+  }
+
+  .testimonial cite {
+    display: block;
+    margin-top: 20px;
+  }
+
+  .testimonial cite:before {
+    content: '\2014 \0020';
+  }
+}
