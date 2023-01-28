@@ -8,6 +8,6 @@ export function BtnIcon({ className, icon, onClick }) {
 
 export function BtnImg({ className, src, onClick }) {
     return <button className={`${className} btn-icon`} onClick={onClick}>
-        <Image src={src} width='24' height='24' />
+        <Image src={src} width='24px' height='24px' />
     </button>
 }

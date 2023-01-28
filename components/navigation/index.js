@@ -1,76 +1,73 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-import CartItems from '../../utils/cartItems';
-import User from '../../utils/user';
-
-import { BtnImg } from '../../utils/components/btn';
-import ListIcon from '../../utils/components/listIcon';
+import User from '@utils/user';
+import CartItems from '@utils/cartItems';
+import Image from 'next/image';
 
 function Avatar() {
-    const router = useRouter();
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState(User.getUser());
 
-    const me = event => {
-        event.preventDefault();
-        router.push('/me');
+    return <Link className='nav-btn' href='/me'>
+        <Image src={`${process.env.NEXT_PUBLIC_SERVER}/imgs/users/${user?.photo}`} width={24} height={24} />
+    </Link>
+}
+
+function NavBtn({ href, icon }) {
+    return <Link className='nav-btn' href={href}>
+        <span className='material-symbols-outlined'>{icon}</span>
+    </Link>
+}
+
+function NavBtnLength({ href, icon, length }) {
+    const lengthStyle = {
+        display: length > 0 ? 'flex' : 'none'
     }
 
-    useEffect(() => {
-        setUser(User.getUser());
-    }, []);
-
-    return <BtnImg src={`${process.env.NEXT_PUBLIC_SERVER}/imgs/users/${user.photo}`} onClick={me} />
+    return <Link className='nav-btn nav-btn-length' href={href}>
+        <span className='material-symbols-outlined'>{icon}</span>
+        <div className='length' style={lengthStyle}>{length}</div>
+    </Link>
 }
 
-function ListIconCart({ length, href, icon }) {
-    const lengthStyle = {
-        display: 'none'
-    };
-
-    if (length > 0)
-        lengthStyle.display = 'flex';
-
-    return <ListIcon className='li-icon-cart' href={href} icon={icon}>
-        <div className='li-icon-cart-length' style={lengthStyle}>{length}</div>
-    </ListIcon>
+function NavLi({ href, name }) {
+    return <li>
+        <Link href={href} id={`${name.toLowerCase()}`}>{name}</Link>
+    </li>
 }
 
-function Navigation() {
-    const [token, setToken] = useState('s');
-    const [cartItemsLength, setCartItemsLength] = useState(0);
+export default function Navigation() {
+    const [token, setToken] = useState('');
+    const [cartItems, setCartItems] = useState(0);
 
     useEffect(() => {
         setToken(User.getToken());
-        setCartItemsLength(CartItems.items.length);
+        setCartItems(CartItems.items);
     }, []);
 
     return <nav>
-        <div className='main-nav-promo'>Free shipping on orders over $50</div>
-        <div className='xl:container xl:mx-auto p-5 main-nav-box'>
-            <Link href='/' className='logo'>{process.env.NEXT_PUBLIC_NAME}</Link>
+        <div className='nav-promo'>Free shipping on orders over $50</div>
+        <div className='nav-box'>
+            <Link className='logo' href='/'>{process.env.NEXT_PUBLIC_NAME}</Link>
 
-            <ul className='hidden sm:block main-nav'>
-                <List href='/' name='Home' />
-                <List href='/products' name='Shop' />
-                <List href='/about' name='About' />
-                <List href='/contact' name='Contact' />
+            <ul className='nav-ul'>
+                <NavLi href='/' name='Home' />
+                <NavLi href='/products' name='Shop' />
+                <NavLi href='/about' name='About' />
+                <NavLi href='/contact' name='Contact' />
             </ul>
 
             <div className='flex flex-row'>
-                {/* {token ? <Avatar /> : <ListIcon href='/signin' icon='person' />} */}
-                <ListIconCart href='/cart' icon='shopping_cart' length={cartItemsLength} />
+                {token ?
+                    <Avatar /> :
+                    <NavBtn href='/signin' icon='person' />
+                }
+
+                <NavBtnLength href='/cart' icon='shopping_cart' length={cartItems.length} />
             </div>
         </div>
     </nav>
-
-    function List({ href, name }) {
-        return <li><Link href={href}>{name}</Link></li>
-    }
 }
-
-export default Navigation;

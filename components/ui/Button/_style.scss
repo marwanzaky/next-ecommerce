@@ -1,0 +1,40 @@
+.btn-base {
+  padding: $btn-pv $btn-ph;
+  font-weight: var(--font-regular);
+  border-radius: $border-radius;
+
+  &:hover {
+    background-color: $color-primary-dark;
+  }
+}
+
+.btn-full {
+  background-color: $color-primary;
+  border: $btn-line-width solid $color-primary;
+  color: $color-bg;
+  margin-right: 15px;
+
+  &:hover {
+    border: $btn-line-width solid $color-primary-dark;
+  }
+}
+
+.btn-ghost {
+  border: $btn-line-width solid $color-primary;
+  color: $color-primary;
+
+  &:hover {
+    border: $btn-line-width solid $color-primary-dark;
+    color: #fff;
+  }
+}
+
+.btn-ghost-grey {
+  border: $btn-line-width solid $color-border;
+  color: $color-black;
+
+  &:hover {
+    border: $btn-line-width solid $color-primary-dark;
+    color: #fff;
+  }
+}

@@ -1,0 +1,23 @@
+header {
+  @apply py-[50px];
+  @apply h-[500px];
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/background.jpg');
+  background-size: cover;
+  background-position: 0;
+}
+
+.header-box {
+  @apply xl:container xl:mx-auto;
+  @apply pt-[100px];
+
+  .header-text {
+    @apply text-center;
+    color: $color-bg;
+  }
+
+  .header-parag {
+    @apply mb-[50px] text-center;
+    color: $color-bg;
+  }
+}

@@ -1,12 +1,10 @@
-'use client';
+import React from 'react';
 
 import Link from 'next/link';
-
 import Img from './img';
-import Stars from './stars';
 
 import AddToCartFun from '../addToCart';
-import Image from 'next/image';
+import Stars from './stars';
 
 function AddToCart({ id }) {
     const addToCart = event => {
@@ -18,14 +16,12 @@ function AddToCart({ id }) {
     </button>
 }
 
-export default function ProductItem({ id, name, price, priceCompare, img, reviews, averageRating = 5 }) {
+function ProductItem({ id, name, price, priceCompare, img, reviews, averageRating = 5 }) {
     return <div className='product_item'>
         <div className='product_item-save'><span className='material-symbols-outlined'>favorite</span></div>
 
-        <Link href={`/product/${id}`} className='product_item-a'>
-            {/* <Img src={`${process.env.NEXT_PUBLIC_SERVER}/${img}`} alt={name} /> */}
-            {/* <Image src={src} alt={alt} layout='responsive' width='100' height='100' /> */}
-            <Image src={`${process.env.NEXT_PUBLIC_SERVER}/${img}`} alt={name} width={500} height={500} />
+        <Link href={`/product/${id}`}>
+            <a className='product_item-a'><Img src={`${process.env.NEXT_PUBLIC_SERVER}/${img}`} alt={name} /></a>
         </Link>
 
         <div className='flex flex-col p-2 sm:p-4'>
@@ -43,3 +39,5 @@ export default function ProductItem({ id, name, price, priceCompare, img, review
         </div>
     </div>
 }
+
+export default ProductItem;

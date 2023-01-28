@@ -1,0 +1,68 @@
+/*------- NAV -------*/
+nav {
+  border-bottom: 2px solid $color-border;
+}
+
+/*------- NAV / NAV PROMO -------*/
+nav .nav-promo {
+  @apply p-[10px];
+  @apply text-center;
+
+  background-color: $color-primary-dark;  
+  color: white;
+}
+
+/*------- NAV / NAV BOX -------*/
+nav .nav-box {
+  @apply p-[20px];
+  @apply xl:container xl:mx-auto;
+  @apply flex justify-between items-center;
+}
+
+nav .nav-box .nav-ul {
+  @apply hidden sm:block;
+
+  li {
+    @apply mx-[20px] inline-block;
+
+    a {
+      @apply py-[5px];
+
+      border-bottom: 2px solid transparent;
+
+      &:hover {
+        border-bottom: 2px solid $color-primary-dark;
+      }
+    }
+  }
+}
+
+nav .nav-box .nav-btn {
+  @apply inline-flex justify-center items-center;
+  @apply w-[38px] h-[38px];
+  @apply rounded-full;
+
+  font-size: 24px;
+
+  &:hover {
+    background-color: $color-grey-light;
+  }
+}
+
+nav .nav-box .nav-btn-length {
+  position: relative;
+
+  .length {
+    @apply inline-flex justify-center items-center;
+
+    @apply absolute;
+    @apply top-[5px] right-[-5px];
+    @apply h-[14px] w-[14px];
+    @apply rounded-full;
+
+    background-color: $color-primary-dark;
+
+    font-size: 11px;
+    color: white;
+  }
+}

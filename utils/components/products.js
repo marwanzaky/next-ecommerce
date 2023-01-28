@@ -1,3 +1,4 @@
+import React from 'react';
 import ProductItem from './productItem';
 
 function Products({ title, data }) {
@@ -5,14 +6,7 @@ function Products({ title, data }) {
         <h2>{title}</h2>
 
         <div className='products-box'>
-            {data.map(item => <ProductItem
-                key={item._id} id={item._id}
-                img={item.imgs[0]}
-                name={item.name}
-                averageRating={item.averageRatings}
-                reviews={item.numReviews}
-                price={item.price}
-                priceCompare={item.priceCompare} />)}
+            {data.map(item => <ProductItem key={item._id} id={item._id} img={item.imgs[0]} name={item.name} averageRating={item.avgRatings} reviews={item.numReviews} price={item.price} priceCompare={item.priceCompare} />)}
         </div>
     </section>
 }

@@ -8,8 +8,12 @@ export function InputText({ id, type, placeholder, onChange, icon }) {
 }
 
 export function InputTextarea({ placeholder, icon, onChange, minHeight = '150px' }) {
+    const style = {
+        minHeight
+    }
+
     return <div className='input-field'>
-        <textarea placeholder={placeholder} style={{ minHeight }} onChange={onChange}></textarea>
+        <textarea placeholder={placeholder} style={style} onChange={onChange}></textarea>
         <div className='input-field-icon'><span className="material-symbols-outlined">{icon}</span></div>
     </div>
 }

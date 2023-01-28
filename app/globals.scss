@@ -178,60 +178,8 @@ h4 {
   margin-bottom: 20px;
 }
 
-/*------- LINK -------*/
-.li-icon {
-  @apply inline-flex justify-center items-center;
-  @apply w-[38px] h-[38px];
-
-  font-size: 24px;
-  border-radius: 50%;
-
-  &:hover {
-    background-color: $color-grey-light;
-  }
-}
-
 /*------- BUTTONS -------*/
-.btn-base {
-  padding: $btn-pv $btn-ph;
-  font-weight: var(--font-regular);
-  border-radius: $border-radius;
-
-  &:hover {
-    background-color: $color-primary-dark;
-  }
-}
-
-.btn-full {
-  background-color: $color-primary;
-  border: $btn-line-width solid $color-primary;
-  color: $color-bg;
-  margin-right: 15px;
-
-  &:hover {
-    border: $btn-line-width solid $color-primary-dark;
-  }
-}
-
-.btn-ghost {
-  border: $btn-line-width solid $color-primary;
-  color: $color-primary;
-
-  &:hover {
-    border: $btn-line-width solid $color-primary-dark;
-    color: #fff;
-  }
-}
-
-.btn-ghost-grey {
-  border: $btn-line-width solid $color-border;
-  color: $color-black;
-
-  &:hover {
-    border: $btn-line-width solid $color-primary-dark;
-    color: #fff;
-  }
-}
+@import '../components/ui/Button/style';
 
 /*------- PRODUCT SAVE -------*/
 .product_item-save {
@@ -329,80 +277,10 @@ input[type=number] {
 }
 
 /*------- MAIN NAVIGATOR -------*/
-nav {
-  border-bottom: 2px solid $color-border;
-
-  .main-nav-promo {
-    padding: 10px;
-    background-color: $color-primary-dark;
-    background-color: $color-primary-dark;
-    color: white;
-    text-align: center;
-  }
-
-  .main-nav-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .main-nav li {
-      display: inline-block;
-      margin: 0 20px;
-
-      a {
-        padding: 5px 0px;
-        border-bottom: 2px solid transparent;
-
-        &:hover {
-          border-bottom: 2px solid $color-primary-dark;
-        }
-      }
-    }
-  }
-}
-
-.main-nav-box .li-icon-cart {
-  position: relative;
-
-  .li-icon-cart-length {
-    position: absolute;
-    top: 5px;
-    right: -5px;
-
-    height: 14px;
-    width: 14px;
-
-    border-radius: 50%;
-
-    background-color: $color-primary-dark;
-
-    font-size: 11px;
-    color: white;
-
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
+@import '../components/navigation/style';
 
 /*------- HEADER -------*/
-header {
-  padding: 50px 0;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/bg.jpg');
-  background-size: cover;
-  background-position: 0;
-  height: 500px;
-}
-
-.header-box {
-  padding-top: 100px;
-
-  .header-text,
-  .header-parag {
-    text-align: center;
-    color: $color-bg;
-  }
-}
+@import '../components/header/style';
 
 /*------- PRODUCTS -------*/
 .products-box {

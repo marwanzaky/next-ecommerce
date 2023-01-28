@@ -1,22 +1,24 @@
-import Header from '../components/header';
-import FeaturedCollection from '../components/featuredCollection';
-import WhyChooseUs from '../components/whyChooseUs';
-import Testimonials from '../components/testimonials';
+import Header from '@components/header';
+// import Products from '@components/products';
+// import WhyChooseUs from '@components/whyChooseUs';
+// import Testimonials from '@components/testimonials';
 
-export default async function Page() {
-    const products = await getData();
-
+export default function Page() {
     return <div className='App'>
         <Header />
-        <FeaturedCollection products={products} />
-        <WhyChooseUs />
-        <Testimonials />
+        {/* <Products products={products} /> */}
+        {/* <WhyChooseUs /> */}
+        {/* <Testimonials /> */}
     </div>
 }
 
-async function getData() {
-    const req = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/products`);
-    const json = await req.json();
+// export async function getStaticProps() {
+//     const req = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/products`);
+//     const json = await req.json();
 
-    return json.data.products;
-}
+//     return {
+//         props: {
+//             products: json.data.products,
+//         }
+//     }
+// }
