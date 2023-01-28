@@ -1,0 +1,30 @@
+footer {
+  padding: 25px;
+  background-color: $color-black;
+}
+
+.footer-box {
+  .footer-title {
+    color: $color-bg;
+  }
+
+  .footer-list {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  a {
+    color: $color-bg;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .copyright-p {
+    color: $color-bg;
+    text-align: center;
+    font-weight: var(--font-bold);
+    margin-bottom: 30px;
+  }
+}
