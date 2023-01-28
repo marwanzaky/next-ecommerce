@@ -1,0 +1,26 @@
+.why_choose_us-reason {
+    p {
+      color: $color-grey;
+    }
+  
+    .why_choose_us-reason-icon {
+      @apply mb-[30px] w-[70px] h-[70px];
+      @apply flex justify-center items-center;
+  
+      background-color: $color-bg-dark;
+      border-radius: $border-radius;
+      
+      span {
+        color: $color-black;
+        font-size: 32px;
+      }
+    }
+  
+    &:hover .why_choose_us-reason-icon {
+      background-color: $color-primary-light;
+      
+      span {
+        color: $color-primary-dark;
+      }
+    }
+  }

@@ -2,7 +2,7 @@
 
 import Header from '@components/header';
 import Products from '@components/products';
-// import WhyChooseUs from '@components/whyChooseUs';
+import WhyChooseUs from '@components/whyChooseUs';
 // import Testimonials from '@components/testimonials';
 
 export default async function Page() {
@@ -11,7 +11,7 @@ export default async function Page() {
     return <div className='App'>
         <Header />
         <Products products={data.products} />
-        {/* <WhyChooseUs /> */}
+        <WhyChooseUs />
         {/* <Testimonials /> */}
     </div>
 }
