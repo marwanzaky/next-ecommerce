@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -38,8 +39,14 @@ function NavBtnLength({ href, icon, length }) {
 }
 
 function NavLi({ href, name }) {
+    const pathname = usePathname();
+    let select = pathname === href;
+
+    if (href === '/products' && pathname.includes('/product'))
+        select = true;
+
     return <li>
-        <Link href={href} id={`${name.toLowerCase()}`}>{name}</Link>
+        <Link className={select && 'select'} href={href}>{name}</Link>
     </li>
 }
 

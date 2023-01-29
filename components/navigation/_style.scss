@@ -34,6 +34,11 @@ nav .nav-box .nav-ul {
         border-bottom: 2px solid $color-primary-dark;
       }
     }
+
+    .select {
+      font-weight: var(--font-bold);
+      color: $color-primary-dark;
+    }
   }
 }
 
