@@ -3,7 +3,7 @@ const cartItems = {
     get items() {
         let json = null;
 
-        if (typeof window !== "undefined")
+        if (typeof window !== 'undefined')
             json = window.localStorage.getItem(this.nameStr)
 
         const obj = JSON.parse(json);
@@ -12,7 +12,7 @@ const cartItems = {
     set items(obj) {
         const json = JSON.stringify(obj);
 
-        if (typeof window !== "undefined")
+        if (typeof window !== 'undefined')
             window.localStorage.setItem(this.nameStr, json);
     }
 }

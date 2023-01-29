@@ -302,74 +302,7 @@ input[type=number] {
 @import '../components/product/style';
 
 /*------- CART -------*/
-.section-cart .cart-container .cart-table {
-  width: 100%;
-  margin-bottom: 30px;
-
-  padding: 10px;
-  
-  border: solid 1px $color-border;
-  border-collapse: separate !important;
-  border-radius: $border-radius;
-
-  th {
-    padding: 10px;
-  }
-
-  .cart-table-thead {
-    .cart-table-thead-th-product {
-      width: 50%;
-    }
-
-    .cart-table-thead-th-price {
-      width: 10%;
-    }
-
-    .cart-table-thead-th-quantity {
-      width: 15%;
-    }
-
-    .cart-table-thead-th-total {
-      width: 10%;
-    }
-
-    .cart-table-thead-th-remove {
-      width: 15%;
-    }
-  }
-
-  .cart-table-item {
-    th {
-      font-weight: var(--font-regular);
-      vertical-align: middle;
-    }
-
-    .cart-table-item-product {
-      .cart-table-item-product-div {
-        @apply flex items-center;
-
-        .cart-table-item-product-img {
-          margin-right: 20px;
-          width: 50px;
-          border: solid 1px $color-border;
-          border-radius: $border-radius;
-          overflow: hidden;
-        }
-      }
-    }
-  }
-}
-
-.cart-subtotal {
-  @apply flex flex-col justify-center items-end;
-
-  margin-bottom: 20px;
-
-  .cart-subtotal-note {
-    font-size: 80%;
-    color: $color-grey;
-  }
-}
+@import '../components/cart/style';
 
 /*------- SIGN UP / SING IN -------*/
 .section-signin .signin-p,
