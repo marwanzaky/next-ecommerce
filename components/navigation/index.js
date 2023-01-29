@@ -9,7 +9,11 @@ import User from '@utils/user';
 import CartItems from '@utils/cartItems';
 
 function Avatar() {
-    const [user, setUser] = useState(User.getUser());
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        setUser(User.getUser());
+    }, []);
 
     return <Link className='nav-btn' href='/me'>
         <Image className='rounded-full' src={`${process.env.NEXT_PUBLIC_SERVER}/imgs/users/${user?.photo}`} width={24} height={24} />

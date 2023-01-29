@@ -8,6 +8,8 @@ export default async function Page({ params }) {
     const products = await getProducts();
 
     return <div className='App'>
+        <title>{`${product.name} \u2014 ${process.env.NEXT_PUBLIC_NAME}`}</title>
+
         <Product product={product} />
         <YouMayAlsoLike products={products} />
     </div>
