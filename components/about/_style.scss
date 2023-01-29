@@ -1,0 +1,23 @@
+.section-about {
+  background-color: #b2bec3;
+}
+
+.section-about .about-box {
+  @apply xl:container xl:mx-auto;
+}
+
+.section-about .parags {
+  @apply grid grid-cols-1 lg:grid-cols-3;
+  @apply gap-5 mb-[50px];
+}
+
+.section-about .contact {
+  h4 {
+    text-align: center;
+  }
+
+  button {
+    margin: 0 auto;
+    display: block;
+  }
+}

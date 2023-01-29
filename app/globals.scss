@@ -290,20 +290,7 @@ input[type=number] {
 @import '../components/testimonials/style';
 
 /*------- ABOUT -------*/
-.section-about {
-  background-color: #b2bec3;
-
-  .about-contact {
-    h4 {
-      text-align: center;
-    }
-
-    button {
-      margin: 0 auto;
-      display: block;
-    }
-  }
-}
+@import '../components/about/style';
 
 /*------- FOOTER -------*/
 @import '../components/footer/style';
