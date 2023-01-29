@@ -1,7 +1,8 @@
+import Layout from '@components/layout';
 import Signin from '@components/signin';
 
 export default function Page() {
-    return <div className='App'>
+    return <Layout title='Sign In'>
         <Signin />
-    </div>
+    </Layout>
 }

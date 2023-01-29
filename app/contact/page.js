@@ -1,7 +1,8 @@
-import Contact from "@components/contact";
+import Layout from '@components/layout';
+import Contact from '@components/contact';
 
 export default function Page() {
-    return <div className='App'>
+    return <Layout title='Contact'>
         <Contact />
-    </div>
+    </Layout>
 }

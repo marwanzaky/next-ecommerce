@@ -1,7 +1,8 @@
+import Layout from '@components/layout';
 import Signup from '@components/signup';
 
 export default function Page() {
-    return <div className='App'>
+    return <Layout title='Sign Up'>
         <Signup />
-    </div>
+    </Layout>
 }

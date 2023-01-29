@@ -1,11 +1,12 @@
+import Layout from '@components/layout';
 import Products from '@components/products';
 
 export default async function Page() {
     const products = await getProducts();
 
-    return <div className='App'>
+    return <Layout title='Products'>
         <Products products={products} />
-    </div>
+    </Layout>
 }
 
 async function getProducts() {

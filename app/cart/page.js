@@ -1,11 +1,12 @@
-import Cart from "@components/cart";
+import Layout from '@components/layout';
+import Cart from '@components/cart';
 
 export default async function Page() {
     const products = await getProducts();
 
-    return <div className='App'>
+    return <Layout title='Cart'>
         <Cart products={products} />
-    </div>
+    </Layout>
 }
 
 async function getProducts() {

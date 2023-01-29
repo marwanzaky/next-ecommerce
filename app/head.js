@@ -1,5 +1,6 @@
-import _Head_ from '@components/head';
-
 export default function Head() {
-    return <_Head_ />
+    return <>
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' href='/favicon.png' />
+    </>
 }

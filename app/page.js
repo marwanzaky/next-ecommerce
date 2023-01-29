@@ -1,4 +1,4 @@
-// 'use client';
+import Layout from '@components/layout';
 
 import Header from '@components/header';
 import Products from '@components/products';
@@ -8,12 +8,12 @@ import Testimonials from '@components/testimonials';
 export default async function Page() {
     const { data } = await getProducts();
 
-    return <div className='App'>
+    return <Layout>
         <Header />
         <Products products={data.products} />
         <WhyChooseUs />
         <Testimonials />
-    </div>
+    </Layout>
 }
 
 async function getProducts() {

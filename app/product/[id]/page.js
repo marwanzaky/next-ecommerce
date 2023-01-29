@@ -1,5 +1,4 @@
-import React from 'react';
-
+import Layout from '@components/layout';
 import Product from '@components/product';
 import YouMayAlsoLike from '@components/youMayAlsoLike';
 
@@ -7,12 +6,10 @@ export default async function Page({ params }) {
     const product = await getProduct(params.id);
     const products = await getProducts();
 
-    return <div className='App'>
-        <title>{`${product.name} \u2014 ${process.env.NEXT_PUBLIC_NAME}`}</title>
-
+    return <Layout title={`${product.name} \u2014 ${process.env.NEXT_PUBLIC_NAME}`}>
         <Product product={product} />
         <YouMayAlsoLike products={products} />
-    </div>
+    </Layout>
 }
 
 async function getProduct(id) {
