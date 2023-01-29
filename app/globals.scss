@@ -296,20 +296,7 @@ input[type=number] {
 @import '../components/footer/style';
 
 /*------- CONTACT US -------*/
-.section-contact-me {
-  background-color: $color-bg;
-
-  .contact-me-box {
-    .contact-me-box-child {
-      // width: 50%;
-      padding: 20px;
-    }
-
-    .contact-me-container {
-      border-radius: $border-radius;
-    }
-  }
-}
+@import '../components/contact/style';
 
 /*------- PRODUCT -------*/
 @import '../components/product/style';
