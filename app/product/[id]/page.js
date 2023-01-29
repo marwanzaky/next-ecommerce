@@ -7,8 +7,6 @@ export default async function Page({ params }) {
     const product = await getProduct(params.id);
     const products = await getProducts();
 
-    console.log('product', product);
-
     return <div className='App'>
         <Product product={product} />
         <YouMayAlsoLike products={products} />
