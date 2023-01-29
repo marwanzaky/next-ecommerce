@@ -1,7 +1,9 @@
 'use client';
 
-import { ButtonFull } from '@ui/Button';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+
+import { ButtonFull } from '@ui/Button';
 
 export default function Header() {
     const router = useRouter();
@@ -16,7 +18,9 @@ export default function Header() {
         router.push('/shop');
     }
 
-    return <header>
+    return <header className='relative'>
+        <Image fill className='header-img' src='/img/background.jpg' />
+
         <div className='header-box'>
             <h1 className='header-text'>Soft Cover Journal.</h1>
             <p className='header-parag'>This handmade, one-of-a-kind journal is perfect for note taking on the go.</p>

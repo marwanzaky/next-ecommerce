@@ -1,10 +1,11 @@
 header {
   @apply py-[50px];
   @apply h-[500px];
+}
 
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/background.jpg');
-  background-size: cover;
-  background-position: 0;
+header .header-img {
+  @apply object-center object-cover pointer-events-none;
+  @apply z-[-1];
 }
 
 .header-box {
