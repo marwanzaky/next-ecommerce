@@ -3,16 +3,16 @@
 import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 import User from '@utils/user';
 import CartItems from '@utils/cartItems';
-import Image from 'next/image';
 
 function Avatar() {
     const [user, setUser] = useState(User.getUser());
 
     return <Link className='nav-btn' href='/me'>
-        <Image src={`${process.env.NEXT_PUBLIC_SERVER}/imgs/users/${user?.photo}`} width={24} height={24} />
+        <Image className='rounded-full' src={`${process.env.NEXT_PUBLIC_SERVER}/imgs/users/${user?.photo}`} width={24} height={24} />
     </Link>
 }
 

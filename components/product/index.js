@@ -29,8 +29,8 @@ function Preview({ product }) {
                 src={`${process.env.NEXT_PUBLIC_SERVER}/${img}`}
                 alt={`${product.name} ${i + 1}`}
                 onClick={() => setImg(i)}
-                width={256}
-                height={256}
+                width={128}
+                height={128}
             />)}
         </div>
     </div >
