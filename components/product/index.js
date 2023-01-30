@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-// import ProductFeedback from './feedback';
+import Feedback from '@components/feedback';
 
 import Stars from '@utils/components/stars';
 import AddToCart from '@utils/addToCart';
@@ -77,6 +77,6 @@ export default function Product({ product }) {
             <Details product={product} />
         </div>
 
-        {/* <ProductFeedback product={product} /> */}
+        <Feedback product={product} />
     </section>
 }

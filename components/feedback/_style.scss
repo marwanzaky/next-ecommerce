@@ -1,0 +1,92 @@
+/*------- FEEDBACK -------*/
+.feedback {
+  @apply p-[30px] md:p-[50px];
+  
+  border: solid 2px $color-bg-dark;
+  border-radius: $border-radius;
+}
+
+.feedback .overview-n-reviews {
+  @apply grid grid-cols-1 md:grid-cols-2;
+  @apply gap-x-10 gap-y-10;
+}
+  
+/*------- FEEDBACK OVERVIEW -------*/
+.feedback .overview {
+  .overview-rating {
+    .overview-rating-value {
+      font-size: 300%;
+      font-weight: var(--font-bold);
+      text-align: center;
+    }
+  
+    .overview-rating-stars {
+      @apply flex justify-center;
+      color: $color-primary-dark;
+      margin-bottom: 5px;
+    }
+  
+    .overview-rating-total {
+      @apply flex justify-center items-center;
+      color: $color-grey;
+      text-align: center;
+    }
+  }
+
+  .overview-rates .overview-rates-li {
+    @apply flex flex-row items-center;
+
+    .overview-rates-li-star {
+      color: $color-primary-dark;
+      width: 10px;
+    }
+    
+    .overview-rates-li-stars {
+      text-align: center;
+      width: 50px;
+    }
+
+    .overview-rates-li-bar {
+      height: 2px;
+      width: 100%;
+      overflow: hidden;
+      background-color: $color-grey-light;
+    
+      .overview-rates-li-bar-percent {
+        height: 100%;
+        background-color: $color-primary-dark;
+      }
+    }
+  }
+}
+
+/*------- FEEDBACK REVIEWS -------*/
+.feedback .reviews .review {
+  margin-bottom: 30px;
+
+  .review-profile {
+    @apply flex justify-center items-center w-[40px] h-[40px] rounded-[50%];
+    font-size: 18px;
+    color: $color-primary-dark;
+    background-color: $color-primary-light;
+  }
+
+  .review-fullname {
+    @apply flex items-center;
+
+    span {
+      font-size: 100%;
+      color: $color-grey;
+    }
+  }
+
+  .review-stars {
+    color: $color-primary-dark;
+    font-size: 80%;
+    margin-bottom: 5px;
+  }
+
+  .review-text {
+    color: $color-grey;
+  }
+}
