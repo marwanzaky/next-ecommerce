@@ -8,6 +8,7 @@ import Image from 'next/image';
 
 import User from '@utils/user';
 import CartItems from '@utils/cartItems';
+import Icon from '@ui/Icon';
 
 function Avatar() {
     const [user, setUser] = useState(null);
@@ -23,7 +24,7 @@ function Avatar() {
 
 function NavBtn({ href, icon }) {
     return <Link className='nav-btn' href={href}>
-        <span className='material-symbols-outlined'>{icon}</span>
+        <Icon icon={icon} />
     </Link>
 }
 
@@ -33,7 +34,7 @@ function NavBtnLength({ href, icon, length }) {
     }
 
     return <Link className='nav-btn nav-btn-length' href={href}>
-        <span className='material-symbols-outlined'>{icon}</span>
+        <Icon icon={icon} />
         <div className='length' style={lengthStyle}>{length}</div>
     </Link>
 }

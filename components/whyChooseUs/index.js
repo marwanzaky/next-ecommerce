@@ -1,11 +1,14 @@
+import Icon from "@ui/Icon"
+
 function Reason({ title, des, icon }) {
-    return <div className='why_choose_us-reason'>
-        <div className='m-auto lg:m-0 why_choose_us-reason-icon'>
-            <span className='material-symbols-outlined'>{icon}</span>
+    return <div className='reason'>
+        <div className='reason-icon'>
+            {/* <span className='material-symbols-outlined'>{icon}</span> */}
+            <Icon icon={icon} size={32} />
         </div>
 
-        <h4 className='text-center lg:text-left'>{title}</h4>
-        <p className='text-center lg:text-left'>{des}</p>
+        <h4 className='reason-h4'>{title}</h4>
+        <p className='reason-p'>{des}</p>
     </div>
 }
 

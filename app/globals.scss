@@ -3,9 +3,11 @@
 @import 'tailwindcss/utilities';
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+// @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
 /*------- VARIABLES -------*/
+$filter-primary-dark: brightness(0) saturate(100%) invert(30%) sepia(85%) saturate(1559%) hue-rotate(146deg) brightness(99%) contrast(101%);
+
 $color-primary-light: #b8fff1;
 $color-primary: #00b894;
 $color-primary-dark: #009679;
@@ -45,6 +47,7 @@ $field-ph: 25px;
     opacity var(--transition-delay),
     background-color var(--transition-delay),
     color var(--transition-delay),
+    filter var(--transition-delay),
     border var(--transition-delay),
     box-shadow var(--transition-delay);
 }
@@ -126,15 +129,10 @@ a {
   @apply flex items-start;
 
   color: $color-primary-dark;
+  filter: $filter-primary-dark;
 
-  .stars-star {
-    font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 48;
-    font-size: 120%;
-  }
-
-  .stars-star_half, .stars-star_border {
-    font-variation-settings: 'FILL' 0, 'wght' 600, 'GRAD' 0, 'opsz' 48;
-    font-size: 120%;
+  .star {
+    @apply m-[-2px];
   }
 }
 

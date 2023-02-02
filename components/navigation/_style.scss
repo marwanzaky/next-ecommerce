@@ -47,10 +47,9 @@ nav .nav-box .nav-btn {
   @apply w-[38px] h-[38px];
   @apply rounded-full;
 
-  font-size: 24px;
-
   &:hover {
     background-color: $color-grey-light;
+    img { filter: $filter-primary-dark; }
   }
 }
 
