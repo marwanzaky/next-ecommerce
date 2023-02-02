@@ -19,7 +19,7 @@ export default function Header() {
     }
 
     return <header className='relative'>
-        <Image fill className='header-img' src='/img/background.jpg' alt='background' />
+        <Image fill priority className='header-img' src='/img/background.jpg' alt='background' />
 
         <div className='header-box'>
             <h1 className='header-text'>Soft Cover Journal.</h1>
