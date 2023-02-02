@@ -44,17 +44,19 @@ function YourCart({ items, setItems }) {
     const checkoutBtn = async event => {
         event.preventDefault();
 
-        const items = items.map(item => {
-            return {
-                id: item.id,
-                quantity: 1
-            }
-        });
+        const body = {
+            items: items.map(item => {
+                return {
+                    id: item.id,
+                    quantity: 1
+                }
+            })
+        }
 
         const options = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ items })
+            body: JSON.stringify(body)
         }
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/payment/create-checkout-session`, options);
