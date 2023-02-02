@@ -1,14 +1,14 @@
-import React from 'react';
+import Icon from '@ui/Icon';
 
-function Testimonial(props) {
+function Testimonial({ blockquote, cite }) {
     return <div className='testimonial'>
-        <div className='m-auto lg:m-0 testimonial-icon'>
-            <span className='material-symbols-outlined'>format_quote</span>
+        <div className='testimonial-icon'>
+            <Icon icon='format_quote' size={32} />
         </div>
 
         <blockquote className='text-center lg:text-left'>
-            {props.blockquote}
-            <cite>{props.cite}</cite>
+            {blockquote}
+            <cite>{cite}</cite>
         </blockquote>
     </div>
 }

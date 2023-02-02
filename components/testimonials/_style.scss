@@ -9,11 +9,9 @@
   margin-bottom: 15px;
 
   .testimonial-icon {
-    width: 32px;
-    
-    span {
-      font-size: 32px;
-    }
+    @apply m-auto lg:m-0;
+    @apply mb-[5px];
+    @apply w-[32px];
   }
 
   blockquote {

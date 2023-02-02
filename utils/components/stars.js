@@ -4,8 +4,7 @@ function StarBorder() {
     return <span className="material-symbols-outlined stars-star_border">star</span>
 }
 
-export default function Stars({ className, total, value = 5, displayTotal = true }) {
-    const size = 18;
+export default function Stars({ className, total, size = 18, value = 5, displayTotal = true }) {
     const stars = [];
 
     for (let i = 0; i < parseInt(value); i++)
