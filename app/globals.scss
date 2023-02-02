@@ -7,6 +7,7 @@
 
 /*------- VARIABLES -------*/
 $filter-primary-dark: brightness(0) saturate(100%) invert(30%) sepia(85%) saturate(1559%) hue-rotate(146deg) brightness(99%) contrast(101%);
+$filter-bg: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7481%) hue-rotate(78deg) brightness(100%) contrast(105%);
 
 $color-primary-light: #b8fff1;
 $color-primary: #00b894;
@@ -47,7 +48,6 @@ $field-ph: 25px;
     opacity var(--transition-delay),
     background-color var(--transition-delay),
     color var(--transition-delay),
-    filter var(--transition-delay),
     border var(--transition-delay),
     box-shadow var(--transition-delay);
 }
@@ -127,13 +127,7 @@ a {
 
 .stars {
   @apply flex items-start;
-
-  color: $color-primary-dark;
   filter: $filter-primary-dark;
-
-  .star {
-    @apply m-[-2px];
-  }
 }
 
 /*------- HEADINGS -------*/
@@ -196,8 +190,8 @@ h4 {
     transform: scale(1.1);
   }
 
-  .material-symbols-outlined {
-    font-size: 20px;
+  .icon {
+    @apply w-[20px];
   }
 }
 

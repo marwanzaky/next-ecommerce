@@ -7,6 +7,8 @@ import Stars from '@utils/components/stars';
 
 import AddToCart from '@utils/addToCart';
 
+import Icon from '@ui/Icon';
+
 export default function ProductItem({ data }) {
     const addToCart = event => {
         event.preventDefault();
@@ -14,7 +16,7 @@ export default function ProductItem({ data }) {
     }
 
     return <div className='productItem'>
-        <div className='product_item-save'><span className='material-symbols-outlined'>favorite</span></div>
+        <div className='product_item-save'><Icon icon='favorite' /></div>
 
         <Link className='productItem-a' href={`/product/${data.id}`}>
             <Image src={`${process.env.NEXT_PUBLIC_SERVER}/${data.imgs[0]}`} alt={data.name} width={512} height={512} />
@@ -30,8 +32,8 @@ export default function ProductItem({ data }) {
                     <span className='productItem-tag-price_compare' >{'$' + data.priceCompare / 100}</span>
                 </div>
 
-                <button className='productItem-tag-add btn-base btn-ghost' onClick={addToCart}>
-                    <span className="material-symbols-outlined">shopping_cart</span>
+                <button className='productItem-tag-add' onClick={addToCart}>
+                    <Icon icon='shopping_cart' />
                 </button>
             </div>
         </div>

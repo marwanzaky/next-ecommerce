@@ -38,19 +38,18 @@
   .productItem-tag-add {
     @apply flex items-center justify-center;
     @apply h-[32px] w-[32px] md:h-[38px] md:w-[38px];
+    @apply p-[5px] rounded-full;
 
-    padding: 5px;
-    border-radius: 50%;
-  }
-
-  .btn-ghost {
-    border: none;
-    color: $color-primary-dark;
     background-color: $color-bg-dark;
-  
+    
+    .icon {
+      filter: $filter-primary-dark;
+    }
+
     &:hover {
-      color: #fff;
       background-color: $color-primary-dark;
+
+      .icon { filter: $filter-bg; }
     }
   }
 }

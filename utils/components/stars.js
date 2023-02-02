@@ -5,7 +5,7 @@ function StarBorder() {
 }
 
 export default function Stars({ className, total, value = 5, displayTotal = true }) {
-    const size = 22;
+    const size = 18;
     const stars = [];
 
     for (let i = 0; i < parseInt(value); i++)
