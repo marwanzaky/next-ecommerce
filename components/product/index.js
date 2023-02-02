@@ -11,13 +11,14 @@ import Stars from '@utils/components/stars';
 import AddToCart from '@utils/addToCart';
 
 import { ButtonFull, ButtonGhostGrey } from '@ui/Button';
+import Icon from '@ui/Icon';
 
 function Preview({ product }) {
     const [img, setImg] = useState(0);
 
     return <div className='preview'>
         <div className='product_item-save opacity-0'>
-            <span className='material-symbols-outlined'>favorite</span>
+            <Icon icon='favorite' />
         </div>
 
         <Image className='img' src={`${process.env.NEXT_PUBLIC_SERVER}/${product.imgs[img]}`} alt={product.name} width={512} height={512} />
