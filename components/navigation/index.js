@@ -18,7 +18,7 @@ function Avatar() {
     }, []);
 
     return <Link className='nav-btn' href='/me'>
-        <Image className='rounded-full' src={`${process.env.NEXT_PUBLIC_SERVER}/imgs/users/${user?.photo}`} width={24} height={24} />
+        <Image className='rounded-full !filter-none' src={`${process.env.NEXT_PUBLIC_SERVER}/imgs/users/${user?.photo}`} width={24} height={24} />
     </Link>
 }
 
