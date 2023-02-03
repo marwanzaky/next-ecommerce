@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import Feedback from '@components/feedback';
 
 import Stars from '@utils/components/stars';
-import AddToCart from '@utils/addToCart';
+import { addToCart } from '@utils/addToCart';
 
 import { ButtonFull, ButtonGhostGrey } from '@ui/Button';
 import Icon from '@ui/Icon';
@@ -42,13 +42,13 @@ function Details({ product }) {
 
     const purchase = async event => {
         event.preventDefault();
-        await AddToCart(product.id, product.name);
+        await addToCart(product.id);
         router.push('/cart');
     }
 
-    const addToCart = event => {
+    const add = event => {
         event.preventDefault();
-        AddToCart(product.id);
+        addToCart(product.id);
     }
 
     return <div className='details'>
@@ -63,7 +63,7 @@ function Details({ product }) {
             <Stars value={product.avgRatings} total={product.numReviews} />
         </div>
 
-        <ButtonGhostGrey className='w-full md:w-[400px]' onClick={addToCart}>Add to cart</ButtonGhostGrey>
+        <ButtonGhostGrey className='w-full md:w-[400px]' onClick={add}>Add to cart</ButtonGhostGrey>
         <ButtonFull className='w-full md:w-[400px]' onClick={purchase}>Buy it now</ButtonFull>
 
         <h4>Description</h4>

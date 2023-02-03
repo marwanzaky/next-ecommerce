@@ -35,7 +35,7 @@ function YourCart({ items, setItems }) {
         if (items.length <= 0)
             return;
 
-        const total = items.map(item => item.price / 100).reduce((a, b) => a + b);
+        const total = items.map(item => item.price * item.quantity / 100).reduce((a, b) => a + b);
         const totalStr = (Math.round(total * 100) / 100).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
         subtotalElement.current.innerHTML = '$' + totalStr + ' USD';
@@ -44,19 +44,10 @@ function YourCart({ items, setItems }) {
     const checkoutBtn = async event => {
         event.preventDefault();
 
-        const body = {
-            items: items.map(item => {
-                return {
-                    id: item.id,
-                    quantity: 1
-                }
-            })
-        }
-
         const options = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
+            body: JSON.stringify({ items })
         }
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/payment/create-checkout-session`, options);

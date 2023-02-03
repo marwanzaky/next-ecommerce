@@ -3,26 +3,26 @@ import Image from 'next/image';
 
 import { ButtonGhostGrey } from '@ui/Button';
 
+import { removeToCart } from '@utils/addToCart';
 import CartItems from '@utils/cartItems';
 
-function Item({ id, name, price, imgs, setItems }) {
+function Item({ id, name, price, quantity, imgs, setItems }) {
     const remove = event => {
         event.preventDefault();
+        removeToCart(id);
+        setItems(CartItems.items);
+    }
 
-        const cartItems = CartItems.items;
+    const quantityInput = event => {
+        event.preventDefault();
 
-        for (let i = 0; i < cartItems.length; i++) {
-            if (cartItems[i]['id'] === id) {
-                const cartItemIndex = cartItems.indexOf(cartItems[i]);
+        CartItems.items = CartItems.items.map(item => {
+            if (item['_id'] === id)
+                return { ...item, quantity: event.target.value };
+            return item;
+        });
 
-                if (cartItemIndex !== -1) {
-                    cartItems.splice(cartItemIndex, 1);
-                    CartItems.items = cartItems;
-                }
-            }
-        }
-
-        setItems(cartItems);
+        setItems(CartItems.items);
     }
 
     return <tr className='item'>
@@ -34,7 +34,7 @@ function Item({ id, name, price, imgs, setItems }) {
         </th>
         <th className='item-price'>{'$' + price / 100}</th>
         <th className='item-quantity'>
-            <input className='item-quantity-field' type='number' defaultValue='1' min='1' max='100' />
+            <input className='item-quantity-field' type='number' defaultValue={quantity} min='1' max='100' onChange={quantityInput} />
         </th>
         <th className='item-total'>{'$' + price / 100}</th>
         <th className='item-remove'>

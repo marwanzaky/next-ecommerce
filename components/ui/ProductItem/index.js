@@ -5,14 +5,14 @@ import Image from 'next/image';
 
 import Stars from '@utils/components/stars';
 
-import AddToCart from '@utils/addToCart';
+import { addToCart } from '@utils/addToCart';
 
 import Icon from '@ui/Icon';
 
 export default function ProductItem({ data }) {
-    const addToCart = event => {
+    const add = event => {
         event.preventDefault();
-        AddToCart(data.id);
+        addToCart(data.id);
     }
 
     return <div className='productItem'>
@@ -32,7 +32,7 @@ export default function ProductItem({ data }) {
                     <span className='productItem-tag-price_compare' >{'$' + data.priceCompare / 100}</span>
                 </div>
 
-                <button className='productItem-tag-add' onClick={addToCart}>
+                <button className='productItem-tag-add' onClick={add}>
                     <Icon icon='shopping_cart' />
                 </button>
             </div>
