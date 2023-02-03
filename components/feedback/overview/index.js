@@ -8,7 +8,7 @@ import User from '@utils/user';
 
 function OverviewRating({ avgRatings, numReviews }) {
     return <div className='overview-rating'>
-        <div className='overview-rating-value'>{(Math.round(avgRatings * 100) / 100).toFixed(1)}</div>
+        <div className='overview-rating-value'>{avgRatings.toFixed(2)}</div>
         <div className='overview-rating-stars'><Stars value={avgRatings} displayTotal={false} /></div>
         <div className='overview-rating-total'>{numReviews} reviews</div>
     </div>
