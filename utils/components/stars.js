@@ -14,7 +14,7 @@ export default function Stars({ className, total, size = 18, value = 5, displayT
         stars.push(<Icon className='star' icon='star_half' key={'Star half'} size={size} />)
 
     for (let i = 0; i < 5 - Math.ceil(value); i++)
-        stars.push(<StarBorder key={`Star border ${i}`} />)
+        stars.push(<Icon className='star' icon='star_border' key={`Star border ${i}`} size={size} />)
 
     return <span className={`stars ${className}`}>
         {stars}{displayTotal ? `\u00A0(${total})` : ''}

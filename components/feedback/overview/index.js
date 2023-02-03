@@ -3,8 +3,11 @@ import { useRouter } from 'next/navigation';
 
 import { ButtonFull } from '@ui/Button';
 
+import Review from '@components/review';
+
 import Stars from '@utils/components/stars';
 import User from '@utils/user';
+
 
 function OverviewRating({ avgRatings, numReviews }) {
     return <div className='overview-rating'>
@@ -64,6 +67,8 @@ export default function Overview({ product }) {
             <ButtonFull className='!m-0' onClick={openReivew}>Write a review</ButtonFull>
         </div>
 
-        {/* {review ? <ProductReview id={product._id} onClick={() => setReview(false)} onSubmit={() => writeReview(false)} /> : <></>} */}
+        {review ?
+            <Review id={product._id} onClick={closeReview} onSubmit={closeReview} /> :
+            <></>}
     </div>
 }

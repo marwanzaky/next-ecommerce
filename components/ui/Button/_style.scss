@@ -38,3 +38,16 @@
     color: #fff;
   }
 }
+
+// BUTTON BASE ICON
+.btn-icon-base {
+  @apply inline-flex justify-center items-center;
+  @apply w-[38px] h-[38px];
+  @apply rounded-full;
+
+  &:hover {
+    background-color: $color-grey-light;
+
+    img { filter: $filter-primary-dark; }
+  }
+}
