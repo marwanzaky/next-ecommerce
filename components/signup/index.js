@@ -53,7 +53,7 @@ export default function Signup() {
                 <p className='signup-p'>Create an account to unlock all the benefits to easily save and synchronize your data across your devices.</p>
 
                 <InputText type='text' id='name' placeholder='Enter Name' icon='person' onChange={handleChange} />
-                <InputText type='text' id='email' placeholder='Enter Email' icon='email' onChange={handleChange} />
+                <InputText type='text' id='email' placeholder='Enter Email' icon='mail' onChange={handleChange} />
                 <InputText type='password' id='password' placeholder='Enter Password' icon='password' onChange={handleChange} />
                 <InputText type='password' id='passwordConfirm' placeholder='Repeat Password' icon='password' onChange={handleChange} />
 

@@ -56,7 +56,7 @@ export default function Signin() {
                 <h4 className='text-center'>Sign In</h4>
                 <p className='signin-p'>Sign in to get personalized product recommendations, save and synchronize your data across your devices.</p>
 
-                <InputText type='text' id='email' placeholder='Enter Email' icon='email' onChange={handleChange} />
+                <InputText type='text' id='email' placeholder='Enter Email' icon='mail' onChange={handleChange} />
                 <InputText type='password' id='password' placeholder='Enter Password' icon='password' onChange={handleChange} />
 
                 <ButtonFull type='submit' className='w-full block mb-[15px]'>Sign in</ButtonFull>
