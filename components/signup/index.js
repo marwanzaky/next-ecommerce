@@ -47,7 +47,7 @@ export default function Signup() {
     }
 
     return <section className='section-signup'>
-        <div className='xl:container xl:mx-auto'>
+        <div className='section-container'>
             <form onSubmit={submit} className='m-auto max-w-[500px]'>
                 <h4 className='text-center'>Sign Up</h4>
                 <p className='signup-p'>Create an account to unlock all the benefits to easily save and synchronize your data across your devices.</p>

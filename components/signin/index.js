@@ -51,7 +51,7 @@ export default function Signin() {
     }
 
     return <section className='section-signin'>
-        <div className='xl:container xl:mx-auto'>
+        <div className='section-container'>
             <form onSubmit={onSubmit} className='m-auto max-w-[500px]'>
                 <h4 className='text-center'>Sign In</h4>
                 <p className='signin-p'>Sign in to get personalized product recommendations, save and synchronize your data across your devices.</p>

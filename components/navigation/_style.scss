@@ -14,8 +14,8 @@ nav .nav-promo {
 
 /*------- NAV / NAV BOX -------*/
 nav .nav-box {
-  @apply p-[20px];
-  @apply xl:container xl:mx-auto;
+  @apply px-[10px] py-[20px];
+  @apply section-container;
   @apply flex justify-between items-center;
 }
 

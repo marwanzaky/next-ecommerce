@@ -3,7 +3,7 @@
 }
 
 .section-contact-me .contact-me-box {
-  @apply xl:container xl:mx-auto;
+  @apply section-container;
   @apply grid grid-cols-1 md:grid-cols-2;
   @apply gap-[50px];
 }

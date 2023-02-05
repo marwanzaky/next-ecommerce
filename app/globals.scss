@@ -79,6 +79,10 @@ button {
 }
 
 /*------- REUSEABLE COMPONENTS -------*/
+.section-container {
+  @apply max-w-[1075px] mx-auto px-[10px];
+}
+
 .btn-icon {
   @apply inline-flex justify-center items-center;
   @apply w-[38px] h-[38px];
@@ -116,7 +120,7 @@ p {
 
 section {
   // padding: 50px 10px;
-  @apply py-[30px] px-[10px] md:py-[50px] md:px-[10px];
+  @apply py-[30px] md:py-[50px]
 }
 
 a {

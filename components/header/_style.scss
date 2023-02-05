@@ -9,7 +9,7 @@ header .header-img {
 }
 
 .header-box {
-  @apply xl:container xl:mx-auto;
+  @apply section-container;
   @apply pt-[100px];
 
   .header-text {

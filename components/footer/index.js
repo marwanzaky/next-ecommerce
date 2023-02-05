@@ -8,7 +8,7 @@ function FooterList(props) {
 
 export default function Footer() {
     return <footer>
-        <div className="xl:container xl:mx-auto footer-box">
+        <div className="section-container footer-box">
             <div className='grid grid-cols-1 xl:grid-cols-2 mb-[50px]'>
                 <div className='footer-box-child'>
                     <h4 className='footer-title'>Quick links</h4>

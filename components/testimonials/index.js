@@ -15,7 +15,7 @@ function Testimonial({ blockquote, cite }) {
 
 export default function Testimonials() {
     return <section className="section-testimonials">
-        <div className="xl:container xl:mx-auto testimonials-box">
+        <div className="section-container testimonials-box">
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-4' >
                 <Testimonial
                     blockquote='One of the bust purchases. Great, easy and safely in use.'
