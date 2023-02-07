@@ -1,12 +1,17 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { ButtonGhostGrey } from '@ui/Button';
+import { useEffect, useState } from 'react';
+import { ButtonGhostGrey, ButtonIcon } from '@ui/Button';
 
 import { removeToCart } from '@utils/addToCart';
 import CartItems from '@utils/cartItems';
 
+import lgScreen from '@utils/lgScreen';
+
 function Item({ id, name, price, quantity, imgs, setItems }) {
+    const [lg, setLg] = useState(false);
+
     const remove = event => {
         event.preventDefault();
         removeToCart(id);
@@ -25,6 +30,16 @@ function Item({ id, name, price, quantity, imgs, setItems }) {
         setItems(CartItems.items);
     }
 
+    useEffect(() => {
+        setLg(lgScreen());
+
+        addEventListener('resize', event => {
+            event.preventDefault();
+            setLg(lgScreen());
+            console.log(lgScreen())
+        });
+    }, []);
+
     return <tr className='item'>
         <th className='item-product'>
             <div className='flex items-center'>
@@ -38,7 +53,9 @@ function Item({ id, name, price, quantity, imgs, setItems }) {
         </th>
         <th className='item-total'>{'$' + price / 100}</th>
         <th className='item-remove'>
-            <ButtonGhostGrey className='item-remove-btn' onClick={remove}>Remove</ButtonGhostGrey>
+            {lg ?
+                <ButtonGhostGrey className='item-remove-btn' onClick={remove}>Remove</ButtonGhostGrey> :
+                <ButtonIcon icon='close' onClick={remove} />}
         </th>
     </tr>
 }
