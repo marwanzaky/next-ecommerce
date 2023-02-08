@@ -36,7 +36,6 @@ function Item({ id, name, price, quantity, imgs, setItems }) {
         addEventListener('resize', event => {
             event.preventDefault();
             setLg(lgScreen());
-            console.log(lgScreen())
         });
     }, []);
 
