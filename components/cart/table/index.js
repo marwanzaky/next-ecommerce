@@ -4,8 +4,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { ButtonGhostGrey, ButtonIcon } from '@ui/Button';
 
-import { removeToCart } from '@utils/addToCart';
-import CartItems from '@utils/cartItems';
+import Cart from '@utils/cart';
 
 import lgScreen from '@utils/lgScreen';
 
@@ -14,20 +13,20 @@ function Item({ id, name, price, quantity, imgs, setItems }) {
 
     const remove = event => {
         event.preventDefault();
-        removeToCart(id);
-        setItems(CartItems.items);
+        Cart.remove(id);
+        setItems(Cart.items);
     }
 
     const quantityInput = event => {
         event.preventDefault();
 
-        CartItems.items = CartItems.items.map(item => {
+        Cart.items = Cart.items.map(item => {
             if (item['_id'] === id)
                 return { ...item, quantity: event.target.value };
             return item;
         });
 
-        setItems(CartItems.items);
+        setItems(Cart.items);
     }
 
     useEffect(() => {

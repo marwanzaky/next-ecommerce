@@ -7,7 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import User from '@utils/user';
-import CartItems from '@utils/cartItems';
+import Cart from '@utils/cart';
 import Icon from '@ui/Icon';
 
 function Avatar() {
@@ -53,11 +53,11 @@ function NavLi({ href, name }) {
 
 export default function Navigation() {
     const [token, setToken] = useState('');
-    const [cartItems, setCartItems] = useState(0);
+    const [cartItems, setCartItems] = useState([]);
 
     useEffect(() => {
         setToken(User.getToken());
-        setCartItems(CartItems.items);
+        setCartItems(Cart.items);
     }, []);
 
     return <nav>

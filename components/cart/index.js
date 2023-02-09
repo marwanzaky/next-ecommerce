@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import CartTable from './table';
 
-import CartItems from '@utils/cartItems';
+import UtilsCart from '@utils/cart';
 
 import YouMayAlsoLike from '@components/youMayAlsoLike';
 
@@ -56,7 +56,7 @@ function YourCart({ items, setItems }) {
         window.location = json.url;
         window.localStorage.clear();
 
-        setItems(CartItems.items);
+        setItems(UtilsCart.items);
     }
 
     useEffect(() => {
@@ -89,7 +89,7 @@ export default function Cart({ products }) {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        setItems(CartItems.items);
+        setItems(UtilsCart.items);
     }, []);
 
     return <section className='section-cart'>

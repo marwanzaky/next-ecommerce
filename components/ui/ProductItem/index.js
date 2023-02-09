@@ -5,14 +5,14 @@ import Image from 'next/image';
 
 import Stars from '@utils/components/stars';
 
-import { addToCart } from '@utils/addToCart';
+import Cart from '@utils/cart';
 
 import Icon from '@ui/Icon';
 
 export default function ProductItem({ data }) {
     const add = event => {
         event.preventDefault();
-        addToCart(data.id);
+        Cart.add(data.id);
     }
 
     return <div className='productItem'>
