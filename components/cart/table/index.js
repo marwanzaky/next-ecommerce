@@ -49,7 +49,7 @@ function Item({ id, name, price, quantity, imgs, setItems }) {
         <th className='item-quantity'>
             <input className='item-quantity-field' type='number' defaultValue={quantity} min='1' max='100' onChange={quantityInput} />
         </th>
-        <th className='item-total'>{'$' + price / 100}</th>
+        <th className='item-total'>{'$' + price * quantity / 100}</th>
         <th className='item-remove'>
             {lg ?
                 <ButtonGhostGrey className='item-remove-btn' onClick={remove}>Remove</ButtonGhostGrey> :
