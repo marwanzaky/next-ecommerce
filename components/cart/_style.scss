@@ -10,15 +10,15 @@
   border-radius: $border-radius;
 
   th {
-    padding: 10px;
+    @apply py-[10px] sm:p-[10px];
   }
 
   .thead {
-    .thead-th-product { @apply w-[50%]; }
-    .thead-th-price { @apply w-[10%]; }
-    .thead-th-quantity { @apply w-[15%]; }
-    .thead-th-total { @apply w-[10%] hidden sm:table-cell; }
-    .thead-th-remove { @apply w-[15%]; }
+    .thead-th-product { @apply sm:w-[50%]; }
+    .thead-th-price { @apply sm:w-[10%]; }
+    .thead-th-quantity { @apply sm:w-[15%]; }
+    .thead-th-total { @apply sm:w-[10%] hidden sm:table-cell; }
+    .thead-th-remove { @apply sm:w-[15%]; }
   }
 
   .item {
@@ -40,6 +40,10 @@
       img {
         @apply w-full h-full;
       }
+    }
+
+    @media only screen and (max-width: 640px) {
+      .item-quantity input { @apply border-none p-0; }
     }
 
     .item-total { @apply hidden sm:table-cell; }
