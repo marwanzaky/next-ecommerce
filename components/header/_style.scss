@@ -1,8 +1,3 @@
-header {
-  @apply py-[50px];
-  @apply h-[500px];
-}
-
 header .header-img {
   @apply object-center object-cover pointer-events-none;
   @apply z-[-1];
@@ -10,7 +5,7 @@ header .header-img {
 
 .header-box {
   @apply section-container;
-  @apply pt-[100px];
+  @apply py-[100px] md:py-[150px];
 
   .header-text {
     @apply text-center;
