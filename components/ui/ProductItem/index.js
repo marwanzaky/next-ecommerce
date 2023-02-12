@@ -24,7 +24,7 @@ export default function ProductItem({ data }) {
 
         <div className='flex flex-col p-[8px] sm:p-[16px]'>
             <h3>{data.name}</h3>
-            <Stars value={data.avgRatings} total={data.numReviews} />
+            {process.env.NEXT_PUBLIC_REVIEWS === 'true' && <Stars value={data.avgRatings} total={data.numReviews} />}
 
             <div className='productItem-tag'>
                 <div className='flex flex-row'>

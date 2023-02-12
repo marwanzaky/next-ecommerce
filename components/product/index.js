@@ -59,9 +59,9 @@ function Details({ product }) {
             <span className='price_compare' >{'$' + product.priceCompare / 100}</span>
         </div>
 
-        <div className='stars-box'>
+        {process.env.NEXT_PUBLIC_REVIEWS === 'true' && <div className='stars-box'>
             <Stars value={product.avgRatings} total={product.numReviews} />
-        </div>
+        </div>}
 
         <ButtonGhostGrey className='w-full md:w-[400px]' onClick={add}>Add to cart</ButtonGhostGrey>
         <ButtonFull className='w-full md:w-[400px]' onClick={purchase}>Buy it now</ButtonFull>
@@ -78,6 +78,6 @@ export default function Product({ product }) {
             <Details product={product} />
         </div>
 
-        <Feedback product={product} />
+        {process.env.NEXT_PUBLIC_REVIEWS === 'true' && <Feedback product={product} />}
     </section>
 }
