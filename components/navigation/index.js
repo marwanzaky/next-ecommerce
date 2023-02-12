@@ -75,8 +75,7 @@ export default function Navigation() {
             <div className='flex flex-row'>
                 {token ?
                     process.env.NEXT_PUBLIC_ACCOUNT === 'true' && <Avatar /> :
-                    process.env.NEXT_PUBLIC_ACCOUNT === 'true' && <NavBtn href='/signin' icon='person' />
-                }
+                    process.env.NEXT_PUBLIC_ACCOUNT === 'true' && <NavBtn href='/signin' icon='person' />}
 
                 <NavBtnLength href='/cart' icon='shopping_cart' length={cartItems.length} />
             </div>
