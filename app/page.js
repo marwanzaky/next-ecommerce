@@ -9,7 +9,7 @@ export default async function Page() {
     const { data } = await getProducts();
 
     return <Layout>
-        <Header />
+        <Header {...data.products[0]} />
         <Products products={data.products} />
         <WhyChooseUs />
         <Testimonials />

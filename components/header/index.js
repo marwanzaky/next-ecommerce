@@ -5,12 +5,12 @@ import { useRouter } from 'next/navigation';
 
 import { ButtonFull } from '@ui/Button';
 
-export default function Header() {
+export default function Header({ _id, name, description }) {
     const router = useRouter();
 
     const shopNow = event => {
         event.preventDefault();
-        router.push('/product/6349f871cab75287de7915df');
+        router.push(`/product/${_id}`);
     }
 
     const explore = event => {
@@ -22,8 +22,8 @@ export default function Header() {
         <Image fill priority className='header-img' src='/img/background.jpg' alt='background' />
 
         <div className='header-box'>
-            <h1 className='header-text'>Soft Cover Journal.</h1>
-            <p className='header-parag'>This handmade, one-of-a-kind journal is perfect for note taking on the go.</p>
+            <h1 className='header-text'>{name}</h1>
+            <p className='header-parag'>{description.split('. ', 1)[0]}</p>
 
             <div className='flex justify-center'>
                 <ButtonFull onClick={shopNow}>Shop now</ButtonFull>
