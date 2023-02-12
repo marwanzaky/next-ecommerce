@@ -15,7 +15,7 @@ export default function Footer() {
 
                     <ul>
                         {/* <FooterList href='/search' text='Search' /> */}
-                        <FooterList href='/about' text='About Us' />
+                        {process.env.NEXT_PUBLIC_ABOUT === 'true' && <FooterList href='/about' text='About Us' />}
                         <FooterList href='/refund-policy' text='Refund Policy' />
                         <FooterList href='/privacy-policy' text='Privacy Policy' />
                         <FooterList href='/terms-of-service' text='Terms of Service' />

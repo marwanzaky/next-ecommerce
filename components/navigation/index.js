@@ -68,14 +68,14 @@ export default function Navigation() {
             <ul className='nav-ul'>
                 <NavLi href='/' name='Home' />
                 <NavLi href='/products' name='Shop' />
-                <NavLi href='/about' name='About' />
+                {process.env.NEXT_PUBLIC_ABOUT === 'true' && <NavLi href='/about' name='About' />}
                 <NavLi href='/contact' name='Contact' />
             </ul>
 
             <div className='flex flex-row'>
                 {token ?
-                    <Avatar /> :
-                    <NavBtn href='/signin' icon='person' />
+                    process.env.NEXT_PUBLIC_ACCOUNT === 'true' && <Avatar /> :
+                    process.env.NEXT_PUBLIC_ACCOUNT === 'true' && <NavBtn href='/signin' icon='person' />
                 }
 
                 <NavBtnLength href='/cart' icon='shopping_cart' length={cartItems.length} />
