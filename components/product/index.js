@@ -14,22 +14,22 @@ import { ButtonFull, ButtonGhostGrey } from '@ui/Button';
 import Icon from '@ui/Icon';
 
 function Preview({ product }) {
-    const [img, setImg] = useState(0);
+    const [image, setImage] = useState(0);
 
     return <div className='preview'>
         <div className='product_item-save opacity-0'>
             <Icon icon='favorite' />
         </div>
 
-        <Image className='img' src={`${process.env.NEXT_PUBLIC_SERVER}/${product.imgs[img]}`} alt={product.name} width={512} height={512} />
+        <Image className='img' src={`${process.env.NEXT_PUBLIC_SERVER}/${product.imgs[image]}`} alt={product.name} width={512} height={512} />
 
         <div className='imgs'>
             {product.imgs.map((img, i) => <Image
-                className='imgs-img'
+                className={`imgs-img ${i === image ? 'select' : ''}`}
                 key={`${product.name} ${i + 1}`}
                 src={`${process.env.NEXT_PUBLIC_SERVER}/${img}`}
                 alt={`${product.name} ${i + 1}`}
-                onClick={() => setImg(i)}
+                onClick={() => setImage(i)}
                 width={128}
                 height={128}
             />)}
