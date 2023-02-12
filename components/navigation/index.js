@@ -63,21 +63,27 @@ export default function Navigation() {
     return <nav>
         <div className='nav-promo'>Free shipping on orders over $50</div>
         <div className='nav-box'>
-            <Link className='logo' href='/'>{process.env.NEXT_PUBLIC_NAME}</Link>
+            <div className='box-left'>
+                <Link className='logo' href='/'>{process.env.NEXT_PUBLIC_NAME}</Link>
+            </div>
 
-            <ul className='nav-ul'>
-                <NavLi href='/' name='Home' />
-                <NavLi href='/products' name='Shop' />
-                {process.env.NEXT_PUBLIC_ABOUT === 'true' && <NavLi href='/about' name='About' />}
-                <NavLi href='/contact' name='Contact' />
-            </ul>
+            <div className='box-center'>
+                <ul className='nav-ul'>
+                    <NavLi href='/' name='Home' />
+                    <NavLi href='/products' name='Shop' />
+                    {process.env.NEXT_PUBLIC_ABOUT === 'true' && <NavLi href='/about' name='About' />}
+                    <NavLi href='/contact' name='Contact' />
+                </ul>
+            </div>
 
-            <div className='flex flex-row'>
-                {token ?
-                    process.env.NEXT_PUBLIC_ACCOUNT === 'true' && <Avatar /> :
-                    process.env.NEXT_PUBLIC_ACCOUNT === 'true' && <NavBtn href='/signin' icon='person' />}
+            <div className='box-right'>
+                <div className='flex flex-row'>
+                    {token ?
+                        process.env.NEXT_PUBLIC_ACCOUNT === 'true' && <Avatar /> :
+                        process.env.NEXT_PUBLIC_ACCOUNT === 'true' && <NavBtn href='/signin' icon='person' />}
 
-                <NavBtnLength href='/cart' icon='shopping_cart' length={cartItems.length} />
+                    <NavBtnLength href='/cart' icon='shopping_cart' length={cartItems.length} />
+                </div>
             </div>
         </div>
     </nav>

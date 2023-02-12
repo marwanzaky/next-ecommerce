@@ -17,7 +17,19 @@ nav .nav-box {
   @apply px-[10px] md:px-[10px];
   @apply py-[10px] md:py-[20px];
   @apply section-container;
-  @apply flex justify-between items-center;
+  @apply flex items-center;
+
+  .box-center {
+    @apply flex-[2] flex justify-center;
+  }
+  
+  .box-left {
+    @apply flex-1 flex justify-start;
+  }
+  
+  .box-right {
+    @apply flex-1 flex justify-end;
+  }
 }
 
 nav .nav-box .nav-ul {
