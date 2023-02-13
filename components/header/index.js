@@ -23,7 +23,7 @@ export default function Header({ _id, name, description }) {
 
         <div className='header-box'>
             <h1 className='header-text'>{name}</h1>
-            <p className='header-parag'>{description.split('. ', 1)[0]}</p>
+            <p className='header-parag'>{description.split('.')[0]}</p>
 
             <div className='flex justify-center'>
                 <ButtonFull onClick={shopNow}>Shop now</ButtonFull>
