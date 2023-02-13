@@ -3,6 +3,7 @@
   @apply text-left;
   @apply py-[15px];
 
+  outline: none;
   border-top: $btn-line-width solid $color-border;
   
   .ui-info-title {
