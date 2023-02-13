@@ -51,3 +51,9 @@
     img { filter: $filter-primary-dark; }
   }
 }
+
+.btn-icon-red {
+  &:hover {
+    img { filter: $filter-red; }
+  }
+}

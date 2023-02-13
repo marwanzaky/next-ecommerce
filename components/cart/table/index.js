@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { useEffect, useState } from 'react';
-import { ButtonGhostGrey, ButtonIcon } from '@ui/Button';
+import { ButtonIconRed } from '@ui/Button';
 
 import Cart from '@utils/cart';
 
@@ -51,9 +51,7 @@ function Item({ id, name, price, quantity, imgs, setItems }) {
         </th>
         <th className='item-total'>{'$' + price * quantity / 100}</th>
         <th className='item-remove'>
-            {lg ?
-                <ButtonGhostGrey className='item-remove-btn' onClick={remove}>Remove</ButtonGhostGrey> :
-                <ButtonIcon icon='close' onClick={remove} />}
+            <ButtonIconRed icon='delete' onClick={remove} />
         </th>
     </tr>
 }

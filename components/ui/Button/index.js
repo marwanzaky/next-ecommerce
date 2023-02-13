@@ -22,3 +22,12 @@ export function ButtonIcon({ className, type, icon, onClick }) {
         <Icon icon={icon} />
     </button>
 }
+
+export function ButtonIconRed({ className, type, icon, onClick }) {
+    return <button
+        className={`btn-icon-base btn-icon-red ${className}`}
+        type={type}
+        onClick={onClick}>
+        <Icon icon={icon} />
+    </button>
+}
