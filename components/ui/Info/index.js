@@ -1,20 +1,19 @@
+import Icon from '@ui/Icon';
 import { useState } from 'react';
 
 export default function Info({ display = false, title, children }) {
-    const [contentStyle, setContentStyle] = useState({ display: display ? 'block' : 'none' });
+    const [expand, setExpand] = useState(display);
 
     const toggleContent = event => {
         event.preventDefault();
-
-        const style = {
-            display: contentStyle.display === 'none' ? 'block' : 'none'
-        };
-
-        setContentStyle(style);
+        setExpand(!expand);
     };
 
     return <button className='ui-info'>
-        <div className='ui-info-title' onClick={toggleContent}>{title}</div>
-        <div className='ui-info-content' style={contentStyle}>{children}</div>
+        <div className='flex justify-between' onClick={toggleContent}>
+            <div className='ui-info-title'>{title}</div>
+            <div className='ui-info-icon'><Icon icon={expand ? 'expand_more' : 'expand_less'} /></div>
+        </div>
+        <div className='ui-info-content' style={{ display: expand ? 'block' : 'none' }}>{children}</div>
     </button>
 }
