@@ -11,7 +11,7 @@ export default function ShippingPolicy() {
                 International Shipping
                 <br />
                 <br />
-                We offer international shipping to the following countries: United States, United Kingdom, Australia, Canada, Germany, France, Spain, United Arab Emirates, Indonesia, Russia.
+                We offer international shipping to the following countries: United States, United Kingdom, Australia, Canada, Germany, France, Spain, United Arab Emirates, Indonesia.
                 <br />
                 <br />
                 Your order may be subject to import duties and taxes (including VAT), which are incurred once a shipment reaches your destination country.

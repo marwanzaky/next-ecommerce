@@ -78,6 +78,9 @@ button {
   font-variation-settings: 'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 48;
 }
 
+/*------- COMPONENTS / UI -------*/
+@import '../components/ui/Info/style';
+
 /*------- REUSEABLE COMPONENTS -------*/
 .section-container {
   @apply max-w-[1075px] mx-auto px-[10px];

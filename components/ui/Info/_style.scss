@@ -1,0 +1,15 @@
+.ui-info {
+  @apply block w-full;
+  @apply text-left;
+  @apply py-[15px];
+
+  border-top: $btn-line-width solid $color-border;
+  
+  .ui-info-title {
+    font-weight: var(--font-bold);
+  }
+
+  .ui-info-content {
+    @apply mt-[15px] whitespace-pre-wrap;
+  }
+}

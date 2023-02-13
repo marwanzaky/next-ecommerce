@@ -12,6 +12,7 @@ import Cart from '@utils/cart';
 
 import { ButtonFull, ButtonGhostGrey } from '@ui/Button';
 import Icon from '@ui/Icon';
+import Info from '@ui/Info';
 
 function Preview({ product }) {
     const [image, setImage] = useState(0);
@@ -66,8 +67,40 @@ function Details({ product }) {
         <ButtonGhostGrey className='w-full md:w-[400px]' onClick={add}>Add to cart</ButtonGhostGrey>
         <ButtonFull className='w-full md:w-[400px]' onClick={purchase}>Buy it now</ButtonFull>
 
-        <h4>Description</h4>
-        <p className='whitespace-pre-wrap'>{product.description}</p>
+        <Info display={true} title='Description'>{product.description}</Info>
+        <Info title='Shipping and Refund Policy'>
+            <h4>Refund Policy</h4>
+            <p>
+                We have a 30-day return policy, which means you have 30 days after receiving your item to request a return.
+                <br />
+                <br />
+                To be eligible for a return, your item must be in the same condition that you received it, unworn or unused, with tags, and in its original packaging. You’ll also need the receipt or proof of purchase.
+                <br />
+                <br />
+                To start a return, you can contact us at contact@goodies2buy.com. If your return is accepted, we’ll send you a return shipping label, as well as instructions on how and where to send your package. Items sent back to us without first requesting a return will not be accepted.
+                <br />
+                <br />
+                You can always contact us for any return question at contact@goodies2buy.com.
+                <br />
+                <br />
+            </p>
+
+            <h4>Shipping policy</h4>
+            <p>
+                All orders are processed within 1 to 3 business days (excluding weekends and holidays) after receiving your order confirmation email. You will receive another notification when your order has shipped.
+                <br />
+                <br />
+                International Shipping
+                <br />
+                <br />
+                We offer international shipping to the following countries: United States, United Kingdom, Australia, Canada, Germany, France, Spain, United Arab Emirates, Indonesia.
+                <br />
+                <br />
+                Your order may be subject to import duties and taxes (including VAT), which are incurred once a shipment reaches your destination country.
+                <br />
+                <br />
+            </p>
+        </Info>
     </div>
 }
 
