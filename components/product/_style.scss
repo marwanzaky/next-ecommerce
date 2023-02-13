@@ -3,7 +3,6 @@
 }
 
 .product .preview-n-details {
-  @apply mb-[30px] md:mb-[50px];
   @apply grid grid-cols-1 md:grid-cols-2;
   @apply gap-x-10 gap-y-5;
 }
