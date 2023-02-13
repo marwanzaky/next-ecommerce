@@ -14,7 +14,7 @@ const cart = {
         if (typeof window !== 'undefined')
             window.localStorage.setItem('cart-items', json);
     },
-    add: async id => {
+    add: async (id, quantity) => {
         for (let item of cart.items.values())
             if (item['_id'] === id)
                 return alert('The product is already added to the cart.');
@@ -23,7 +23,7 @@ const cart = {
         const json = await res.json();
 
         const items = cart.items;
-        const item = { ...json.data.product, quantity: 1 };
+        const item = { ...json.data.product, quantity };
 
         items.unshift(item);
         cart.items = items;
@@ -40,6 +40,13 @@ const cart = {
                 cart.items = items;
             }
         }
+    },
+    set: (id, quantity) => {
+        cart.items = cart.items.map(item => {
+            if (item['_id'] === id)
+                return { ...item, quantity };
+            return item;
+        });
     }
 }
 

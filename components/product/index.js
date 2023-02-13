@@ -40,16 +40,22 @@ function Preview({ product }) {
 
 function Details({ product }) {
     const router = useRouter();
+    const [quantity, setQuantity] = useState(1);
 
     const purchase = async event => {
         event.preventDefault();
-        await Cart.add(product.id);
+        await Cart.add(product.id, quantity);
         router.push('/cart');
     }
 
     const add = event => {
         event.preventDefault();
-        Cart.add(product.id);
+        Cart.add(product.id, quantity);
+    }
+
+    const quantityInput = event => {
+        event.preventDefault();
+        setQuantity(event.target.value);
     }
 
     return <div className='details'>
@@ -63,6 +69,9 @@ function Details({ product }) {
         {process.env.NEXT_PUBLIC_REVIEWS === 'true' && <div className='stars-box'>
             <Stars value={product.avgRatings} total={product.numReviews} />
         </div>}
+
+        <label htmlFor='quantity'>Quantity:</label>
+        <input className='quantity' id='quantity' type='number' defaultValue={quantity} min='1' max='100' onChange={quantityInput} />
 
         <ButtonGhostGrey className='w-full md:w-[400px]' onClick={add}>Add to cart</ButtonGhostGrey>
         <ButtonFull className='w-full md:w-[400px]' onClick={purchase}>Buy it now</ButtonFull>

@@ -1,16 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { useEffect, useState } from 'react';
 import { ButtonIconRed } from '@ui/Button';
 
 import Cart from '@utils/cart';
 
-import lgScreen from '@utils/lgScreen';
-
 function Item({ id, name, price, quantity, imgs, setItems }) {
-    const [lg, setLg] = useState(false);
-
     const remove = event => {
         event.preventDefault();
         Cart.remove(id);
@@ -19,24 +14,9 @@ function Item({ id, name, price, quantity, imgs, setItems }) {
 
     const quantityInput = event => {
         event.preventDefault();
-
-        Cart.items = Cart.items.map(item => {
-            if (item['_id'] === id)
-                return { ...item, quantity: event.target.value };
-            return item;
-        });
-
+        Cart.set(id, event.target.value);
         setItems(Cart.items);
     }
-
-    useEffect(() => {
-        setLg(lgScreen());
-
-        addEventListener('resize', event => {
-            event.preventDefault();
-            setLg(lgScreen());
-        });
-    }, []);
 
     return <tr className='item'>
         <th className='item-product'>

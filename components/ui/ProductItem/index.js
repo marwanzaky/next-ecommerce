@@ -12,7 +12,7 @@ import Icon from '@ui/Icon';
 export default function ProductItem({ data }) {
     const add = event => {
         event.preventDefault();
-        Cart.add(data.id);
+        Cart.add(data.id, 1);
     }
 
     return <div className='productItem'>

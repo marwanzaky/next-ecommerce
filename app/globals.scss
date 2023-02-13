@@ -208,6 +208,8 @@ h4 {
 
 /*------- FORM -------*/
 label {
+  @apply block mb-[10px];
+  // color: $color-grey;
   font-weight: var(--font-bold);
 }
 
