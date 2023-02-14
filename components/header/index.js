@@ -5,12 +5,16 @@ import { useRouter } from 'next/navigation';
 
 import { ButtonFull } from '@ui/Button';
 
-export default function Header({ _id, name, description }) {
+export default function Header() {
     const router = useRouter();
+
+    const id = process.env.NEXT_PUBLIC_HEADER_PRODUCT_ID;
+    const name = process.env.NEXT_PUBLIC_HEADER_PRODUCT_NAME;
+    const description = process.env.NEXT_PUBLIC_HEADER_PRODUCT_DESCRIPTION;
 
     const shopNow = event => {
         event.preventDefault();
-        router.push(`/product/${_id}`);
+        router.push(`/product/${id}`);
     }
 
     const explore = event => {
@@ -23,7 +27,7 @@ export default function Header({ _id, name, description }) {
 
         <div className='header-box'>
             <h1 className='header-text'>{name}</h1>
-            <p className='header-parag'>{description.split('.')[0]}</p>
+            <p className='header-parag'>{description}</p>
 
             <div className='flex justify-center'>
                 <ButtonFull onClick={shopNow}>Shop now</ButtonFull>
