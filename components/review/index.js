@@ -9,7 +9,7 @@ import { ButtonFull, ButtonIcon } from '@ui/Button';
 
 const initialState = {
     review: '',
-    rating: 4.5,
+    rating: 5,
 }
 
 export default function Review({ id, onClick, onSubmit }) {
@@ -52,18 +52,16 @@ export default function Review({ id, onClick, onSubmit }) {
         <form onSubmit={submit} className='review-bg'>
             <ButtonIcon className='review-close' icon='close' onClick={onClick} />
 
-            <h2>Overall rating</h2>
+            <h2>Write a review</h2>
 
+            <h4>Rating</h4>
             <div className='grid grid-cols-2 gap-[20px] items-center mb-[20px]'>
-                <input id='rating' type='number' defaultValue={form.rating} min={1} max={5} step={0.5} onChange={handleChange} required />
+                <input id='rating' type='number' defaultValue={form.rating} min={1} max={5} onChange={handleChange} required />
                 <Stars value={form.rating} displayTotal={false} size={32} />
             </div>
 
-            <h4>Review title</h4>
-            <InputText type='text' placeholder='Example: Easy to use' />
-
-            <h4>Product review</h4>
-            <InputTextarea id='review' placeholder='Describe your experience...' onChange={handleChange} />
+            <h4>Review</h4>
+            <InputTextarea id='review' placeholder='Describe your experience...' icon='description' onChange={handleChange} />
 
             <ButtonFull>Submit</ButtonFull>
         </form>
