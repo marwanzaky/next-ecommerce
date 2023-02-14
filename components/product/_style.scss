@@ -44,6 +44,24 @@
 
 /*------- PRODUCT DETAILS -------*/
 .product .details {
+  .location {
+    @apply mb-[20px] text-[90%];
+    font-weight: var(--font-light);
+    color: $color-grey;
+
+    span {
+      @apply mx-[10px];
+    }
+
+    a {
+      color: $color-grey;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
   .name {
     margin: 0 0 5px 0;
   }

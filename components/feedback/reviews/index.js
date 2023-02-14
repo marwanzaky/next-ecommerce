@@ -19,7 +19,7 @@ function Review({ data }) {
             <div className='w-auto'>
                 <div className='review-fullname'>{data.user.name}&ensp;<span>{stringToDate(data.createdAt)}</span></div>
                 <div className='review-stars'><Stars size={14} value={data.rating} displayTotal={false} /></div>
-                <div className='review-text'>{data.review}</div>
+                <p className='review-text'>{data.review}</p>
             </div>
         </div>
     </div>

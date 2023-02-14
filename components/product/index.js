@@ -13,6 +13,7 @@ import Cart from '@utils/cart';
 import { ButtonFull, ButtonGhostGrey } from '@ui/Button';
 import Icon from '@ui/Icon';
 import Info from '@ui/Info';
+import Link from 'next/link';
 
 function Preview({ product }) {
     const [image, setImage] = useState(0);
@@ -59,6 +60,7 @@ function Details({ product }) {
     }
 
     return <div className='details'>
+        <div className='location'><Link href='/'>Home</Link> <span>/</span> <Link href='/products'>Products</Link> <span>/</span> <Link href={`/product/${product._id}`}>{product.name}</Link></div>
         <h1 className='name' >{product.name}</h1>
 
         <div className='price-box'>
