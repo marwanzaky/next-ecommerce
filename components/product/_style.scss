@@ -54,10 +54,12 @@
     }
 
     a {
+      @apply pb-[1px];
       color: $color-grey;
+      border-bottom: $btn-line-width solid transparent;
 
       &:hover {
-        text-decoration: underline;
+        border-bottom: $btn-line-width solid $color-grey;
       }
     }
   }
