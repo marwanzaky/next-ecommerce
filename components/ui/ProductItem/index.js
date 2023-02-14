@@ -28,8 +28,8 @@ export default function ProductItem({ data }) {
 
             <div className='productItem-tag'>
                 <div className='flex flex-row'>
-                    <span className='productItem-tag-price' >{'$' + data.price / 100}</span>
-                    <span className='productItem-tag-price_compare' >{'$' + data.priceCompare / 100}</span>
+                    <span className='productItem-tag-price' >{'$' + (data.price / 100).toFixed(2)}</span>
+                    <span className='productItem-tag-price_compare' >{'$' + (data.priceCompare / 100).toFixed(2)}</span>
                 </div>
 
                 <button className='productItem-tag-add' onClick={add}>

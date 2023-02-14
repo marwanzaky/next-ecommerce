@@ -64,8 +64,8 @@ function Details({ product }) {
         <h1 className='name' >{product.name}</h1>
 
         <div className='price-box'>
-            <span className='price'>{'$' + product.price / 100}</span>
-            <span className='price_compare' >{'$' + product.priceCompare / 100}</span>
+            <span className='price'>{'$' + (product.price / 100).toFixed(2)}</span>
+            <span className='price_compare' >{'$' + (product.priceCompare / 100).toFixed(2)}</span>
         </div>
 
         {process.env.NEXT_PUBLIC_REVIEWS === 'true' && <div className='stars-box'>

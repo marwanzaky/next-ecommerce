@@ -25,11 +25,11 @@ function Item({ id, name, price, quantity, imgs, setItems }) {
                 <Link className='item-product-name' href={`/product/${id}`}>{name}</Link>
             </div>
         </th>
-        <th className='item-price'>{'$' + price / 100}</th>
+        <th className='item-price'>{'$' + (price / 100).toFixed(2)}</th>
         <th className='item-quantity'>
             <input className='item-quantity-field' type='number' defaultValue={quantity} min='1' max='100' onChange={quantityInput} />
         </th>
-        <th className='item-total'>{'$' + price * quantity / 100}</th>
+        <th className='item-total'>{'$' + (price * quantity / 100).toFixed(2)}</th>
         <th className='item-remove'>
             <ButtonIconRed icon='delete' onClick={remove} />
         </th>
