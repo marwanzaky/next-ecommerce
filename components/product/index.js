@@ -76,7 +76,10 @@ function Details({ product }) {
         <ButtonGhostGrey className='w-full md:w-[400px]' onClick={add}>Add to cart</ButtonGhostGrey>
         <ButtonFull className='w-full md:w-[400px]' onClick={purchase}>Buy it now</ButtonFull>
 
-        <Info display={true} title='Description'>{product.description}</Info>
+        <Info display={true} title='Description'>
+            <p>{product.description}</p>
+        </Info>
+
         <Info title='Shipping and Refund Policy'>
             <h4>Refund Policy</h4>
             <p>
