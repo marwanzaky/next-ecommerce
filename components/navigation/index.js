@@ -1,43 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import Link from 'next/link';
-import Image from 'next/image';
 
 import User from '@utils/user';
 import Cart from '@utils/cart';
-import Icon from '@ui/Icon';
 
-function Avatar() {
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        setUser(User.getUser());
-    }, []);
-
-    return <Link className='nav-btn' href='/me'>
-        <Image className='rounded-full !filter-none' src={`${process.env.NEXT_PUBLIC_SERVER}/imgs/users/${user?.photo}`} width={24} height={24} />
-    </Link>
-}
-
-function NavBtn({ href, icon }) {
-    return <Link className='nav-btn' href={href}>
-        <Icon icon={icon} />
-    </Link>
-}
-
-function NavBtnLength({ href, icon, length }) {
-    const lengthStyle = {
-        display: length > 0 ? 'flex' : 'none'
-    }
-
-    return <Link className='nav-btn nav-btn-length' href={href}>
-        <Icon icon={icon} />
-        <div className='length' style={lengthStyle}>{length}</div>
-    </Link>
-}
+import { ButtonIcon, ButtonIconImage } from '@ui/Button';
 
 function NavLi({ href, name }) {
     const pathname = usePathname();
@@ -52,13 +23,33 @@ function NavLi({ href, name }) {
 }
 
 export default function Navigation() {
+    const router = useRouter();
+    const [user, setUser] = useState(null);
     const [token, setToken] = useState('');
     const [cartItems, setCartItems] = useState([]);
 
     useEffect(() => {
+        setUser(User.getUser());
         setToken(User.getToken());
         setCartItems(Cart.items);
     }, []);
+
+    const signin = event => {
+        event.preventDefault();
+        router.push('/signin');
+    }
+
+    const cart = event => {
+        event.preventDefault();
+        router.push('/cart');
+    }
+
+    const me = event => {
+        event.preventDefault();
+        router.push('/me');
+    }
+
+    console.log(cartItems.length)
 
     return <nav>
         <div className='nav-promo'>Free shipping on orders over $50</div>
@@ -79,10 +70,12 @@ export default function Navigation() {
             <div className='box-right'>
                 <div className='flex flex-row'>
                     {token ?
-                        process.env.NEXT_PUBLIC_ACCOUNT === 'true' && <Avatar /> :
-                        process.env.NEXT_PUBLIC_ACCOUNT === 'true' && <NavBtn href='/signin' icon='person' />}
+                        process.env.NEXT_PUBLIC_ACCOUNT === 'true' && <ButtonIconImage src={`${process.env.NEXT_PUBLIC_SERVER}/imgs/users/${user?.photo}`} onClick={me} /> :
+                        process.env.NEXT_PUBLIC_ACCOUNT === 'true' && <ButtonIcon icon='person' onClick={signin} />}
 
-                    <NavBtnLength href='/cart' icon='shopping_cart' length={cartItems.length} />
+                    <ButtonIcon className='btn-cart' icon='shopping_cart' onClick={cart}>
+                        <div className='btn-cart-length' style={{ display: cartItems.length > 0 ? 'flex' : 'none' }}>{cartItems.length}</div>
+                    </ButtonIcon>
                 </div>
             </div>
         </div>

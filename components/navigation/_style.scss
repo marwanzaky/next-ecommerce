@@ -66,10 +66,10 @@ nav .nav-box .nav-btn {
   }
 }
 
-nav .nav-box .nav-btn-length {
+nav .nav-box .btn-cart {
   position: relative;
 
-  .length {
+  .btn-cart-length {
     @apply inline-flex justify-center items-center;
 
     @apply absolute;
