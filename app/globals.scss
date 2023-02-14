@@ -58,7 +58,7 @@ $field-ph: 25px;
 
 body,
 button {
-  @apply text-[15px];
+  @apply text-[14px] md:text-[15px];
   font-family: var(--font-family);
 }
 
