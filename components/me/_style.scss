@@ -1,0 +1,12 @@
+.section-me {
+  background-color: $color-bg;
+}
+
+.section-me .me-box {
+  // @apply section-container;
+  @apply m-auto max-w-[500px];
+}
+
+.section-me form {
+  @apply mb-[30px];
+}

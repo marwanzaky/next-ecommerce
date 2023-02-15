@@ -33,7 +33,7 @@ $color-grey: #868686;
 $color-black: #2d3436;
 
 /*------- BASIC SETUP -------*/
-$border-radius: 0px;  // $border-radius: 12px;
+$border-radius: 12px;  // $border-radius: 12px;
 
 $btn-line-width: 1px;
 
@@ -314,6 +314,9 @@ input[type=number] {
 
 /*------- CART -------*/
 @import '../components/cart/style';
+
+/*------- ME -------*/
+@import '../components/me/style';
 
 /*------- SIGN UP / SING IN -------*/
 .section-signin .signin-p,

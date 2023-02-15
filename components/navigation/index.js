@@ -49,8 +49,6 @@ export default function Navigation() {
         router.push('/me');
     }
 
-    console.log(cartItems.length)
-
     return <nav>
         <div className='nav-promo'>Free shipping on orders over $50</div>
         <div className='nav-box'>

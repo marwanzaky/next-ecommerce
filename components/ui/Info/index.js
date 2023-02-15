@@ -1,5 +1,5 @@
-import Icon from '@ui/Icon';
 import { useState } from 'react';
+import Icon from '@ui/Icon';
 
 export default function Info({ display = false, title, children }) {
     const [expand, setExpand] = useState(display);
