@@ -18,8 +18,8 @@ function NavLi({ href, name }) {
         select = true;
 
     return <li>
-        <Link className={select && 'select'} href={href}>{name}</Link>
-    </li>
+        <Link className={select ? 'select' : ''} href={href}>{name}</Link>
+    </li >
 }
 
 export default function Navigation() {

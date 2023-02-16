@@ -1,5 +1,5 @@
-import Image from "next/image"
-import Icon from "@ui/Icon"
+import Image from 'next/image';
+import Icon from '@ui/Icon';
 
 export function ButtonFull({ className, type, onClick, children }) {
     return <button
@@ -40,6 +40,6 @@ export function ButtonIconImage({ className, type, src, onClick }) {
         className={`btn-icon-base ${className}`}
         type={type}
         onClick={onClick}>
-        <Image className='rounded-full !filter-none' src={src} width={24} height={24} />
+        <Image className='rounded-full !filter-none' src={src} width={24} height={24} alt='Icon' />
     </button>
 }
