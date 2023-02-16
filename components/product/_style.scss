@@ -45,7 +45,7 @@
 /*------- PRODUCT DETAILS -------*/
 .product .details {
   .location {
-    @apply mb-[20px] text-[90%];
+    @apply mb-[20px];
     font-weight: var(--font-regular);
     color: $color-grey;
 
@@ -54,12 +54,10 @@
     }
 
     a {
-      @apply pb-[1px];
       color: $color-grey;
-      border-bottom: $btn-line-width solid transparent;
 
       &:hover {
-        border-bottom: $btn-line-width solid $color-grey;
+        text-decoration: underline;
       }
     }
   }

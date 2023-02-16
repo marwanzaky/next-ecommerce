@@ -1,6 +1,6 @@
 /*------- FEEDBACK -------*/
 .feedback {
-  @apply p-[30px] md:p-[50px];
+  @apply p-[30px] md:p-[30px];
   
   border: solid 2px $color-bg-dark;
   border-radius: $border-radius;
@@ -63,6 +63,10 @@
 /*------- FEEDBACK REVIEWS -------*/
 .feedback .reviews .review {
   margin-bottom: 30px;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
 
   .review-profile {
     @apply flex justify-center items-center w-[40px] h-[40px] rounded-[50%];

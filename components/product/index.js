@@ -120,7 +120,7 @@ function Details({ product }) {
 
 export default function Product({ product }) {
     return <section className='product'>
-        <div className={`preview-n-details ${process.env.NEXT_PUBLIC_REVIEWS === 'true' ? 'mb-[30px] md:mb-[50px]' : ''}`}>
+        <div className={`preview-n-details ${process.env.NEXT_PUBLIC_REVIEWS === 'true' ? 'mb-[30px] md:mb-[30px]' : ''}`}>
             <Preview product={product} />
             <Details product={product} />
         </div>
