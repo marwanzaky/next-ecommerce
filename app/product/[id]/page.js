@@ -6,7 +6,7 @@ export default async function Page({ params }) {
     const product = await getProduct(params.id);
     const products = await getProducts();
 
-    return <Layout title={`${product.name} \u2014 ${process.env.NEXT_PUBLIC_NAME}`}>
+    return <Layout title={product.name}>
         <Product product={product} />
         <YouMayAlsoLike products={products} />
     </Layout>
