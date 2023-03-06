@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation';
 
 import CartTable from './table';
 
-import UtilsCart from '@utils/cart';
-
 import YouMayAlsoLike from '@components/youMayAlsoLike';
+
+import UtilsCart from '@utils/cart';
 
 import { ButtonFull } from '@ui/Button';
 
