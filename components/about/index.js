@@ -3,8 +3,6 @@
 import { useRouter } from 'next/navigation';
 import { ButtonGhostGrey } from '@ui/Button';
 
-// test
-
 function Paragraph({ title, children }) {
     return <div className='parag'>
         <h4>{title}</h4>
