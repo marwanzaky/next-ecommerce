@@ -15,8 +15,8 @@ const getUser = async onload => {
         }
     };
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/me`, options);
-    const json = await response.json();
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/me`, options);
+    const json = await res.json();
 
     onload(json);
 }
