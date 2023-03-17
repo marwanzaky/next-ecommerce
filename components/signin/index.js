@@ -37,8 +37,8 @@ export default function Signin() {
             body: JSON.stringify(form)
         };
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/login`, requestOptions);
-        const data = await response.json();
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/users/login`, requestOptions);
+        const data = await res.json();
 
         if (data.token)
             alert('Logged in successfully!');
