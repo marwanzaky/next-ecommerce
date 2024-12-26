@@ -10,7 +10,16 @@ export default function Home() {
 	const onSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
 		event.preventDefault();
 
-		const response = await fetch("http://localhost:3001/");
+		const response = await fetch("http://localhost:3001/auth/login", {
+			method: "POST",
+			headers: {
+				"Content-type": "application/json",
+			},
+			body: JSON.stringify({
+				email,
+				password,
+			}),
+		});
 		const json = await response.json();
 
 		console.log("email", email);
