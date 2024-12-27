@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ReduxProvider } from "../redux/provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,7 +14,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className="dark:bg-gray-900">{children}</body>
+			<body className="dark:bg-gray-900">
+				<ReduxProvider>{children}</ReduxProvider>
+			</body>
 		</html>
 	);
 }

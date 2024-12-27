@@ -4,7 +4,7 @@ type InputTextProps = {
 	id: string;
 	label?: string;
 	placeholder?: string;
-	type?: "text" | "email";
+	type?: "text" | "email" | 'password';
 	value?: string;
 	required: boolean;
 	onChange: React.ChangeEventHandler<HTMLInputElement>;
