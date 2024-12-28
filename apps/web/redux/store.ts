@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "./slices/authSlice";
+import authReducer, { AuthState } from "./slices/authSlice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -11,7 +11,7 @@ const persistConfig = {
 
 export const store = configureStore({
 	reducer: {
-		authReducer: persistReducer(persistConfig, authReducer),
+		authReducer: persistReducer<AuthState>(persistConfig, authReducer),
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({

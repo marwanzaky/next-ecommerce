@@ -5,8 +5,8 @@ import { JwtService } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
 import { SignUpDto } from "./dto/signup.dto";
 import { Model } from "mongoose";
-import * as bcrypt from "bcryptjs";
 import { LoginDto } from "./dto/login.dto";
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -14,18 +14,16 @@ export class AuthService {
 		@InjectModel(User.name) private userModel: Model<User>,
 		private jwtService: JwtService,
 		private configService: ConfigService,
-	) {}
+	) { }
 
 	async signUp(signupDto: SignUpDto) {
 		const { name, email, password } = signupDto;
-
-		const hashedPassword = await bcrypt.hash(password, 12);
 
 		const user = await this.userModel
 			.create({
 				name,
 				email,
-				password: hashedPassword,
+				password,
 			})
 			.catch(() => {
 				throw new UnauthorizedException("The user already have an account");
@@ -49,7 +47,7 @@ export class AuthService {
 
 		const user = await this.userModel.findOne({
 			email,
-		});
+		}).select('+password');
 
 		if (!user) throw new UnauthorizedException("Invalid email or password");
 

@@ -10,8 +10,4 @@ export class UpdateUserDto {
     @IsEmail()
     @IsOptional()
     email?: string;
-
-    @ApiProperty()
-    @IsOptional()
-    password?: string;
 }

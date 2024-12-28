@@ -22,7 +22,10 @@ export default function Home() {
 					<Button onClick={() => router.push('/settings')}>Account settings</Button>
 					<Button onClick={() => dispatch(logOut())}>Log out</Button>
 				</div> :
-				<Button onClick={() => router.push('/login')}>Log in</Button>}
+				<div className="flex flex-col gap-2">
+					<Button onClick={() => router.push('/login')}>Log in</Button>
+					<Button onClick={() => router.push('/signup')}>Sign up</Button>
+				</div>}
 		</div>
 	);
 }
