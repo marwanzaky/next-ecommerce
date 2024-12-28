@@ -7,7 +7,7 @@ import { Public } from "./auth.guard";
 @Public()
 @Controller("auth")
 export class AuthController {
-	constructor(private readonly authService: AuthService) {}
+	constructor(private readonly authService: AuthService) { }
 
 	@Post("signup")
 	signUp(@Body() signupDto: SignUpDto) {
