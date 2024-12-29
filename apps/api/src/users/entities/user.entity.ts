@@ -1,12 +1,15 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { isEmail } from "class-validator";
 import { Document } from "mongoose";
-import * as bcrypt from 'bcrypt';
-
+import { IUser } from "shared";
+import * as bcrypt from "bcrypt";
 @Schema()
-export class User extends Document {
-	@Prop({ required: true, enum: ['user', 'admin'], default: 'user' })
-	role: 'user' | 'admin';
+export class User extends Document implements Omit<IUser, "_id"> {
+	@Prop({ required: true, enum: ["user", "admin"], default: "user" })
+	role: "user" | "admin";
+
+	@Prop()
+	photo: string;
 
 	@Prop({ required: true })
 	name: string;
@@ -17,8 +20,8 @@ export class User extends Document {
 		lowercase: true,
 		validate: {
 			validator: (value: string) => isEmail(value),
-			message: 'Please enter a valid email',
-		}
+			message: "Please enter a valid email",
+		},
 	})
 	email: string;
 
@@ -28,9 +31,8 @@ export class User extends Document {
 
 export const UserSchema = SchemaFactory.createForClass(User);
 
-UserSchema.pre('save', async function (next) {
-	if (!this.isModified('password'))
-		return next();
+UserSchema.pre("save", async function (next) {
+	if (!this.isModified("password")) return next();
 
 	this.password = await bcrypt.hash(this.password, 12);
 

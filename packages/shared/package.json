@@ -1,0 +1,9 @@
+{
+	"name": "@repo/shared",
+	"version": "0.0.0",
+	"main": "./index.ts",
+	"types": "./index.ts",
+	"devDependencies": {
+		"typescript": "^5.7.2"
+	}
+}

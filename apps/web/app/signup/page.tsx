@@ -4,8 +4,8 @@ import { Button } from "@repo/ui/button";
 import { InputText } from "@repo/ui/inputtext";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { AppDispatch, } from "../../redux/store";
-import { loginAsync } from "../../redux/slices/authSlice";
+import { AppDispatch } from "../../redux/store";
+import { signupAsync } from "../../redux/slices/authSlice";
 import { useRouter } from "next/navigation";
 
 export default function Signup() {
@@ -20,13 +20,17 @@ export default function Signup() {
 
 	const onSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
 		event.preventDefault();
-		dispatch(loginAsync({ email, password, router }));
+
+		if (password === confirmPassword) {
+			dispatch(signupAsync({ name, email, password, router }));
+		} else {
+			alert("The passwords you entered do not match");
+		}
 	};
 
 	return (
 		<div className="h-screen w-full flex flex-col justify-center items-center">
 			<form className="flex flex-col w-96" onSubmit={onSubmit}>
-
 				<InputText
 					id="name"
 					type="text"
@@ -66,7 +70,9 @@ export default function Signup() {
 
 				<div className="flex flex-col gap-2">
 					<Button type="submit">Sign up</Button>
-					<Button type="button" onClick={() => router.push('/login')}>Log in</Button>
+					<Button type="button" onClick={() => router.push("/login")}>
+						Log in
+					</Button>
 				</div>
 			</form>
 		</div>

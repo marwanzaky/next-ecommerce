@@ -1,7 +1,9 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { IUpdateUser, IUser, usersService } from "../../services/usersService";
+import { usersService } from "../../services/usersService";
 import { RootState } from "../store";
+
+import { IUser, IUpdateUser } from "shared";
 
 export type AuthState = {
 	user: IUser | null;
@@ -18,28 +20,56 @@ const initialState: AuthState = {
 	isAuthenticated: false,
 
 	loading: false,
-	error: null
+	error: null,
 };
 
 export const loginAsync = createAsyncThunk(
-	'auth/login',
-	async (credentials: { email: string; password: string, router: AppRouterInstance; }, { rejectWithValue }) => {
+	"auth/login",
+	async (
+		credentials: { email: string; password: string; router: AppRouterInstance },
+		{ rejectWithValue },
+	) => {
 		const { email, password, router } = credentials;
 
 		try {
 			const data = await usersService.login(email, password);
-			alert('Logged in successfully!');
-			router.push('/');
+			alert("Logged in successfully!");
+			router.push("/");
 			return data;
 		} catch (error: any) {
 			alert(error.message);
 			return rejectWithValue(error.message);
 		}
-	}
+	},
+);
+
+export const signupAsync = createAsyncThunk(
+	"auth/signup",
+	async (
+		credentials: {
+			name: string;
+			email: string;
+			password: string;
+			router: AppRouterInstance;
+		},
+		{ rejectWithValue },
+	) => {
+		const { name, email, password, router } = credentials;
+
+		try {
+			const data = await usersService.signup(name, email, password);
+			alert("Account created successfully!");
+			router.push("/login");
+			return data;
+		} catch (error: any) {
+			alert(error.message);
+			return rejectWithValue(error.message);
+		}
+	},
 );
 
 export const getMeAsync = createAsyncThunk(
-	'auth/getMe',
+	"auth/getMe",
 	async (_, { getState, rejectWithValue }) => {
 		const state = getState() as RootState;
 
@@ -48,40 +78,47 @@ export const getMeAsync = createAsyncThunk(
 		} catch (error: any) {
 			return rejectWithValue(error.message);
 		}
-	}
+	},
 );
 
 export const updateMeAsync = createAsyncThunk(
-	'auth/updateMe',
+	"auth/updateMe",
 	async (updatedUser: IUpdateUser, { getState, rejectWithValue }) => {
 		const state = getState() as RootState;
 
 		try {
-			const data = await usersService.updateMe(state.authReducer.token, updatedUser);
-			alert('User settings updated successfully!');
+			const data = await usersService.updateMe(
+				state.authReducer.token,
+				updatedUser,
+			);
+			alert("User settings updated successfully!");
 			return data;
-
 		} catch (error: any) {
 			return rejectWithValue(error.message);
 		}
-	}
+	},
 );
 
 export const updateMyPasswordAsync = createAsyncThunk(
-	'auth/updateMyPassword',
-	async (payload: { currentPassword: string; newPassword: string; }, { getState, rejectWithValue }) => {
+	"auth/updateMyPassword",
+	async (
+		payload: { currentPassword: string; newPassword: string },
+		{ getState, rejectWithValue },
+	) => {
 		const state = getState() as RootState;
 
 		try {
-			const data = await usersService.updateMyPassword(state.authReducer.token, payload);
-			alert('User password updated successfully!');
+			const data = await usersService.updateMyPassword(
+				state.authReducer.token,
+				payload,
+			);
+			alert("User password updated successfully!");
 			return data;
-
 		} catch (error: any) {
 			alert(error.message);
 			return rejectWithValue(error.message);
 		}
-	}
+	},
 );
 
 export const authSlice = createSlice({
@@ -105,6 +142,20 @@ export const authSlice = createSlice({
 				state.token = action.payload.token;
 			})
 			.addCase(loginAsync.rejected, (state, action) => {
+				state.loading = false;
+				state.error = action.payload as string;
+			});
+		// signupAsync
+		builder
+			.addCase(signupAsync.pending, (state) => {
+				state.loading = true;
+				state.error = null;
+			})
+			.addCase(signupAsync.fulfilled, (state, action) => {
+				state.loading = false;
+				state.token = action.payload.token;
+			})
+			.addCase(signupAsync.rejected, (state, action) => {
 				state.loading = false;
 				state.error = action.payload as string;
 			});

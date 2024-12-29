@@ -11,8 +11,9 @@
 		"check-types": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@reduxjs/toolkit": "^2.5.0",
+		"@repo/shared": "*",
 		"@repo/ui": "*",
+		"@reduxjs/toolkit": "^2.5.0",
 		"autoprefixer": "^10.4.20",
 		"next": "^15.1.0",
 		"postcss": "^8.4.49",

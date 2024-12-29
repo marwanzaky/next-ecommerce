@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
+import {
+	Injectable,
+	NotFoundException,
+	UnauthorizedException,
+} from "@nestjs/common";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { InjectModel } from "@nestjs/mongoose";
@@ -6,7 +10,7 @@ import { User } from "./entities/user.entity";
 import { Model } from "mongoose";
 import { JwtService } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from "bcrypt";
 
 @Injectable()
 export class UsersService {
@@ -14,10 +18,14 @@ export class UsersService {
 		@InjectModel(User.name) private userModel: Model<User>,
 		private jwtService: JwtService,
 		private configService: ConfigService,
-	) { }
+	) {}
 
-	async updateUserPassword(id: string, currentPassword: string, newPassword: string): Promise<{ token: string; }> {
-		const user = await this.userModel.findById(id).select('+password');
+	async updateUserPassword(
+		id: string,
+		currentPassword: string,
+		newPassword: string,
+	): Promise<{ token: string }> {
+		const user = await this.userModel.findById(id).select("+password");
 		const isCorrect = await bcrypt.compare(currentPassword, user.password);
 
 		if (isCorrect === false) {
@@ -26,9 +34,12 @@ export class UsersService {
 
 		user.password = newPassword;
 
-		try { await user.save(); }
-		catch (_) {
-			throw new UnauthorizedException("Password is shorter than the minimum allowed length (8)");
+		try {
+			await user.save();
+		} catch (_) {
+			throw new UnauthorizedException(
+				"Password is shorter than the minimum allowed length (8)",
+			);
 		}
 
 		const token = await this.jwtService.sign(
@@ -73,7 +84,10 @@ export class UsersService {
 	}
 
 	updateUser(id: string, updateUserDto: UpdateUserDto): Promise<User> {
-		return this.userModel.findByIdAndUpdate(id, updateUserDto, { new: true, runValidators: true });
+		return this.userModel.findByIdAndUpdate(id, updateUserDto, {
+			new: true,
+			runValidators: true,
+		});
 	}
 
 	removeUser(id: string): Promise<User> {

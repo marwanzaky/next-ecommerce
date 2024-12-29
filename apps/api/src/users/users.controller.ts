@@ -16,28 +16,38 @@ import { IRequest } from "src/_interfaces/request.interface";
 import { UpdateUserPasswordDto } from "./dto/update-user-password.dto";
 
 @Controller("users")
-@ApiBearerAuth('Authorization')
+@ApiBearerAuth("Authorization")
 export class UsersController {
-	constructor(private readonly usersService: UsersService) { }
+	constructor(private readonly usersService: UsersService) {}
 
-	@Get('/me')
+	@Get("/me")
 	async getMe(@Req() request: IRequest) {
 		return this.usersService.findUser(request.user.id);
 	}
 
-	@Patch('/updateMe')
-	async updateMe(@Req() request: IRequest, @Body() updateUserDto: UpdateUserDto) {
+	@Patch("/updateMe")
+	async updateMe(
+		@Req() request: IRequest,
+		@Body() updateUserDto: UpdateUserDto,
+	) {
 		return this.usersService.updateUser(request.user.id, updateUserDto);
 	}
 
-	@Delete('/deleteMe')
+	@Delete("/deleteMe")
 	async removeMe(@Req() request: IRequest) {
 		return this.usersService.removeUser(request.user.id);
 	}
 
-	@Patch('/updateMyPassword')
-	async updateMyPassword(@Req() request: IRequest, @Body() updateUserPasswordDto: UpdateUserPasswordDto) {
-		return this.usersService.updateUserPassword(request.user.id, updateUserPasswordDto.currentPassword, updateUserPasswordDto.newPassword);
+	@Patch("/updateMyPassword")
+	async updateMyPassword(
+		@Req() request: IRequest,
+		@Body() updateUserPasswordDto: UpdateUserPasswordDto,
+	) {
+		return this.usersService.updateUserPassword(
+			request.user.id,
+			updateUserPasswordDto.currentPassword,
+			updateUserPasswordDto.newPassword,
+		);
 	}
 
 	@Post()
@@ -56,7 +66,10 @@ export class UsersController {
 	}
 
 	@Patch(":id")
-	async updateUser(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
+	async updateUser(
+		@Param("id") id: string,
+		@Body() updateUserDto: UpdateUserDto,
+	) {
 		return this.usersService.updateUser(id, updateUserDto);
 	}
 
