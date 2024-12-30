@@ -10,6 +10,9 @@ import {
 	updateMeAsync,
 	updateMyPasswordAsync,
 } from "../../redux/slices/authSlice";
+import { Form } from "@repo/ui/form";
+import { Header } from "@repo/ui/header";
+import { Muted } from "@repo/ui/muted";
 
 export default function Settings() {
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -80,89 +83,147 @@ export default function Settings() {
 	};
 
 	return (
-		<div className="h-screen w-full flex flex-col justify-center items-center gap-8">
-			<input
-				ref={inputRef}
-				className="hidden"
-				type="file"
-				accept=".png, .jpg, .jpeg"
-				onChange={onPhotoChange}
-			/>
+		<div>
+			<form className="px-6 py-8 flex gap-8 border-b" onSubmit={updateMeForm}>
+				<div className="w-1/3 flex flex-col gap-1">
+					<Header>Personal Information</Header>
+					<Muted>Use a permanent address where you can receive mail.</Muted>
+				</div>
 
-			<div className="flex gap-2">
-				<img
-					role="button"
-					onClick={() => inputRef.current?.click()}
-					className="rounded-full w-12 h-12"
-					src={photo || "img/avatar-placeholder.png"}
-				/>
+				<div className="w-2/3 flex flex-col gap-6">
+					<input
+						ref={inputRef}
+						className="hidden"
+						type="file"
+						accept=".png, .jpg, .jpeg"
+						onChange={onPhotoChange}
+					/>
 
-				{photo && <Button onClick={() => setPhoto(null)}>Remove</Button>}
-			</div>
+					<div className="flex items-center gap-4">
+						<img
+							role="button"
+							onClick={() => inputRef.current?.click()}
+							className="rounded-lg w-16 h-16"
+							src={photo || "img/avatar-placeholder.png"}
+						/>
 
-			<form className="flex flex-col w-96" onSubmit={updateMeForm}>
-				<InputText
-					id="name"
-					type="text"
-					label="Your name"
-					value={name}
-					onChange={(e) => setName(e.target.value)}
-					required
-				/>
+						<div className="flex flex-col gap-2">
+							<div className="flex gap-2">
+								<Button onClick={() => inputRef.current?.click()}>
+									Change avatar
+								</Button>
 
-				<InputText
-					id="email"
-					type="email"
-					label="Your email"
-					placeholder="name@example.com"
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-					required
-				/>
+								<Button
+									variant="outline"
+									onClick={() => setPhoto(null)}
+									disabled={!photo}
+								>
+									Remove
+								</Button>
+							</div>
 
-				<Button
-					type="submit"
-					disabled={
-						user?.name === name &&
-						user?.email === email &&
-						user?.photo === photo
-					}
-				>
-					Save changes
-				</Button>
+							<div className="text-xs text-gray-500">
+								JPG, GIF or PNG. 1MB max.
+							</div>
+						</div>
+					</div>
+
+					<InputText
+						id="name"
+						type="text"
+						label="Name"
+						value={name}
+						onChange={(e) => setName(e.target.value)}
+						required
+					/>
+
+					<InputText
+						id="email"
+						type="email"
+						label="Email"
+						placeholder="name@example.com"
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+						required
+					/>
+
+					<div className="flex gap-4">
+						<Button
+							type="submit"
+							disabled={
+								user?.name === name &&
+								user?.email === email &&
+								user?.photo === photo
+							}
+						>
+							Save
+						</Button>
+					</div>
+				</div>
 			</form>
 
-			<form className="flex flex-col w-96" onSubmit={updateMyPasswordForm}>
-				<InputText
-					id="password"
-					type="password"
-					label="Current password"
-					value={currentPassword}
-					onChange={(e) => setCurrentPassword(e.target.value)}
-					required
-				/>
+			<form
+				className="px-6 py-8 flex gap-8 border-b"
+				onSubmit={updateMyPasswordForm}
+			>
+				<div className="w-1/3 flex flex-col gap-1">
+					<Header>Change password</Header>
+					<Muted>Update your password associated with your account.</Muted>
+				</div>
 
-				<InputText
-					id="password"
-					type="password"
-					label="New password"
-					value={newPassword}
-					onChange={(e) => setNewPassword(e.target.value)}
-					required
-				/>
+				<div className="w-2/3 flex flex-col gap-6">
+					<InputText
+						id="password"
+						type="password"
+						label="Current password"
+						value={currentPassword}
+						onChange={(e) => setCurrentPassword(e.target.value)}
+						required
+					/>
 
-				<InputText
-					id="password"
-					type="password"
-					label="Confirm password"
-					value={confirmPassword}
-					onChange={(e) => setConfirmPassword(e.target.value)}
-					required
-				/>
+					<InputText
+						id="password"
+						type="password"
+						label="New password"
+						value={newPassword}
+						onChange={(e) => setNewPassword(e.target.value)}
+						required
+					/>
 
-				<Button type="submit" disabled={!currentPassword}>
-					Save changes
-				</Button>
+					<InputText
+						id="password"
+						type="password"
+						label="Confirm password"
+						value={confirmPassword}
+						onChange={(e) => setConfirmPassword(e.target.value)}
+						required
+					/>
+
+					<div>
+						<Button type="submit" disabled={!currentPassword}>
+							Save
+						</Button>
+					</div>
+				</div>
+			</form>
+
+			<form className="px-6 py-8 flex gap-8">
+				<div className="w-1/3 flex flex-col gap-1">
+					<Header>Delete account </Header>
+					<Muted>
+						No longer want to use our service? You can delete your account here.
+						This action is not reversible. All information related to this
+						account will be deleted permanently.
+					</Muted>
+				</div>
+
+				<div className="w-2/3 flex flex-col gap-6">
+					<div>
+						<Button type="submit" variant="destructive">
+							Yes, delete my account
+						</Button>
+					</div>
+				</div>
 			</form>
 		</div>
 	);

@@ -5,7 +5,11 @@
 	"private": true,
 	"exports": {
 		"./button": "./src/button.tsx",
-		"./inputtext": "./src/inputtext.tsx"
+		"./inputtext": "./src/inputtext.tsx",
+		"./form": "./src/form.tsx",
+		"./header": "./src/header.tsx",
+		"./muted": "./src/muted.tsx",
+		"./paragraph": "./src/paragraph.tsx"
 	},
 	"scripts": {
 		"lint": "eslint . --max-warnings 0",

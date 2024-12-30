@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ReduxProvider } from "../redux/provider";
 import "./globals.css";
+import Navigation from "../components/navigation";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -14,7 +15,8 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className="dark:bg-gray-900">
+			<body className="dark:bg-gray-900 max-w-5xl mx-auto">
+				<Navigation />
 				<ReduxProvider>{children}</ReduxProvider>
 			</body>
 		</html>

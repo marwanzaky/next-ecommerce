@@ -7,6 +7,10 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { signupAsync } from "../../redux/slices/authSlice";
 import { useRouter } from "next/navigation";
+import { Form } from "@repo/ui/form";
+import { Paragraph } from "@repo/ui/paragraph";
+import { Header } from "@repo/ui/header";
+import { Muted } from "@repo/ui/muted";
 
 export default function Signup() {
 	const router = useRouter();
@@ -29,12 +33,17 @@ export default function Signup() {
 	};
 
 	return (
-		<div className="h-screen w-full flex flex-col justify-center items-center">
-			<form className="flex flex-col w-96" onSubmit={onSubmit}>
+		<div className="h-[calc(100vh-4rem)] w-full flex flex-col justify-center items-center">
+			<Form onSubmit={onSubmit}>
+				<div className="flex flex-col gap-2">
+					<Header>Create an account</Header>
+					<Muted>Enter your email below to create your account</Muted>
+				</div>
+
 				<InputText
 					id="name"
 					type="text"
-					label="Your name"
+					label="Name"
 					value={name}
 					onChange={(e) => setName(e.target.value)}
 					required
@@ -43,7 +52,7 @@ export default function Signup() {
 				<InputText
 					id="email"
 					type="email"
-					label="Your email"
+					label="Email"
 					placeholder="name@example.com"
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
@@ -53,7 +62,7 @@ export default function Signup() {
 				<InputText
 					id="password"
 					type="password"
-					label="Your password"
+					label="Password"
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 					required
@@ -62,19 +71,28 @@ export default function Signup() {
 				<InputText
 					id="password"
 					type="password"
-					label="Confirm password"
+					label="Confirm"
 					value={confirmPassword}
 					onChange={(e) => setConfirmPassword(e.target.value)}
 					required
 				/>
 
-				<div className="flex flex-col gap-2">
-					<Button type="submit">Sign up</Button>
-					<Button type="button" onClick={() => router.push("/login")}>
-						Log in
-					</Button>
+				<Button type="submit">Create account</Button>
+
+				<div className="flex gap-1 mx-auto">
+					<Paragraph className="text-center">
+						Already have an account?
+					</Paragraph>
+
+					<a
+						role="button"
+						className="leading-7 text-sm text-slate-900 underline underline-offset-4"
+						onClick={() => router.push("/login")}
+					>
+						Login
+					</a>
 				</div>
-			</form>
+			</Form>
 		</div>
 	);
 }
