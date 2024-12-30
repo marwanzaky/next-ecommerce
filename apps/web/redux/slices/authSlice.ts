@@ -3,7 +3,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 import { usersService } from "../../services/usersService";
 import { RootState } from "../store";
 
-import { IUser, IUpdateUser } from "shared";
+import { IUser, IUpdateUser } from "@repo/shared";
 
 export type AuthState = {
 	user: IUser | null;

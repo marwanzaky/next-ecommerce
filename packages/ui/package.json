@@ -9,6 +9,7 @@
 		"./form": "./src/form.tsx",
 		"./header": "./src/header.tsx",
 		"./muted": "./src/muted.tsx",
+		"./avatar": "./src/avatar.tsx",
 		"./paragraph": "./src/paragraph.tsx"
 	},
 	"scripts": {

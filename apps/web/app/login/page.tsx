@@ -5,12 +5,12 @@ import { InputText } from "@repo/ui/inputtext";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
-import { loginAsync } from "../../redux/slices/authSlice";
 import { useRouter } from "next/navigation";
 import { Form } from "@repo/ui/form";
 import { Paragraph } from "@repo/ui/paragraph";
 import { Header } from "@repo/ui/header";
 import { Muted } from "@repo/ui/muted";
+import { handleLogin } from "../../utils/authHelpers";
 
 export default function Login() {
 	const router = useRouter();
@@ -22,7 +22,7 @@ export default function Login() {
 
 	const onSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
 		event.preventDefault();
-		dispatch(loginAsync({ email, password, router }));
+		handleLogin(email, password, dispatch, router);
 	};
 
 	return (

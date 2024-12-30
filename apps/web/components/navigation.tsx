@@ -2,7 +2,11 @@
 
 import { Button } from "@repo/ui/button";
 import { useRouter } from "next/navigation";
-import React from "react";
+import { useAppSelector } from "../redux/store";
+
+import React, { useEffect, useState } from "react";
+import { Avatar } from "@repo/ui/avatar";
+import { selectUserInitials } from "../redux/selectors/authSelectors";
 
 function NavItem(props: {
 	children: React.ReactNode;
@@ -18,6 +22,12 @@ function NavItem(props: {
 export default function Navigation() {
 	const router = useRouter();
 
+	const { isAuthenticated, user } = useAppSelector(
+		(state) => state.authReducer,
+	);
+
+	const userInitials = useAppSelector(selectUserInitials);
+
 	return (
 		<nav className="flex justify-between items-center h-16 border-b px-8">
 			<ul className="flex gap-8">
@@ -27,14 +37,26 @@ export default function Navigation() {
 				<NavItem>Contact</NavItem>
 			</ul>
 
-			<div>
-				<Button variant="ghost" onClick={() => router.push("/login")}>
-					Sign in
-				</Button>
-				<Button variant="ghost" onClick={() => router.push("/signup")}>
-					Create account
-				</Button>
-			</div>
+			{isAuthenticated ? (
+				<div className="flex gap-2">
+					<Avatar
+						imgUrl={user?.photo}
+						initials={userInitials}
+						// fallbackImgUrl="img/avatar-placeholder.png"
+						onClick={() => router.push("/settings")}
+					/>
+				</div>
+			) : (
+				<div className="flex gap-2">
+					<Button variant="ghost" onClick={() => router.push("/login")}>
+						Sign in
+					</Button>
+
+					<Button variant="ghost" onClick={() => router.push("/signup")}>
+						Create account
+					</Button>
+				</div>
+			)}
 		</nav>
 	);
 }

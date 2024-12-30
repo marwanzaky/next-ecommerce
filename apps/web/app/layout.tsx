@@ -16,8 +16,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className="dark:bg-gray-900 max-w-5xl mx-auto">
-				<Navigation />
-				<ReduxProvider>{children}</ReduxProvider>
+				<ReduxProvider>
+					<Navigation />
+					{children}
+				</ReduxProvider>
 			</body>
 		</html>
 	);

@@ -13,6 +13,8 @@ import {
 import { Form } from "@repo/ui/form";
 import { Header } from "@repo/ui/header";
 import { Muted } from "@repo/ui/muted";
+import { Avatar } from "@repo/ui/avatar";
+import { selectUserInitials } from "../../redux/selectors/authSelectors";
 
 export default function Settings() {
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -26,6 +28,7 @@ export default function Settings() {
 
 	const dispatch = useDispatch<AppDispatch>();
 	const { user } = useAppSelector((state) => state.authReducer);
+	const userInitials = useAppSelector(selectUserInitials);
 
 	useEffect(() => {
 		dispatch(getMeAsync());
@@ -86,7 +89,7 @@ export default function Settings() {
 		<div>
 			<form className="px-6 py-8 flex gap-8 border-b" onSubmit={updateMeForm}>
 				<div className="w-1/3 flex flex-col gap-1">
-					<Header>Personal Information</Header>
+					<Header>Personal information</Header>
 					<Muted>Use a permanent address where you can receive mail.</Muted>
 				</div>
 
@@ -100,12 +103,7 @@ export default function Settings() {
 					/>
 
 					<div className="flex items-center gap-4">
-						<img
-							role="button"
-							onClick={() => inputRef.current?.click()}
-							className="rounded-lg w-16 h-16"
-							src={photo || "img/avatar-placeholder.png"}
-						/>
+						<Avatar size="lg" imgUrl={photo} initials={userInitials}></Avatar>
 
 						<div className="flex flex-col gap-2">
 							<div className="flex gap-2">
@@ -209,7 +207,7 @@ export default function Settings() {
 
 			<form className="px-6 py-8 flex gap-8">
 				<div className="w-1/3 flex flex-col gap-1">
-					<Header>Delete account </Header>
+					<Header>Delete account</Header>
 					<Muted>
 						No longer want to use our service? You can delete your account here.
 						This action is not reversible. All information related to this
