@@ -87,13 +87,16 @@ export default function Settings() {
 
 	return (
 		<div>
-			<form className="px-6 py-8 flex gap-8 border-b" onSubmit={updateMeForm}>
-				<div className="w-1/3 flex flex-col gap-1">
+			<form
+				className="px-6 py-8 flex flex-col gap-8 border-b sm:flex-row"
+				onSubmit={updateMeForm}
+			>
+				<div className="flex flex-col gap-1 sm:w-1/3">
 					<Header>Personal information</Header>
 					<Muted>Use a permanent address where you can receive mail.</Muted>
 				</div>
 
-				<div className="w-2/3 flex flex-col gap-6">
+				<div className="flex flex-col gap-6 sm:w-2/3">
 					<input
 						ref={inputRef}
 						className="hidden"
@@ -161,15 +164,15 @@ export default function Settings() {
 			</form>
 
 			<form
-				className="px-6 py-8 flex gap-8 border-b"
+				className="px-6 py-8 flex flex-col gap-8 border-b sm:flex-row"
 				onSubmit={updateMyPasswordForm}
 			>
-				<div className="w-1/3 flex flex-col gap-1">
+				<div className="flex flex-col gap-1 sm:w-1/3">
 					<Header>Change password</Header>
 					<Muted>Update your password associated with your account.</Muted>
 				</div>
 
-				<div className="w-2/3 flex flex-col gap-6">
+				<div className="flex flex-col gap-6 sm:w-2/3">
 					<InputText
 						id="password"
 						type="password"
@@ -205,8 +208,8 @@ export default function Settings() {
 				</div>
 			</form>
 
-			<form className="px-6 py-8 flex gap-8">
-				<div className="w-1/3 flex flex-col gap-1">
+			<form className="px-6 py-8 flex flex-col gap-8 sm:flex-row">
+				<div className="flex flex-col gap-1 sm:w-1/3">
 					<Header>Delete account</Header>
 					<Muted>
 						No longer want to use our service? You can delete your account here.
@@ -215,7 +218,7 @@ export default function Settings() {
 					</Muted>
 				</div>
 
-				<div className="w-2/3 flex flex-col gap-6">
+				<div className="flex flex-col gap-6 sm:w-2/3">
 					<div>
 						<Button type="submit" variant="destructive">
 							Yes, delete my account

@@ -1,7 +1,7 @@
 "use client";
 
 type ParagraphProps = {
-	className: string;
+	className?: string;
 	children: React.ReactNode;
 };
 

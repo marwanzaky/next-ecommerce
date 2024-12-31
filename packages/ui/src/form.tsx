@@ -11,7 +11,7 @@ type FormProps = {
 export const Form = (props: FormProps) => {
 	return (
 		<form
-			className="flex flex-col gap-6 w-96 rounded-xl border shadow p-6"
+			className="flex flex-col gap-6 w-full sm:w-96 rounded-xl border shadow p-6"
 			onSubmit={props.onSubmit}
 		>
 			{props.children}

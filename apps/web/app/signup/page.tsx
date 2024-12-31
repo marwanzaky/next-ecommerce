@@ -33,7 +33,7 @@ export default function Signup() {
 	};
 
 	return (
-		<div className="h-[calc(100vh-4rem)] w-full flex flex-col justify-center items-center">
+		<div className="h-[calc(100vh-14rem)] w-full flex flex-col justify-center items-center px-4">
 			<Form onSubmit={onSubmit}>
 				<div className="flex flex-col gap-2">
 					<Header>Create an account</Header>

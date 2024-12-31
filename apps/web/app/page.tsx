@@ -14,7 +14,7 @@ export default function Home() {
 	const { isAuthenticated } = useAppSelector((state) => state.authReducer);
 
 	return (
-		<div className="h-[calc(100vh-4rem)] w-full flex flex-col justify-center items-center">
+		<div className="h-[calc(100vh-14rem)] w-full flex flex-col justify-center items-center">
 			{isAuthenticated ? (
 				<div className="flex flex-col gap-2">
 					<Button onClick={() => router.push("/settings")}>

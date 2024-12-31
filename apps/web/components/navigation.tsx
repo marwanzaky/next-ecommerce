@@ -4,7 +4,7 @@ import { Button } from "@repo/ui/button";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "../redux/store";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Avatar } from "@repo/ui/avatar";
 import { selectUserInitials } from "../redux/selectors/authSelectors";
 
@@ -29,12 +29,18 @@ export default function Navigation() {
 	const userInitials = useAppSelector(selectUserInitials);
 
 	return (
-		<nav className="flex justify-between items-center h-16 border-b px-8">
+		<nav className="sticky top-0 z-10 bg-white flex justify-between items-center h-16 border-b px-8">
 			<ul className="flex gap-8">
-				<NavItem onClick={() => router.push("/")}>Home</NavItem>
-				<NavItem>Shop</NavItem>
-				<NavItem>About</NavItem>
-				<NavItem>Contact</NavItem>
+				<div className="hidden sm:flex">
+					<NavItem onClick={() => router.push("/")}>Home</NavItem>
+				</div>
+
+				<NavItem onClick={() => router.push("/shop")}>Shop</NavItem>
+
+				<div className="hidden sm:flex gap-8">
+					<NavItem>About</NavItem>
+					<NavItem>Contact</NavItem>
+				</div>
 			</ul>
 
 			{isAuthenticated ? (
