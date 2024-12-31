@@ -2,70 +2,45 @@
 
 import { Button } from "@repo/ui/button";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useAppSelector } from "../../redux/store";
+import { IProduct } from "@repo/shared";
 
-function Card({
-	name,
-	price,
-	imgUrl,
-}: {
-	name: string;
-	price: number;
-	imgUrl: string;
-}) {
+function Card({ data: { _id, name, price, imgUrls } }: { data: IProduct }) {
 	const router = useRouter();
 
 	return (
 		<div
 			role="button"
 			className="flex flex-col gap-2 group"
-			onClick={() => router.push("/shop/111")}
+			onClick={() => router.push("/shop/" + _id)}
 		>
 			<img
 				className="w-full h-64 object-cover rounded-lg group-hover:opacity-50"
-				src={imgUrl}
+				src={imgUrls[0]}
 			/>
 			<div className="">
 				<div className="text-sm text-gray-500">{name}</div>
-				<div className="">${price}</div>
+				<div className="">${price / 100}</div>
 			</div>
 		</div>
 	);
 }
 
 export default function Shop() {
-	const router = useRouter();
+	const [data, setData] = useState<IProduct[]>([]);
+	const { token } = useAppSelector((state) => state.authReducer);
 
-	const clothsImgUrls: string[] = [
-		"https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg",
-		"https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-02.jpg",
-		"https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-03.jpg",
-		"https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-04.jpg",
-	];
-
-	const imgUrls: string[] = [
-		"https://tailwindui.com/plus/img/ecommerce-images/home-page-04-trending-product-01.jpg",
-		"https://tailwindui.com/plus/img/ecommerce-images/home-page-04-trending-product-02.jpg",
-		"https://tailwindui.com/plus/img/ecommerce-images/home-page-04-trending-product-03.jpg",
-		"https://tailwindui.com/plus/img/ecommerce-images/home-page-04-trending-product-04.jpg",
-	];
-
-	const imgUrlas: string[] = [
-		"https://tailwindui.com/plus/img/ecommerce-images/home-page-02-product-01.jpg",
-		"https://tailwindui.com/plus/img/ecommerce-images/home-page-02-product-02.jpg",
-		"https://tailwindui.com/plus/img/ecommerce-images/home-page-02-product-03.jpg",
-		"https://tailwindui.com/plus/img/ecommerce-images/home-page-02-product-04.jpg",
-	];
-
-	const allImgUrls = [...clothsImgUrls, ...imgUrls, ...imgUrlas];
-
-	const data: { name: string; price: number; imgUrl: string }[] = Array.from(
-		{ length: 12 },
-		() => ({
-			name: "Basic Tee",
-			price: parseFloat((Math.random() * (30 - 10) + 10).toFixed(2)),
-			imgUrl: allImgUrls[Math.floor(Math.random() * allImgUrls.length)] || "",
-		}),
-	);
+	useEffect(() => {
+		fetch(`http://localhost:3001/products`, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+				"Content-type": "application/json",
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => setData(data));
+	}, []);
 
 	return (
 		<div className="flex flex-col gap-4 mt-4 px-4">
@@ -76,12 +51,7 @@ export default function Shop() {
 
 			<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
 				{data.map((item, i) => (
-					<Card
-						key={"card-" + i}
-						name={item.name}
-						price={item.price}
-						imgUrl={item.imgUrl}
-					/>
+					<Card key={i} data={item} />
 				))}
 			</div>
 		</div>
