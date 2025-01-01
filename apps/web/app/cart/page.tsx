@@ -7,6 +7,8 @@ import { IProduct } from "@repo/shared";
 import { Avatar } from "@repo/ui/avatar";
 import { useState } from "react";
 import { Button } from "@repo/ui/button";
+import { ButtonIcon } from "@repo/ui/button-icon";
+import { LucideProps, Trash2 } from "lucide-react";
 
 type Column<T> = {
 	field: keyof T;
@@ -18,8 +20,7 @@ type Column<T> = {
 	onChange?: (value: number, row: T) => void;
 
 	action?: (row: T) => void;
-	actionLabel?: string;
-	actionIcon?: React.ReactNode;
+	actionIcon?: JSX.Element;
 };
 
 function LogoCell({
@@ -142,8 +143,12 @@ function Table<T>({
 										})
 									) : column.type === "custom" && column.render ? (
 										column.render(row[column.field], row)
-									) : column.type === "action" && column.action ? (
-										<Button variant="outline"> {column.actionLabel}</Button>
+									) : column.type === "action" &&
+									  column.action &&
+									  column.actionIcon ? (
+										<ButtonIcon onClick={() => column.action!(row)}>
+											{column.actionIcon}
+										</ButtonIcon>
 									) : (
 										row[column.field]
 									)}
@@ -173,14 +178,13 @@ export default function Card() {
 				<LogoCell href={`shop/${row._id}`} label={row.name} imgUrl={value} />
 			),
 		},
-		{ header: "Price", field: "price", type: "usd" },
+		{ header: "Price", field: "price", type: "usd", width: "10%" },
 		{
 			header: "Quantity",
 			field: "quantity",
 			type: "number-input",
+			width: "15%",
 			onChange: (value, row) => {
-				console.log(`Updated quantity for ${row.name}: ${value}`);
-
 				value = Math.max(1, value);
 				value = Math.min(100, value);
 
@@ -195,16 +199,16 @@ export default function Card() {
 				);
 			},
 		},
-		{ header: "Total", field: "total", type: "usd", width: "15%" },
+		{ header: "Total", field: "total", type: "usd", width: "10%" },
 		{
 			field: "_id",
 			header: "Actions",
 			type: "action",
+			width: "10%",
 			action: (row) => {
-				console.log(`Delete row with ID: ${row._id}`);
+				setTableData(tableData.filter((item) => item._id !== row._id));
 			},
-			actionLabel: "Delete",
-			actionIcon: "",
+			actionIcon: <Trash2 size="1rem" />,
 		},
 	];
 
@@ -258,7 +262,11 @@ export default function Card() {
 
 	return (
 		<div className="py-8">
-			<Table columns={columns} data={tableData} />
+			{tableData.length > 0 ? (
+				<Table columns={columns} data={tableData} />
+			) : (
+				<div>You have no items in your cart</div>
+			)}
 		</div>
 	);
 }

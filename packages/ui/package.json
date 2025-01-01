@@ -5,6 +5,7 @@
 	"private": true,
 	"exports": {
 		"./button": "./src/button.tsx",
+		"./button-icon": "./src/button-icon.tsx",
 		"./inputtext": "./src/inputtext.tsx",
 		"./form": "./src/form.tsx",
 		"./header": "./src/header.tsx",
@@ -27,6 +28,8 @@
 		"typescript": "5.5.4"
 	},
 	"dependencies": {
+		"class-variance-authority": "^0.7.1",
+		"lucide-react": "^0.469.0",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"
 	}

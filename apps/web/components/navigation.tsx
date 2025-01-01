@@ -7,6 +7,8 @@ import { useAppSelector } from "../redux/store";
 import React from "react";
 import { Avatar } from "@repo/ui/avatar";
 import { selectUserInitials } from "../redux/selectors/authSelectors";
+import { ButtonIcon } from "@repo/ui/button-icon";
+import { ShoppingCart } from "lucide-react";
 
 function NavItem(props: {
 	children: React.ReactNode;
@@ -46,11 +48,15 @@ export default function Navigation() {
 			{isAuthenticated ? (
 				<div className="flex gap-2">
 					<Avatar
+						size="sm"
 						imgUrl={user?.photo}
 						initials={userInitials}
-						// fallbackImgUrl="img/avatar-placeholder.png"
 						onClick={() => router.push("/settings")}
 					/>
+
+					<ButtonIcon onClick={() => router.push("/cart")}>
+						<ShoppingCart size="1rem" />
+					</ButtonIcon>
 				</div>
 			) : (
 				<div className="flex gap-2">
