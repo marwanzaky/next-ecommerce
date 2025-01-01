@@ -16,6 +16,17 @@ import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 import { toast } from "@/components/hooks/use-toast";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+	AlertDialog,
+	AlertDialogAction,
+	AlertDialogCancel,
+	AlertDialogContent,
+	AlertDialogDescription,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTitle,
+	AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 export default function Settings() {
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -218,6 +229,7 @@ export default function Settings() {
 			<form className="px-6 py-8 flex flex-col gap-8 sm:flex-row">
 				<div className="flex flex-col gap-1 sm:w-1/3">
 					<Header>Delete account</Header>
+
 					<Muted>
 						No longer want to use our service? You can delete your account here.
 						This action is not reversible. All information related to this
@@ -227,9 +239,26 @@ export default function Settings() {
 
 				<div className="flex flex-col gap-6 sm:w-2/3">
 					<div>
-						<Button type="submit" variant="destructive">
-							Yes, delete my account
-						</Button>
+						<AlertDialog>
+							<AlertDialogTrigger asChild>
+								<Button type="button" variant="destructive">
+									Yes, delete my account
+								</Button>
+							</AlertDialogTrigger>
+							<AlertDialogContent>
+								<AlertDialogHeader>
+									<AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+									<AlertDialogDescription>
+										This action cannot be undone. This will permanently delete
+										your account and remove your data from our servers.
+									</AlertDialogDescription>
+								</AlertDialogHeader>
+								<AlertDialogFooter>
+									<AlertDialogCancel>Cancel</AlertDialogCancel>
+									<AlertDialogAction>Continue</AlertDialogAction>
+								</AlertDialogFooter>
+							</AlertDialogContent>
+						</AlertDialog>
 					</div>
 				</div>
 			</form>
