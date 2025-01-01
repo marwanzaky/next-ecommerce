@@ -124,8 +124,8 @@ export default function Settings() {
 
 					<div className="flex items-center gap-4">
 						<Avatar className="h-16 w-16 rounded-lg">
-							<AvatarImage src={user?.photo || undefined} alt={user?.name} />
-							<AvatarFallback className="rounded-lg">
+							<AvatarImage src={photo || undefined} alt={user?.name} />
+							<AvatarFallback className="rounded-lg text-3xl">
 								{userInitials}
 							</AvatarFallback>
 						</Avatar>

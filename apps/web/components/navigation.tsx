@@ -83,7 +83,9 @@ export default function Navigation() {
 										src={user?.photo || undefined}
 										alt={user?.name}
 									/>
-									<AvatarFallback className="rounded-lg">CN</AvatarFallback>
+									<AvatarFallback className="rounded-lg">
+										{userInitials}
+									</AvatarFallback>
 								</Avatar>
 
 								<div className="grid flex-1 text-left text-sm leading-tight">
@@ -109,7 +111,9 @@ export default function Navigation() {
 											src={user?.photo || undefined}
 											alt={user?.name}
 										/>
-										<AvatarFallback className="rounded-lg">CN</AvatarFallback>
+										<AvatarFallback className="rounded-lg">
+											{userInitials}
+										</AvatarFallback>
 									</Avatar>
 
 									<div className="grid flex-1 text-left text-sm leading-tight">
