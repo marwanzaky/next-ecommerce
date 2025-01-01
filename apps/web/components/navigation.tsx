@@ -13,15 +13,12 @@ import {
 	DropdownMenuGroup,
 	DropdownMenuItem,
 	DropdownMenuLabel,
-	DropdownMenuRadioGroup,
-	DropdownMenuRadioItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useDispatch } from "react-redux";
 import { logOut } from "redux/slices/authSlice";
-import { Badge } from "./ui/badge";
 
 function NavItem(props: {
 	children: React.ReactNode;
@@ -42,6 +39,8 @@ export default function Navigation() {
 	const { isAuthenticated, user } = useAppSelector(
 		(state) => state.authReducer,
 	);
+
+	const { items } = useAppSelector((state) => state.cartReducer);
 
 	const userInitials = useAppSelector(selectUserInitials);
 
@@ -70,9 +69,11 @@ export default function Navigation() {
 					>
 						<ShoppingCart size="1rem" />
 
-						<span className="absolute -top-1 -right-1 w-4 h-4 text-xs font-bold text-white bg-red-500 rounded-full flex items-center justify-center">
-							{3}
-						</span>
+						{items.length > 0 && (
+							<span className="absolute -top-1 -right-1 w-4 h-4 text-xs font-bold text-white bg-red-500 rounded-full flex items-center justify-center">
+								{items.length}
+							</span>
+						)}
 					</Button>
 
 					<DropdownMenu>

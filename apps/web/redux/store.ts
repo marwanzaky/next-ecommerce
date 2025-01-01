@@ -1,17 +1,24 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer, { AuthState } from "./slices/authSlice";
+import cartReducer, { CartState } from "./slices/cartSlice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-const persistConfig = {
-	key: "root",
+const authPersistConfig = {
+	key: "auth",
+	storage,
+};
+
+const cartPersistConfig = {
+	key: "cart",
 	storage,
 };
 
 export const store = configureStore({
 	reducer: {
-		authReducer: persistReducer<AuthState>(persistConfig, authReducer),
+		authReducer: persistReducer<AuthState>(authPersistConfig, authReducer),
+		cartReducer: persistReducer<CartState>(cartPersistConfig, cartReducer),
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({

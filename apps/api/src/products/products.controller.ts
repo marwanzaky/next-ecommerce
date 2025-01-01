@@ -6,12 +6,14 @@ import {
 	Patch,
 	Param,
 	Delete,
+	Query,
 } from "@nestjs/common";
 
 import { ApiBearerAuth } from "@nestjs/swagger";
 import { ProductsService } from "./products.service";
 import { UpdateProductDto } from "./dto/update-product.dto";
 import { CreateProductDto } from "./dto/create-product.dto";
+import { GetAllProductsDto } from "./dto/get-all-products.dto";
 
 @Controller("products")
 @ApiBearerAuth("Authorization")
@@ -24,8 +26,8 @@ export class ProductsController {
 	}
 
 	@Get()
-	async getAllProducts() {
-		return this.productsService.findAllProducts();
+	async getAllProducts(@Query() getAllProductsDto: GetAllProductsDto) {
+		return this.productsService.findAllProducts(getAllProductsDto);
 	}
 
 	@Get(":id")

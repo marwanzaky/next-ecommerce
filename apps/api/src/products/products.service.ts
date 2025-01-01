@@ -4,6 +4,7 @@ import { Product } from "./entities/product.entity";
 import { Model } from "mongoose";
 import { CreateProductDto } from "./dto/create-product.dto";
 import { UpdateProductDto } from "./dto/update-product.dto";
+import { GetAllProductsDto } from "./dto/get-all-products.dto";
 
 @Injectable()
 export class ProductsService {
@@ -26,8 +27,12 @@ export class ProductsService {
 		return user.save();
 	}
 
-	async findAllProducts(): Promise<Product[]> {
-		return this.productModel.find();
+	async findAllProducts(
+		getAllProductsDto: GetAllProductsDto,
+	): Promise<Product[]> {
+		return this.productModel.find().sort({
+			[getAllProductsDto.property]: getAllProductsDto.order === "asc" ? 1 : -1,
+		});
 	}
 
 	async findProduct(id: string): Promise<Product> {

@@ -1,26 +1,22 @@
 "use client";
 
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
+import { AppDispatch, useAppSelector } from "../../redux/store";
 import { useRouter } from "next/navigation";
-import { IProduct } from "@repo/shared";
 import { Avatar } from "@repo/ui/avatar";
 import { useState } from "react";
 import { Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-type Column<T> = {
-	field: keyof T;
-	header: string;
-	type: "text" | "usd" | "custom" | "number-input" | "action" | "checkbox";
-	width?: string;
-
-	render?: (value: any, row: T) => React.ReactNode;
-	onChange?: (value: number, row: T) => void;
-
-	action?: (row: T) => void;
-	actionIcon?: JSX.Element;
-};
+import { cartRemoveItem, cartUpdateItemQuantity } from "redux/slices/cartSlice";
+import {
+	CartColumn,
+	Column,
+	selectCartTableData,
+	selectCartTotal,
+} from "redux/selectors/cartSelectors";
+import { Muted } from "@repo/ui/muted";
+import { Paragraph } from "@repo/ui/paragraph";
+import { Header } from "@repo/ui/header";
 
 function LogoCell({
 	label,
@@ -166,13 +162,12 @@ function Table<T>({
 }
 
 export default function Card() {
-	const router = useRouter();
-
 	const dispatch = useDispatch<AppDispatch>();
 
-	const columns: Column<
-		IProduct & { total: string; quantity: number; imgUrl: string }
-	>[] = [
+	const tableData = useAppSelector(selectCartTableData);
+	const total = useAppSelector(selectCartTotal);
+
+	const columns: CartColumn[] = [
 		{
 			header: "Product name",
 			field: "imgUrl",
@@ -188,18 +183,7 @@ export default function Card() {
 			type: "number-input",
 			width: "15%",
 			onChange: (value, row) => {
-				value = Math.max(1, value);
-				value = Math.min(100, value);
-
-				setTableData(
-					tableData.map((item) => {
-						if (item._id === row._id) {
-							item.quantity = value;
-							item.total = value * item.price;
-						}
-						return item;
-					}),
-				);
+				dispatch(cartUpdateItemQuantity({ _id: row._id, quantity: value }));
 			},
 		},
 		{ header: "Total", field: "total", type: "usd", width: "10%" },
@@ -209,66 +193,42 @@ export default function Card() {
 			type: "action",
 			width: "10%",
 			action: (row) => {
-				setTableData(tableData.filter((item) => item._id !== row._id));
+				dispatch(cartRemoveItem({ _id: row._id }));
 			},
 			actionIcon: <Trash2 size="1rem" />,
 		},
 	];
 
-	const [tableData, setTableData] = useState<
-		{
-			_id: string;
-			imgUrl: string;
-			name: string;
-			price: number;
-			quantity: number;
-			total: number;
-		}[]
-	>([
-		{
-			_id: "677468796e529aef945233aa",
-			imgUrl:
-				"https://tailwindui.com/plus/img/ecommerce-images/home-page-02-product-01.jpg",
-			name: "Personalised Notebook 1",
-			price: 999,
-			quantity: 1,
-			total: 999,
-		},
-		{
-			_id: "67746fad537e5b283bd13524",
-			imgUrl:
-				"https://tailwindui.com/plus/img/ecommerce-images/home-page-02-product-02.jpg",
-			name: "Personalised Notebook 2",
-			price: 1299,
-			quantity: 1,
-			total: 999,
-		},
-		{
-			_id: "67746fb3537e5b283bd13527",
-			imgUrl:
-				"https://tailwindui.com/plus/img/ecommerce-images/home-page-02-product-03.jpg",
-			name: "Personalised Notebook 3",
-			price: 599,
-			quantity: 1,
-			total: 999,
-		},
-		{
-			_id: "67746fbf537e5b283bd1352a",
-			imgUrl:
-				"https://tailwindui.com/plus/img/ecommerce-images/home-page-02-product-04.jpg",
-			name: "Personalised Notebook 4",
-			price: 3499,
-			quantity: 1,
-			total: 999,
-		},
-	]);
-
 	return (
-		<div className="py-8">
+		<div className="py-8 flex flex-col gap-4">
+			<Header>Shopping cart</Header>
+
 			{tableData.length > 0 ? (
-				<Table columns={columns} data={tableData} />
+				<div className="flex flex-col gap-4">
+					<Table columns={columns} data={tableData} />
+
+					<div className="w-fit ml-auto flex flex-col gap-4">
+						<div>
+							<Paragraph className="text-right text-sm">
+								Subtotal $
+								{(total / 100).toLocaleString(undefined, {
+									minimumFractionDigits: 2,
+								})}{" "}
+								USD
+							</Paragraph>
+							<Muted className="text-right text-sm">
+								Shipping and taxes will be calculated at checkout.
+							</Muted>
+						</div>
+						<div className="w-fit ml-auto">
+							<Button>Checkout</Button>
+						</div>
+					</div>
+				</div>
 			) : (
-				<div>You have no items in your cart</div>
+				<div className="text-center text-sm">
+					You have no items in your cart
+				</div>
 			)}
 		</div>
 	);

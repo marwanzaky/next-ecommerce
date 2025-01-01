@@ -2,15 +2,20 @@
 
 import { Header } from "@repo/ui/header";
 import { Muted } from "@repo/ui/muted";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../../../redux/store";
+import { AppDispatch, useAppSelector } from "../../../redux/store";
 import { IProduct } from "@repo/shared";
 import ProductCard from "../../../components/product-card";
 import { Button } from "@/components/ui/button";
+import { useDispatch } from "react-redux";
+import { cartAddItem } from "redux/slices/cartSlice";
 
 export default function Product() {
 	const params = useParams<{ slug: string }>();
+	const router = useRouter();
+
+	const dispatch = useDispatch<AppDispatch>();
 
 	const [data, setData] = useState<IProduct | null>(null);
 	const [featuredProducts, setFeaturedProducts] = useState<IProduct[]>([]);
@@ -53,8 +58,19 @@ export default function Product() {
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<Button>Add to card</Button>
-							<Button variant="outline">Buy it now</Button>
+							<Button onClick={() => dispatch(cartAddItem(data))}>
+								Add to card
+							</Button>
+
+							<Button
+								onClick={() => {
+									dispatch(cartAddItem(data));
+									router.push("/cart");
+								}}
+								variant="outline"
+							>
+								Buy it now
+							</Button>
 						</div>
 
 						<Muted className="whitespace-pre-wrap">{data.description}</Muted>
