@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@repo/ui/button";
 import { AppDispatch, useAppSelector } from "../redux/store";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { logOut } from "../redux/slices/authSlice";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
 	const router = useRouter();

@@ -1,7 +1,5 @@
 "use client";
 
-import { Button } from "@repo/ui/button";
-import { InputText } from "@repo/ui/inputtext";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
@@ -11,6 +9,8 @@ import { Paragraph } from "@repo/ui/paragraph";
 import { Header } from "@repo/ui/header";
 import { Muted } from "@repo/ui/muted";
 import { handleLogin } from "../../utils/authHelpers";
+import { Button } from "@/components/ui/button";
+import { InputWithLabel } from "@/components/ui/input-with-label";
 
 export default function Login() {
 	const router = useRouter();
@@ -33,7 +33,7 @@ export default function Login() {
 					<Muted>Enter your email below to login to your account</Muted>
 				</div>
 
-				<InputText
+				<InputWithLabel
 					id="email"
 					type="email"
 					label="Email"
@@ -43,7 +43,7 @@ export default function Login() {
 					required
 				/>
 
-				<InputText
+				<InputWithLabel
 					id="password"
 					type="password"
 					label="Password"
@@ -54,12 +54,11 @@ export default function Login() {
 
 				<Button type="submit">Login</Button>
 
-				<div className="flex gap-1 mx-auto">
-					<Paragraph className="text-center">Don't have an account?</Paragraph>
-
+				<div className="text-center text-sm">
+					Don&apos;t have an account?{" "}
 					<a
-						role="button"
-						className="leading-7 text-sm text-slate-900 underline underline-offset-4"
+						href="#"
+						className="underline underline-offset-4"
 						onClick={() => router.push("/signup")}
 					>
 						Sign up

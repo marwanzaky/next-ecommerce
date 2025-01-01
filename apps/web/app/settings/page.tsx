@@ -1,7 +1,6 @@
 "use client";
 
-import { Button } from "@repo/ui/button";
-import { InputText } from "@repo/ui/inputtext";
+import { Input } from "@/components/ui/input";
 import { ChangeEventHandler, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../../redux/store";
@@ -10,11 +9,13 @@ import {
 	updateMeAsync,
 	updateMyPasswordAsync,
 } from "../../redux/slices/authSlice";
-import { Form } from "@repo/ui/form";
 import { Header } from "@repo/ui/header";
 import { Muted } from "@repo/ui/muted";
-import { Avatar } from "@repo/ui/avatar";
 import { selectUserInitials } from "../../redux/selectors/authSelectors";
+import { Button } from "@/components/ui/button";
+import { Trash2 } from "lucide-react";
+import { toast } from "@/components/hooks/use-toast";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function Settings() {
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -58,7 +59,9 @@ export default function Settings() {
 		if (newPassword === confirmPassword) {
 			dispatch(updateMyPasswordAsync({ currentPassword, newPassword }));
 		} else {
-			alert("The passwords you entered do not match");
+			toast({
+				title: "The passwords you entered do not match",
+			});
 		}
 	};
 
@@ -70,7 +73,10 @@ export default function Settings() {
 		const img = event.target.files[0];
 
 		if (img == null || img.size > 4 * 1024 * 1024) {
-			alert("Image size exceeds the 4MB limit");
+			toast({
+				title: "Image size exceeds the 4MB limit",
+			});
+
 			event.target.value = "";
 			return;
 		}
@@ -106,7 +112,12 @@ export default function Settings() {
 					/>
 
 					<div className="flex items-center gap-4">
-						<Avatar size="lg" imgUrl={photo} initials={userInitials}></Avatar>
+						<Avatar className="h-16 w-16 rounded-lg">
+							<AvatarImage src={user?.photo || undefined} alt={user?.name} />
+							<AvatarFallback className="rounded-lg">
+								{userInitials}
+							</AvatarFallback>
+						</Avatar>
 
 						<div className="flex flex-col gap-2">
 							<div className="flex gap-2">
@@ -116,10 +127,11 @@ export default function Settings() {
 
 								<Button
 									variant="outline"
+									size="icon"
 									onClick={() => setPhoto(null)}
 									disabled={!photo}
 								>
-									Remove
+									<Trash2 />
 								</Button>
 							</div>
 
@@ -129,19 +141,17 @@ export default function Settings() {
 						</div>
 					</div>
 
-					<InputText
+					<Input
 						id="name"
 						type="text"
-						label="Name"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
 						required
 					/>
 
-					<InputText
+					<Input
 						id="email"
 						type="email"
-						label="Email"
 						placeholder="name@example.com"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
@@ -173,28 +183,25 @@ export default function Settings() {
 				</div>
 
 				<div className="flex flex-col gap-6 sm:w-2/3">
-					<InputText
+					<Input
 						id="password"
 						type="password"
-						label="Current password"
 						value={currentPassword}
 						onChange={(e) => setCurrentPassword(e.target.value)}
 						required
 					/>
 
-					<InputText
+					<Input
 						id="password"
 						type="password"
-						label="New password"
 						value={newPassword}
 						onChange={(e) => setNewPassword(e.target.value)}
 						required
 					/>
 
-					<InputText
+					<Input
 						id="password"
 						type="password"
-						label="Confirm password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required

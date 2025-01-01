@@ -8,7 +8,7 @@ type MutedProps = {
 // text-sm text-muted-foreground
 export const Muted = (props: MutedProps) => {
 	return (
-		<p className={props.className + " text-sm text-gray-500"}>
+		<p className={props.className + " text-sm text-muted-foreground"}>
 			{props.children}
 		</p>
 	);

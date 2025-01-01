@@ -6,9 +6,8 @@ import { useRouter } from "next/navigation";
 import { IProduct } from "@repo/shared";
 import { Avatar } from "@repo/ui/avatar";
 import { useState } from "react";
-import { Button } from "@repo/ui/button";
-import { ButtonIcon } from "@repo/ui/button-icon";
-import { LucideProps, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type Column<T> = {
 	field: keyof T;
@@ -146,9 +145,13 @@ function Table<T>({
 									) : column.type === "action" &&
 									  column.action &&
 									  column.actionIcon ? (
-										<ButtonIcon onClick={() => column.action!(row)}>
+										<Button
+											variant="outline"
+											size="icon"
+											onClick={() => column.action!(row)}
+										>
 											{column.actionIcon}
-										</ButtonIcon>
+										</Button>
 									) : (
 										row[column.field]
 									)}

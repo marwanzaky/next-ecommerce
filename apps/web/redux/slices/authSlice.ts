@@ -4,6 +4,7 @@ import { usersService } from "../../services/usersService";
 import { RootState } from "../store";
 
 import { IUser, IUpdateUser } from "@repo/shared";
+import { toast } from "@/components/hooks/use-toast";
 
 export type AuthState = {
 	user: IUser | null;
@@ -33,11 +34,18 @@ export const loginAsync = createAsyncThunk(
 
 		try {
 			const data = await usersService.login(email, password);
-			alert("Logged in successfully!");
+
+			toast({
+				title: "Logged in successfully!",
+			});
+
 			router.push("/");
 			return data;
 		} catch (error: any) {
-			alert(error.message);
+			toast({
+				title: error.message,
+			});
+
 			return rejectWithValue(error.message);
 		}
 	},
@@ -58,11 +66,18 @@ export const signupAsync = createAsyncThunk(
 
 		try {
 			const data = await usersService.signup(name, email, password);
-			alert("Account created successfully!");
+
+			toast({
+				title: "Account created successfully!",
+			});
+
 			router.push("/login");
 			return data;
 		} catch (error: any) {
-			alert(error.message);
+			toast({
+				title: error.message,
+			});
+
 			return rejectWithValue(error.message);
 		}
 	},
@@ -91,7 +106,11 @@ export const updateMeAsync = createAsyncThunk(
 				state.authReducer.token,
 				updatedUser,
 			);
-			alert("User settings updated successfully!");
+
+			toast({
+				title: "User settings updated successfully!",
+			});
+
 			return data;
 		} catch (error: any) {
 			return rejectWithValue(error.message);
@@ -112,10 +131,17 @@ export const updateMyPasswordAsync = createAsyncThunk(
 				state.authReducer.token,
 				payload,
 			);
-			alert("User password updated successfully!");
+
+			toast({
+				title: "User password updated successfully!",
+			});
+
 			return data;
 		} catch (error: any) {
-			alert(error.message);
+			toast({
+				title: error.message,
+			});
+
 			return rejectWithValue(error.message);
 		}
 	},

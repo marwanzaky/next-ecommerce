@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@repo/ui/button";
 import { Header } from "@repo/ui/header";
 import { Muted } from "@repo/ui/muted";
 import { useParams } from "next/navigation";
@@ -8,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../redux/store";
 import { IProduct } from "@repo/shared";
 import ProductCard from "../../../components/product-card";
+import { Button } from "@/components/ui/button";
 
 export default function Product() {
 	const params = useParams<{ slug: string }>();

@@ -1,16 +1,16 @@
 "use client";
 
-import { Button } from "@repo/ui/button";
-import { InputText } from "@repo/ui/inputtext";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { signupAsync } from "../../redux/slices/authSlice";
 import { useRouter } from "next/navigation";
 import { Form } from "@repo/ui/form";
-import { Paragraph } from "@repo/ui/paragraph";
 import { Header } from "@repo/ui/header";
 import { Muted } from "@repo/ui/muted";
+import { InputWithLabel } from "@/components/ui/input-with-label";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/components/hooks/use-toast";
 
 export default function Signup() {
 	const router = useRouter();
@@ -28,7 +28,9 @@ export default function Signup() {
 		if (password === confirmPassword) {
 			dispatch(signupAsync({ name, email, password, router }));
 		} else {
-			alert("The passwords you entered do not match");
+			toast({
+				title: "The passwords you entered do not match",
+			});
 		}
 	};
 
@@ -40,7 +42,7 @@ export default function Signup() {
 					<Muted>Enter your email below to create your account</Muted>
 				</div>
 
-				<InputText
+				<InputWithLabel
 					id="name"
 					type="text"
 					label="Name"
@@ -49,7 +51,7 @@ export default function Signup() {
 					required
 				/>
 
-				<InputText
+				<InputWithLabel
 					id="email"
 					type="email"
 					label="Email"
@@ -59,7 +61,7 @@ export default function Signup() {
 					required
 				/>
 
-				<InputText
+				<InputWithLabel
 					id="password"
 					type="password"
 					label="Password"
@@ -68,7 +70,7 @@ export default function Signup() {
 					required
 				/>
 
-				<InputText
+				<InputWithLabel
 					id="password"
 					type="password"
 					label="Confirm"
@@ -79,14 +81,11 @@ export default function Signup() {
 
 				<Button type="submit">Create account</Button>
 
-				<div className="flex gap-1 mx-auto">
-					<Paragraph className="text-center">
-						Already have an account?
-					</Paragraph>
-
+				<div className="text-center text-sm">
+					Already have an account?{" "}
 					<a
-						role="button"
-						className="leading-7 text-sm text-slate-900 underline underline-offset-4"
+						href="#"
+						className="underline underline-offset-4"
 						onClick={() => router.push("/login")}
 					>
 						Login

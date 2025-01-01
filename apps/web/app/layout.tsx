@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { ReduxProvider } from "../redux/provider";
 import Navigation from "../components/navigation";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -29,25 +33,35 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className="dark:bg-gray-900 max-w-5xl mx-auto">
-				<ReduxProvider>
-					<Navigation />
-					{children}
+			<body
+				className={cn(
+					"min-h-screen bg-background antialiased font-sans",
+					GeistMono.variable,
+					GeistSans.variable,
+				)}
+			>
+				<div className="max-w-5xl mx-auto">
+					<ReduxProvider>
+						<Navigation />
+						{children}
 
-					<nav className="bg-white flex justify-between items-center h-16 px-8">
-						<div></div>
-						<ul className="flex gap-8">
-							<NavItem>About</NavItem>
-							<NavItem>Privacy Policy</NavItem>
-							<NavItem>Licensing</NavItem>
-							<NavItem>Contact</NavItem>
-						</ul>
-					</nav>
+						<nav className="bg-white flex justify-between items-center h-16 px-8">
+							<div></div>
+							<ul className="flex gap-8">
+								<NavItem>About</NavItem>
+								<NavItem>Privacy Policy</NavItem>
+								<NavItem>Licensing</NavItem>
+								<NavItem>Contact</NavItem>
+							</ul>
+						</nav>
 
-					<div className="px-8 h-24 flex items-center text-slate-500 border-t text-sm">
-						© 2024 Mamolio, Inc. All rights reserved.
-					</div>
-				</ReduxProvider>
+						<div className="px-8 h-24 flex items-center text-slate-500 border-t text-sm">
+							© 2024 Mamolio, Inc. All rights reserved.
+						</div>
+
+						<Toaster />
+					</ReduxProvider>
+				</div>
 			</body>
 		</html>
 	);
