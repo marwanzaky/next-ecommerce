@@ -10,6 +10,21 @@ import ProductCard from "../../../components/product-card";
 import { Button } from "@/components/ui/button";
 import { useDispatch } from "react-redux";
 import { cartAddItem } from "redux/slices/cartSlice";
+import {
+	Breadcrumb,
+	BreadcrumbEllipsis,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Product() {
 	const params = useParams<{ slug: string }>();
@@ -20,24 +35,12 @@ export default function Product() {
 	const [data, setData] = useState<IProduct | null>(null);
 	const [featuredProducts, setFeaturedProducts] = useState<IProduct[]>([]);
 
-	const { token } = useAppSelector((state) => state.authReducer);
-
 	useEffect(() => {
-		fetch(`http://localhost:3001/products/${params.slug}`, {
-			headers: {
-				Authorization: `Bearer ${token}`,
-				"Content-type": "application/json",
-			},
-		})
+		fetch(`http://localhost:3001/products/${params.slug}`, {})
 			.then((res) => res.json())
 			.then((data) => setData(data));
 
-		fetch(`http://localhost:3001/products`, {
-			headers: {
-				Authorization: `Bearer ${token}`,
-				"Content-type": "application/json",
-			},
-		})
+		fetch(`http://localhost:3001/products`)
 			.then((res) => res.json())
 			.then((data) => setFeaturedProducts(data));
 	}, []);
@@ -52,6 +55,18 @@ export default function Product() {
 					/>
 
 					<div className="p-4 flex flex-col gap-4">
+						<Breadcrumb>
+							<BreadcrumbList>
+								<BreadcrumbItem>
+									<BreadcrumbLink href="/shop">Shop</BreadcrumbLink>
+								</BreadcrumbItem>
+								<BreadcrumbSeparator />
+								<BreadcrumbItem>
+									<BreadcrumbPage>{data.name}</BreadcrumbPage>
+								</BreadcrumbItem>
+							</BreadcrumbList>
+						</Breadcrumb>
+
 						<div>
 							<Header>{data.name}</Header>
 							<Muted>${data.price / 100}</Muted>

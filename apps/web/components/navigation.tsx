@@ -19,6 +19,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useDispatch } from "react-redux";
 import { logOut } from "redux/slices/authSlice";
+import { Separator } from "./ui/separator";
 
 function NavItem(props: {
 	children: React.ReactNode;
@@ -142,10 +143,12 @@ export default function Navigation() {
 					</DropdownMenu>
 				</div>
 			) : (
-				<div className="flex gap-2">
+				<div className="flex items-center gap-2">
 					<Button variant="ghost" onClick={() => router.push("/login")}>
 						Sign in
 					</Button>
+
+					<Separator orientation="vertical" className="h-5" />
 
 					<Button variant="ghost" onClick={() => router.push("/signup")}>
 						Create account

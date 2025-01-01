@@ -9,14 +9,14 @@ import {
 	Query,
 } from "@nestjs/common";
 
-import { ApiBearerAuth } from "@nestjs/swagger";
 import { ProductsService } from "./products.service";
 import { UpdateProductDto } from "./dto/update-product.dto";
 import { CreateProductDto } from "./dto/create-product.dto";
 import { GetAllProductsDto } from "./dto/get-all-products.dto";
+import { Public } from "src/auth/auth.guard";
 
 @Controller("products")
-@ApiBearerAuth("Authorization")
+@Public()
 export class ProductsController {
 	constructor(private readonly productsService: ProductsService) {}
 
