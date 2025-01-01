@@ -125,7 +125,7 @@ function Table<T>({
 										<input
 											type="number"
 											value={row[column.field]}
-											className="border rounded p-1"
+											className="border rounded p-1 dark:bg-black"
 											onChange={(e) =>
 												column.onChange &&
 												column.onChange(Number(e.target.value), row)

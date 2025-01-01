@@ -45,7 +45,7 @@ export default function RootLayout({
 						<Navigation />
 						{children}
 
-						<nav className="bg-white flex justify-between items-center h-16 px-8">
+						<nav className="bg-white dark:bg-black flex justify-between items-center h-16 px-8">
 							<div></div>
 							<ul className="flex gap-8">
 								<NavItem>About</NavItem>
