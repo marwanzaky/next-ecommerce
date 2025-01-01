@@ -1,31 +1,10 @@
 "use client";
 
 import { Button } from "@repo/ui/button";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../redux/store";
 import { IProduct } from "@repo/shared";
-
-function Card({ data: { _id, name, price, imgUrls } }: { data: IProduct }) {
-	const router = useRouter();
-
-	return (
-		<div
-			role="button"
-			className="flex flex-col gap-2 group"
-			onClick={() => router.push("/shop/" + _id)}
-		>
-			<img
-				className="w-full h-64 object-cover rounded-lg group-hover:opacity-50"
-				src={imgUrls[0]}
-			/>
-			<div className="">
-				<div className="text-sm text-gray-500">{name}</div>
-				<div className="">${price / 100}</div>
-			</div>
-		</div>
-	);
-}
+import ProductCard from "../../components/product-card";
 
 export default function Shop() {
 	const [data, setData] = useState<IProduct[]>([]);
@@ -51,7 +30,7 @@ export default function Shop() {
 
 			<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
 				{data.map((item, i) => (
-					<Card key={i} data={item} />
+					<ProductCard key={i} data={item} />
 				))}
 			</div>
 		</div>

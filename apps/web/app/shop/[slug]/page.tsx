@@ -7,11 +7,14 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../redux/store";
 import { IProduct } from "@repo/shared";
+import ProductCard from "../../../components/product-card";
 
 export default function Product() {
 	const params = useParams<{ slug: string }>();
 
 	const [data, setData] = useState<IProduct | null>(null);
+	const [featuredProducts, setFeaturedProducts] = useState<IProduct[]>([]);
+
 	const { token } = useAppSelector((state) => state.authReducer);
 
 	useEffect(() => {
@@ -23,29 +26,52 @@ export default function Product() {
 		})
 			.then((res) => res.json())
 			.then((data) => setData(data));
+
+		fetch(`http://localhost:3001/products`, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+				"Content-type": "application/json",
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => setFeaturedProducts(data));
 	}, []);
 
-	if (data == null) return <div className="mt-4 px-4">loading...</div>;
-
 	return (
-		<div className="grid grid-cols-1 sm:grid-cols-2 mt-4 px-4">
-			<img
-				className="w-full h-96 object-cover rounded-lg group-hover:opacity-50"
-				src={data.imgUrls?.[0]}
-			/>
+		<div className="pt-4 px-4 flex flex-col gap-16">
+			{data ? (
+				<div className="grid grid-cols-1 sm:grid-cols-2">
+					<img
+						className="w-full h-96 object-cover rounded-lg group-hover:opacity-50"
+						src={data.imgUrls?.[0]}
+					/>
 
-			<div className="p-4 flex flex-col gap-4">
-				<div>
-					<Header>{data.name}</Header>
-					<Muted>${data.price / 100}</Muted>
+					<div className="p-4 flex flex-col gap-4">
+						<div>
+							<Header>{data.name}</Header>
+							<Muted>${data.price / 100}</Muted>
+						</div>
+
+						<div className="flex flex-col gap-2">
+							<Button>Add to card</Button>
+							<Button variant="outline">Buy it now</Button>
+						</div>
+
+						<Muted className="whitespace-pre-wrap">{data.description}</Muted>
+					</div>
 				</div>
+			) : (
+				<div className="h-96"></div>
+			)}
 
-				<div className="flex flex-col gap-2">
-					<Button>Add to card</Button>
-					<Button variant="outline">Buy it now</Button>
+			<div className="flex flex-col gap-4">
+				<Header>Customers also purchased</Header>
+
+				<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+					{featuredProducts.map((item, i) => (
+						<ProductCard key={i} data={item} />
+					))}
 				</div>
-
-				<Muted className="whitespace-pre-wrap">{data.description}</Muted>
 			</div>
 		</div>
 	);

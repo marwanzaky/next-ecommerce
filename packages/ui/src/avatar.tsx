@@ -6,6 +6,7 @@ const avatarVariants = cva(["rounded-full", "overflow-hidden"], {
 	variants: {
 		variant: {},
 		size: {
+			sm: "text-base h-8 w-8",
 			md: "text-base h-10 w-10",
 			lg: "text-2xl h-16 w-16",
 		},
