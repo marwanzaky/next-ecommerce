@@ -3,7 +3,6 @@
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../../redux/store";
 import { useRouter } from "next/navigation";
-import { Avatar } from "@repo/ui/avatar";
 import { useEffect, useState } from "react";
 import { Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -19,6 +18,7 @@ import { Paragraph } from "@repo/ui/paragraph";
 import { Header } from "@repo/ui/header";
 import { IProduct } from "@repo/shared";
 import ProductCard from "@/components/product-card";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 function LogoCell({
 	label,
@@ -37,7 +37,12 @@ function LogoCell({
 
 	return (
 		<div className="flex gap-2 items-center">
-			<Avatar size="sm" imgUrl={imgUrl} onClick={redirect}></Avatar>
+			{/* <Avatar size="sm" imgUrl={imgUrl} onClick={redirect}></Avatar> */}
+
+			<Avatar className="h-8 w-8 rounded-lg">
+				<AvatarImage src={imgUrl} />
+			</Avatar>
+
 			<div role="button" onClick={redirect}>
 				{label}
 			</div>
@@ -207,7 +212,7 @@ export default function Card() {
 	}, []);
 
 	return (
-		<div className="py-8 flex flex-col gap-4">
+		<div className="py-8 px-4 flex flex-col gap-4">
 			<Header>Shopping cart</Header>
 
 			{tableData.length > 0 ? (

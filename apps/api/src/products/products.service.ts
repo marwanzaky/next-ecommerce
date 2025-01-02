@@ -5,6 +5,7 @@ import { Model } from "mongoose";
 import { CreateProductDto } from "./dto/create-product.dto";
 import { UpdateProductDto } from "./dto/update-product.dto";
 import { GetAllProductsDto } from "./dto/get-all-products.dto";
+import { IProduct } from "@repo/shared";
 
 @Injectable()
 export class ProductsService {
@@ -28,11 +29,32 @@ export class ProductsService {
 	}
 
 	async findAllProducts(
-		getAllProductsDto: GetAllProductsDto,
+		sortProperty?: keyof IProduct,
+		sortOrder?: "asc" | "desc",
+		searchTerm?: string,
+		minPrice?: number,
+		maxPrice?: number,
 	): Promise<Product[]> {
-		return this.productModel.find().sort({
-			[getAllProductsDto.property]: getAllProductsDto.order === "asc" ? 1 : -1,
-		});
+		const sort: { [key: string]: 1 | -1 } = {};
+
+		if (sortProperty && sortOrder) {
+			sort[sortProperty] = sortOrder === "asc" ? 1 : -1;
+		}
+
+		const query: { [key: string]: any } = {};
+
+		if (searchTerm) {
+			query.name = { $regex: new RegExp(searchTerm, "i") };
+		}
+
+		if (minPrice !== undefined || maxPrice !== undefined) {
+			query.price = {};
+
+			if (minPrice !== undefined) query.price.$gte = minPrice;
+			if (maxPrice !== undefined) query.price.$lte = maxPrice;
+		}
+
+		return this.productModel.find(query).sort(sort);
 	}
 
 	async findProduct(id: string): Promise<Product> {

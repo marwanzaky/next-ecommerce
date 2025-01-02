@@ -1,6 +1,17 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
+export type InputWithLabelProps = {
+	id: string;
+	label: string;
+	placeholder?: string;
+	type?: "text" | "email" | "number" | "password";
+	value?: string | number;
+	required?: boolean;
+	min?: string | number;
+	onChange?: React.ChangeEventHandler<HTMLInputElement>;
+};
+
 export function InputWithLabel({
 	id,
 	type,
@@ -8,16 +19,9 @@ export function InputWithLabel({
 	placeholder,
 	value,
 	required,
+	min,
 	onChange,
-}: {
-	id: string;
-	label: string;
-	placeholder?: string;
-	type?: "text" | "email" | "password";
-	value?: string;
-	required: boolean;
-	onChange: React.ChangeEventHandler<HTMLInputElement>;
-}) {
+}: InputWithLabelProps) {
 	return (
 		<div className="grid w-full max-w-sm items-center gap-1.5">
 			<Label htmlFor={id}>{label}</Label>
@@ -26,6 +30,7 @@ export function InputWithLabel({
 				id={id}
 				placeholder={placeholder}
 				value={value}
+				min={min}
 				required={required}
 				onChange={onChange}
 			/>

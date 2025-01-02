@@ -25,6 +25,17 @@ import {
 import { Muted } from "@repo/ui/muted";
 import { Paragraph } from "@repo/ui/paragraph";
 import { Header } from "@repo/ui/header";
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Input } from "@/components/ui/input";
+import { InputWithLabel } from "@/components/ui/input-with-label";
+import { InputWithIcon } from "@/components/ui/input-with-icon";
+import { Lock, Search } from "lucide-react";
+import { CheckboxWithLabel } from "@/components/ui/checkbox-with-label";
 
 export default function Shop() {
 	const [data, setData] = useState<IProduct[]>([]);
@@ -36,24 +47,42 @@ export default function Shop() {
 		| "Price: High to low"
 	>("Most popular");
 
+	const [searchTerm, setSearchTerm] = useState<string>("");
+	const [minPriceUsd, setMinPriceUsd] = useState<number>();
+	const [maxPriceUsd, setMaxPriceUsd] = useState<number>();
+	const [priceUnder10Usd, setPriceUnder10Usd] = useState<boolean>(false);
+	const [price10To20Usd, setPrice10To20Usd] = useState<boolean>(false);
+
 	useEffect(() => {
 		const query: IGetAllProductsDto = {};
 
 		if (sortBy === "Most popular") {
-			query.property = "numReviews";
-			query.order = "desc";
+			query.sortProperty = "numReviews";
+			query.sortOrder = "desc";
 		} else if (sortBy === "Best rating") {
-			query.property = "avgRatings";
-			query.order = "desc";
+			query.sortProperty = "avgRatings";
+			query.sortOrder = "desc";
 		} else if (sortBy === "Newest") {
-			query.property = "createdAt";
-			query.order = "desc";
+			query.sortProperty = "createdAt";
+			query.sortOrder = "desc";
 		} else if (sortBy === "Price: High to low") {
-			query.property = "price";
-			query.order = "desc";
+			query.sortProperty = "price";
+			query.sortOrder = "desc";
 		} else if (sortBy === "Price: Low to high") {
-			query.property = "price";
-			query.order = "asc";
+			query.sortProperty = "price";
+			query.sortOrder = "asc";
+		}
+
+		if (searchTerm.length > 0) {
+			query.searchTerm = searchTerm;
+		}
+
+		if (minPriceUsd) {
+			query.minPrice = minPriceUsd * 100;
+		}
+
+		if (maxPriceUsd) {
+			query.maxPrice = maxPriceUsd * 100;
 		}
 
 		fetch(
@@ -61,7 +90,7 @@ export default function Shop() {
 		)
 			.then((res) => res.json())
 			.then((data) => setData(data));
-	}, [sortBy]);
+	}, [sortBy, searchTerm, minPriceUsd, maxPriceUsd]);
 
 	return (
 		<div className="flex flex-col gap-4 mt-4 px-4">
@@ -121,10 +150,80 @@ export default function Shop() {
 				</div>
 			</div>
 
-			<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-				{data.map((item, i) => (
-					<ProductCard key={i} data={item} />
-				))}
+			<div className="flex gap-4">
+				<div className="w-60 border rounded-lg px-4 pt-4 h-fit hidden md:block">
+					<div className="flex flex-col gap-4">
+						{/* <Input
+							placeholder="Search by name"
+							value={searchTerm}
+							onChange={(e) => setSearchTerm(e.target.value)}
+						></Input> */}
+
+						<InputWithIcon
+							startIcon={Search}
+							placeholder="Search by name"
+							value={searchTerm}
+							onChange={(e) => setSearchTerm(e.target.value)}
+						></InputWithIcon>
+					</div>
+
+					<Accordion type="single" collapsible className="w-full">
+						<AccordionItem className="last:border-b-0" value="item-1">
+							<AccordionTrigger>Price</AccordionTrigger>
+							<AccordionContent>
+								<div className="flex flex-col gap-4">
+									<div className="flex flex-col gap-4">
+										<CheckboxWithLabel
+											id="under-10"
+											label="Under $10"
+											// value={priceUnder10Usd}
+											// onChange={(e) => setPriceUnder10Usd(e.target.value)}
+										/>
+										<CheckboxWithLabel id="10-20" label="$10 to $20" />
+										<CheckboxWithLabel id="20-30" label="$20 to $30" />
+										<CheckboxWithLabel id="30-40" label="$30 to $40" />
+										<CheckboxWithLabel id="50-50" label="$50 to $50" />
+										<CheckboxWithLabel id="over-50" label="Over $50" />
+									</div>
+
+									<div className="flex gap-2 px-[1px]">
+										<InputWithLabel
+											id="from"
+											label="From"
+											type="number"
+											min={0}
+											value={minPriceUsd || ""}
+											onChange={(e) => setMinPriceUsd(Number(e.target.value))}
+										></InputWithLabel>
+										<InputWithLabel
+											id="to"
+											label="To"
+											type="number"
+											min={0}
+											value={maxPriceUsd || ""}
+											onChange={(e) => setMaxPriceUsd(Number(e.target.value))}
+										></InputWithLabel>
+									</div>
+								</div>
+							</AccordionContent>
+						</AccordionItem>
+						<AccordionItem className="last:border-b-0" value="item-2">
+							<AccordionTrigger>Rating</AccordionTrigger>
+							<AccordionContent>
+								Yes. It comes with default styles that matches the other
+								components&apos; aesthetic.
+							</AccordionContent>
+						</AccordionItem>
+					</Accordion>
+				</div>
+
+				<div className="flex-1">
+					<div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+						{data.map((item, i) => (
+							<ProductCard key={i} data={item} />
+						))}
+					</div>
+				</div>
 			</div>
 		</div>
 	);

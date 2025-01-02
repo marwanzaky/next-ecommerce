@@ -1,6 +1,5 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
 import { ChangeEventHandler, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../../redux/store";
@@ -27,6 +26,7 @@ import {
 	AlertDialogTitle,
 	AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { InputWithLabel } from "@/components/ui/input-with-label";
 
 export default function Settings() {
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -105,7 +105,7 @@ export default function Settings() {
 	return (
 		<div>
 			<form
-				className="px-6 py-8 flex flex-col gap-8 border-b sm:flex-row"
+				className="px-4 py-8 flex flex-col gap-8 border-b sm:flex-row"
 				onSubmit={updateMeForm}
 			>
 				<div className="flex flex-col gap-1 sm:w-1/3">
@@ -152,17 +152,19 @@ export default function Settings() {
 						</div>
 					</div>
 
-					<Input
+					<InputWithLabel
 						id="name"
 						type="text"
+						label="Name"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
 						required
 					/>
 
-					<Input
+					<InputWithLabel
 						id="email"
 						type="email"
+						label="Email"
 						placeholder="name@example.com"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
@@ -185,7 +187,7 @@ export default function Settings() {
 			</form>
 
 			<form
-				className="px-6 py-8 flex flex-col gap-8 border-b sm:flex-row"
+				className="px-4 py-8 flex flex-col gap-8 border-b sm:flex-row"
 				onSubmit={updateMyPasswordForm}
 			>
 				<div className="flex flex-col gap-1 sm:w-1/3">
@@ -194,25 +196,28 @@ export default function Settings() {
 				</div>
 
 				<div className="flex flex-col gap-6 sm:w-2/3">
-					<Input
+					<InputWithLabel
 						id="password"
 						type="password"
+						label="Current password"
 						value={currentPassword}
 						onChange={(e) => setCurrentPassword(e.target.value)}
 						required
 					/>
 
-					<Input
+					<InputWithLabel
 						id="password"
 						type="password"
+						label="New password"
 						value={newPassword}
 						onChange={(e) => setNewPassword(e.target.value)}
 						required
 					/>
 
-					<Input
+					<InputWithLabel
 						id="password"
 						type="password"
+						label="Confirm password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
@@ -226,7 +231,7 @@ export default function Settings() {
 				</div>
 			</form>
 
-			<form className="px-6 py-8 flex flex-col gap-8 sm:flex-row">
+			<form className="px-4 py-8 flex flex-col gap-8 sm:flex-row">
 				<div className="flex flex-col gap-1 sm:w-1/3">
 					<Header>Delete account</Header>
 

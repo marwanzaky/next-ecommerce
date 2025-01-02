@@ -27,7 +27,16 @@ export class ProductsController {
 
 	@Get()
 	async getAllProducts(@Query() getAllProductsDto: GetAllProductsDto) {
-		return this.productsService.findAllProducts(getAllProductsDto);
+		const { sortProperty, sortOrder, searchTerm, minPrice, maxPrice } =
+			getAllProductsDto;
+
+		return this.productsService.findAllProducts(
+			sortProperty,
+			sortOrder,
+			searchTerm,
+			minPrice,
+			maxPrice,
+		);
 	}
 
 	@Get(":id")

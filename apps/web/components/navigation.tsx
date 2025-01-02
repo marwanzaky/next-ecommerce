@@ -46,7 +46,7 @@ export default function Navigation() {
 	const userInitials = useAppSelector(selectUserInitials);
 
 	return (
-		<nav className="sticky top-0 z-10 bg-white dark:bg-black flex justify-between items-center h-16 border-b px-8">
+		<nav className="sticky top-0 z-10 bg-white dark:bg-black flex justify-between items-center h-16 border-b px-4">
 			<ul className="flex gap-8">
 				<div className="hidden sm:flex">
 					<NavItem onClick={() => router.push("/")}>Home</NavItem>
