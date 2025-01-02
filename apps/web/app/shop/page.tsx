@@ -14,6 +14,18 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import {
+	Breadcrumb,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Muted } from "@repo/ui/muted";
+import { Paragraph } from "@repo/ui/paragraph";
+import { Header } from "@repo/ui/header";
+
 export default function Shop() {
 	const [data, setData] = useState<IProduct[]>([]);
 	const [sortBy, setSortBy] = useState<
@@ -53,44 +65,60 @@ export default function Shop() {
 
 	return (
 		<div className="flex flex-col gap-4 mt-4 px-4">
-			<div className="flex justify-between">
+			<Breadcrumb>
+				<BreadcrumbList>
+					<BreadcrumbItem>
+						<BreadcrumbLink href="/">Home</BreadcrumbLink>
+					</BreadcrumbItem>
+					<BreadcrumbSeparator />
+					<BreadcrumbItem>
+						<BreadcrumbPage>Shop</BreadcrumbPage>
+					</BreadcrumbItem>
+				</BreadcrumbList>
+			</Breadcrumb>
+
+			<div className="flex justify-between items-center">
 				{/* <Button variant="secondary">All filters</Button> */}
-				<div></div>
+				<Header>Products</Header>
 
-				<DropdownMenu>
-					<DropdownMenuTrigger asChild>
-						<Button variant="outline">{sortBy}</Button>
-					</DropdownMenuTrigger>
+				<div className="flex items-center gap-4">
+					{data.length > 0 && <Muted>{data.length} products</Muted>}
 
-					<DropdownMenuContent className="w-56">
-						<DropdownMenuLabel>Sort by</DropdownMenuLabel>
-						<DropdownMenuSeparator />
-						<DropdownMenuRadioGroup
-							value={sortBy}
-							onValueChange={(value) => setSortBy(value as any)}
-						>
-							<DropdownMenuRadioItem value="Most popular">
-								Most popular
-							</DropdownMenuRadioItem>
+					<DropdownMenu>
+						<DropdownMenuTrigger asChild>
+							<Button variant="outline">{sortBy}</Button>
+						</DropdownMenuTrigger>
 
-							{/* <DropdownMenuRadioItem value="Best rating">
+						<DropdownMenuContent className="w-56">
+							<DropdownMenuLabel>Sort by</DropdownMenuLabel>
+							<DropdownMenuSeparator />
+							<DropdownMenuRadioGroup
+								value={sortBy}
+								onValueChange={(value) => setSortBy(value as any)}
+							>
+								<DropdownMenuRadioItem value="Most popular">
+									Most popular
+								</DropdownMenuRadioItem>
+
+								{/* <DropdownMenuRadioItem value="Best rating">
 								Best rating
 							</DropdownMenuRadioItem> */}
 
-							<DropdownMenuRadioItem value="Newest">
-								Newest
-							</DropdownMenuRadioItem>
+								<DropdownMenuRadioItem value="Newest">
+									Newest
+								</DropdownMenuRadioItem>
 
-							<DropdownMenuRadioItem value="Price: Low to high">
-								Price: Low to high
-							</DropdownMenuRadioItem>
+								<DropdownMenuRadioItem value="Price: Low to high">
+									Price: Low to high
+								</DropdownMenuRadioItem>
 
-							<DropdownMenuRadioItem value="Price: High to low">
-								Price: High to low
-							</DropdownMenuRadioItem>
-						</DropdownMenuRadioGroup>
-					</DropdownMenuContent>
-				</DropdownMenu>
+								<DropdownMenuRadioItem value="Price: High to low">
+									Price: High to low
+								</DropdownMenuRadioItem>
+							</DropdownMenuRadioGroup>
+						</DropdownMenuContent>
+					</DropdownMenu>
+				</div>
 			</div>
 
 			<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">

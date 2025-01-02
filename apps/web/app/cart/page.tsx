@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "../../redux/store";
 import { useRouter } from "next/navigation";
 import { Avatar } from "@repo/ui/avatar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cartRemoveItem, cartUpdateItemQuantity } from "redux/slices/cartSlice";
@@ -17,6 +17,8 @@ import {
 import { Muted } from "@repo/ui/muted";
 import { Paragraph } from "@repo/ui/paragraph";
 import { Header } from "@repo/ui/header";
+import { IProduct } from "@repo/shared";
+import ProductCard from "@/components/product-card";
 
 function LogoCell({
 	label,
@@ -59,8 +61,6 @@ function Table<T>({
 			? selectedRows.filter((rowId) => rowId !== id)
 			: [...selectedRows, id];
 		setSelectedRows(newSelectedRows);
-
-		console.log("newSelectedRows", newSelectedRows);
 
 		if (onSelectionChange) {
 			const selected = data.filter((row) => newSelectedRows.includes(row._id));
@@ -164,6 +164,7 @@ function Table<T>({
 export default function Card() {
 	const dispatch = useDispatch<AppDispatch>();
 
+	const [featuredProducts, setFeaturedProducts] = useState<IProduct[]>([]);
 	const tableData = useAppSelector(selectCartTableData);
 	const total = useAppSelector(selectCartTotal);
 
@@ -199,6 +200,12 @@ export default function Card() {
 		},
 	];
 
+	useEffect(() => {
+		fetch(`http://localhost:3001/products`)
+			.then((res) => res.json())
+			.then((data) => setFeaturedProducts(data));
+	}, []);
+
 	return (
 		<div className="py-8 flex flex-col gap-4">
 			<Header>Shopping cart</Header>
@@ -230,6 +237,16 @@ export default function Card() {
 					You have no items in your cart
 				</div>
 			)}
+
+			<div className="flex flex-col gap-4">
+				<Header>Customers also purchased</Header>
+
+				<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+					{featuredProducts.map((item, i) => (
+						<ProductCard key={i} data={item} />
+					))}
+				</div>
+			</div>
 		</div>
 	);
 }

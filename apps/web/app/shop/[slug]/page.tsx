@@ -4,7 +4,7 @@ import { Header } from "@repo/ui/header";
 import { Muted } from "@repo/ui/muted";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { AppDispatch, useAppSelector } from "../../../redux/store";
+import { AppDispatch } from "../../../redux/store";
 import { IProduct } from "@repo/shared";
 import ProductCard from "../../../components/product-card";
 import { Button } from "@/components/ui/button";
@@ -12,19 +12,12 @@ import { useDispatch } from "react-redux";
 import { cartAddItem } from "redux/slices/cartSlice";
 import {
 	Breadcrumb,
-	BreadcrumbEllipsis,
 	BreadcrumbItem,
 	BreadcrumbLink,
 	BreadcrumbList,
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 export default function Product() {
 	const params = useParams<{ slug: string }>();
@@ -57,6 +50,10 @@ export default function Product() {
 					<div className="p-4 flex flex-col gap-4">
 						<Breadcrumb>
 							<BreadcrumbList>
+								<BreadcrumbItem>
+									<BreadcrumbLink href="/">Home</BreadcrumbLink>
+								</BreadcrumbItem>
+								<BreadcrumbSeparator />
 								<BreadcrumbItem>
 									<BreadcrumbLink href="/shop">Shop</BreadcrumbLink>
 								</BreadcrumbItem>
