@@ -80,8 +80,6 @@ export default function Shop() {
 	const { data } = useQuery<IProduct[]>({
 		queryKey: ["products", query],
 		queryFn: () => productsService.getAllProducts(query),
-		staleTime: 1000 * 60 * 5,
-		gcTime: 1000 * 60 * 30,
 	});
 
 	return (

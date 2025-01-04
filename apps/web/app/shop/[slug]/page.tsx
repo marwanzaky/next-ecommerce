@@ -30,15 +30,11 @@ export default function Product() {
 	const { data } = useQuery<IProduct>({
 		queryKey: ["products", params.slug],
 		queryFn: () => productsService.getProduct(params.slug),
-		staleTime: 1000 * 60 * 5,
-		gcTime: 1000 * 60 * 30,
 	});
 
 	const { data: featuredProducts } = useQuery<IProduct[]>({
 		queryKey: ["products"],
 		queryFn: () => productsService.getAllProducts(),
-		staleTime: 1000 * 60 * 5,
-		gcTime: 1000 * 60 * 30,
 	});
 
 	return (
