@@ -18,6 +18,8 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { productsService } from "services/productsService";
+import { useQuery } from "@tanstack/react-query";
 
 export default function Product() {
 	const params = useParams<{ slug: string }>();
@@ -25,18 +27,19 @@ export default function Product() {
 
 	const dispatch = useDispatch<AppDispatch>();
 
-	const [data, setData] = useState<IProduct | null>(null);
-	const [featuredProducts, setFeaturedProducts] = useState<IProduct[]>([]);
+	const { data } = useQuery<IProduct>({
+		queryKey: ["products", params.slug],
+		queryFn: () => productsService.getProduct(params.slug),
+		staleTime: 1000 * 60 * 5,
+		gcTime: 1000 * 60 * 30,
+	});
 
-	useEffect(() => {
-		fetch(`http://localhost:3001/products/${params.slug}`, {})
-			.then((res) => res.json())
-			.then((data) => setData(data));
-
-		fetch(`http://localhost:3001/products`)
-			.then((res) => res.json())
-			.then((data) => setFeaturedProducts(data));
-	}, []);
+	const { data: featuredProducts } = useQuery<IProduct[]>({
+		queryKey: ["products"],
+		queryFn: () => productsService.getAllProducts(),
+		staleTime: 1000 * 60 * 5,
+		gcTime: 1000 * 60 * 30,
+	});
 
 	return (
 		<div className="pt-4 px-4 flex flex-col gap-16">
@@ -96,9 +99,10 @@ export default function Product() {
 				<Header>Customers also purchased</Header>
 
 				<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-					{featuredProducts.map((item, i) => (
-						<ProductCard key={i} data={item} />
-					))}
+					{featuredProducts &&
+						featuredProducts.map((item, i) => (
+							<ProductCard key={i} data={item} />
+						))}
 				</div>
 			</div>
 		</div>

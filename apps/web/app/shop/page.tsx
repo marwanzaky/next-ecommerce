@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { IGetAllProductsDto, IProduct } from "@repo/shared";
 import ProductCard from "../../components/product-card";
 import { Button } from "@/components/ui/button";
@@ -23,7 +23,6 @@ import {
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Muted } from "@repo/ui/muted";
-import { Paragraph } from "@repo/ui/paragraph";
 import { Header } from "@repo/ui/header";
 import {
 	Accordion,
@@ -31,14 +30,14 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Input } from "@/components/ui/input";
 import { InputWithLabel } from "@/components/ui/input-with-label";
 import { InputWithIcon } from "@/components/ui/input-with-icon";
-import { Lock, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { CheckboxWithLabel } from "@/components/ui/checkbox-with-label";
+import { useQuery } from "@tanstack/react-query";
+import { productsService } from "services/productsService";
 
 export default function Shop() {
-	const [data, setData] = useState<IProduct[]>([]);
 	const [sortBy, setSortBy] = useState<
 		| "Most popular"
 		| "Best rating"
@@ -50,10 +49,8 @@ export default function Shop() {
 	const [searchTerm, setSearchTerm] = useState<string>("");
 	const [minPriceUsd, setMinPriceUsd] = useState<number>();
 	const [maxPriceUsd, setMaxPriceUsd] = useState<number>();
-	const [priceUnder10Usd, setPriceUnder10Usd] = useState<boolean>(false);
-	const [price10To20Usd, setPrice10To20Usd] = useState<boolean>(false);
 
-	useEffect(() => {
+	const query = useMemo<IGetAllProductsDto>(() => {
 		const query: IGetAllProductsDto = {};
 
 		if (sortBy === "Most popular") {
@@ -73,24 +70,19 @@ export default function Shop() {
 			query.sortOrder = "asc";
 		}
 
-		if (searchTerm.length > 0) {
-			query.searchTerm = searchTerm;
-		}
+		if (searchTerm.trim()) query.searchTerm = searchTerm;
+		if (minPriceUsd) query.minPrice = minPriceUsd * 100;
+		if (maxPriceUsd) query.maxPrice = maxPriceUsd * 100;
 
-		if (minPriceUsd) {
-			query.minPrice = minPriceUsd * 100;
-		}
-
-		if (maxPriceUsd) {
-			query.maxPrice = maxPriceUsd * 100;
-		}
-
-		fetch(
-			`http://localhost:3001/products?${new URLSearchParams(query as any).toString()}`,
-		)
-			.then((res) => res.json())
-			.then((data) => setData(data));
+		return query;
 	}, [sortBy, searchTerm, minPriceUsd, maxPriceUsd]);
+
+	const { data } = useQuery<IProduct[]>({
+		queryKey: ["products", query],
+		queryFn: () => productsService.getAllProducts(query),
+		staleTime: 1000 * 60 * 5,
+		gcTime: 1000 * 60 * 30,
+	});
 
 	return (
 		<div className="flex flex-col gap-4 mt-4 px-4">
@@ -111,7 +103,7 @@ export default function Shop() {
 				<Header>Products</Header>
 
 				<div className="flex items-center gap-4">
-					{data.length > 0 && <Muted>{data.length} products</Muted>}
+					{data && data.length > 0 && <Muted>{data.length} products</Muted>}
 
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>
@@ -219,9 +211,7 @@ export default function Shop() {
 
 				<div className="flex-1">
 					<div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
-						{data.map((item, i) => (
-							<ProductCard key={i} data={item} />
-						))}
+						{data && data.map((item, i) => <ProductCard key={i} data={item} />)}
 					</div>
 				</div>
 			</div>

@@ -1,6 +1,6 @@
 const API_URL = "http://localhost:3001";
 
-import { IUser, IUpdateUser } from "shared";
+import { IUser, IUpdateUser } from "@repo/shared";
 
 export const usersService = {
 	login,

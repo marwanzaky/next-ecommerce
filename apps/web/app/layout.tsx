@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Toaster } from "@/components/ui/toaster";
+import { ReactQueryProvider } from "../components/ReactQueryProvider";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -40,28 +41,30 @@ export default function RootLayout({
 					GeistSans.variable,
 				)}
 			>
-				<div className="max-w-5xl mx-auto">
-					<ReduxProvider>
-						<Navigation />
-						{children}
+				<ReactQueryProvider>
+					<div className="max-w-5xl mx-auto">
+						<ReduxProvider>
+							<Navigation />
+							{children}
 
-						<nav className="bg-white dark:bg-black flex justify-between items-center h-16 px-8">
-							<div></div>
-							<ul className="flex gap-8">
-								<NavItem>About</NavItem>
-								<NavItem>Privacy Policy</NavItem>
-								<NavItem>Licensing</NavItem>
-								<NavItem>Contact</NavItem>
-							</ul>
-						</nav>
+							<nav className="bg-white dark:bg-black flex justify-between items-center h-16 px-8">
+								<div></div>
+								<ul className="flex gap-8">
+									<NavItem>About</NavItem>
+									<NavItem>Privacy Policy</NavItem>
+									<NavItem>Licensing</NavItem>
+									<NavItem>Contact</NavItem>
+								</ul>
+							</nav>
 
-						<div className="px-8 h-24 flex items-center text-slate-500 border-t text-sm">
-							© 2024 Mamolio, Inc. All rights reserved.
-						</div>
+							<div className="px-8 h-24 flex items-center text-slate-500 border-t text-sm">
+								© 2024 Mamolio, Inc. All rights reserved.
+							</div>
 
-						<Toaster />
-					</ReduxProvider>
-				</div>
+							<Toaster />
+						</ReduxProvider>
+					</div>
+				</ReactQueryProvider>
 			</body>
 		</html>
 	);

@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { useRouter } from "next/navigation";
 import { Form } from "@repo/ui/form";
-import { Paragraph } from "@repo/ui/paragraph";
 import { Header } from "@repo/ui/header";
 import { Muted } from "@repo/ui/muted";
 import { handleLogin } from "../../utils/authHelpers";
