@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IGetAllProductsDto, IProduct } from "@repo/shared";
-import { Transform, Type } from "class-transformer";
+import { Type } from "class-transformer";
 import { IsNumber, IsOptional } from "class-validator";
 
 export class GetAllProductsDto implements IGetAllProductsDto {

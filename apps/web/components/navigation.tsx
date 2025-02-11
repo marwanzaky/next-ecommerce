@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useDispatch } from "react-redux";
-import { logOut } from "redux/slices/authSlice";
+import { logOut } from "@redux/slices/authSlice";
 import { Separator } from "./ui/separator";
 import { cn } from "@/lib/utils";
 

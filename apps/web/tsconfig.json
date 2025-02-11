@@ -4,7 +4,8 @@
 		"baseUrl": ".",
 		"paths": {
 			"@/components/*": ["./components/*"],
-			"@/lib/*": ["./lib/*"]
+			"@/lib/*": ["./lib/*"],
+			"@redux/*": ["redux/*"]
 		},
 		"plugins": [
 			{

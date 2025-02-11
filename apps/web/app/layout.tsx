@@ -22,7 +22,7 @@ const queryClient = new QueryClient({
 });
 
 const persister = createSyncStoragePersister({
-	storage: window.localStorage,
+	storage: typeof window !== "undefined" ? window.localStorage : undefined,
 });
 
 export default function RootLayout({

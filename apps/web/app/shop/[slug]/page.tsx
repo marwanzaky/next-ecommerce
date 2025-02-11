@@ -3,13 +3,12 @@
 import { Header } from "@repo/ui/header";
 import { Muted } from "@repo/ui/muted";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import { AppDispatch } from "../../../redux/store";
 import { IProduct } from "@repo/shared";
 import ProductCard from "../../../components/product-card";
 import { Button } from "@/components/ui/button";
 import { useDispatch } from "react-redux";
-import { cartAddItem } from "redux/slices/cartSlice";
+import { cartAddItem } from "@redux/slices/cartSlice";
 import {
 	Breadcrumb,
 	BreadcrumbItem,

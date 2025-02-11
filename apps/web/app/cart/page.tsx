@@ -6,13 +6,16 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cartRemoveItem, cartUpdateItemQuantity } from "redux/slices/cartSlice";
+import {
+	cartRemoveItem,
+	cartUpdateItemQuantity,
+} from "@redux/slices/cartSlice";
 import {
 	CartColumn,
 	Column,
 	selectCartTableData,
 	selectCartTotal,
-} from "redux/selectors/cartSelectors";
+} from "@redux/selectors/cartSelectors";
 import { Muted } from "@repo/ui/muted";
 import { Paragraph } from "@repo/ui/paragraph";
 import { Header } from "@repo/ui/header";
