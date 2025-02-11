@@ -1,6 +1,6 @@
 import { IGetAllProductsDto, IProduct } from "@repo/shared";
 
-const API_URL = "http://localhost:3001";
+const baseUrl = process.env.NEXT_PUBLIC_SERVER;
 
 export const productsService = { getAllProducts, getProduct };
 
@@ -8,7 +8,7 @@ async function getAllProducts(
 	query: IGetAllProductsDto = {},
 ): Promise<IProduct[]> {
 	const response = await fetch(
-		`${API_URL}/products?${new URLSearchParams(query as any).toString()}`,
+		`${baseUrl}/products?${new URLSearchParams(query as any).toString()}`,
 	);
 
 	const data = await response.json();
@@ -21,7 +21,7 @@ async function getAllProducts(
 }
 
 async function getProduct(id: string): Promise<IProduct> {
-	const response = await fetch(`${API_URL}/products/${id}`);
+	const response = await fetch(`${baseUrl}/products/${id}`);
 
 	const data = await response.json();
 

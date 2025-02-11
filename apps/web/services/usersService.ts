@@ -1,6 +1,6 @@
-const API_URL = "http://localhost:3001";
-
 import { IUser, IUpdateUser } from "@repo/shared";
+
+const baseUrl = process.env.NEXT_PUBLIC_SERVER;
 
 export const usersService = {
 	login,
@@ -14,7 +14,7 @@ async function login(
 	email: string,
 	password: string,
 ): Promise<{ token: string }> {
-	const response = await fetch(`${API_URL}/auth/login`, {
+	const response = await fetch(`${baseUrl}/auth/login`, {
 		method: "POST",
 		headers: {
 			"Content-type": "application/json",
@@ -39,7 +39,7 @@ async function signup(
 	email: string,
 	password: string,
 ): Promise<{ token: string }> {
-	const response = await fetch(`${API_URL}/auth/signup`, {
+	const response = await fetch(`${baseUrl}/auth/signup`, {
 		method: "POST",
 		headers: {
 			"Content-type": "application/json",
@@ -61,7 +61,7 @@ async function signup(
 }
 
 async function getMe(token: string): Promise<IUser> {
-	const response = await fetch(`${API_URL}/users/me`, {
+	const response = await fetch(`${baseUrl}/users/me`, {
 		headers: {
 			Authorization: `Bearer ${token}`,
 			"Content-type": "application/json",
@@ -81,7 +81,7 @@ async function updateMe(
 	token: string,
 	updatedUser: IUpdateUser,
 ): Promise<IUser> {
-	const response = await fetch(`${API_URL}/users/updateMe`, {
+	const response = await fetch(`${baseUrl}/users/updateMe`, {
 		method: "PATCH",
 		headers: {
 			Authorization: `Bearer ${token}`,
@@ -106,7 +106,7 @@ async function updateMyPassword(
 		newPassword,
 	}: { currentPassword: string; newPassword: string },
 ): Promise<{ token: string }> {
-	const response = await fetch(`${API_URL}/users/updateMyPassword`, {
+	const response = await fetch(`${baseUrl}/users/updateMyPassword`, {
 		method: "PATCH",
 		headers: {
 			Authorization: `Bearer ${token}`,
