@@ -44,6 +44,7 @@ export const loginAsync = createAsyncThunk(
 		} catch (error: any) {
 			toast({
 				title: error.message,
+				variant: "destructive",
 			});
 
 			return rejectWithValue(error.message);

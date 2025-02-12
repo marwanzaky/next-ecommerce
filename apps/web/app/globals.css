@@ -1,12 +1,6 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"); */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* body {
-	font-family: "Geist";
-} */
 
 @layer base {
 	:root {
@@ -84,10 +78,6 @@
 	* {
 		@apply border-border;
 	}
-
-	/* html {
-		font-family: var(--font-barlow), sans-serif;
-	} */
 
 	body {
 		@apply bg-background text-foreground;
