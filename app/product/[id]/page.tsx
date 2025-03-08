@@ -1,10 +1,16 @@
+import { PageProps } from ".next/types/app/layout";
 import Layout from "@components/layout";
 import Product from "@components/product";
 import YouMayAlsoLike from "@components/youMayAlsoLike";
 import { IProduct } from "_shared/interfaces";
 
-export default async function Page({ params }: { params: { id: string } }) {
-	const product = await getProduct(params.id);
+export default async function Page({
+	params,
+}: {
+	params: Promise<{ id: string }>;
+}) {
+	const { id } = await params;
+	const product = await getProduct(id);
 	const products = await getProducts();
 
 	return (
@@ -25,16 +31,11 @@ async function getProducts(): Promise<IProduct[]> {
 	return await req.json();
 }
 
-export async function getStaticPaths() {
+export async function generateStaticParams() {
 	const req = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/products`);
 	const data: IProduct[] = await req.json();
 
-	const paths = data.map((product) => {
-		return { params: { id: product._id } };
-	});
-
-	return {
-		paths,
-		fallback: false,
-	};
+	return data.map((product) => ({
+		id: product._id,
+	}));
 }

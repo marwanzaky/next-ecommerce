@@ -22,7 +22,7 @@ export default function Page() {
 
 	const dispatch = useDispatch();
 
-	const onSubmit = async (event) => {
+	const onSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
 		event.preventDefault();
 		handleLogin(email, password, dispatch, router);
 	};

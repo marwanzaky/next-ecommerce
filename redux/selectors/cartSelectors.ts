@@ -10,7 +10,7 @@ import { RootState } from "../store";
 // };
 
 export const selectCartTotal = (state: RootState): number => {
-  return state.cartReducer.items
-    .map((item) => item.price * item.quantity)
-    .reduce((sum, a) => sum + a, 0);
+	return state.cartReducer.items
+		.map((item) => item.product.price * item.quantity)
+		.reduce((sum, a) => sum + a, 0);
 };

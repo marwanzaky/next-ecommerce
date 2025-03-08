@@ -104,7 +104,7 @@ export function ButtonIconRed({
 	type?: "button" | "reset" | "submit";
 	icon: string;
 	onClick?: React.MouseEventHandler<HTMLButtonElement>;
-	children: React.ReactNode;
+	children?: React.ReactNode;
 }) {
 	return (
 		<button
