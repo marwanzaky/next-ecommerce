@@ -13,13 +13,25 @@ import { AppDispatch } from "@redux/store";
 import { IProduct } from "_shared/interfaces";
 import { postCartItemAsync } from "@redux/slices/cartSlice";
 
-export default function ProductItem({ data }: { data: IProduct }) {
+type ProductItemProps = {
+	data: IProduct;
+	favorite?: boolean;
+};
+
+export default function ProductItem({
+	data,
+	favorite = false,
+}: ProductItemProps) {
 	const dispatch = useDispatch<AppDispatch>();
 
 	return (
 		<div className="productItem">
 			<div className="product_item-save">
-				<Icon icon="favorite" />
+				{favorite ? (
+					<Icon className="filter-primary-dark" icon="favorite-fill" />
+				) : (
+					<Icon icon="favorite" />
+				)}
 			</div>
 
 			<Link className="productItem-a" href={`/product/${data._id}`}>

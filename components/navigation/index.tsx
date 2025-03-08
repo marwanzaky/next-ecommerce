@@ -69,16 +69,11 @@ export default function Navigation() {
 
 				<div className="box-right">
 					<div className="flex flex-row">
-						{isAuthenticated
-							? process.env.NEXT_PUBLIC_ACCOUNT === "true" && (
-									<ButtonIconImage
-										src={user?.photo || "/img/avatar.jpg"}
-										onClick={me}
-									/>
-							  )
-							: process.env.NEXT_PUBLIC_ACCOUNT === "true" && (
-									<ButtonIcon icon="person" onClick={signin} />
-							  )}
+						{/* <ButtonIcon
+							className="btn-cart"
+							icon="favorite"
+							onClick={() => router.push("/favorites")}
+						></ButtonIcon> */}
 
 						<ButtonIcon
 							className="btn-cart"
@@ -92,6 +87,17 @@ export default function Navigation() {
 								{items.length}
 							</div>
 						</ButtonIcon>
+
+						{isAuthenticated
+							? process.env.NEXT_PUBLIC_ACCOUNT === "true" && (
+									<ButtonIconImage
+										src={user?.photo || "/img/avatar.jpg"}
+										onClick={me}
+									/>
+							  )
+							: process.env.NEXT_PUBLIC_ACCOUNT === "true" && (
+									<ButtonIcon icon="person" onClick={signin} />
+							  )}
 					</div>
 				</div>
 			</div>

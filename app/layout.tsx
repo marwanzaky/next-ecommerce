@@ -1,24 +1,14 @@
-"use client";
-
-import { ReduxProvider } from "../redux/provider";
-import { QueryClient } from "@tanstack/react-query";
-import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
-import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
-
 import "./globals.scss";
+import AppProviders from "@redux/appProviders";
 
-const queryClient = new QueryClient({
-	defaultOptions: {
-		queries: {
-			staleTime: 1000 * 60 * 5,
-			gcTime: 1000 * 60 * 60 * 24,
-		},
-	},
-});
-
-const persister = createSyncStoragePersister({
-	storage: typeof window !== "undefined" ? window.localStorage : undefined,
-});
+export const metadata = {
+	title: "Mamolio",
+	description: "eCommerce",
+	manifest: "/manifest.json",
+	keywords: ["ecommerce", "technology", "web application"],
+	viewport:
+		"minimum-scale=1, initial-scale=1, width=device-width, shrink-to-     fit=no, viewport-fit=cover",
+};
 
 export default function RootLayout({
 	children,
@@ -28,12 +18,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<PersistQueryClientProvider
-					client={queryClient}
-					persistOptions={{ persister }}
-				>
-					<ReduxProvider>{children}</ReduxProvider>
-				</PersistQueryClientProvider>
+				<AppProviders>{children}</AppProviders>
 			</body>
 		</html>
 	);
