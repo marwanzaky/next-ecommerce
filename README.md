@@ -1,6 +1,6 @@
 # Next.js ecommerce
 ## 🖐️ About
-[Website](https://mamolio.com/) project is built from the ground up using modern technologies such as Next.js, React.js, Tailwind CSS.
+[Website](https://mamolio.vercel.app/) project is built from the ground up using modern technologies such as Next.js, React.js, Tailwind CSS.
 
 <div>
   <img src="https://img.shields.io/badge/-Next.js-2c3e50.svg?logo=next.js&style=flat">
