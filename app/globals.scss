@@ -1,17 +1,21 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
 
 /*------- VARIABLES -------*/
-$filter-primary-dark: brightness(0) saturate(100%) invert(30%) sepia(85%) saturate(1559%) hue-rotate(146deg) brightness(99%) contrast(101%);
+$filter-primary-dark: brightness(0) saturate(100%) invert(30%) sepia(85%)
+	saturate(1559%) hue-rotate(146deg) brightness(99%) contrast(101%);
 
-$filter-red: brightness(0) saturate(100%) invert(30%) sepia(58%) saturate(3169%) hue-rotate(338deg) brightness(81%) contrast(106%);
+$filter-red: brightness(0) saturate(100%) invert(30%) sepia(58%) saturate(3169%)
+	hue-rotate(338deg) brightness(81%) contrast(106%);
 
-$filter-bg: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7481%) hue-rotate(78deg) brightness(100%) contrast(105%);
+$filter-bg: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7481%)
+	hue-rotate(78deg) brightness(100%) contrast(105%);
 
-$filter-placeholder: brightness(0) saturate(100%) invert(68%) sepia(4%) saturate(720%) hue-rotate(146deg) brightness(95%) contrast(89%);
+$filter-placeholder: brightness(0) saturate(100%) invert(68%) sepia(4%)
+	saturate(720%) hue-rotate(146deg) brightness(95%) contrast(89%);
 
 $color-primary-light: #b8fff1;
 $color-primary: #00b894;
@@ -43,285 +47,278 @@ $field-pv: 20px;
 $field-ph: 25px;
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 
-  transition:
-    transform var(--transition-delay),
-    opacity var(--transition-delay),
-    background-color var(--transition-delay),
-    color var(--transition-delay),
-    border var(--transition-delay),
-    box-shadow var(--transition-delay);
+	transition: transform var(--transition-delay), opacity var(--transition-delay),
+		background-color var(--transition-delay), color var(--transition-delay),
+		border var(--transition-delay), box-shadow var(--transition-delay);
 }
 
 body,
 button {
-  @apply text-[14px] md:text-[15px];
-  font-family: var(--font-family);
+	@apply text-[14px] md:text-[15px];
+	font-family: var(--font-family);
 }
 
 :root {
-  --font-family: 'Poppins', serif;
+	--font-family: "Poppins", serif;
 
-  --font-light: 300;
-  --font-regular: 400;
-  --font-bold: 700;
+	--font-light: 300;
+	--font-regular: 400;
+	--font-bold: 700;
 
-  --color-shadow: rgba(0, 0, 0, 0.2);
+	--color-shadow: rgba(0, 0, 0, 0.2);
 
-  --transition-delay: 0.2s;
+	--transition-delay: 0.2s;
 }
 
 .material-symbols-outlined {
-  pointer-events: none;
-  font-variation-settings: 'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 48;
+	pointer-events: none;
+	font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 48;
 }
 
 /*------- COMPONENTS / UI -------*/
-@import '../components/ui/Info/style';
+@import "../components/ui/Info/style";
 
 /*------- REUSEABLE COMPONENTS -------*/
 .section-container {
-  @apply max-w-[1075px] mx-auto px-[10px];
+	@apply max-w-[1075px] mx-auto px-[10px];
 }
 
 .btn-icon {
-  @apply inline-flex justify-center items-center;
-  @apply w-[38px] h-[38px];
+	@apply inline-flex justify-center items-center;
+	@apply w-[38px] h-[38px];
 
-  font-size: 24px;
-  overflow: hidden;
-  border-radius: 50%;
-  
-  img {
-    border-radius: 50%;
-  }
+	font-size: 24px;
+	overflow: hidden;
+	border-radius: 50%;
 
-  &:hover {
-    background-color: $color-grey-light;
-  }
+	img {
+		border-radius: 50%;
+	}
+
+	&:hover {
+		background-color: $color-grey-light;
+	}
 }
 
 button {
-  display: inline;
-  border: none;
-  background: transparent;
+	display: inline;
+	border: none;
+	background: transparent;
 }
 
 ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 p {
-  color: $color-black;
-  font-weight: var(--font-regular);
-  line-height: 150%;
+	color: $color-black;
+	font-weight: var(--font-regular);
+	line-height: 150%;
 }
 
 section {
-  // padding: 50px 10px;
-  @apply py-[30px] md:py-[30px];
+	// padding: 50px 10px;
+	@apply py-[30px] md:py-[30px];
 }
 
 a {
-  text-decoration: none;
-  color: $color-black;
+	text-decoration: none;
+	color: $color-black;
 
-  &:hover {
-    color: $color-primary-dark;
-  }
+	&:hover {
+		color: $color-primary-dark;
+	}
 }
 
 .stars {
-  @apply flex items-start;
-  filter: $filter-primary-dark;
+	@apply flex items-start;
+	filter: $filter-primary-dark;
 }
 
 /*------- HEADINGS -------*/
 h1 {
-  color: $color-black;
-  margin-bottom: 30px;
+	color: $color-black;
+	margin-bottom: 30px;
 
-  // text-transform: uppercase;
-  font-weight: var(--font-regular);
-  font-size: 250%;
-  line-height: 100%;
+	// text-transform: uppercase;
+	font-weight: var(--font-regular);
+	font-size: 250%;
+	line-height: 100%;
 
-  letter-spacing: 1px;
-  word-spacing: 4px;
+	letter-spacing: 1px;
+	word-spacing: 4px;
 }
 
 h2 {
-  @apply text-center md:text-left;
+	@apply text-center md:text-left;
 
-  font-size: 150%;
-  // text-transform: uppercase;
-  font-weight: var(--font-regular);
-  margin-bottom: 30px;
+	font-size: 150%;
+	// text-transform: uppercase;
+	font-weight: var(--font-regular);
+	margin-bottom: 30px;
 }
 
 h3 {
-  font-size: 120%;
-  font-weight: var(--font-regular);
-  margin-bottom: 5px;
+	font-size: 120%;
+	font-weight: var(--font-regular);
+	margin-bottom: 5px;
 }
 
 h4 {
-  font-size: 100%;
-  font-weight: var(--font-bold);
-  margin-bottom: 20px;
+	font-size: 100%;
+	font-weight: var(--font-bold);
+	margin-bottom: 20px;
 }
 
 /*------- BUTTONS -------*/
-@import '../components/ui/Button/style';
+@import "../components/ui/Button/style";
 
 /*------- PRODUCT SAVE -------*/
 .product_item-save {
-  @apply flex justify-center items-center;
+	@apply flex justify-center items-center;
 
-  z-index: 1;
+	z-index: 1;
 
-  position: absolute;
-  top: 7px;
-  right: 7px;
+	position: absolute;
+	top: 7px;
+	right: 7px;
 
-  width: 32px;
-  height: 32px;
+	width: 32px;
+	height: 32px;
 
-  border-radius: 50%;
-  box-shadow: 0 0 5px $color-shadow;
-  background-color: $color-bg;
+	border-radius: 50%;
+	box-shadow: 0 0 5px $color-shadow;
+	background-color: $color-bg;
 
-  &:hover {
-    box-shadow: 0 0 5px $color-shadow-dark;
-    transform: scale(1.1);
-  }
+	&:hover {
+		box-shadow: 0 0 5px $color-shadow-dark;
+		transform: scale(1.1);
+	}
 
-  .icon {
-    @apply w-[20px];
-  }
+	.icon {
+		@apply w-[20px];
+	}
 }
 
 /*------- FORM -------*/
 label {
-  @apply block mb-[10px];
-  // color: $color-grey;
-  font-weight: var(--font-bold);
+	@apply block mb-[10px];
+	// color: $color-grey;
+	font-weight: var(--font-bold);
 }
 
-input[type=text],
-input[type=password],
+input[type="text"],
+input[type="password"],
 textarea {
-  width: 100%;
-  padding: $field-pv $field-ph;
-  margin-bottom: 15px;
+	width: 100%;
+	padding: $field-pv $field-ph;
+	margin-bottom: 15px;
 
-  outline: none;
-  border: none;
-  box-shadow: 0 0 0 1pt #ecf0f1;
-  border-radius: $border-radius;
+	outline: none;
+	border: none;
+	box-shadow: 0 0 0 1pt #ecf0f1;
+	border-radius: $border-radius;
 
-  background-color: $color-bg-dark;
-  resize: vertical;
+	background-color: $color-bg-dark;
+	resize: vertical;
 
-  &:focus {
-    box-shadow: 0 0 0 2pt cornflowerblue;
-  }
+	&:focus {
+		box-shadow: 0 0 0 2pt cornflowerblue;
+	}
 
-  &::placeholder {
-    color: $color-placeholder;
-    opacity: 1; /* Firefox */
-  }
+	&::placeholder {
+		color: $color-placeholder;
+		opacity: 1; /* Firefox */
+	}
 }
 
 textarea {
-  padding: $field-pv $field-ph;
-  max-height: 500px;
+	padding: $field-pv $field-ph;
+	max-height: 500px;
 }
 
-input[type=number] {
-  padding: $btn-pv $btn-ph;
-  border: solid 2px $color-border;
-  border-radius: $border-radius;
+input[type="number"] {
+	padding: $btn-pv $btn-ph;
+	border: solid 2px $color-border;
+	border-radius: $border-radius;
 }
 
 .input-field {
-  position: relative;
+	position: relative;
 
-  .input-field-icon {
-    position: absolute;
+	.input-field-icon {
+		position: absolute;
 
-    top: 0;
-    right: 0;
+		top: 0;
+		right: 0;
 
-    padding-top: $field-pv;
-    padding-right: $field-ph;
+		padding-top: $field-pv;
+		padding-right: $field-ph;
 
-    filter: $filter-placeholder;
-  }
+		filter: $filter-placeholder;
+	}
 }
 
 /*------- LOGO -------*/
 .logo {
-  font-weight: var(--font-bold);
-  font-size: 120%;
-  color: var(--color-dark);
+	font-weight: var(--font-bold);
+	font-size: 120%;
+	color: var(--color-dark);
 
-  &:hover {
-    color: $color-primary-dark;
-  }
+	&:hover {
+		color: $color-primary-dark;
+	}
 }
 
 /*------- MAIN NAVIGATOR -------*/
-@import '../components/navigation/style';
+@import "../components/navigation/style";
 
 /*------- HEADER -------*/
-@import '../components/header/style';
+@import "../components/header/style";
 
 /*------- PRODUCTS -------*/
-@import '../components/ui/Products/style';
+@import "../components/ui/Products/style";
 
 /*------- PRODUCT ITEM -------*/
-@import '../components/ui/ProductItem/style';
+@import "../components/ui/ProductItem/style";
 
 /*------- WHY CHOOSE US -------*/
-@import '../components/whyChooseUs/style';
+@import "../components/whyChooseUs/style";
 
 /*------- TESTIMONIALS -------*/
-@import '../components/testimonials/style';
+@import "../components/testimonials/style";
 
 /*------- ABOUT -------*/
-@import '../components/about/style';
+@import "../components/about/style";
 
 /*------- FOOTER -------*/
-@import '../components/footer/style';
+@import "../components/footer/style";
 
 /*------- CONTACT US -------*/
-@import '../components/contact/style';
+@import "../components/contact/style";
 
 /*------- PRODUCT -------*/
-@import '../components/product/style';
+@import "../components/product/style";
 
 /*------- FEEDBACK -------*/
-@import '../components/feedback/style';
-
-/*------- REVIEW -------*/
-@import '../components/review/style';
+@import "../components/feedback/style";
 
 /*------- CART -------*/
-@import '../components/cart/style';
+@import "../components/cart/style";
 
 /*------- ME -------*/
-@import '../components/me/style';
+@import "./me/style";
 
 /*------- SIGN UP / SING IN -------*/
 .section-signin .signin-p,
 .section-signup .signup-p {
-  color: $color-grey;
-  text-align: center;
-  margin-bottom: 30px;
+	color: $color-grey;
+	text-align: center;
+	margin-bottom: 30px;
 }
