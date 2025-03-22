@@ -4,6 +4,16 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
 
+.remove-arrow::-webkit-outer-spin-button,
+.remove-arrow::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.remove-arrow[type="number"] {
+	-moz-appearance: textfield;
+}
+
 /*------- VARIABLES -------*/
 $filter-primary-dark: brightness(0) saturate(100%) invert(30%) sepia(85%)
 	saturate(1559%) hue-rotate(146deg) brightness(99%) contrast(101%);
@@ -179,33 +189,6 @@ h4 {
 /*------- BUTTONS -------*/
 @import "../components/ui/Button/style";
 
-/*------- PRODUCT SAVE -------*/
-.product_item-save {
-	@apply flex justify-center items-center;
-
-	z-index: 1;
-
-	position: absolute;
-	top: 7px;
-	right: 7px;
-
-	width: 32px;
-	height: 32px;
-
-	border-radius: 50%;
-	box-shadow: 0 0 5px $color-shadow;
-	background-color: $color-bg;
-
-	&:hover {
-		box-shadow: 0 0 5px $color-shadow-dark;
-		transform: scale(1.1);
-	}
-
-	.icon {
-		@apply w-[20px];
-	}
-}
-
 /*------- FORM -------*/
 label {
 	@apply block mb-[10px];
@@ -243,14 +226,14 @@ textarea {
 	max-height: 500px;
 }
 
-input[type="number"] {
-	padding: $btn-pv $btn-ph;
-	border: solid 2px $color-border;
-	border-radius: $border-radius;
-}
-
 .input-field {
 	position: relative;
+
+	input[type="number"] {
+		padding: $btn-pv $btn-ph;
+		border: solid 2px $color-border;
+		border-radius: $border-radius;
+	}
 
 	.input-field-icon {
 		position: absolute;

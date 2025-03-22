@@ -10,7 +10,7 @@ export const cartsService = {
 };
 
 async function getMe(token: string): Promise<ICart> {
-	const response = await fetch(`${baseUrl}/carts/me`, {
+	const response = await fetch(`${baseUrl}/carts`, {
 		headers: {
 			Authorization: `Bearer ${token}`,
 			"Content-type": "application/json",

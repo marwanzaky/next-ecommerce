@@ -6,6 +6,7 @@ import WhyChooseUs from "@components/whyChooseUs";
 import Testimonials from "@components/testimonials";
 
 import { IProduct } from "_shared/interfaces";
+import { productsService } from "@redux/services/productsService";
 
 export default async function Page() {
 	const data = await getProducts();
@@ -21,6 +22,8 @@ export default async function Page() {
 }
 
 async function getProducts(): Promise<IProduct[]> {
-	const req = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/products`);
-	return req.json();
+	return await productsService.getAllProducts({
+		featured: true,
+		limit: 4,
+	});
 }

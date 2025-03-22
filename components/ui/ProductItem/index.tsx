@@ -7,30 +7,42 @@ import Stars from "@utils/components/stars";
 
 import Icon from "@ui/Icon";
 
+import { postCartItemAsync } from "@redux/thunks/cartThunks";
+
+import { IProduct } from "_shared/interfaces";
+
+import { ButtonIcon } from "@ui/Button";
+import { useToggleFavorite } from "@hooks/useToggleFavorite";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/store";
 
-import { IProduct } from "_shared/interfaces";
-import { postCartItemAsync } from "@redux/slices/cartSlice";
-
 type ProductItemProps = {
 	data: IProduct;
-	favorite?: boolean;
 };
 
-export default function ProductItem({
-	data,
-	favorite = false,
-}: ProductItemProps) {
+export default function ProductItem({ data }: ProductItemProps) {
 	const dispatch = useDispatch<AppDispatch>();
+
+	const { isFavorite, addToFavorites, removeFromFavorites } = useToggleFavorite(
+		data._id,
+	);
 
 	return (
 		<div className="productItem">
-			<div className="product_item-save">
-				{favorite ? (
-					<Icon className="filter-primary-dark" icon="favorite-fill" />
+			<div className="absolute top-1 right-1">
+				{isFavorite ? (
+					<ButtonIcon
+						className="scale-[.85] hover:scale-100 shadow-md"
+						styleClass="filter-primary-dark"
+						icon="favorite_fill"
+						onClick={removeFromFavorites}
+					/>
 				) : (
-					<Icon icon="favorite" />
+					<ButtonIcon
+						className="scale-[.85] hover:scale-100 shadow-md"
+						icon="favorite"
+						onClick={addToFavorites}
+					/>
 				)}
 			</div>
 

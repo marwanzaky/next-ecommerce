@@ -9,8 +9,7 @@ import Feedback from "@components/feedback";
 
 import Stars from "@utils/components/stars";
 
-import { ButtonFull, ButtonGhostGrey } from "@ui/Button";
-import Icon from "@ui/Icon";
+import { ButtonFull, ButtonGhostGrey, ButtonIcon } from "@ui/Button";
 import Info from "@ui/Info";
 import Link from "next/link";
 
@@ -18,29 +17,70 @@ import { IProduct } from "_shared/interfaces";
 
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/store";
-import { postCartItemAsync } from "@redux/slices/cartSlice";
+import { postCartItemAsync } from "@redux/thunks/cartThunks";
+import { InputText } from "_shared/components/inputText";
+import { useToggleFavorite } from "@hooks/useToggleFavorite";
 
 function Preview({ product }: { product: IProduct }) {
+	const { isFavorite, addToFavorites, removeFromFavorites } = useToggleFavorite(
+		product._id,
+	);
+
 	const [imgIndex, setImgIndex] = useState(0);
 
+	const next = () => {
+		setImgIndex((prev) => (prev + 1) % product.imgUrls.length);
+	};
+
+	const prev = () => {
+		setImgIndex((prev) => (prev === 0 ? product.imgUrls.length - 1 : prev - 1));
+	};
+
 	return (
-		<div className="preview">
-			<div className="product_item-save opacity-0">
-				<Icon icon="favorite" />
+		<div className="preview group">
+			<div className="opacity-0 group-hover:opacity-100 z-10 absolute top-1 right-1">
+				{isFavorite ? (
+					<ButtonIcon
+						className="scale-[.85] hover:scale-100 shadow-md"
+						styleClass="filter-primary-dark"
+						icon="favorite_fill"
+						onClick={removeFromFavorites}
+					/>
+				) : (
+					<ButtonIcon
+						className="scale-[.85] hover:scale-100 shadow-md"
+						icon="favorite"
+						onClick={addToFavorites}
+					/>
+				)}
 			</div>
 
-			<Image
-				className="img"
-				src={product.imgUrls[imgIndex]}
-				alt={product.name}
-				width={512}
-				height={512}
-			/>
+			<div className="relative shadow-md rounded-xl">
+				<Image
+					className="img"
+					src={product.imgUrls[imgIndex]}
+					alt={product.name}
+					width={512}
+					height={512}
+				/>
+
+				<ButtonIcon
+					className="absolute shadow-md top-[calc(50%-19px)] right-[9.5px]"
+					icon="arrow_forward"
+					onClick={next}
+				/>
+
+				<ButtonIcon
+					className="absolute shadow-md top-[calc(50%-19px)] left-[9.5px]"
+					icon="arrow_back"
+					onClick={prev}
+				/>
+			</div>
 
 			<div className="imgs">
 				{product.imgUrls.map((img, i) => (
 					<Image
-						className={`imgs-img ${i === imgIndex ? "select" : ""}`}
+						className={`imgs-img shadow-md ${i === imgIndex ? "select" : ""}`}
 						key={`${product.name} ${i + 1}`}
 						src={img}
 						alt={`${product.name} ${i + 1}`}
@@ -74,7 +114,7 @@ function Details({ product }: { product: IProduct }) {
 				<Link href="/products">Products</Link> <span>/</span>{" "}
 				<Link href={`/product/${product._id}`}>{product.name}</Link>
 			</div>
-			<h1 className="name">{product.name}</h1>
+			<h1 className="name truncate">{product.name}</h1>
 
 			<div className="price-box">
 				<span className="price">{"$" + (product.price / 100).toFixed(2)}</span>
@@ -90,13 +130,14 @@ function Details({ product }: { product: IProduct }) {
 			)}
 
 			<label htmlFor="quantity">Quantity:</label>
-			<input
-				className="quantity"
+
+			<InputText
+				className="mb-[10px]"
 				id="quantity"
 				type="number"
-				defaultValue={quantity}
-				min="1"
-				max="100"
+				value={quantity}
+				min={1}
+				max={100}
 				onChange={(e) => setQuantity(parseInt(e.target.value))}
 			/>
 

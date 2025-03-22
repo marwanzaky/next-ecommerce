@@ -69,11 +69,17 @@ export default function Navigation() {
 
 				<div className="box-right">
 					<div className="flex flex-row">
-						{/* <ButtonIcon
+						<ButtonIcon
+							className="btn-cart"
+							icon="storefront"
+							onClick={() => router.push("/sell")}
+						/>
+
+						<ButtonIcon
 							className="btn-cart"
 							icon="favorite"
 							onClick={() => router.push("/favorites")}
-						></ButtonIcon> */}
+						/>
 
 						<ButtonIcon
 							className="btn-cart"

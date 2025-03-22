@@ -12,6 +12,10 @@ export interface IProduct {
 	imgUrls: string[];
 	description: string;
 	createdAt: string;
+	stock: number;
 }
 
-export type IUpdateProduct = Partial<IProduct>;
+export type IUpdateProduct = Pick<
+	Partial<IProduct>,
+	"name" | "price" | "priceCompare" | "description" | "imgUrls"
+>;

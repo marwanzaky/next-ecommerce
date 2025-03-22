@@ -41,6 +41,7 @@
 
 // BUTTON BASE ICON
 .btn-icon-base {
+	@apply bg-white;
 	@apply inline-flex justify-center items-center;
 	@apply w-[38px] h-[38px];
 	@apply rounded-full;

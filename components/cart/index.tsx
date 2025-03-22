@@ -1,16 +1,25 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 
-import CartTable from "./table";
+import { useDispatch } from "react-redux";
+import { AppDispatch, useAppSelector } from "@redux/store";
+import {
+	deleteCartItemAsync,
+	updateCartItemQuantityAsync,
+} from "@redux/thunks/cartThunks";
+
+import { useRouter } from "next/navigation";
 
 import YouMayAlsoLike from "@components/youMayAlsoLike";
 
 import { ButtonFull } from "@ui/Button";
-import { IProduct } from "_shared/interfaces";
 
-import { useAppSelector } from "@redux/store";
+import { IProduct } from "_shared/interfaces";
+import { Column, Table } from "_shared/components/table";
+import { LogoCell } from "_shared/components/table/cells/logoCell";
+
+type CartItem = IProduct & { imgUrl: string; quantity: number; total: number };
 
 function YourCartIsEmpty() {
 	const router = useRouter();
@@ -36,9 +45,68 @@ function YourCartIsEmpty() {
 }
 
 function YourCart() {
+	const dispatch = useDispatch<AppDispatch>();
+
 	const { items } = useAppSelector((state) => state.cartReducer);
 
 	const [subtotal, setSubtotal] = useState("$0 USD");
+
+	const columns: Column<CartItem>[] = [
+		{
+			header: "Product",
+			field: "imgUrl",
+			type: "custom",
+			className: "sm:w-[50%]",
+			render: (value, row) => (
+				<LogoCell href={`product/${row._id}`} label={row.name} imgUrl={value} />
+			),
+		},
+		{
+			header: "Price",
+			field: "price",
+			type: "usd",
+			className: "sm:w-[10%]",
+		},
+		{
+			header: "Quantity",
+			field: "quantity",
+			type: "number-input",
+			className: "sm:w-[15%]",
+			onChange: (value, row) => {
+				dispatch(
+					updateCartItemQuantityAsync({
+						productId: row._id,
+						quantity: value,
+					}),
+				);
+			},
+		},
+		{
+			header: "Total",
+			field: "total",
+			type: "usd",
+			width: "10%",
+			className: "sm:w-[10%] hidden sm:table-cell",
+		},
+		{
+			field: "_id",
+			header: "",
+			type: "action",
+			width: "38px",
+			action: (row) => {
+				dispatch(deleteCartItemAsync({ productId: row._id }));
+			},
+			actionIcon: "delete",
+			className: "sm:w-[15%]",
+		},
+	];
+
+	const tableData = items.map((item) => ({
+		...item.product,
+		imgUrl: item.product.imgUrls[0],
+		quantity: item.quantity,
+		total: item.product.price * item.quantity,
+	}));
 
 	const updateSubtotal = () => {
 		if (items.length <= 0) return;
@@ -86,7 +154,7 @@ function YourCart() {
 			<h4 className="text-center">Your Cart</h4>
 
 			<div className="cart-container">
-				<CartTable />
+				<Table className="mb-8" columns={columns} data={tableData} />
 
 				<div className="cart-subtotal">
 					<div className="cart-subtotal-div">

@@ -10,7 +10,7 @@ import { ButtonFull } from "@ui/Button";
 
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/store";
-import { signupAsync } from "@redux/slices/authSlice";
+import { signupAsync } from "@redux/thunks/authThunks";
 
 export default function Signup() {
 	const router = useRouter();

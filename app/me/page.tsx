@@ -10,8 +10,8 @@ import { InputText } from "@utils/components/input";
 import { useDispatch } from "react-redux";
 
 import { AppDispatch, useAppSelector } from "@redux/store";
-import { updateMeAsync, updateMyPasswordAsync } from "@redux/slices/authSlice";
-import Avatar from "_shared/components/avatar";
+import { Avatar } from "_shared/components/avatar";
+import { updateMeAsync, updateMyPasswordAsync } from "@redux/thunks/authThunks";
 
 export default function Page() {
 	const dispatch = useDispatch<AppDispatch>();
@@ -102,7 +102,7 @@ export default function Page() {
 
 							<h4 className="">Personal Information</h4>
 							<div className="flex items-center mb-4 gap-4">
-								<Avatar imgUrl={photo}></Avatar>
+								<Avatar size="lg" imgUrl={photo}></Avatar>
 
 								<div className="flex items-center">
 									<ButtonFull

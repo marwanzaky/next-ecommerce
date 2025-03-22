@@ -17,10 +17,12 @@ type ButtonGhostGreyProps = {
 
 type ButtonIconProps = {
 	className?: string;
+	styleClass?: string;
 	type?: "submit" | "reset" | "button";
 	icon: string;
 	onClick?: React.MouseEventHandler<HTMLButtonElement>;
 	children?: React.ReactNode;
+	disabled?: boolean;
 };
 
 export function ButtonFull({
@@ -76,18 +78,21 @@ export function ButtonGhostGrey({
 
 export function ButtonIcon({
 	className,
+	styleClass,
 	type,
 	icon,
 	onClick,
 	children,
+	disabled,
 }: ButtonIconProps) {
 	return (
 		<button
 			className={`btn-icon-base ${className}`}
 			type={type}
 			onClick={onClick}
+			disabled={disabled}
 		>
-			<Icon icon={icon} />
+			<Icon className={styleClass} icon={icon} />
 			{children}
 		</button>
 	);

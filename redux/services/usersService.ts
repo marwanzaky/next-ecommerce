@@ -1,4 +1,4 @@
-import { IUpdateUser, IUser } from "_shared/interfaces";
+import { IProduct, IUpdateUser, IUser } from "_shared/interfaces";
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER;
 
@@ -6,6 +6,7 @@ export const usersService = {
 	login,
 	signup,
 	getMe,
+	getMeProducts,
 	updateMe,
 	updateMyPassword,
 };
@@ -62,6 +63,23 @@ async function signup(
 
 async function getMe(token: string): Promise<IUser> {
 	const response = await fetch(`${baseUrl}/users/me`, {
+		headers: {
+			Authorization: `Bearer ${token}`,
+			"Content-type": "application/json",
+		},
+	});
+
+	const data = await response.json();
+
+	if (!response.ok) {
+		throw new Error(data.message);
+	}
+
+	return data;
+}
+
+async function getMeProducts(token: string): Promise<IProduct[]> {
+	const response = await fetch(`${baseUrl}/users/me/products`, {
 		headers: {
 			Authorization: `Bearer ${token}`,
 			"Content-type": "application/json",

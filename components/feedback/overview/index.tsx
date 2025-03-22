@@ -10,7 +10,7 @@ import { IProduct } from "_shared/interfaces";
 import { useAppSelector } from "@redux/store";
 import Dialog from "_shared/components/dialog";
 import { InputTextarea } from "@utils/components/input";
-import { productsService } from "@services/productsService";
+import { productsService } from "@redux/services/productsService";
 
 function OverviewRating({
 	avgRatings,
@@ -115,6 +115,7 @@ export default function Overview({ product }: { product: IProduct }) {
 				title="Write a review"
 				isOpen={displayDialog}
 				onClose={closeDialog}
+				width="24rem"
 			>
 				<form onSubmit={submitDialog}>
 					<div className="mb-[15px]">

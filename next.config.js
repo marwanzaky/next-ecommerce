@@ -12,8 +12,8 @@ module.exports = withPWA({
 	images: {
 		domains: [
 			process.env.NEXT_PUBLIC_DOMAINS,
-			"tailwindui.com",
 			"mamolio.up.railway.app",
+			"i.etsystatic.com",
 		],
 		formats: ["image/avif", "image/webp"],
 	},

@@ -23,8 +23,9 @@
 		"paths": {
 			"@ui/*": ["./components/ui/*"],
 			"@components/*": ["./components/*"],
+			"@hooks/*": ["./hooks/*"],
 			"@redux/*": ["redux/*"],
-			"@services/*": ["./services/*"],
+			"@services/*": ["redux/services/*"],
 			"@utils/*": ["./utils/*"],
 			"@data/*": ["./data/*"]
 		}

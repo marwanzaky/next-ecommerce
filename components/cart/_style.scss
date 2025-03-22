@@ -1,66 +1,18 @@
 .section-cart .cart-box {
-  @apply section-container;
-}
-
-.section-cart .yourCart .cart-table {
-  @apply mb-[30px] p-[10px] w-full;
-  
-  border: solid 1px $color-border;
-  border-collapse: separate !important;
-  border-radius: $border-radius;
-
-  th {
-    @apply py-[10px] sm:p-[10px];
-  }
-
-  .thead {
-    .thead-th-product { @apply sm:w-[50%]; }
-    .thead-th-price { @apply sm:w-[10%]; }
-    .thead-th-quantity { @apply sm:w-[15%]; }
-    .thead-th-total { @apply sm:w-[10%] hidden sm:table-cell; }
-    .thead-th-remove { @apply sm:w-[15%]; }
-  }
-
-  .item {
-    th {
-      font-weight: var(--font-regular);
-      vertical-align: middle;
-    }
-
-    .item-product-name { @apply hidden sm:table-cell; }
-
-    .item-product-img {
-      @apply mr-[20px];
-      @apply w-[50px] h-[50px];
-
-      border: solid 1px $color-border;
-      border-radius: $border-radius;
-      overflow: hidden;
-
-      img {
-        @apply w-full h-full;
-      }
-    }
-
-    @media only screen and (max-width: 640px) {
-      .item-quantity input { @apply border-none p-0; }
-    }
-
-    .item-total { @apply hidden sm:table-cell; }
-  }
+	@apply section-container;
 }
 
 .cart-subtotal {
-  @apply flex flex-col justify-center items-end;
+	@apply flex flex-col justify-center items-end;
 
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 
-  .cart-subtotal-div {
-    @apply mb-[10px];
-  }
+	.cart-subtotal-div {
+		@apply mb-[10px];
+	}
 
-  .cart-subtotal-note {
-    font-size: 80%;
-    color: $color-grey;
-  }
+	.cart-subtotal-note {
+		font-size: 80%;
+		color: $color-grey;
+	}
 }

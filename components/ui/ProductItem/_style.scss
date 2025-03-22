@@ -1,55 +1,52 @@
 .productItem {
-  @apply relative overflow-hidden;
-  @apply flex flex-col;
+	@apply relative overflow-hidden;
+	@apply flex flex-col;
 
-  border: 2px solid rgb(240, 240, 240);
-  border-radius: $border-radius;
+	border: 2px solid rgb(240, 240, 240);
+	border-radius: $border-radius;
 
-  &:hover {
-    box-shadow: 0 0 20px $color-shadow;
-  }
-
-  // .product_item-stars {
-  //   margin-bottom: 5px;
-  //   color: $color-primary-dark;
-  // }
+	&:hover {
+		box-shadow: 0 0 20px $color-shadow;
+	}
 }
 
 .productItem-a img {
-  @apply w-full;
+	@apply aspect-square object-cover w-full h-full;
 }
 
 .productItem-tag {
-  @apply flex justify-between items-center;
+	@apply flex justify-between items-center;
 
-  .productItem-tag-price {
-    font-size: 150%;
-  }
+	.productItem-tag-price {
+		font-size: 150%;
+	}
 
-  .productItem-tag-price_compare {
-    @apply flex items-center;
-    @apply ml-[5px];
+	.productItem-tag-price_compare {
+		@apply flex items-center;
+		@apply ml-[5px];
 
-    font-size: 120%;
-    text-decoration: line-through;
-    color: $color-grey;
-  }
+		font-size: 120%;
+		text-decoration: line-through;
+		color: $color-grey;
+	}
 
-  .productItem-tag-add {
-    @apply flex items-center justify-center;
-    @apply h-[32px] w-[32px] md:h-[38px] md:w-[38px];
-    @apply p-[5px] rounded-full;
+	.productItem-tag-add {
+		@apply flex items-center justify-center;
+		@apply h-[32px] w-[32px] md:h-[38px] md:w-[38px];
+		@apply p-[5px] rounded-full;
 
-    background-color: $color-bg-dark;
-    
-    .icon {
-      filter: $filter-primary-dark;
-    }
+		background-color: $color-bg-dark;
 
-    &:hover {
-      background-color: $color-primary-dark;
+		.icon {
+			filter: $filter-primary-dark;
+		}
 
-      .icon { filter: $filter-bg; }
-    }
-  }
+		&:hover {
+			background-color: $color-primary-dark;
+
+			.icon {
+				filter: $filter-bg;
+			}
+		}
+	}
 }
