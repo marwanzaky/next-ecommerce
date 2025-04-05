@@ -1,16 +1,13 @@
-// import { CartTableData } from "app/cart/constants";
 import { RootState } from "../store";
 
-// export const selectCartTableData = (state: RootState): CartTableData[] => {
-// 	return state.cartReducer.items.map((item) => ({
-// 		...item,
-// 		imgUrl: item.imgUrls[0] || "",
-// 		total: item.quantity * item.price,
-// 	}));
-// };
+export const selectCartTotalStr = (state: RootState): string => {
+	if (state.cartReducer.items.length <= 0) return "";
 
-export const selectCartTotal = (state: RootState): number => {
-	return state.cartReducer.items
-		.map((item) => item.product.price * item.quantity)
-		.reduce((sum, a) => sum + a, 0);
+	const totalStr = state.cartReducer.items
+		.map((item) => (item.product.price * item.quantity) / 100)
+		.reduce((a, b) => a + b)
+		.toFixed(2)
+		.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+	return `$${totalStr} USD`;
 };

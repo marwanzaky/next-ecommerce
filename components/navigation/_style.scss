@@ -1,85 +1,87 @@
 /*------- NAV -------*/
 nav {
-  border-bottom: 2px solid $color-border;
+	border-bottom: 2px solid $color-border;
 }
 
 /*------- NAV / NAV PROMO -------*/
 nav .nav-promo {
-  @apply p-[10px];
-  @apply text-center;
+	@apply p-[10px];
+	@apply text-center;
 
-  background-color: $color-primary-dark;  
-  color: white;
+	background-color: $color-primary-dark;
+	color: white;
 }
 
 /*------- NAV / NAV BOX -------*/
 nav .nav-box {
-  @apply px-[10px] md:px-[10px];
-  @apply py-[10px] md:py-[20px];
-  @apply section-container;
-  @apply flex items-center;
+	@apply px-[10px] md:px-[10px];
+	@apply py-[10px] md:py-[20px];
+	@apply section-container;
+	@apply flex items-center;
 
-  .box-center {
-    @apply flex-[2] flex justify-center;
-  }
-  
-  .box-left {
-    @apply flex-1 flex justify-start;
-  }
-  
-  .box-right {
-    @apply flex-1 flex justify-end;
-  }
+	.box-center {
+		@apply flex-[2] flex justify-center;
+	}
+
+	.box-left {
+		@apply flex-1 flex justify-start;
+	}
+
+	.box-right {
+		@apply flex-1 flex justify-end;
+	}
 }
 
 nav .nav-box .nav-ul {
-  @apply hidden sm:block;
+	@apply hidden sm:block;
 
-  li {
-    @apply mx-[20px] inline-block;
+	li {
+		@apply mx-[20px] inline-block;
 
-    a {
-      @apply py-[5px];
+		a {
+			@apply py-[5px];
 
-      border-bottom: 2px solid transparent;
+			border-bottom: 2px solid transparent;
 
-      &:hover {
-        border-bottom: 2px solid $color-primary-dark;
-      }
-    }
+			&:hover {
+				border-bottom: 2px solid $color-primary-dark;
+			}
+		}
 
-    .select {
-      font-weight: var(--font-bold);
-      color: $color-primary-dark;
-    }
-  }
+		.select {
+			font-weight: var(--font-bold);
+			color: $color-primary-dark;
+		}
+	}
 }
 
 nav .nav-box .nav-btn {
-  @apply inline-flex justify-center items-center;
-  @apply w-[38px] h-[38px];
-  @apply rounded-full;
+	@apply inline-flex justify-center items-center;
+	@apply w-[38px] h-[38px];
+	@apply rounded-full;
 
-  &:hover {
-    background-color: $color-grey-light;
-    img { filter: $filter-primary-dark; }
-  }
+	&:hover {
+		background-color: $color-grey-light;
+		img {
+			filter: $filter-primary-dark;
+		}
+	}
 }
 
 nav .nav-box .btn-cart {
-  position: relative;
+	position: relative;
 
-  .btn-cart-length {
-    @apply inline-flex justify-center items-center;
+	.btn-cart-length {
+		@apply inline-flex justify-center items-center;
 
-    @apply absolute;
-    @apply top-[5px] right-[-5px];
-    @apply h-[14px] w-[14px];
-    @apply rounded-full;
+		@apply absolute;
+		@apply top-[5px] right-[-5px];
+		@apply h-[14px] w-[14px];
+		@apply rounded-full;
 
-    background-color: $color-primary-dark;
+		background-color: $color-primary-dark;
 
-    font-size: 11px;
-    color: white;
-  }
+		font-size: 11px;
+		color: white;
+	}
 }
