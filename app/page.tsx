@@ -22,8 +22,11 @@ export default async function Page() {
 }
 
 async function getProducts(): Promise<IProduct[]> {
-	return await productsService.getAllProducts({
-		featured: true,
-		limit: 4,
-	});
+	return await productsService.getAllProducts(
+		{},
+		{
+			featured: true,
+			limit: 4,
+		},
+	);
 }

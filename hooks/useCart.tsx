@@ -30,10 +30,13 @@ export function useCart() {
 	const { data: similarProducts } = useQuery({
 		queryKey: ["featured-products"],
 		queryFn: () =>
-			productsService.getAllProducts({
-				featured: true,
-				limit: 4,
-			}),
+			productsService.getAllProducts(
+				{},
+				{
+					featured: true,
+					limit: 4,
+				},
+			),
 		staleTime: 1000 * 60 * 5,
 	});
 

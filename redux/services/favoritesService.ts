@@ -9,7 +9,7 @@ export const favoritesService = {
 };
 
 async function getMe(token: string): Promise<IProduct[]> {
-	const response = await fetch(`${baseUrl}/favorites/me`, {
+	const response = await fetch(`${baseUrl}/favorites`, {
 		headers: {
 			Authorization: `Bearer ${token}`,
 			"Content-type": "application/json",

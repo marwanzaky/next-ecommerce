@@ -28,10 +28,13 @@ async function getProduct(id: string): Promise<IProduct> {
 }
 
 async function getFeaturedProducts(): Promise<IProduct[]> {
-	return await productsService.getAllProducts({
-		featured: true,
-		limit: 4,
-	});
+	return await productsService.getAllProducts(
+		{},
+		{
+			featured: true,
+			limit: 4,
+		},
+	);
 }
 
 export async function generateStaticParams() {

@@ -15,17 +15,30 @@ export const productsService = {
 	postProductReview,
 };
 
-async function getAllProducts(query?: {
-	name?: string;
-	user?: string;
-	minPrice?: number;
-	maxPrice?: number;
-	featured?: boolean;
-	limit?: number;
-}): Promise<IProduct[]> {
-	const response = await fetch(
-		`${baseUrl}/products?${new URLSearchParams(query as any).toString()}`,
-	);
+async function getAllProducts(
+	sort?: {
+		property?: keyof IProduct;
+		order?: "asc" | "desc";
+	},
+	query?: {
+		name?: string;
+		user?: string;
+		minPrice?: number;
+		maxPrice?: number;
+		featured?: boolean;
+		limit?: number;
+	},
+): Promise<IProduct[]> {
+	const params = new URLSearchParams(query as any);
+
+	if (sort?.property) {
+		params.append("sortProperty", sort.property);
+	}
+	if (sort?.order) {
+		params.append("sortOrder", sort.order);
+	}
+
+	const response = await fetch(`${baseUrl}/products?${params.toString()}`);
 
 	const data = await response.json();
 

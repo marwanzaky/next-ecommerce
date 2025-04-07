@@ -15,8 +15,10 @@ module.exports = {
 			},
 			colors: {
 				"custom-bg-dark": "#f6f8f8",
-				"border-color": "#ecf0f1",
+				"border-color": "#dfe6e9",
 				"bg-dark": "#f6f8f8",
+				"primary-light": "#b8fff1",
+				black: "#2d3436",
 				grey: "#868686",
 			},
 			filter: {
