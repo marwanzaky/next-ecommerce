@@ -22,11 +22,10 @@ export default async function Page() {
 }
 
 async function getProducts(): Promise<IProduct[]> {
-	return await productsService.getAllProducts(
-		{},
-		{
+	return await productsService.getAllProducts({
+		query: {
 			featured: true,
 			limit: 4,
 		},
-	);
+	});
 }

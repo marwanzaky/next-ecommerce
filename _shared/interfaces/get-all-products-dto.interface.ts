@@ -5,6 +5,8 @@ export interface IGetAllProductsDto {
 	sortOrder?: "asc" | "desc";
 	searchTerm?: string;
 
+	excludeIds?: string[];
+
 	/**
 	 * Min price in cents
 	 */

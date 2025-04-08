@@ -26,7 +26,7 @@ export default function Page() {
 
 	const { data } = useQuery({
 		queryKey: ["products", selected],
-		queryFn: () => productsService.getAllProducts(sortMap[selected], {}),
+		queryFn: () => productsService.getAllProducts({ sort: sortMap[selected] }),
 		staleTime: 1000 * 60 * 5,
 	});
 

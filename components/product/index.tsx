@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import Feedback from "@components/feedback";
+import YouMayAlsoLike from "@components/youMayAlsoLike";
 
 import Stars from "@utils/components/stars";
 
@@ -20,6 +21,11 @@ import { AppDispatch } from "@redux/store";
 import { postCartItemAsync } from "@redux/thunks/cartThunks";
 import { InputText } from "_shared/components/inputText";
 import { useToggleFavorite } from "@hooks/useToggleFavorite";
+import { useQuery } from "@tanstack/react-query";
+import {
+	GetAllProductsOptions,
+	productsService,
+} from "@redux/services/productsService";
 
 function Preview({ product }: { product: IProduct }) {
 	const { isFavorite, addToFavorites, removeFromFavorites } = useToggleFavorite(
@@ -206,21 +212,38 @@ function Details({ product }: { product: IProduct }) {
 }
 
 export default function Product({ product }: { product: IProduct }) {
-	return (
-		<section className="product">
-			<div
-				className={`preview-n-details ${
-					process.env.NEXT_PUBLIC_REVIEWS === "true"
-						? "mb-[30px] md:mb-[30px]"
-						: ""
-				}`}
-			>
-				<Preview product={product} />
-				<Details product={product} />
-			</div>
+	const options: GetAllProductsOptions = {
+		query: {
+			excludeIds: [product._id],
+			limit: 4,
+		},
+	};
 
-			{process.env.NEXT_PUBLIC_REVIEWS === "true" &&
-				product.reviews.length > 0 && <Feedback product={product} />}
-		</section>
+	const { data } = useQuery({
+		queryKey: ["products", options],
+		queryFn: () => productsService.getAllProducts(options),
+		staleTime: 1000 * 60 * 5,
+	});
+
+	return (
+		<>
+			<section className="product">
+				<div
+					className={`preview-n-details ${
+						process.env.NEXT_PUBLIC_REVIEWS === "true"
+							? "mb-[30px] md:mb-[30px]"
+							: ""
+					}`}
+				>
+					<Preview product={product} />
+					<Details product={product} />
+				</div>
+
+				{process.env.NEXT_PUBLIC_REVIEWS === "true" &&
+					product.reviews.length > 0 && <Feedback product={product} />}
+			</section>
+
+			{data && <YouMayAlsoLike products={data} />}
+		</>
 	);
 }

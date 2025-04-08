@@ -4,7 +4,25 @@ import {
 	IUpdateProduct,
 } from "_shared/interfaces";
 
+import { stringify } from "querystring";
+
 const baseUrl = process.env.NEXT_PUBLIC_SERVER;
+
+export type GetAllProductsOptions = {
+	sort?: {
+		property?: keyof IProduct;
+		order?: "asc" | "desc";
+	};
+	query?: {
+		excludeIds?: string[];
+		name?: string;
+		user?: string;
+		minPrice?: number;
+		maxPrice?: number;
+		featured?: boolean;
+		limit?: number;
+	};
+};
 
 export const productsService = {
 	getAllProducts,
@@ -16,29 +34,17 @@ export const productsService = {
 };
 
 async function getAllProducts(
-	sort?: {
-		property?: keyof IProduct;
-		order?: "asc" | "desc";
-	},
-	query?: {
-		name?: string;
-		user?: string;
-		minPrice?: number;
-		maxPrice?: number;
-		featured?: boolean;
-		limit?: number;
-	},
+	options?: GetAllProductsOptions,
 ): Promise<IProduct[]> {
-	const params = new URLSearchParams(query as any);
+	const { sort = {}, query = {} } = options || {};
 
-	if (sort?.property) {
-		params.append("sortProperty", sort.property);
-	}
-	if (sort?.order) {
-		params.append("sortOrder", sort.order);
-	}
+	const params = stringify({
+		...query,
+		sortProperty: sort.property,
+		sortOrder: sort.order,
+	} satisfies IGetAllProductsDto);
 
-	const response = await fetch(`${baseUrl}/products?${params.toString()}`);
+	const response = await fetch(`${baseUrl}/products?${params}`);
 
 	const data = await response.json();
 
