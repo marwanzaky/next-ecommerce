@@ -4,7 +4,6 @@ import { LogoCell } from "_shared/components/table/cells/logoCell";
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@redux/store";
 import {
-	getUserProductsAsync,
 	postUserProductAsync,
 	removeUserProductAsync,
 	updateUserProductAsync,
@@ -93,8 +92,6 @@ export function useSell() {
 	useEffect(() => {
 		if (isAuthenticated === false) {
 			router.push("/signin");
-		} else {
-			dispatch(getUserProductsAsync());
 		}
 	}, []);
 

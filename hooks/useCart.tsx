@@ -1,12 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
-
 import { useDispatch } from "react-redux";
 import { AppDispatch, useAppSelector } from "@redux/store";
 
 import {
 	deleteCartItemAsync,
-	getCartMeAsync,
 	updateCartItemQuantityAsync,
 } from "@redux/thunks/cartThunks";
 
@@ -23,7 +20,6 @@ type CartItem = IProduct & { imgUrl: string; quantity: number; total: number };
 export function useCart() {
 	const dispatch = useDispatch<AppDispatch>();
 
-	const { isAuthenticated } = useAppSelector((state) => state.authReducer);
 	const { items } = useAppSelector((state) => state.cartReducer);
 	const cartTotalStr = useAppSelector(selectCartTotalStr);
 
@@ -93,12 +89,6 @@ export function useCart() {
 		quantity: item.quantity,
 		total: item.product.price * item.quantity,
 	}));
-
-	useEffect(() => {
-		if (isAuthenticated === true) {
-			dispatch(getCartMeAsync());
-		}
-	}, []);
 
 	return {
 		items,

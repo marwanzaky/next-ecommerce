@@ -1,5 +1,6 @@
 import "./globals.scss";
 import AppProviders from "@redux/appProviders";
+import AppStateInit from "@components/appStateInit";
 
 export const metadata = {
 	title: "Mamolio",
@@ -18,7 +19,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<AppProviders>{children}</AppProviders>
+				<AppProviders>
+					<AppStateInit />
+					{children}
+				</AppProviders>
 			</body>
 		</html>
 	);
