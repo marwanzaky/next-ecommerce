@@ -24,8 +24,8 @@ export function useSell() {
 
 	const [name, setName] = useState("");
 	const [description, setDescription] = useState("");
-	const [price, setPrice] = useState<number>();
-	const [priceCompare, setPriceCompare] = useState<number>();
+	const [priceUsd, setPriceUsd] = useState<number>();
+	const [priceCompareUsd, setPriceCompareUsd] = useState<number>();
 	const [base64s, setBase64s] = useState<string[]>([]);
 
 	const [displayDialog, setDisplayDialog] = useState(false);
@@ -72,8 +72,8 @@ export function useSell() {
 			action: (row) => {
 				setName(row.name);
 				setDescription(row.description);
-				setPrice(row.price);
-				setPriceCompare(row.priceCompare);
+				setPriceUsd(row.price / 100);
+				setPriceCompareUsd(row.priceCompare / 100);
 				setBase64s(row.imgUrls);
 				setProductId(row._id);
 
@@ -98,13 +98,13 @@ export function useSell() {
 	const onSubmitProduct: React.FormEventHandler<HTMLFormElement> = (event) => {
 		event.preventDefault();
 
-		if (price && priceCompare) {
+		if (priceUsd && priceCompareUsd) {
 			dispatch(
 				postUserProductAsync({
 					name,
 					description,
-					price,
-					priceCompare,
+					price: priceUsd * 100,
+					priceCompare: priceCompareUsd * 100,
 					imgUrls: base64s,
 				}),
 			);
@@ -118,15 +118,15 @@ export function useSell() {
 	const onUpdateProduct: React.FormEventHandler<HTMLFormElement> = (event) => {
 		event.preventDefault();
 
-		if (price && priceCompare) {
+		if (priceUsd && priceCompareUsd) {
 			dispatch(
 				updateUserProductAsync({
 					id: productId,
 					data: {
 						name,
 						description,
-						price,
-						priceCompare,
+						price: priceUsd * 100,
+						priceCompare: priceCompareUsd * 100,
 						imgUrls: base64s,
 					},
 				}),
@@ -151,8 +151,8 @@ export function useSell() {
 	const resetForm = () => {
 		setName("");
 		setDescription("");
-		setPrice(undefined);
-		setPriceCompare(undefined);
+		setPriceUsd(undefined);
+		setPriceCompareUsd(undefined);
 		setBase64s([]);
 	};
 
@@ -166,10 +166,10 @@ export function useSell() {
 		setName,
 		description,
 		setDescription,
-		price,
-		setPrice,
-		priceCompare,
-		setPriceCompare,
+		price: priceUsd,
+		setPrice: setPriceUsd,
+		priceCompare: priceCompareUsd,
+		setPriceCompare: setPriceCompareUsd,
 		base64s,
 		setBase64s,
 

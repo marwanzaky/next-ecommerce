@@ -4,7 +4,7 @@ import {
 	IUpdateProduct,
 } from "_shared/interfaces";
 
-import { stringify } from "querystring";
+import { stringify } from "qs";
 
 const baseUrl = process.env.NEXT_PUBLIC_SERVER;
 
@@ -38,11 +38,14 @@ async function getAllProducts(
 ): Promise<IProduct[]> {
 	const { sort = {}, query = {} } = options || {};
 
-	const params = stringify({
-		...query,
-		sortProperty: sort.property,
-		sortOrder: sort.order,
-	} satisfies IGetAllProductsDto);
+	const params = stringify(
+		{
+			...query,
+			sortProperty: sort.property,
+			sortOrder: sort.order,
+		} satisfies IGetAllProductsDto,
+		{ skipNulls: true },
+	);
 
 	const response = await fetch(`${baseUrl}/products?${params}`);
 

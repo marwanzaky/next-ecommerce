@@ -6,6 +6,7 @@ type DialogProps = {
 	onClose?: React.MouseEventHandler<HTMLButtonElement>;
 	children: React.ReactNode;
 	width?: string;
+	className?: string;
 };
 
 export default function Dialog({
@@ -14,6 +15,7 @@ export default function Dialog({
 	onClose,
 	children,
 	width,
+	className,
 }: DialogProps) {
 	if (!isOpen) return null;
 
@@ -26,7 +28,7 @@ export default function Dialog({
 					<ButtonIcon icon="close" onClick={onClose} />
 				</div>
 
-				{children}
+				<div className={className}>{children}</div>
 			</div>
 		</div>
 	);

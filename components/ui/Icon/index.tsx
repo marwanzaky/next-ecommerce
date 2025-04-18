@@ -3,10 +3,16 @@ import Image from "next/image";
 type IconProps = {
 	className?: string;
 	size?: number;
+	onClick?: React.MouseEventHandler<HTMLImageElement>;
 	icon: string;
 };
 
-export default function Icon({ className, icon, size = 24 }: IconProps) {
+export default function Icon({
+	className,
+	icon,
+	onClick,
+	size = 24,
+}: IconProps) {
 	return (
 		<Image
 			className={`icon ${className}`}
@@ -14,6 +20,7 @@ export default function Icon({ className, icon, size = 24 }: IconProps) {
 			alt={icon}
 			width={size}
 			height={size}
+			onClick={onClick}
 		/>
 	);
 }

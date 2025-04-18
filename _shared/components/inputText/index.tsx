@@ -29,6 +29,7 @@ type InputTextProps = {
 	min?: number;
 	max?: number;
 	onChange?: React.ChangeEventHandler<HTMLInputElement>;
+	onBlur?: React.FocusEventHandler<HTMLInputElement>;
 	icon?: string;
 	step?: string;
 	size?: "sm" | "md";
@@ -44,6 +45,7 @@ export function InputText({
 	min,
 	max,
 	onChange,
+	onBlur,
 	icon,
 	step,
 	size = "md",
@@ -60,6 +62,7 @@ export function InputText({
 				min={min}
 				max={max}
 				onChange={onChange}
+				onBlur={onBlur}
 				required
 			/>
 

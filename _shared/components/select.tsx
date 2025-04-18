@@ -15,6 +15,7 @@ type SelectProps = {
 	value?: string;
 	onChange?: (value: string) => void;
 	className?: string;
+	styleClass?: string;
 };
 
 export default function Select({
@@ -23,6 +24,7 @@ export default function Select({
 	value,
 	onChange,
 	className = "",
+	styleClass,
 }: SelectProps) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [selected, setSelected] = useState<Option | null>(
@@ -52,7 +54,7 @@ export default function Select({
 
 	return (
 		<div ref={ref} className={`relative ${className}`}>
-			<ButtonGhostGrey onClick={toggleOpen}>
+			<ButtonGhostGrey className={styleClass} onClick={toggleOpen}>
 				{selected?.label || placeholder}
 			</ButtonGhostGrey>
 

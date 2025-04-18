@@ -2,22 +2,19 @@
 
 import Layout from "@components/layout";
 
-import ProductItem from "@ui/ProductItem";
 import { ButtonFull } from "@ui/Button";
 
 import { InputText, InputTextarea } from "@utils/components/input";
-import { InputText as InputText2 } from "_shared/components/inputText";
 
 import Dialog from "_shared/components/dialog";
 import { Table } from "_shared/components/table";
 
 import ImageInput from "./components/imageInput";
 import { useSell } from "@hooks/useSell";
+import { InputCurrencyRange } from "_shared/components/InputCurrencyRange";
 
 export default function Page() {
 	const {
-		products,
-
 		columns,
 		tableData,
 
@@ -58,15 +55,10 @@ export default function Page() {
 							Add item
 						</ButtonFull>
 					</div>
-
-					<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-						{products.map((item) => (
-							<ProductItem key={item._id} data={item} />
-						))}
-					</div>
 				</div>
 
 				<Dialog
+					className="w-96"
 					title="Add item"
 					isOpen={displayDialog}
 					onClose={() => setDisplayDialog(false)}
@@ -87,33 +79,19 @@ export default function Page() {
 							value={description}
 							onChange={(e) => setDescription(e.target.value)}
 						/>
-						<div className="flex gap-[15px]">
-							<InputText2
-								styleClass="remove-arrow"
-								type="number"
-								id="price"
-								placeholder="Price"
-								icon="person"
-								value={price ? price / 100 : undefined}
-								min={0}
-								onChange={(e) => setPrice(parseFloat(e.target.value) * 100)}
-							/>
-							<InputText2
-								styleClass="remove-arrow"
-								type="number"
-								id="priceCompare"
-								placeholder="Compare price"
-								icon="person"
-								value={priceCompare ? priceCompare / 100 : undefined}
-								min={0}
-								onChange={(e) =>
-									setPriceCompare(parseFloat(e.target.value) * 100)
-								}
-							/>
-						</div>
 
-						<div className="flex gap-2 my-4">
-							{Array.from(Array(5).keys()).map((index) => (
+						<InputCurrencyRange
+							className="gap-[15px] mb-[15px]"
+							minPlaceholder="Price"
+							maxPlaceholder="Compare price"
+							minValue={price}
+							maxValue={priceCompare}
+							onMinChange={(value) => setPrice(value)}
+							onMaxChange={(value) => setPriceCompare(value)}
+						/>
+
+						<div className="flex gap-[15px] my-[15px] flex-wrap">
+							{Array.from(Array(10).keys()).map((index) => (
 								<ImageInput
 									key={index}
 									value={base64s[index]}
@@ -127,6 +105,7 @@ export default function Page() {
 				</Dialog>
 
 				<Dialog
+					className="w-96"
 					title="Edit item"
 					isOpen={displayEditDialog}
 					onClose={() => setDisplayEditDialog(false)}
@@ -148,36 +127,18 @@ export default function Page() {
 							value={description}
 							onChange={(e) => setDescription(e.target.value)}
 						/>
+						<InputCurrencyRange
+							className="gap-[15px] mb-[15px]"
+							minPlaceholder="Price"
+							maxPlaceholder="Compare price"
+							minValue={price}
+							maxValue={priceCompare}
+							onMinChange={(value) => setPrice(value)}
+							onMaxChange={(value) => setPriceCompare(value)}
+						/>
 
-						<div className="flex gap-[15px] mb-[15px]">
-							<InputText2
-								styleClass="remove-arrow"
-								type="number"
-								id="price"
-								placeholder="Price"
-								icon="attach_money"
-								value={price ? price / 100 : undefined}
-								min={0}
-								step="0.01"
-								onChange={(e) => setPrice(parseFloat(e.target.value) * 100)}
-							/>
-							<InputText2
-								styleClass="remove-arrow"
-								type="number"
-								id="priceCompare"
-								placeholder="Compare price"
-								icon="attach_money"
-								value={priceCompare ? priceCompare / 100 : undefined}
-								min={0}
-								step="0.01"
-								onChange={(e) =>
-									setPriceCompare(parseFloat(e.target.value) * 100)
-								}
-							/>
-						</div>
-
-						<div className="flex gap-[15px] mb-[15px]">
-							{Array.from(Array(6).keys()).map((index) => (
+						<div className="flex gap-[15px] mb-[15px] flex-wrap">
+							{Array.from(Array(10).keys()).map((index) => (
 								<ImageInput
 									key={index}
 									value={base64s[index]}

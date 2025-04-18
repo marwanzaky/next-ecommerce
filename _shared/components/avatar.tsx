@@ -1,6 +1,8 @@
 "use client";
 
+import clsx from "clsx";
 import { cva, VariantProps } from "class-variance-authority";
+
 import Image from "next/image";
 
 const avatarVariants = cva(["rounded-full", "overflow-hidden"], {
@@ -36,9 +38,11 @@ export const Avatar = ({
 
 	return (
 		<div
-			className={`${className} ${avatarVariants({ size })} ${
-				onClick ? "cursor-pointer" : ""
-			}`}
+			className={clsx(
+				className,
+				avatarVariants({ size }),
+				onClick ? "cursor-pointer" : "",
+			)}
 		>
 			{imgUrl && (
 				<Image
