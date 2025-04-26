@@ -11,12 +11,28 @@ import { useCart } from "@hooks/useCart";
 
 import { Table } from "_shared/components/table";
 import { Section } from "_shared/components/section";
+import { paymentsService } from "@redux/services/paymentsService";
 
 export default function Page() {
 	const router = useRouter();
 
 	const { items, columns, tableData, cartTotalStr, similarProducts } =
 		useCart();
+
+	const checkout: React.MouseEventHandler<HTMLButtonElement> = async (
+		event,
+	) => {
+		event.preventDefault();
+
+		const res = await paymentsService.createCheckoutSession(
+			items.map((item) => ({
+				id: item.product._id,
+				quantity: item.quantity,
+			})),
+		);
+
+		(window as Window).location = res.url;
+	};
 
 	return (
 		<Layout title="Cart">
@@ -36,7 +52,9 @@ export default function Page() {
 						</div>
 
 						<div className="flex justify-end items-end">
-							<ButtonFull className="!mr-0">Check out</ButtonFull>
+							<ButtonFull className="!mr-0" onClick={checkout}>
+								Check out
+							</ButtonFull>
 						</div>
 					</div>
 				) : (
