@@ -1,6 +1,8 @@
 import "./globals.scss";
 import AppProviders from "@redux/appProviders";
 import AppStateInit from "@components/appStateInit";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = {
 	title: "Mamolio",
@@ -21,6 +23,8 @@ export default function RootLayout({
 			<body>
 				<AppProviders>
 					<AppStateInit />
+					<Analytics />
+					<SpeedInsights />
 					{children}
 				</AppProviders>
 			</body>
