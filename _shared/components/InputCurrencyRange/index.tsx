@@ -13,15 +13,15 @@ type InputCurrencyRangeProps = {
 
 export function InputCurrencyRange({
 	className,
-	minPlaceholder = "Min",
-	maxPlaceholder = "Max",
+	minPlaceholder = "From",
+	maxPlaceholder = "To",
 	minValue,
 	maxValue,
 	onMinChange,
 	onMaxChange,
 }: InputCurrencyRangeProps) {
 	return (
-		<div className={clsx("flex gap-2", className)}>
+		<div className={clsx("flex gap-4", className)}>
 			<InputCurrency
 				placeholder={minPlaceholder}
 				onChange={onMinChange}

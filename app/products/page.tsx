@@ -20,6 +20,7 @@ import { Section } from "_shared/components/section";
 import { useRouter, useSearchParams } from "next/navigation";
 import { stringify } from "qs";
 import { InputCurrencyRange } from "_shared/components/InputCurrencyRange";
+import RadioWithLabel from "_shared/components/radioWithLabel";
 
 type SortOption = "relevancy" | "most-popular" | "low-price" | "high-price";
 
@@ -27,6 +28,7 @@ type Params = {
 	sort: SortOption;
 	minPrice: string | undefined;
 	maxPrice: string | undefined;
+	rating: string | undefined;
 };
 
 export default function Page() {
@@ -46,12 +48,18 @@ export default function Page() {
 		initialParams.maxPrice ? parseInt(initialParams.maxPrice) : undefined,
 	);
 
+	const [rating, setRating] = useState<number | undefined>(
+		initialParams.rating ? parseInt(initialParams.rating) : undefined,
+	);
+
 	const [draftMinPrice, setDraftMinPrice] = useState<number | undefined>(
 		undefined,
 	);
 	const [draftMaxPrice, setDraftMaxPrice] = useState<number | undefined>(
 		undefined,
 	);
+
+	const [draftRating, setDraftRating] = useState<number | undefined>(undefined);
 
 	const sortMap: Record<
 		SortOption,
@@ -68,6 +76,7 @@ export default function Page() {
 		query: {
 			minPrice,
 			maxPrice,
+			avgRatings: rating,
 		},
 	};
 
@@ -91,6 +100,7 @@ export default function Page() {
 			sort,
 			minPrice: minPrice?.toString(),
 			maxPrice: maxPrice?.toString(),
+			rating: rating?.toString(),
 		};
 
 		router.push(`/products?${stringify(params, { skipNulls: true })}`);
@@ -101,6 +111,7 @@ export default function Page() {
 
 		setDraftMaxPrice(maxPrice && maxPrice / 100);
 		setDraftMinPrice(minPrice && minPrice / 100);
+		setDraftRating(rating);
 	};
 
 	const clearPriceRange = () => {
@@ -108,9 +119,14 @@ export default function Page() {
 		setMaxPrice(undefined);
 	};
 
+	const clearRating = () => {
+		setRating(undefined);
+	};
+
 	const applyFilters = () => {
 		setMaxPrice(draftMaxPrice && draftMaxPrice * 100);
 		setMinPrice(draftMinPrice && draftMinPrice * 100);
+		setRating(draftRating);
 		setVisible(false);
 	};
 
@@ -120,71 +136,62 @@ export default function Page() {
 
 	useEffect(() => {
 		updateParams();
-	}, [sort, minPrice, maxPrice]);
+	}, [sort, minPrice, maxPrice, rating]);
 
 	return (
 		<Layout title="Products">
 			<Section>
-				<div className="flex items-center justify-between mb-4">
-					<div className="flex items-center gap-4">
+				<div className="flex items-center justify-between gap-4 mb-4">
+					<div className="flex items-center gap-4 flex-1 min-w-0">
 						<ButtonGhostGrey onClick={openFilterDialog}>
 							All filters
 						</ButtonGhostGrey>
 
-						{minPrice && maxPrice && (
-							<Chip onClick={clearPriceRange}>
-								${(minPrice / 100).toFixed(2)} - ${(maxPrice / 100).toFixed(2)}
-							</Chip>
-						)}
+						<div className="flex flex-1 items-center gap-4 scrollbar-hide overflow-auto">
+							{minPrice && maxPrice && (
+								<Chip onClick={clearPriceRange}>
+									${(minPrice / 100).toFixed(2)} - $
+									{(maxPrice / 100).toFixed(2)}
+								</Chip>
+							)}
+							{minPrice != undefined && maxPrice == null && (
+								<Chip onClick={clearPriceRange}>
+									Above ${(minPrice / 100).toFixed(2)}
+								</Chip>
+							)}
+							{minPrice == null && maxPrice != undefined && (
+								<Chip onClick={clearPriceRange}>
+									Under ${(maxPrice / 100).toFixed(2)}
+								</Chip>
+							)}
 
-						{minPrice != undefined && maxPrice == null && (
-							<Chip onClick={clearPriceRange}>
-								Above ${(minPrice / 100).toFixed(2)}
-							</Chip>
-						)}
-
-						{minPrice == null && maxPrice != undefined && (
-							<Chip onClick={clearPriceRange}>
-								Under ${(maxPrice / 100).toFixed(2)}
-							</Chip>
-						)}
+							{rating !== undefined && rating === 5 && (
+								<Chip onClick={clearRating}>5 Rating</Chip>
+							)}
+							{rating !== undefined && rating === 4 && (
+								<Chip onClick={clearRating}>4.0+ Rating</Chip>
+							)}
+							{rating !== undefined && rating === 3 && (
+								<Chip onClick={clearRating}>3.0+ Rating</Chip>
+							)}
+							{rating !== undefined && rating === 2 && (
+								<Chip onClick={clearRating}>2.0+ Rating</Chip>
+							)}
+							{rating !== undefined && rating === 1 && (
+								<Chip onClick={clearRating}>1.0+ Rating</Chip>
+							)}
+						</div>
 					</div>
 
-					<Dialog
-						className="flex flex-col gap-8"
-						title="Filters"
-						width="384px"
-						isOpen={visible}
-						onClose={() => setVisible(false)}
-					>
-						<div className="flex flex-col gap-2">
-							<h3>Price</h3>
-
-							<InputCurrencyRange
-								minValue={draftMinPrice}
-								maxValue={draftMaxPrice}
-								onMinChange={(value) => setDraftMinPrice(value)}
-								onMaxChange={(value) => setDraftMaxPrice(value)}
-							/>
-						</div>
-
-						<div className="flex gap-2">
-							<ButtonGhostGrey className="w-full" onClick={cancelFilters}>
-								Cancel
-							</ButtonGhostGrey>
-							<ButtonFull className="w-full !m-0" onClick={applyFilters}>
-								Apply filter
-							</ButtonFull>
-						</div>
-					</Dialog>
-
-					<div className="flex items-center gap-4">
+					<div className="flex justify-end items-center gap-4 flex-shrink-0">
 						{isLoading === false && (
-							<p className="text-grey">Showing {data?.length} Products</p>
+							<p className="text-grey hidden sm:block">
+								Showing {data?.length} Products
+							</p>
 						)}
 
 						<div className="flex items-center gap-2">
-							<p>Sort by:</p>
+							<p className="hidden sm:block">Sort by:</p>
 
 							<Select
 								options={options}
@@ -201,6 +208,88 @@ export default function Page() {
 					))}
 				</div>
 			</Section>
+
+			<Dialog
+				className="flex flex-col gap-8"
+				title="Filters"
+				width="384px"
+				isOpen={visible}
+				onClose={() => setVisible(false)}
+			>
+				<div className="flex flex-col gap-4">
+					<div className="flex flex-col gap-2">
+						<div className="text-lg">Price</div>
+
+						<InputCurrencyRange
+							minValue={draftMinPrice}
+							maxValue={draftMaxPrice}
+							onMinChange={(value) => setDraftMinPrice(value)}
+							onMaxChange={(value) => setDraftMaxPrice(value)}
+						/>
+					</div>
+
+					<div className="flex flex-col gap-2">
+						<div className="text-lg">Rating</div>
+
+						<div className="flex flex-col gap-2">
+							<RadioWithLabel
+								name="rate"
+								id="rate5"
+								value="rate5"
+								checked={draftRating === 5}
+								onChange={(e) => setDraftRating(5)}
+								label="★★★★★"
+								labelClassName="text-primary-dark"
+							/>
+							<RadioWithLabel
+								name="rate"
+								id="rate4"
+								value="rate4"
+								checked={draftRating === 4}
+								onChange={(e) => setDraftRating(4)}
+								label="★★★★"
+								labelClassName="text-primary-dark"
+							/>
+							<RadioWithLabel
+								name="rate"
+								id="rate3"
+								value="rate3"
+								checked={draftRating === 3}
+								onChange={(e) => setDraftRating(3)}
+								label="★★★"
+								labelClassName="text-primary-dark"
+							/>
+							<RadioWithLabel
+								name="rate"
+								id="rate2"
+								value="rate2"
+								checked={draftRating === 2}
+								onChange={(e) => setDraftRating(2)}
+								label="★★"
+								labelClassName="text-primary-dark"
+							/>
+							<RadioWithLabel
+								name="rate"
+								id="rate1"
+								value="rate1"
+								checked={draftRating === 1}
+								onChange={(e) => setDraftRating(1)}
+								label="★"
+								labelClassName="text-primary-dark"
+							/>
+						</div>
+					</div>
+				</div>
+
+				<div className="flex gap-2">
+					<ButtonGhostGrey className="w-full" onClick={cancelFilters}>
+						Cancel
+					</ButtonGhostGrey>
+					<ButtonFull className="w-full !m-0" onClick={applyFilters}>
+						Apply filter
+					</ButtonFull>
+				</div>
+			</Dialog>
 		</Layout>
 	);
 }

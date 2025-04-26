@@ -135,7 +135,9 @@ function Details({ product }: { product: IProduct }) {
 				</div>
 			)}
 
-			<label htmlFor="quantity">Quantity:</label>
+			<label className="font-bold block mb-[10px]" htmlFor="quantity">
+				Quantity:
+			</label>
 
 			<InputText
 				className="mb-[10px]"

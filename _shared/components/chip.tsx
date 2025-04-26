@@ -7,7 +7,7 @@ export type ChipProps = {
 
 export function Chip({ children, onClick }: ChipProps) {
 	return (
-		<div className="bg-gray-200 py-2 px-4 rounded-full flex items-center gap-2">
+		<div className="bg-gray-200 py-2 px-4 rounded-full flex flex-shrink-0 items-center gap-2 whitespace-nowrap">
 			{children}
 			<Icon
 				className="cursor-pointer hover:filter-primary-dark"

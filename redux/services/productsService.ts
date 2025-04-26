@@ -21,6 +21,7 @@ export type GetAllProductsOptions = {
 		maxPrice?: number;
 		featured?: boolean;
 		limit?: number;
+		avgRatings?: number;
 	};
 };
 
@@ -38,14 +39,16 @@ async function getAllProducts(
 ): Promise<IProduct[]> {
 	const { sort = {}, query = {} } = options || {};
 
-	const params = stringify(
-		{
-			...query,
-			sortProperty: sort.property,
-			sortOrder: sort.order,
-		} satisfies IGetAllProductsDto,
-		{ skipNulls: true },
-	);
+	const paramsObj: IGetAllProductsDto = {
+		...query,
+		sortProperty: sort.property,
+		sortOrder: sort.order,
+	};
+
+	const params = stringify(paramsObj, {
+		skipNulls: true,
+		arrayFormat: "repeat",
+	});
 
 	const response = await fetch(`${baseUrl}/products?${params}`);
 

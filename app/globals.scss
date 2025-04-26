@@ -14,6 +14,14 @@
 	-moz-appearance: textfield;
 }
 
+.scrollbar-hide {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
+}
+
 /*------- VARIABLES -------*/
 $filter-primary-dark: brightness(0) saturate(100%) invert(30%) sepia(85%)
 	saturate(1559%) hue-rotate(146deg) brightness(99%) contrast(101%);
@@ -190,12 +198,6 @@ h4 {
 @import "../components/ui/Button/style";
 
 /*------- FORM -------*/
-label {
-	@apply block mb-[10px];
-	// color: $color-grey;
-	font-weight: var(--font-bold);
-}
-
 input[type="text"],
 input[type="password"],
 textarea {

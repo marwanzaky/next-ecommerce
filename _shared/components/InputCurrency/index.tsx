@@ -28,14 +28,10 @@ export function InputCurrency({
 		if (!isNaN(value)) {
 			const newValue = Math.round(value * 100) / 100;
 			onChange(newValue);
-			if (onBlur) {
-				onBlur(newValue);
-			}
+			onBlur && onBlur(newValue);
 		} else if (e.target.value === "") {
 			onChange(undefined);
-			if (onBlur) {
-				onBlur(undefined);
-			}
+			onBlur && onBlur(undefined);
 		}
 	};
 
