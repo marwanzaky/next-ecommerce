@@ -71,6 +71,7 @@ export default function Page() {
 							icon="person"
 							value={name}
 							onChange={(e) => setName(e.target.value)}
+							required
 						/>
 						<InputTextarea
 							id="description"
@@ -78,6 +79,7 @@ export default function Page() {
 							icon="description"
 							value={description}
 							onChange={(e) => setDescription(e.target.value)}
+							required
 						/>
 
 						<InputCurrencyRange
@@ -118,6 +120,7 @@ export default function Page() {
 							icon="inventory_2"
 							value={name}
 							onChange={(e) => setName(e.target.value)}
+							required
 						/>
 						<InputTextarea
 							className="flex"
@@ -126,6 +129,7 @@ export default function Page() {
 							icon="description"
 							value={description}
 							onChange={(e) => setDescription(e.target.value)}
+							required
 						/>
 						<InputCurrencyRange
 							className="gap-[15px] mb-[15px]"

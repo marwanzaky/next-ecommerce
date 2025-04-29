@@ -14,6 +14,7 @@ module.exports = withPWA({
 			process.env.NEXT_PUBLIC_DOMAINS,
 			"mamolio.up.railway.app",
 			"i.etsystatic.com",
+			"mzkdoyjeakimztiocfrp.supabase.co",
 		],
 		formats: ["image/avif", "image/webp"],
 	},

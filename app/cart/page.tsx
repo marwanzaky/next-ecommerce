@@ -52,9 +52,7 @@ export default function Page() {
 						</div>
 
 						<div className="flex justify-end items-end">
-							<ButtonFull className="!mr-0" onClick={checkout}>
-								Check out
-							</ButtonFull>
+							<ButtonFull className="!mr-0">Check out</ButtonFull>
 						</div>
 					</div>
 				) : (

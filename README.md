@@ -41,3 +41,8 @@ The backend for this project (e.g. APIs, database integration, authentication) i
 - Signin: `/signin`
 - Signup: `/signup`
 - Account: `/me`
+
+## 📬 Contact
+Have questions, feedback, or want to collaborate? Feel free to reach out!
+
+- Email: marouaneezzaky@gmail.com

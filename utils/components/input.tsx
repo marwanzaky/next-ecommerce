@@ -9,6 +9,7 @@ type InputTextProps = {
 	value?: string | number;
 	onChange?: React.ChangeEventHandler<HTMLInputElement>;
 	icon?: string;
+	required?: boolean;
 };
 
 export function InputText({
@@ -19,6 +20,7 @@ export function InputText({
 	value,
 	onChange,
 	icon,
+	required,
 }: InputTextProps) {
 	return (
 		<div className="input-field">
@@ -29,7 +31,7 @@ export function InputText({
 				placeholder={placeholder}
 				value={value}
 				onChange={onChange}
-				required
+				required={required}
 			/>
 
 			{icon && (
@@ -49,6 +51,7 @@ export function InputTextarea({
 	value,
 	onChange,
 	minHeight = "150px",
+	required,
 }: {
 	className?: string;
 	id: string;
@@ -57,6 +60,7 @@ export function InputTextarea({
 	value?: string | number;
 	onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
 	minHeight?: string;
+	required?: boolean;
 }) {
 	const style = {
 		minHeight,
@@ -71,6 +75,7 @@ export function InputTextarea({
 				style={style}
 				value={value}
 				onChange={onChange}
+				required={required}
 			/>
 
 			<div className="input-field-icon">
