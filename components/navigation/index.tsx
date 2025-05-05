@@ -8,6 +8,13 @@ import { ButtonIcon, ButtonIconImage } from "@ui/Button";
 
 import { useAppSelector } from "@redux/store";
 
+import { useState } from "react";
+
+import { ButtonGhost } from "_shared/components/button";
+import { Separator } from "_shared/components/separator";
+
+import Overlay from "_shared/components/overlay";
+
 function NavLi({ href, name }: { href: string; name: string }) {
 	const pathname = usePathname();
 	let select = pathname === href;
@@ -31,6 +38,8 @@ export default function Navigation() {
 	);
 	const { items } = useAppSelector((state) => state.cartReducer);
 
+	const [overlayVisible, setOverlayVisible] = useState(false);
+
 	const signin: React.MouseEventHandler<HTMLButtonElement> = (event) => {
 		event.preventDefault();
 		router.push("/signin");
@@ -39,11 +48,6 @@ export default function Navigation() {
 	const cart: React.MouseEventHandler<HTMLButtonElement> = (event) => {
 		event.preventDefault();
 		router.push("/cart");
-	};
-
-	const me: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-		event.preventDefault();
-		router.push("/me");
 	};
 
 	return (
@@ -96,10 +100,49 @@ export default function Navigation() {
 
 						{isAuthenticated
 							? process.env.NEXT_PUBLIC_ACCOUNT === "true" && (
-									<ButtonIconImage
-										src={user?.photo || "/img/avatar.jpg"}
-										onClick={me}
-									/>
+									<Overlay
+										className="w-fit right-0 flex flex-col py-1 px-1"
+										trigger={
+											<ButtonIconImage src={user?.photo || "/img/avatar.jpg"} />
+										}
+										visible={overlayVisible}
+										onVisibleChange={(value) => setOverlayVisible(value)}
+									>
+										<div className="flex flex-col gap-1 py-1.5 px-2">
+											<div className="text-xs font-medium text-black leading-none">
+												{user?.name}
+											</div>
+											<div className="text-xs text-gray-500 leading-none">
+												{user?.email}
+											</div>
+										</div>
+
+										<Separator />
+
+										<ButtonGhost
+											variant="gray"
+											className="text-left"
+											onClick={() => {
+												router.push("/me");
+												setOverlayVisible(false);
+											}}
+										>
+											Settings
+										</ButtonGhost>
+
+										<Separator />
+
+										<ButtonGhost
+											variant="gray"
+											className="text-left"
+											onClick={() => {
+												window.localStorage.clear();
+												location.reload();
+											}}
+										>
+											Log out
+										</ButtonGhost>
+									</Overlay>
 							  )
 							: process.env.NEXT_PUBLIC_ACCOUNT === "true" && (
 									<ButtonIcon icon="person" onClick={signin} />
