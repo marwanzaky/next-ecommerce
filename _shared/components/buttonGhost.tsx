@@ -3,14 +3,15 @@
 import clsx from "clsx";
 import { cva, VariantProps } from "class-variance-authority";
 
-const buttonVariants = cva("leading-none", {
+const buttonGhostVariants = cva(["bg-white rounded-lg"], {
 	variants: {
 		variant: {
-			primary: "bg-primary hover:bg-primary-dark text-white",
+			primary: "hover:bg-primary-dark text-black hover:text-white",
+			gray: "hover:bg-gray-100 text-black",
 		},
 		size: {
-			sm: "text-sm py-1.5 px-2 rounded-lg",
-			md: "text-base px-[30px] h-14 rounded-xl",
+			sm: "text-sm py-1.5 px-2",
+			md: "text-base py-[15px] px-[30px]",
 		},
 	},
 	defaultVariants: {
@@ -19,24 +20,24 @@ const buttonVariants = cva("leading-none", {
 	},
 });
 
-type ButtonProps = VariantProps<typeof buttonVariants> & {
+type ButtonGhostProps = VariantProps<typeof buttonGhostVariants> & {
 	className?: string;
 	type?: "submit" | "reset" | "button";
 	onClick?: React.MouseEventHandler<HTMLButtonElement>;
 	children: React.ReactNode;
 };
 
-export const Button = ({
+export const ButtonGhost = ({
 	className,
 	type,
 	onClick,
 	children,
 	variant,
 	size,
-}: ButtonProps) => {
+}: ButtonGhostProps) => {
 	return (
 		<button
-			className={clsx(buttonVariants({ variant, size }), className)}
+			className={clsx(buttonGhostVariants({ variant, size }), className)}
 			type={type}
 			onClick={onClick}
 		>

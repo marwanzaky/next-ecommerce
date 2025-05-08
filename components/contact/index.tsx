@@ -1,88 +1,94 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
 
-import { ButtonFull } from "@ui/Button";
-import { InputText, InputTextarea } from "@utils/components/input";
 import { contactService } from "@redux/services/contactService";
+import { Section } from "_shared/components/section";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { InputText } from "_shared/components/inputText";
+import { Textarea } from "_shared/components/textarea";
+import { Button } from "_shared/components/button";
 
-function Form() {
+type Inputs = {
+	name: string;
+	email: string;
+	subject: string;
+	message: string;
+};
+
+export default function Contact() {
 	const router = useRouter();
 
-	const [name, setName] = useState<string>();
-	const [email, setEmail] = useState<string>();
-	const [subject, setSubject] = useState<string>();
-	const [message, setMessage] = useState<string>();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<Inputs>();
 
-	const onSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
-		event.preventDefault();
+	const onSubmit: SubmitHandler<Inputs> = (data) => {
+		contactService.contact(data);
 
-		if (name && email && subject && message) {
-			contactService.contact({ name, email, subject, message });
-			alert("Message sent successfully. Thank you!");
-			router.push("/");
-		}
+		alert("Message sent successfully. Thank you!");
+		router.push("/");
 	};
 
 	return (
-		<form onSubmit={onSubmit}>
-			<InputText
-				type="text"
-				id="name"
-				placeholder="Name"
-				icon="person"
-				onChange={(e) => setName(e.target.value)}
-				required
-			/>
-			<InputText
-				type="text"
-				id="email"
-				placeholder="Email"
-				icon="send"
-				onChange={(e) => setEmail(e.target.value)}
-				required
-			/>
-			<InputText
-				type="text"
-				id="subject"
-				placeholder="Subject"
-				icon="subject"
-				onChange={(e) => setSubject(e.target.value)}
-				required
-			/>
-			<InputTextarea
-				id="message"
-				placeholder="Message"
-				icon="mail"
-				onChange={(e) => setMessage(e.target.value)}
-				required
-			/>
-
-			<ButtonFull type="submit" className="w-full">
-				Send
-			</ButtonFull>
-		</form>
-	);
-}
-
-export default function Contact() {
-	return (
-		<section className="section-contact-me">
-			<div className="contact-me-box">
-				<div>
-					<h2>Contact us</h2>
-					<h4>Have a question?</h4>
-					<p>
-						Email us and we&apos;ll get back to you within 24 hours.
-						Monday-Saturday <br /> <br />
-						Please fill the form below to contact us and we will get back to you
-						as soon as possible! We&apos;re happy to answer questions or help.
-					</p>
-				</div>
-
-				<Form />
+		<Section className="grid grid-cols-1 md:grid-cols-2 gap-[50px]">
+			<div>
+				<h2>Contact us</h2>
+				<h4>Have a question?</h4>
+				<p>
+					Email us and we&apos;ll get back to you within 24 hours.
+					Monday-Saturday <br /> <br />
+					Please fill the form below to contact us and we will get back to you
+					as soon as possible! We&apos;re happy to answer questions or help.
+				</p>
 			</div>
-		</section>
+
+			<form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+				<InputText
+					type="text"
+					placeholder="Name"
+					icon="person"
+					message={errors.name && "This field is required"}
+					{...register("name", { required: true })}
+				/>
+
+				<InputText
+					type="email"
+					placeholder="Email"
+					icon="send"
+					message={errors.email && "This field is required"}
+					{...register("email", { required: true })}
+				/>
+
+				<InputText
+					type="text"
+					placeholder="Subject"
+					icon="subject"
+					message={
+						errors.subject && errors.subject.type === "required"
+							? "This field is required"
+							: errors.subject && errors.subject.type === "maxLength"
+							? "This field must be 64 characters or fewer."
+							: ""
+					}
+					{...register("subject", { required: true, maxLength: 64 })}
+				/>
+
+				<Textarea
+					styleClass="h-36"
+					placeholder="Message"
+					icon="mail"
+					message={errors.message && "This field is required"}
+					{...register("message", { required: true })}
+				/>
+
+				<Button size="md" type="submit">
+					Send
+				</Button>
+			</form>
+		</Section>
 	);
 }

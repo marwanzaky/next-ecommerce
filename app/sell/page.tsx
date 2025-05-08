@@ -4,14 +4,16 @@ import Layout from "@components/layout";
 
 import { ButtonFull } from "@ui/Button";
 
-import { InputText, InputTextarea } from "@utils/components/input";
-
 import Dialog from "_shared/components/dialog";
 import { Table } from "_shared/components/table";
 
 import ImageInput from "./components/imageInput";
 import { useSell } from "@hooks/useSell";
 import { InputCurrencyRange } from "_shared/components/InputCurrencyRange";
+import { InputText } from "_shared/components/inputText";
+import { Button } from "_shared/components/button";
+import { Textarea } from "_shared/components/textarea";
+import { Section } from "_shared/components/section";
 
 export default function Page() {
 	const {
@@ -41,7 +43,7 @@ export default function Page() {
 
 	return (
 		<Layout title="Sell">
-			<section className="section-container">
+			<Section>
 				<h4 className="text-center">Your Products</h4>
 
 				<div className="flex flex-col gap-4">
@@ -63,7 +65,7 @@ export default function Page() {
 					isOpen={displayDialog}
 					onClose={() => setDisplayDialog(false)}
 				>
-					<form onSubmit={onSubmitProduct}>
+					<form className="flex flex-col gap-4" onSubmit={onSubmitProduct}>
 						<InputText
 							type="text"
 							id="name"
@@ -73,7 +75,7 @@ export default function Page() {
 							onChange={(e) => setName(e.target.value)}
 							required
 						/>
-						<InputTextarea
+						<Textarea
 							id="description"
 							placeholder="Product description"
 							icon="description"
@@ -83,7 +85,6 @@ export default function Page() {
 						/>
 
 						<InputCurrencyRange
-							className="gap-[15px] mb-[15px]"
 							minPlaceholder="Price"
 							maxPlaceholder="Compare price"
 							minValue={price}
@@ -92,7 +93,7 @@ export default function Page() {
 							onMaxChange={(value) => setPriceCompare(value)}
 						/>
 
-						<div className="flex gap-[15px] my-[15px] flex-wrap">
+						<div className="flex gap-4 flex-wrap">
 							{Array.from(Array(10).keys()).map((index) => (
 								<ImageInput
 									key={index}
@@ -102,7 +103,7 @@ export default function Page() {
 							))}
 						</div>
 
-						<ButtonFull className="mt-4">Add</ButtonFull>
+						<Button size="md">Add</Button>
 					</form>
 				</Dialog>
 
@@ -112,7 +113,7 @@ export default function Page() {
 					isOpen={displayEditDialog}
 					onClose={() => setDisplayEditDialog(false)}
 				>
-					<form onSubmit={onUpdateProduct}>
+					<form className="flex flex-col gap-4" onSubmit={onUpdateProduct}>
 						<InputText
 							type="text"
 							id="name"
@@ -122,8 +123,7 @@ export default function Page() {
 							onChange={(e) => setName(e.target.value)}
 							required
 						/>
-						<InputTextarea
-							className="flex"
+						<Textarea
 							id="description"
 							placeholder="Product description"
 							icon="description"
@@ -132,7 +132,6 @@ export default function Page() {
 							required
 						/>
 						<InputCurrencyRange
-							className="gap-[15px] mb-[15px]"
 							minPlaceholder="Price"
 							maxPlaceholder="Compare price"
 							minValue={price}
@@ -141,7 +140,7 @@ export default function Page() {
 							onMaxChange={(value) => setPriceCompare(value)}
 						/>
 
-						<div className="flex gap-[15px] mb-[15px] flex-wrap">
+						<div className="flex gap-4 flex-wrap">
 							{Array.from(Array(10).keys()).map((index) => (
 								<ImageInput
 									key={index}
@@ -151,10 +150,10 @@ export default function Page() {
 							))}
 						</div>
 
-						<ButtonFull className="mt-4">Update</ButtonFull>
+						<Button size="md">Update</Button>
 					</form>
 				</Dialog>
-			</section>
+			</Section>
 		</Layout>
 	);
 }

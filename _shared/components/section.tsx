@@ -1,9 +1,14 @@
+import clsx from "clsx";
+
 export type SectionProps = {
+	className?: string;
 	children?: React.ReactNode;
 };
 
-export function Section({ children }: SectionProps) {
+export function Section({ className, children }: SectionProps) {
 	return (
-		<section className="max-w-[1075px] mx-auto px-[10px]">{children}</section>
+		<section className={clsx("max-w-[1075px] mx-auto px-[10px]", className)}>
+			{children}
+		</section>
 	);
 }

@@ -10,7 +10,7 @@ import { useAppSelector } from "@redux/store";
 
 import { useState } from "react";
 
-import { ButtonGhost } from "_shared/components/button";
+import { ButtonGhost } from "_shared/components/buttonGhost";
 import { Separator } from "_shared/components/separator";
 
 import Overlay from "_shared/components/overlay";

@@ -52,7 +52,7 @@ export function Table({ className, columns, data }: TableProps) {
 								>
 									{column.type === "number-input" ? (
 										<InputText
-											className="mx-auto"
+											className="mx-auto w-28"
 											size="sm"
 											type="number"
 											value={row[column.field]}

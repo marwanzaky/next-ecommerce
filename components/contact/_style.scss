@@ -1,9 +1,0 @@
-.section-contact-me {
-  background-color: $color-bg;
-}
-
-.section-contact-me .contact-me-box {
-  @apply section-container;
-  @apply grid grid-cols-1 md:grid-cols-2;
-  @apply gap-[50px];
-}

@@ -197,59 +197,6 @@ h4 {
 /*------- BUTTONS -------*/
 @import "../components/ui/Button/style";
 
-/*------- FORM -------*/
-input[type="text"],
-input[type="password"],
-textarea {
-	width: 100%;
-	padding: $field-pv $field-ph;
-	margin-bottom: 15px;
-
-	outline: none;
-	border: none;
-	box-shadow: 0 0 0 1pt #ecf0f1;
-	border-radius: $border-radius;
-
-	background-color: $color-bg-dark;
-	resize: vertical;
-
-	&:focus {
-		box-shadow: 0 0 0 2pt cornflowerblue;
-	}
-
-	&::placeholder {
-		color: $color-placeholder;
-		opacity: 1; /* Firefox */
-	}
-}
-
-textarea {
-	padding: $field-pv $field-ph;
-	max-height: 500px;
-}
-
-.input-field {
-	position: relative;
-
-	input[type="number"] {
-		padding: $btn-pv $btn-ph;
-		border: solid 2px $color-border;
-		border-radius: $border-radius;
-	}
-
-	.input-field-icon {
-		position: absolute;
-
-		top: 0;
-		right: 0;
-
-		padding-top: $field-pv;
-		padding-right: $field-ph;
-
-		filter: $filter-placeholder;
-	}
-}
-
 /*------- LOGO -------*/
 .logo {
 	font-weight: var(--font-bold);
@@ -282,22 +229,8 @@ textarea {
 /*------- FOOTER -------*/
 @import "../components/footer/style";
 
-/*------- CONTACT US -------*/
-@import "../components/contact/style";
-
 /*------- PRODUCT -------*/
 @import "../components/product/style";
 
 /*------- FEEDBACK -------*/
 @import "../components/feedback/style";
-
-/*------- ME -------*/
-@import "./me/style";
-
-/*------- SIGN UP / SING IN -------*/
-.section-signin .signin-p,
-.section-signup .signup-p {
-	color: $color-grey;
-	text-align: center;
-	margin-bottom: 30px;
-}

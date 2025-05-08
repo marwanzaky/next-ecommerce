@@ -4,13 +4,14 @@ import { useFavorites } from "@hooks/useFavorites";
 
 import Layout from "@components/layout";
 import ProductItem from "@ui/ProductItem";
+import { Section } from "_shared/components/section";
 
 export default function Page() {
 	const { items } = useFavorites();
 
 	return (
 		<Layout title="Favorites">
-			<section className="section-container">
+			<Section>
 				<h4 className="text-center">Your Favorites</h4>
 
 				<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -18,7 +19,7 @@ export default function Page() {
 						<ProductItem data={item} key={item._id}></ProductItem>
 					))}
 				</div>
-			</section>
+			</Section>
 		</Layout>
 	);
 }

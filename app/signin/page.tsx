@@ -2,60 +2,64 @@
 
 import Layout from "@components/layout";
 
-import { useState } from "react";
-
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-import { InputText } from "@utils/components/input";
-
-import { ButtonFull } from "@ui/Button";
-
 import { useDispatch } from "react-redux";
 import { handleLogin } from "@utils/authHelpers";
+import { InputText } from "_shared/components/inputText";
+import { Button } from "_shared/components/button";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { Section } from "_shared/components/section";
+
+type Inputs = {
+	email: string;
+	password: string;
+};
 
 export default function Page() {
 	const router = useRouter();
 
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const { register, handleSubmit } = useForm<Inputs>();
 
 	const dispatch = useDispatch();
 
-	const onSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
-		event.preventDefault();
-		handleLogin(email, password, dispatch, router);
+	const onSubmit: SubmitHandler<Inputs> = (data) => {
+		handleLogin(data.email, data.password, dispatch, router);
 	};
 
 	return (
 		<Layout title="Sign In">
-			<section className="section-signin">
-				<div className="section-container">
-					<form onSubmit={onSubmit} className="m-auto max-w-[500px]">
-						<h4 className="text-center">Sign In</h4>
-						<p className="signin-p">
-							Sign in to get personalized product recommendations, save and
-							synchronize your data across your devices.
-						</p>
+			<Section>
+				<form
+					onSubmit={handleSubmit(onSubmit)}
+					className="m-auto max-w-[500px]"
+				>
+					<h4 className="text-center">Sign In</h4>
+					<p className="text-center text-grey mb-8">
+						Sign in to get personalized product recommendations, save and
+						synchronize your data across your devices.
+					</p>
 
+					<div className="flex flex-col gap-4">
 						<InputText
 							type="text"
-							id="email"
 							placeholder="Enter Email"
 							icon="mail"
-							onChange={(e) => setEmail(e.target.value)}
+							required
+							{...register("email", { required: true })}
 						/>
 						<InputText
 							type="password"
-							id="password"
 							placeholder="Enter Password"
 							icon="password"
-							onChange={(e) => setPassword(e.target.value)}
+							required
+							{...register("password", { required: true })}
 						/>
 
-						<ButtonFull type="submit" className="w-full block mb-[15px]">
+						<Button size="md" type="submit">
 							Sign in
-						</ButtonFull>
+						</Button>
 
 						<p className="text-center">
 							Not a member yet?&emsp;
@@ -63,9 +67,9 @@ export default function Page() {
 								<strong>Sign Up</strong>
 							</Link>
 						</p>
-					</form>
-				</div>
-			</section>
+					</div>
+				</form>
+			</Section>
 		</Layout>
 	);
 }

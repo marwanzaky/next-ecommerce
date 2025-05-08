@@ -140,7 +140,7 @@ function Details({ product }: { product: IProduct }) {
 			</label>
 
 			<InputText
-				className="mb-[10px]"
+				className="mb-[10px] w-28"
 				id="quantity"
 				type="number"
 				value={quantity}

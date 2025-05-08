@@ -9,8 +9,9 @@ import { IProduct } from "_shared/interfaces";
 
 import { useAppSelector } from "@redux/store";
 import Dialog from "_shared/components/dialog";
-import { InputTextarea } from "@utils/components/input";
 import { productsService } from "@redux/services/productsService";
+import { Textarea } from "_shared/components/textarea";
+import { Button } from "_shared/components/button";
 
 function OverviewRating({
 	avgRatings,
@@ -117,20 +118,20 @@ export default function Overview({ product }: { product: IProduct }) {
 				onClose={closeDialog}
 				width="24rem"
 			>
-				<form onSubmit={submitDialog}>
-					<div className="mb-[15px]">
-						<Stars value={5} displayTotal={false} size={24} />
+				<form className="flex flex-col gap-4" onSubmit={submitDialog}>
+					<Stars value={5} displayTotal={false} size={24} />
+
+					<div>
+						<h4>Description</h4>
+						<Textarea
+							id="description"
+							placeholder="Describe your experience..."
+							icon="description"
+							onChange={(e) => setDialogDescription(e.target.value)}
+						/>
 					</div>
 
-					<h4>Description</h4>
-					<InputTextarea
-						id="description"
-						placeholder="Describe your experience..."
-						icon="description"
-						onChange={(e) => setDialogDescription(e.target.value)}
-					/>
-
-					<ButtonFull>Submit</ButtonFull>
+					<Button size="md">Submit</Button>
 				</form>
 			</Dialog>
 		</div>

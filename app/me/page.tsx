@@ -5,13 +5,15 @@ import { useEffect, useRef, useState } from "react";
 import Layout from "@components/layout";
 
 import { ButtonFull, ButtonIcon } from "@ui/Button";
-import { InputText } from "@utils/components/input";
 
 import { useDispatch } from "react-redux";
 
 import { AppDispatch, useAppSelector } from "@redux/store";
 import { Avatar } from "_shared/components/avatar";
 import { updateMeAsync, updateMyPasswordAsync } from "@redux/thunks/authThunks";
+import { InputText } from "_shared/components/inputText";
+import { Section } from "_shared/components/section";
+import { Button } from "_shared/components/button";
 
 export default function Page() {
 	const dispatch = useDispatch<AppDispatch>();
@@ -81,102 +83,112 @@ export default function Page() {
 	return (
 		<Layout title="Settings">
 			{user == null ? (
-				<section className="section-me">
-					<div className="me-box">
+				<Section>
+					<div className="m-auto max-w-lg">
 						<h2>loading...</h2>
 					</div>
-				</section>
+				</Section>
 			) : (
-				<section className="section-me">
-					<div className="me-box">
+				<Section>
+					<div className="m-auto max-w-lg">
 						<h1>Settings</h1>
 
-						<form>
-							<input
-								ref={inputRef}
-								className="hidden"
-								type="file"
-								accept=".png, .jpg, .jpeg"
-								onChange={onAvatarChange}
-							/>
+						<div className="flex flex-col gap-8 mb-8">
+							<form>
+								<input
+									ref={inputRef}
+									className="hidden"
+									type="file"
+									accept=".png, .jpg, .jpeg"
+									onChange={onAvatarChange}
+								/>
 
-							<h4 className="">Personal Information</h4>
-							<div className="flex items-center mb-4 gap-4">
-								<Avatar size="lg" imgUrl={photo}></Avatar>
+								<h4 className="">Personal Information</h4>
 
-								<div className="flex items-center">
-									<ButtonFull
-										type="button"
-										onClick={() => inputRef.current?.click()}
-									>
-										Change avatar
-									</ButtonFull>
-									<ButtonIcon
-										type="button"
-										icon="delete"
-										onClick={() => setPhoto(null)}
-									></ButtonIcon>
+								<div className="flex flex-col gap-4">
+									<div className="flex items-center gap-4">
+										<Avatar size="lg" imgUrl={photo}></Avatar>
+
+										<div className="flex items-center">
+											<ButtonFull
+												type="button"
+												onClick={() => inputRef.current?.click()}
+											>
+												Change avatar
+											</ButtonFull>
+											<ButtonIcon
+												type="button"
+												icon="delete"
+												onClick={() => setPhoto(null)}
+											></ButtonIcon>
+										</div>
+									</div>
+
+									<InputText
+										type="text"
+										id="name"
+										placeholder={name}
+										icon="person"
+										onChange={(e) => setName(e.target.value)}
+									/>
+									<InputText
+										type="text"
+										id="email"
+										placeholder={email}
+										icon="mail"
+										onChange={(e) => setEmail(e.target.value)}
+									/>
+
+									<Button size="md" onClick={saveChanges}>
+										Save
+									</Button>
 								</div>
-							</div>
+							</form>
 
-							<InputText
-								type="text"
-								id="name"
-								placeholder={name}
-								icon="person"
-								onChange={(e) => setName(e.target.value)}
-							/>
-							<InputText
-								type="text"
-								id="email"
-								placeholder={email}
-								icon="mail"
-								onChange={(e) => setEmail(e.target.value)}
-							/>
+							<form onSubmit={updateMyPasswordForm}>
+								<h4 className="">Change Password</h4>
 
-							<ButtonFull onClick={saveChanges}>Save</ButtonFull>
-						</form>
+								<div className="flex flex-col gap-4">
+									<InputText
+										type="password"
+										id="curpass"
+										placeholder="Current password"
+										icon="password"
+										onChange={(e) => setCurrentPassword(e.target.value)}
+									/>
+									<InputText
+										type="password"
+										id="newpass"
+										placeholder="New password"
+										icon="password"
+										onChange={(e) => setNewPassword(e.target.value)}
+									/>
+									<InputText
+										type="password"
+										id="confpass"
+										placeholder="Confirm password"
+										icon="password"
+										onChange={(e) => setConfirmPassword(e.target.value)}
+									/>
 
-						<form onSubmit={updateMyPasswordForm}>
-							<h4 className="">Change Password</h4>
-							<InputText
-								type="password"
-								id="curpass"
-								placeholder="Current password"
-								icon="password"
-								onChange={(e) => setCurrentPassword(e.target.value)}
-							/>
-							<InputText
-								type="password"
-								id="newpass"
-								placeholder="New password"
-								icon="password"
-								onChange={(e) => setNewPassword(e.target.value)}
-							/>
-							<InputText
-								type="password"
-								id="confpass"
-								placeholder="Confirm password"
-								icon="password"
-								onChange={(e) => setConfirmPassword(e.target.value)}
-							/>
+									<Button size="md">Save</Button>
+								</div>
+							</form>
 
-							<ButtonFull>Save</ButtonFull>
-						</form>
+							{/* <form>
+								<h4 className="">Delete Account</h4>
 
-						{/* <form>
-							<h4 className="">Delete Account</h4>
+								<p className="mb-4">
+									No longer want to use our service? You can delete your account
+									here. This action is not reversible. All information related
+									to this account will be deleted permanently.
+								</p>
 
-							<p className="mb-4">
-								No longer want to use our service? You can delete your account
-								here. This action is not reversible. All information related to
-								this account will be deleted permanently.
-							</p>
-
-							<ButtonFullRed>Yes, delete my account</ButtonFullRed>
-						</form> */}
+								<ButtonFullRed>Yes, delete my account</ButtonFullRed>
+							</form> */}
+						</div>
 					</div>
-				</section>
+				</Section>
 			)}
 		</Layout>
 	);

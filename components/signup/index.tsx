@@ -1,29 +1,32 @@
 "use client";
 
-import { useState } from "react";
-
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-
-import { InputText } from "@utils/components/input";
-import { ButtonFull } from "@ui/Button";
 
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@redux/store";
 import { signupAsync } from "@redux/thunks/authThunks";
+import { InputText } from "_shared/components/inputText";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { Button } from "_shared/components/button";
+import { Section } from "_shared/components/section";
+
+type Form = {
+	name: string;
+	email: string;
+	password: string;
+	confirmPassword: string;
+};
 
 export default function Signup() {
 	const router = useRouter();
 
-	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [confirmPassword, setConfirmPassword] = useState("");
+	const { register, handleSubmit } = useForm<Form>();
 
 	const dispatch = useDispatch<AppDispatch>();
 
-	const onSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
-		event.preventDefault();
+	const onSubmit: SubmitHandler<Form> = (data) => {
+		const { name, email, password, confirmPassword } = data;
 
 		if (password === confirmPassword) {
 			dispatch(signupAsync({ name, email, password, router }));
@@ -33,47 +36,47 @@ export default function Signup() {
 	};
 
 	return (
-		<section className="section-signup">
-			<div className="section-container">
-				<form onSubmit={onSubmit} className="m-auto max-w-[500px]">
-					<h4 className="text-center">Sign Up</h4>
-					<p className="signup-p">
-						Create an account to unlock all the benefits to easily save and
-						synchronize your data across your devices.
-					</p>
+		<Section>
+			<form onSubmit={handleSubmit(onSubmit)} className="m-auto max-w-[500px]">
+				<h4 className="text-center">Sign Up</h4>
+				<p className="text-center text-grey mb-8">
+					Create an account to unlock all the benefits to easily save and
+					synchronize your data across your devices.
+				</p>
 
+				<div className="flex flex-col gap-4">
 					<InputText
 						type="text"
-						id="name"
 						placeholder="Enter Name"
 						icon="person"
-						onChange={(e) => setName(e.target.value)}
+						required
+						{...register("name", { required: true })}
 					/>
 					<InputText
-						type="text"
-						id="email"
+						type="email"
 						placeholder="Enter Email"
 						icon="mail"
-						onChange={(e) => setEmail(e.target.value)}
+						required
+						{...register("email", { required: true })}
 					/>
 					<InputText
 						type="password"
-						id="password"
 						placeholder="Enter Password"
 						icon="password"
-						onChange={(e) => setPassword(e.target.value)}
+						required
+						{...register("password", { required: true })}
 					/>
 					<InputText
 						type="password"
-						id="passwordConfirm"
 						placeholder="Repeat Password"
 						icon="password"
-						onChange={(e) => setConfirmPassword(e.target.value)}
+						required
+						{...register("confirmPassword", { required: true })}
 					/>
 
-					<ButtonFull type="submit" className="w-full block mb-[15px]">
+					<Button size="md" type="submit">
 						Sign up
-					</ButtonFull>
+					</Button>
 
 					<p className="text-center">
 						Have an account?&emsp;
@@ -81,8 +84,8 @@ export default function Signup() {
 							<strong>Sign In</strong>
 						</Link>
 					</p>
-				</form>
-			</div>
-		</section>
+				</div>
+			</form>
+		</Section>
 	);
 }
