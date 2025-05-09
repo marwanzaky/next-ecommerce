@@ -14,14 +14,20 @@ module.exports = {
 				base: "15px",
 			},
 			colors: {
-				"custom-bg-dark": "#f6f8f8",
-				"border-color": "#dfe6e9",
-				"bg-dark": "#f6f8f8",
 				primary: "#00b894",
 				"primary-light": "#b8fff1",
 				"primary-dark": "#009679",
-				black: "#2d3436",
+
+				secondary: "#f6f8f8",
+				"secondary-foreground": "#f6f8f8",
+
+				//
+				"custom-bg-dark": "#f6f8f8", // deprecated use secondary
+				"border-color": "#dfe6e9",
+				"bg-dark": "#f6f8f8", // deprecated use secondary
+
 				grey: "#868686",
+				black: "#2d3436",
 			},
 			filter: {
 				"primary-dark":

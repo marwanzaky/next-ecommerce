@@ -26,6 +26,7 @@ export function useSell() {
 	const [description, setDescription] = useState("");
 	const [priceUsd, setPriceUsd] = useState<number>();
 	const [priceCompareUsd, setPriceCompareUsd] = useState<number>();
+	const [tags, setTags] = useState<string[]>([]);
 	const [base64s, setBase64s] = useState<string[]>([]);
 
 	const [displayDialog, setDisplayDialog] = useState(false);
@@ -60,7 +61,9 @@ export function useSell() {
 			type: "action",
 			width: "38px",
 			action: (row) => {
-				dispatch(removeUserProductAsync({ id: row._id }));
+				if (confirm("Are you sure you want to delete this product?")) {
+					dispatch(removeUserProductAsync({ id: row._id }));
+				}
 			},
 			actionIcon: "delete",
 		},
@@ -76,6 +79,7 @@ export function useSell() {
 				setPriceCompareUsd(row.priceCompare / 100);
 				setBase64s(row.imgUrls);
 				setProductId(row._id);
+				setTags(row.tags);
 
 				setDisplayEditDialog(true);
 			},
@@ -106,6 +110,7 @@ export function useSell() {
 					price: priceUsd * 100,
 					priceCompare: priceCompareUsd * 100,
 					imgUrls: base64s,
+					tags,
 				}),
 			);
 		}
@@ -128,6 +133,7 @@ export function useSell() {
 						price: priceUsd * 100,
 						priceCompare: priceCompareUsd * 100,
 						imgUrls: base64s,
+						tags,
 					},
 				}),
 			);
@@ -154,6 +160,7 @@ export function useSell() {
 		setPriceUsd(undefined);
 		setPriceCompareUsd(undefined);
 		setBase64s([]);
+		setTags([]);
 	};
 
 	return {
@@ -170,6 +177,8 @@ export function useSell() {
 		setPrice: setPriceUsd,
 		priceCompare: priceCompareUsd,
 		setPriceCompare: setPriceCompareUsd,
+		tags,
+		setTags,
 		base64s,
 		setBase64s,
 
@@ -178,6 +187,7 @@ export function useSell() {
 		displayEditDialog,
 		setDisplayEditDialog,
 
+		resetForm,
 		imageInputOnClick,
 		onSubmitProduct,
 		onUpdateProduct,

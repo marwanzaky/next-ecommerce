@@ -11,11 +11,12 @@ export interface IProduct {
 	reviews: IReview[];
 	imgUrls: string[];
 	description: string;
+	tags: string[];
 	createdAt: string;
 	stock: number;
 }
 
 export type IUpdateProduct = Pick<
 	Partial<IProduct>,
-	"name" | "price" | "priceCompare" | "description" | "imgUrls"
+	"name" | "price" | "priceCompare" | "description" | "imgUrls" | "tags"
 >;

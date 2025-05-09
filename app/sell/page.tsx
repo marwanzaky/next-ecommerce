@@ -14,6 +14,7 @@ import { InputText } from "_shared/components/inputText";
 import { Button } from "_shared/components/button";
 import { Textarea } from "_shared/components/textarea";
 import { Section } from "_shared/components/section";
+import { InputTags } from "_shared/components/inputTags";
 
 export default function Page() {
 	const {
@@ -28,6 +29,8 @@ export default function Page() {
 		setPrice,
 		priceCompare,
 		setPriceCompare,
+		tags,
+		setTags,
 		base64s,
 		setBase64s,
 
@@ -36,6 +39,7 @@ export default function Page() {
 		displayEditDialog,
 		setDisplayEditDialog,
 
+		resetForm,
 		imageInputOnClick,
 		onSubmitProduct,
 		onUpdateProduct,
@@ -52,7 +56,10 @@ export default function Page() {
 					<div className="flex justify-end">
 						<ButtonFull
 							className="!mr-0"
-							onClick={() => setDisplayDialog(true)}
+							onClick={() => {
+								resetForm();
+								setDisplayDialog(true);
+							}}
 						>
 							Add item
 						</ButtonFull>
@@ -83,7 +90,6 @@ export default function Page() {
 							onChange={(e) => setDescription(e.target.value)}
 							required
 						/>
-
 						<InputCurrencyRange
 							minPlaceholder="Price"
 							maxPlaceholder="Compare price"
@@ -91,6 +97,12 @@ export default function Page() {
 							maxValue={priceCompare}
 							onMinChange={(value) => setPrice(value)}
 							onMaxChange={(value) => setPriceCompare(value)}
+							required
+						/>
+						<InputTags
+							value={tags}
+							onChange={(value) => setTags(value)}
+							placeholder="Enter tags"
 						/>
 
 						<div className="flex gap-4 flex-wrap">
@@ -138,6 +150,12 @@ export default function Page() {
 							maxValue={priceCompare}
 							onMinChange={(value) => setPrice(value)}
 							onMaxChange={(value) => setPriceCompare(value)}
+							required
+						/>
+						<InputTags
+							value={tags}
+							onChange={(value) => setTags(value)}
+							placeholder="Enter tags"
 						/>
 
 						<div className="flex gap-4 flex-wrap">
